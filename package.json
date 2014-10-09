@@ -1,0 +1,19 @@
+{
+  "name": "spel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/witchcrafterz/spel.git"
+  },
+  "author": "rehn.michael@outlook.com, simonhyttfors@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/witchcrafterz/spel/issues"
+  },
+  "homepage": "https://github.com/witchcrafterz/spel"
+}
