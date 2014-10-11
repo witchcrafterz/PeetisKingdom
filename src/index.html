@@ -13,7 +13,8 @@
     <!-- Out JavaScript -->
     <!-- inject:js -->
     <script src="/js/Game.js"></script>
-    <script src="/js/game/init.js"></script>
+    <script src="/js/Game/init.js"></script>
+    <script src="/js/Game/level/level.js"></script>
     <!-- endinject -->
 
 </head>
@@ -25,9 +26,10 @@
     window.onload = function() {
         var game = new Phaser.Game(1280, 720, Phaser.AUTO, 'game');
 
-        game.state.add('init', Game.init);
+        game.state.add('Game.init', Game.init);
+        game.state.add('Game.level', Game.level);
 
-        game.state.start('init');
+        game.state.start('Game.init');
     };
     </script>
 </body>

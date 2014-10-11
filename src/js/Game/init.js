@@ -24,6 +24,8 @@
             this.scale.pageAlignHorizontally = true;
             this.scale.pageAlignVertically = true;
             this.scale.setScreenSize(true);
+
+            this.state.start('Game.level');
         }
 
     };

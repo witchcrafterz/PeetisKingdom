@@ -5,12 +5,17 @@
      * The main game namespace
      * @namespace
      */
-    var Game = {
+    var Game = function() {
         /**
          * Global game variables here
          */
+        
+         this.gravity = {
+            x: 0,
+            y: 1000
+         };
     };
 
-    window.Game = Game;
+    window.Game = new Game();
 
 })();
