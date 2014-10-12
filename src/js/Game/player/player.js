@@ -20,12 +20,17 @@
         this.game.physics.enable(this, Phaser.Physics.ARCADE);
 
         this.body.collideWorldBounds = true;
-        this.body.bounce.y = 0.1;
+        // this.body.bounce.y = 0.1;
 
         this.cursors = this.game.input.keyboard.createCursorKeys();
         this.jumpButton = this.game.input.keyboard.addKey(jumpKey);
-    
-        this.animations.add('running', [7, 8, 9, 10], 10, false);
+
+        this.animations.add('running', [5, 6, 7, 8, 9, 10, 11, 12], 10, true);
+        this.animations.add('jump', [3], 20, true);
+        this.animations.add('falling', [2], 20, true);
+        this.animations.add('still', [1], 20, true);
+
+        this.currAnim = '';
 
         // console.log(this.animations.sprite);
 
@@ -44,13 +49,18 @@
     Game.player.prototype.constructor = Game.player;
 
     Game.player.prototype.update = function() {
+
         if (this.cursors.right.isDown) {
             this.body.acceleration.x = acc;
+
             this.animations.play('running');
+
             this.scale.x = 1;
         } else if (this.cursors.left.isDown) {
             this.body.acceleration.x = -acc;
+
             this.animations.play('running');
+
             this.scale.x = -1;
         } else {
             this.body.acceleration.x = this.body.velocity.x * -5;
@@ -59,8 +69,18 @@
         if (this.cursors.up.isDown && this.jumpMeter > 0) {
             this.jumpMeter += jumpAcc;
             this.body.velocity.y = jumpAcc;
+
+            this.animations.play('jump');
         } else if (this.cursors.up.isUp && !this.body.onFloor()) {
             this.jumpMeter = 0;
+        }
+        
+        if (this.body.velocity.y > 0) {
+            this.animations.play('falling');
+        }
+
+        if (this.body.onFloor() && Math.abs(this.body.velocity.x) < 40) {
+            this.animations.play('still');
         }
 
         if (this.body.onFloor()) {
