@@ -6,7 +6,6 @@
 
 
     <!-- bower:js -->
-    <script src="vendors/phaser/build/phaser.js"></script>
     <!-- endinject -->
 
     <!-- vendors:js -->
@@ -16,10 +15,6 @@
     <!-- endinject -->
 
     <!-- inject:js -->
-    <script src="js/Game.js"></script>
-    <script src="js/Game/init.js"></script>
-    <script src="js/Game/level/level.js"></script>
-    <script src="js/Game/player/player.js"></script>
     <!-- endinject -->
 
 </head>

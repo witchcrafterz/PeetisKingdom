@@ -4,6 +4,10 @@ var inject = require('gulp-inject');
 var bowerFiles = require('main-bower-files');
 var gulpIgnore = require('gulp-ignore');
 var clean = require('gulp-clean');
+var rename = require('gulp-rename');
+var jsmin = require('gulp-jsmin');
+var concat = require('gulp-concat');
+var runSequence = require('run-sequence');
 
 gulp.task('browser-sync', function() {
     browserSync({
@@ -26,21 +30,76 @@ function getVendors() {
     return gulp.src(bowerFiles(), {read: false, cwd: './src'});
 }
 
-gulp.task('inject', function() {
-    var target = gulp.src('./index.html', {cwd: './src'});
+gulp.task('compile-index', function() {
+    var target = gulp.src('./index.html.tpl', {cwd: './src'}).pipe(rename('index.html'));
 
     return target
         .pipe(inject(getVendors(), {name: 'bower', addRootSlash: false}))
         .pipe(inject(getJS(), { addRootSlash: false }))
         .pipe(gulp.dest('./src'));
+
 });
 
-gulp.task('serve', ['inject', 'browser-sync'], function() {
+gulp.task('serve', ['compile-index', 'browser-sync'], function() {
     gulp.watch('./src/**/*.js', ['inject', 'browser-sync-reload']);
     gulp.watch('./src/**/*.html', ['browser-sync-reload']);
 });
 
-gulp.task('dist', ['inject'], function() {
-    gulp.src('./src/**')
+gulp.task('dist-clean', function() {
+    return gulp.src('./dist', {read: false})
+        .pipe(clean());
+});
+
+gulp.task('dist-copy', function() {
+    return gulp.src(['./src/**', '!.src/vendors', '!./src/vendors/**', '!./src/js/**'])
+        .pipe(gulp.dest('./dist'));    
+});
+
+gulp.task('dist-prepare', function(next) {
+    runSequence('dist-clean', 'dist-copy', next);
+});
+
+gulp.task('dist-js', function() {
+    return gulp.src('./src/js/**')
+        .pipe(concat('scripts.js'))
+        .pipe(gulp.dest('./dist'))
+        .pipe(jsmin())
+        .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('./dist'));
+});
+
+gulp.task('dist-js-inject', ['dist-js'], function() {
+    return gulp.src('./dist/index.html')
+        .pipe(rename('index.html'))
+        .pipe(inject(gulp.src('./dist/scripts.min.js', {read: false}), {name: 'dist', addRootSlash: false}))
+        .pipe(gulp.dest('./dist'));
+});
+
+gulp.task('dist-vendors', function() {
+    return gulp.src(bowerFiles())
+        .pipe(concat('vendors.js'))
+        .pipe(gulp.dest('./dist'))
+        .pipe(jsmin())
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest('./dist'));
+});
+
+gulp.task('dist-vendors-inject', ['dist-vendors'], function() {
+    return gulp.src('./dist/index.html')
+        .pipe(inject(gulp.src('./dist/vendors.min.js', {read: false}), {name: 'vendors', addRootSlash: false}))
+        .pipe(gulp.dest('./dist'));
+});
+
+gulp.task('dist-rename-index', function() {
+    return gulp.src('./dist/index.html.tpl')
+        .pipe(rename('index.html'))
+        .pipe(gulp.dest('./dist'));
+});
+
+gulp.task('dist-compile-index', ['dist-rename-index'], function(next) {
+    runSequence('dist-js-inject', 'dist-vendors-inject', next);
+});
+
+gulp.task('dist', function(next) {
+    runSequence('dist-prepare', 'dist-compile-index', next);
 });
