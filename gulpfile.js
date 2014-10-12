@@ -2,7 +2,8 @@ var gulp = require('gulp');
 var browserSync = require('browser-sync');
 var inject = require('gulp-inject');
 var bowerFiles = require('main-bower-files');
-
+var gulpIgnore = require('gulp-ignore');
+var clean = require('gulp-clean');
 
 gulp.task('browser-sync', function() {
     browserSync({
@@ -39,3 +40,7 @@ gulp.task('serve', ['inject', 'browser-sync'], function() {
     gulp.watch('./src/**/*.html', ['browser-sync-reload']);
 });
 
+gulp.task('dist', ['inject'], function() {
+    gulp.src('./src/**')
+        .pipe(gulp.dest('./dist'));
+});
