@@ -69,9 +69,9 @@ gulp.task('dist-js', function() {
 });
 
 gulp.task('dist-js-inject', ['dist-js'], function() {
-    return gulp.src('./dist/index.html')
+    return gulp.src('./index.html', {cwd: './dist'})
         .pipe(rename('index.html'))
-        .pipe(inject(gulp.src('./dist/scripts.min.js', {read: false}), {name: 'dist', addRootSlash: false}))
+        .pipe(inject(gulp.src('./scripts.min.js', {read: false, cwd: './dist'}), {name: 'dist', addRootSlash: false}))
         .pipe(gulp.dest('./dist'));
 });
 
@@ -85,8 +85,8 @@ gulp.task('dist-vendors', function() {
 });
 
 gulp.task('dist-vendors-inject', ['dist-vendors'], function() {
-    return gulp.src('./dist/index.html')
-        .pipe(inject(gulp.src('./dist/vendors.min.js', {read: false}), {name: 'vendors', addRootSlash: false}))
+    return gulp.src('./index.html', {cwd: './dist'})
+        .pipe(inject(gulp.src('./vendors.min.js', {read: false, cwd: './dist'}), {name: 'vendors', addRootSlash: false}))
         .pipe(gulp.dest('./dist'));
 });
 
