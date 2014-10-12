@@ -41,7 +41,7 @@ gulp.task('compile-index', function() {
 });
 
 gulp.task('serve', ['compile-index', 'browser-sync'], function() {
-    gulp.watch('./src/**/*.js', ['inject', 'browser-sync-reload']);
+    gulp.watch('./src/**/*.js', ['compile-index', 'browser-sync-reload']);
     gulp.watch('./src/**/*.html', ['browser-sync-reload']);
 });
 
