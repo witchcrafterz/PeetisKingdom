@@ -10,7 +10,7 @@
          * Load content here, e.g. this.load.image('myDude', '/assets/images/myDude.png')
          */
         preload: function() {
-            this.load.spritesheet('player1', '/assets/p1_spritesheet.png', 72, 96);
+            this.load.spritesheet('player1', 'assets/p1_spritesheet.png', 72, 96);
 
         },
 
