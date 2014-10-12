@@ -30,8 +30,8 @@ gulp.task('inject', function() {
     var target = gulp.src('./index.html', {cwd: './src'});
 
     return target
-        .pipe(inject(getVendors(), {name: 'bower'}))
-        .pipe(inject(getJS()))
+        .pipe(inject(getVendors(), {name: 'bower', addRootSlash: false}))
+        .pipe(inject(getJS(), { addRootSlash: false }))
         .pipe(gulp.dest('./src'));
 });
 
