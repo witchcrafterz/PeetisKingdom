@@ -45,7 +45,7 @@
 
     // Clone the Phaser.Sprite prototype, and use it as our own. 
     // This is how inheritance works in JavaScript btw
-    Game.player.prototype = Phaser.Sprite.prototype;
+    Game.player.prototype = Object.create(Phaser.Sprite.prototype);
     Game.player.prototype.constructor = Game.player;
 
     Game.player.prototype.update = function() {
