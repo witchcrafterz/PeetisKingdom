@@ -17,9 +17,15 @@
     <!-- inject:js -->
     <!-- endinject -->
 
+    <style>
+        body {
+            background-color: black;
+        }
+    </style>
+
 </head>
 <body>
-    <h1>Operation RÅDOLF</h1>
+
     <div id="game"></div>
 
     <script>
