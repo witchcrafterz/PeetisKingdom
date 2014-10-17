@@ -12,7 +12,7 @@
          */
         preload: function() {
             this.game.load.spritesheet('player1', 'assets/player1.png', 80, 97);
-            this.game.load.image('bg', 'assets/bg_water.jpg');
+            this.game.load.image('bg', 'assets/bg_castle.png');
             this.game.load.spritesheet('tile', 'assets/spritesheet.png', 70, 70);
 
             this.game.load.audio('jorm', 'assets/jatten_jorm.wav');
@@ -35,7 +35,7 @@
 
             this.tileGroup = this.game.add.group();
             for (var x = 0; x < 10; x++) {
-                this.tileGroup.create(70 * x, 70 * 7, 'tile');
+                this.tileGroup.create(70 * x, 70 * 7, 'tile', 3);
                 // this.game.physics.enable(tile, Phaser.Physics.ARCADE);
                 // tile.body.allowGravity = false;
 
