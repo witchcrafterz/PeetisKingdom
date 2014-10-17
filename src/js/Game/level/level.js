@@ -33,19 +33,23 @@
             var p1 = this.p1 = new Game.player(this.game, this.game.world.centerX, this.game.world.centerY);
             this.game.add.existing(p1);
 
+            this.tileGroup = this.game.add.group();
             for (var x = 0; x < 10; x++) {
-                var tile = this.game.add.sprite(70 * x, 70 * 7, 'tile');
-                this.game.physics.enable(tile, Phaser.Physics.ARCADE);
-                tile.body.allowGravity = false;
+                this.tileGroup.create(70 * x, 70 * 7, 'tile');
+                // this.game.physics.enable(tile, Phaser.Physics.ARCADE);
+                // tile.body.allowGravity = false;
 
             }
-
+            this.game.physics.enable(this.tileGroup, Phaser.Physics.ARCADE);
+            this.tileGroup.setAll('body.allowGravity', false);
+            this.tileGroup.setAll('body.immovable', true);
 
             music = this.game.add.audio('jorm');
             music.fadeIn(1000, true);
         },
 
         update: function() {
+            this.game.physics.arcade.collide(this.p1, this.tileGroup);
         }
 
     };

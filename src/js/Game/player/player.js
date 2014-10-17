@@ -71,7 +71,7 @@
             this.body.velocity.y = jumpAcc;
 
             this.animations.play('jump');
-        } else if (this.cursors.up.isUp && !this.body.onFloor()) {
+        } else if (this.cursors.up.isUp && !(this.body.onFloor() || this.body.touching.down)) {
             this.jumpMeter = 0;
         }
         
@@ -79,11 +79,11 @@
             this.animations.play('falling');
         }
 
-        if (this.body.onFloor() && Math.abs(this.body.velocity.x) < 40) {
+        if ((this.body.touching.down || this.body.onFloor()) && Math.abs(this.body.velocity.x) < 40) {
             this.animations.play('still');
         }
 
-        if (this.body.onFloor()) {
+        if (this.body.onFloor() || this.body.touching.down) {
             this.jumpMeter = fullJumpMeter;
         }
     };
