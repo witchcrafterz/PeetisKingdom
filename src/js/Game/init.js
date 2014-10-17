@@ -36,6 +36,8 @@
             var deadzone = new Phaser.Rectangle(x, y, width, height);
             window.Game.cameraDeadzone = deadzone;
 
+            window.Game.debugMode = this.game.net.getQueryString('debug') === 'true';
+
             this.state.start('Game.level');
         }
 

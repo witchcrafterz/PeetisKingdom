@@ -56,6 +56,7 @@
             this.game.physics.enable(this.tileGroup, Phaser.Physics.ARCADE);
             this.tileGroup.setAll('body.allowGravity', false);
             this.tileGroup.setAll('body.immovable', true);
+            this.tileGroup.setAll('body.skipQuadTree', true);
 
             this.game.world.setBounds(this.levelSize.x, this.levelSize.y, this.levelSize.width, this.levelSize.height);
             this.game.camera.follow(p1);
@@ -70,6 +71,10 @@
                 }                
             }, this);
 
+            if (window.Game.debugMode) {
+                this.game.add.existing(new Game.utils.FpsMeter(this.game, 32, 32));
+            }
+
             music = this.game.add.audio('jorm');
             // music.fadeIn(1000, true);
         },
@@ -78,7 +83,5 @@
             this.game.physics.arcade.collide(this.p1, this.tileGroup);
 
         }
-
     };
-
 })();
