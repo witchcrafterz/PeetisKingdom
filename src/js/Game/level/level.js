@@ -3,8 +3,10 @@
 
     Game.level = function(game) {
         this.levelSize = {
+            x: 0,
+            y: 0,
             width: 3000,
-            height: 720
+            height: 3720
         };
     };
         var music;
@@ -30,20 +32,20 @@
             this.game.physics.startSystem(Phaser.Physics.ARCADE);
             this.game.physics.arcade.gravity = Game.gravity;
 
-            var bg = this.game.add.tileSprite(0, 0, this.levelSize.width, this.levelSize.height, 'bg');
+            var bg = this.game.add.tileSprite(this.levelSize.x, this.levelSize.y, this.levelSize.width, this.levelSize.height, 'bg');
 
             var p1 = this.p1 = new Game.player(this.game, this.game.world.centerX, this.game.world.centerY);
             this.game.add.existing(p1);
 
             this.tileGroup = this.game.add.group();
             var xBound = this.levelSize.width / 70;
-            var yBound = this.levelSize.height / 70;
+            var yBound = (this.levelSize.height + this.levelSize.y) / 70;
             var rndInt = function(lower, upper) {
                 return Math.floor(lower + Math.random() * (upper - lower) - 1);
             };
-            for (var i = 0; i < 10; i++) {
+            for (var i = 0; i < 100; i++) {
                 var xStart = rndInt(0, xBound)*70;
-                var y = rndInt(yBound * 0.2, yBound)*70;
+                var y = rndInt(this.levelSize.y, yBound)*70;
 
                 for (var x = 0; x < 4; x++) {
                     this.tileGroup.create(xStart + x * 70, y, 'tile', 3);
@@ -55,7 +57,7 @@
             this.tileGroup.setAll('body.allowGravity', false);
             this.tileGroup.setAll('body.immovable', true);
 
-            this.game.world.setBounds(0, 0, 3000, 720);
+            this.game.world.setBounds(this.levelSize.x, this.levelSize.y, this.levelSize.width, this.levelSize.height);
             this.game.camera.follow(p1);
             this.game.camera.deadzone = window.Game.cameraDeadzone;
 
