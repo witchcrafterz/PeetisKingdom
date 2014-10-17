@@ -25,6 +25,14 @@
             this.scale.pageAlignVertically = true;
             this.scale.setScreenSize(true);
 
+            var x = this.game.width * 0.2;
+            var y = this.game.height * 0.3;
+            var width = this.game.width * 0.8 - x;
+            var height = this.game.height * 0.7 - y;
+            var deadzone = new Phaser.Rectangle(x, y, width, height);
+            console.log(x, y, width, height, deadzone);
+            window.Game.cameraDeadzone = deadzone;
+
             this.state.start('Game.level');
         }
 
