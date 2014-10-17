@@ -36,8 +36,19 @@
             this.game.add.existing(p1);
 
             this.tileGroup = this.game.add.group();
-            for (var x = 0; x < 10; x++) {
-                this.tileGroup.create(70 * x, 70 * 7, 'tile', 3);
+            var xBound = this.levelSize.width / 70;
+            var yBound = this.levelSize.height / 70;
+            var rndInt = function(lower, upper) {
+                return Math.floor(lower + Math.random() * (upper - lower) - 1);
+            };
+            for (var i = 0; i < 10; i++) {
+                var xStart = rndInt(0, xBound)*70;
+                var y = rndInt(yBound * 0.2, yBound)*70;
+
+                for (var x = 0; x < 4; x++) {
+                    this.tileGroup.create(xStart + x * 70, y, 'tile', 3);
+                }
+
 
             }
             this.game.physics.enable(this.tileGroup, Phaser.Physics.ARCADE);
@@ -48,12 +59,22 @@
             this.game.camera.follow(p1);
             this.game.camera.deadzone = window.Game.cameraDeadzone;
 
+            this.f11 = this.game.input.keyboard.addKey(122);
+            this.f11.onUp.add(function() {
+                if (this.game.scale.isFullScreen) {
+                    this.game.scale.stopFullScreen();
+                } else {
+                    this.game.scale.startFullScreen(false);
+                }                
+            }, this);
+
             music = this.game.add.audio('jorm');
             // music.fadeIn(1000, true);
         },
 
         update: function() {
             this.game.physics.arcade.collide(this.p1, this.tileGroup);
+
         }
 
     };
