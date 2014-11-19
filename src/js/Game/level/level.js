@@ -21,6 +21,8 @@
             this.game.load.image('bg', 'assets/bg_castle.png');
             this.game.load.spritesheet('tile', 'assets/spritesheet.png', 70, 70);
 
+            this.game.load.tilemap('map', 'assets/spel.json', null, Phaser.Tilemap.TILED_JSON);
+
             this.game.load.audio('jorm', 'assets/jatten_jorm.wav');
         },
 
@@ -34,31 +36,19 @@
 
             var bg = this.game.add.tileSprite(this.levelSize.x, this.levelSize.y, this.levelSize.width, this.levelSize.height, 'bg');
 
-            var p1 = this.p1 = new Game.player(this.game, this.game.world.centerX, this.game.world.centerY);
+            var p1 = this.p1 = new Game.player(this.game, 100, this.game.world.centerY);
             this.game.add.existing(p1);
 
-            this.tileGroup = this.game.add.group();
-            var xBound = this.levelSize.width / 70;
-            var yBound = (this.levelSize.height + this.levelSize.y) / 70;
-            var rndInt = function(lower, upper) {
-                return Math.floor(lower + Math.random() * (upper - lower) - 1);
-            };
-            for (var i = 0; i < 100; i++) {
-                var xStart = rndInt(0, xBound)*70;
-                var y = rndInt(this.levelSize.y, yBound)*70;
+            var map = this.game.add.tilemap('map');
+            map.addTilesetImage('tile');
+            
+            var level = this.level = map.createLayer('Tile Layer 1');
+            level.resizeWorld();
+            level.fixedToCamera = false;
+            // level.debug = true;
 
-                for (var x = 0; x < 4; x++) {
-                    this.tileGroup.create(xStart + x * 70, y, 'tile', 3);
-                }
+            map.setCollisionBetween(0, 100000);
 
-
-            }
-            this.game.physics.enable(this.tileGroup, Phaser.Physics.ARCADE);
-            this.tileGroup.setAll('body.allowGravity', false);
-            this.tileGroup.setAll('body.immovable', true);
-            this.tileGroup.setAll('body.skipQuadTree', true);
-
-            this.game.world.setBounds(this.levelSize.x, this.levelSize.y, this.levelSize.width, this.levelSize.height);
             this.game.camera.follow(p1);
             this.game.camera.deadzone = window.Game.cameraDeadzone;
 
@@ -80,8 +70,11 @@
         },
 
         update: function() {
-            this.game.physics.arcade.collide(this.p1, this.tileGroup);
+            this.game.physics.arcade.collide(this.p1, this.level);
+        },
 
+        render: function() {
+            this.game.debug.spriteInfo(this.level, 32, 32);
         }
     };
 })();
