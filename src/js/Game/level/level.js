@@ -43,11 +43,14 @@
             console.log(map);
             map.addTilesetImage('tile');
             
+            var behind = map.createLayer('behind', this.levelSize.width, this.levelSize.height);
+            behind.fixedToCamera = false;
+
             var level = this.level = map.createLayer('Tile Layer 1', this.levelSize.width, this.levelSize.height);
             level.resizeWorld();
             level.fixedToCamera = false;
 
-            map.setCollisionBetween(0, 50);
+            map.setCollisionBetween(0, 150);
 
             this.game.camera.follow(p1);
             this.game.camera.deadzone = window.Game.cameraDeadzone;
