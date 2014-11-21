@@ -8,6 +8,14 @@
             width: 3000,
             height: 3720
         };
+
+        this.toggleFullScreen = function() {
+            if (this.game.scale.isFullScreen) {
+                this.game.scale.stopFullScreen();
+            } else {
+                this.game.scale.startFullScreen(false);
+            }
+        };
     };
 
     Game.level.prototype = {
@@ -40,30 +48,31 @@
 
             var map = this.map = this.game.add.tilemap('map');
             map.addTilesetImage('tile');
-            
+
+            // The layer that the player does not interact with
             var behind = map.createLayer('behind', this.levelSize.width, this.levelSize.height);
             behind.fixedToCamera = false;
 
+            // The layer containing platforms
             var level = this.level = map.createLayer('Tile Layer 1', this.levelSize.width, this.levelSize.height);
             level.resizeWorld();
             level.fixedToCamera = false;
 
+            // Sets collision on block IDs between 0 to 150. Check spritesheet for block index
             map.setCollisionBetween(0, 150);
 
             this.game.camera.follow(p1);
             this.game.camera.deadzone = window.Game.cameraDeadzone;
 
+            // Binds the f11 key to an event
             this.f11 = this.game.input.keyboard.addKey(122);
             this.f11.onUp.add(function() {
-                if (this.game.scale.isFullScreen) {
-                    this.game.scale.stopFullScreen();
-                } else {
-                    this.game.scale.startFullScreen(false);
-                }
+                this.toggleFullScreen();
             }, this);
 
             // Set timeout, because the tilemap needs to start first. this is a bug in tiled
             setTimeout(function() {
+                // Initiate all objects
                 map.objects['objects'].forEach(function(obj) {
                     switch(obj.type) {
                         case 'spawn':

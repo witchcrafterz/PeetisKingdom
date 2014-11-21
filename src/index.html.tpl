@@ -19,12 +19,25 @@
 
     <style>
         body {
-            background-color: black;
+            background-color: #202020;
+            padding: 0;
+            margin: 0;
+
+            color: white;
+        }
+
+        #topBar {
+            width: 100%;
+            padding: 10px;
+            background-color: #101010;
         }
     </style>
 
 </head>
 <body>
+    <div id="topBar">
+        <p>Press 'f11' to enter fullscreen</p>
+    </div>
 
     <div id="game"></div>
 
