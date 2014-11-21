@@ -40,14 +40,14 @@
             this.game.add.existing(p1);
 
             var map = this.game.add.tilemap('map');
+            console.log(map);
             map.addTilesetImage('tile');
             
-            var level = this.level = map.createLayer('Tile Layer 1');
+            var level = this.level = map.createLayer('Tile Layer 1', this.levelSize.width, this.levelSize.height);
             level.resizeWorld();
             level.fixedToCamera = false;
-            // level.debug = true;
 
-            map.setCollisionBetween(0, 100000);
+            map.setCollisionBetween(0, 50);
 
             this.game.camera.follow(p1);
             this.game.camera.deadzone = window.Game.cameraDeadzone;
@@ -74,7 +74,7 @@
         },
 
         render: function() {
-            this.game.debug.spriteInfo(this.level, 32, 32);
+            // this.game.debug.spriteInfo(this.level, 32, 32);
         }
     };
 })();
