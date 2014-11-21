@@ -62,6 +62,7 @@
                 }
             }, this);
 
+            // Set timeout, because the tilemap needs to start first. this is a bug in tiled
             setTimeout(function() {
                 map.objects['objects'].forEach(function(obj) {
                     switch(obj.type) {

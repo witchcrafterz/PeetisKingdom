@@ -1,7 +1,10 @@
 (function() {
     'use strict';
 
-    Game.init = function(game) {};
+    Game.init = function(game) {
+        this.maxWidth = 1280;
+        this.maxHeight = 720;
+    };
 
     Game.init.prototype = {
 
@@ -18,16 +21,24 @@
 
             this.scale.minWidth = 256;
             this.scale.minHeight = 196;
-            this.scale.maxWidth = 1280;
-            this.scale.maxHeight = 720;
+            this.scale.maxWidth = this.maxWidth;
+            this.scale.maxHeight = this.maxHeight;
 
             this.scale.pageAlignHorizontally = true;
             this.scale.pageAlignVertically = true;
             this.scale.setScreenSize(true);
 
             //Fullscreen mode = maintain aspect radio
-            console.log(this.game.scale);
+            this.game.scale.fullScreenTarget = document.getElementById('game');
             this.game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
+            this.game.scale.enterFullScreen.add(function() {
+                delete this.scale.maxWidth;
+                delete this.scale.maxHeight;
+            }, this);
+            this.game.scale.leaveFullScreen.add(function() {
+                this.scale.maxWidth = this.maxWidth;
+                this.scale.maxHeight = this.maxHeight;
+            }, this);
 
             var x = this.game.width * 0.35;
             var y = this.game.height * 0.3;
