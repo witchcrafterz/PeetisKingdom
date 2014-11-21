@@ -9,7 +9,6 @@
             height: 3720
         };
     };
-        var music;
 
     Game.level.prototype = {
 
@@ -39,8 +38,7 @@
             var p1 = this.p1 = new Game.player(this.game, 100, this.game.world.centerY);
             this.game.add.existing(p1);
 
-            var map = this.game.add.tilemap('map');
-            console.log(map);
+            var map = this.map = this.game.add.tilemap('map');
             map.addTilesetImage('tile');
             
             var behind = map.createLayer('behind', this.levelSize.width, this.levelSize.height);
@@ -61,8 +59,19 @@
                     this.game.scale.stopFullScreen();
                 } else {
                     this.game.scale.startFullScreen(false);
-                }                
+                }
             }, this);
+
+            setTimeout(function() {
+                map.objects['objects'].forEach(function(obj) {
+                    switch(obj.type) {
+                        case 'spawn':
+                            p1.x = obj.x + obj.width / 2;
+                            p1.y = obj.y + obj.height / 2;
+                            break;
+                    }
+                });
+            }, 0);
 
             if (window.Game.debugMode) {
                 this.game.add.existing(new Game.utils.FpsMeter(this.game, 32, 32));

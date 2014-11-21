@@ -21,6 +21,33 @@
          "width":30,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "height":40,
+         "name":"objects",
+         "objects":[
+                {
+                 "ellipse":true,
+                 "height":140,
+                 "name":"spawnPoint",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"spawn",
+                 "visible":true,
+                 "width":70,
+                 "x":70,
+                 "y":2450
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":30,
+         "x":0,
+         "y":0
         }],
  "orientation":"orthogonal",
  "properties":
