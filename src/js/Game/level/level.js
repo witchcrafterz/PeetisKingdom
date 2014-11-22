@@ -16,6 +16,14 @@
                 this.game.scale.startFullScreen(false);
             }
         };
+
+        this.toggleDebug = function() {
+            if (this.fpsMeter.stage) {
+                this.fpsMeter.parent.remove(this.fpsMeter);
+            } else {
+                this.game.add.existing(this.fpsMeter);
+            }
+        };
     };
 
     Game.level.prototype = {
@@ -41,6 +49,8 @@
             this.game.physics.startSystem(Phaser.Physics.ARCADE);
             this.game.physics.arcade.gravity = Game.gravity;
 
+            this.fpsMeter = new Game.utils.FpsMeter(this.game, 32, 32);
+
             var bg = this.game.add.tileSprite(this.levelSize.x, this.levelSize.y, this.levelSize.width, this.levelSize.height, 'bg');
 
             var p1 = this.p1 = new Game.player(this.game, 100, this.game.world.centerY);
@@ -65,6 +75,11 @@
             this.game.camera.deadzone = window.Game.cameraDeadzone;
 
             // Binds the f11 key to an event
+            this.f2 = this.game.input.keyboard.addKey(113);
+            this.f2.onUp.add(function() {
+                this.toggleDebug();
+            }, this);
+
             this.f11 = this.game.input.keyboard.addKey(122);
             this.f11.onUp.add(function() {
                 this.toggleFullScreen();
@@ -84,7 +99,7 @@
             }, 0);
 
             if (window.Game.debugMode) {
-                this.game.add.existing(new Game.utils.FpsMeter(this.game, 32, 32));
+                this.toggleDebug();
             }
 
             music = this.game.add.audio('jorm');
