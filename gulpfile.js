@@ -8,6 +8,7 @@ var rename = require('gulp-rename');
 var jsmin = require('gulp-jsmin');
 var concat = require('gulp-concat');
 var runSequence = require('run-sequence');
+var order = require('gulp-order');
 
 gulp.task('browser-sync', function() {
     browserSync({
@@ -22,7 +23,12 @@ gulp.task('browser-sync-reload', function() {
 });
 
 function getJS() {
-    return gulp.src('./js/**/*.js', {read: false, cwd: './src'});
+    return gulp.src('./js/**/*.js', {read: false, cwd: './src'})
+        .pipe(order([
+            'Game.js',
+            'Game/utils/**/*.js',
+            'Game/**/*.js'
+        ]));
 }
 
 function getVendors() {

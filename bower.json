@@ -16,6 +16,7 @@
     "tests"
   ],
   "dependencies": {
-    "phaser": "*"
+    "phaser": "*",
+    "lodash": "~2.4.1"
   }
 }

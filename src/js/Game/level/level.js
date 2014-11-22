@@ -26,7 +26,7 @@
         };
     };
 
-    Game.level.prototype = {
+    Game.level.prototype = _.merge(Object.create(self.Game.utils.BaseState.prototype), {
 
         /**
          * Load content here, e.g. this.load.image('myDude', '/assets/images/myDude.png')
@@ -72,7 +72,7 @@
             map.setCollisionBetween(0, 150);
 
             this.game.camera.follow(p1);
-            this.game.camera.deadzone = window.Game.cameraDeadzone;
+            this.game.camera.deadzone = this.getCameraDeadzone();
 
             // Binds the f11 key to an event
             this.f2 = this.game.input.keyboard.addKey(113);
@@ -113,5 +113,5 @@
         render: function() {
             // this.game.debug.spriteInfo(this.level, 32, 32);
         }
-    };
+    });
 })();
