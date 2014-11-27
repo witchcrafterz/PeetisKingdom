@@ -64,7 +64,6 @@
 
         setUtils: function() {
             this.fpsMeter = new Game.utils.FpsMeter(this.game, 32, 32);
-            this.game.camera.deadzone = this.getCameraDeadzone();
             
             if (window.Game.debugMode) {
                 this.toggleDebug();
@@ -89,6 +88,7 @@
                         this.p1 = new Game.player(this.game, obj.x + obj.width / 2, obj.y + obj.height / 2);
                         this.game.add.existing(this.p1);
                         this.game.camera.follow(this.p1);
+                        this.game.camera.deadzone = this.getCameraDeadzone();
                         break;
                 }
             }, this);
