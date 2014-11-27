@@ -53,9 +53,6 @@
 
             var bg = this.game.add.tileSprite(this.levelSize.x, this.levelSize.y, this.levelSize.width, this.levelSize.height, 'bg');
 
-            var p1 = this.p1 = new Game.player(this.game, 100, this.game.world.centerY);
-            this.game.add.existing(p1);
-
             var map = this.map = this.game.add.tilemap('map');
             map.addTilesetImage('tile');
 
@@ -71,7 +68,16 @@
             // Sets collision on block IDs between 0 to 150. Check spritesheet for block index
             map.setCollisionBetween(0, 150);
 
-            this.game.camera.follow(p1);
+            _.forEach(map.objects['objects'], function(obj) {
+                switch(obj.type) {
+                    case 'spawn':
+                        this.p1 = new Game.player(this.game, obj.x + obj.width / 2, obj.y + obj.height / 2);
+                        this.game.add.existing(this.p1);
+                        break;
+                }
+            }, this);
+            
+            this.game.camera.follow(this.p1);
             this.game.camera.deadzone = this.getCameraDeadzone();
 
             // Binds the f11 key to an event
@@ -84,19 +90,6 @@
             this.f11.onUp.add(function() {
                 this.toggleFullScreen();
             }, this);
-
-            // Set timeout, because the tilemap needs to start first. this is a bug in tiled
-            setTimeout(function() {
-                // Initiate all objects
-                map.objects['objects'].forEach(function(obj) {
-                    switch(obj.type) {
-                        case 'spawn':
-                            p1.x = obj.x + obj.width / 2;
-                            p1.y = obj.y + obj.height / 2;
-                            break;
-                    }
-                });
-            }, 0);
 
             if (window.Game.debugMode) {
                 this.toggleDebug();
