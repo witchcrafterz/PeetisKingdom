@@ -44,6 +44,8 @@
          * @return {[type]} [description]
          */
         generateLevel: function() {
+            this.bg = this.game.add.tileSprite(this.levelSize.x, this.levelSize.y, this.levelSize.width, this.levelSize.height, 'bg');
+
             this.map = this.game.add.tilemap('map');
             this.map.addTilesetImage('tile');
 
@@ -58,8 +60,6 @@
 
             // Sets collision on block IDs between 0 to 150. Check spritesheet for block index
             this.map.setCollisionBetween(0, 150);
-
-            this.game.add.tileSprite(this.levelSize.x, this.levelSize.y, this.levelSize.width, this.levelSize.height, 'bg');
         },
 
         setUtils: function() {
@@ -103,7 +103,10 @@
 
             this.setUtils();
             this.generateLevel();
-            this.generateObjects();
+
+            setTimeout(function(self) {
+                self.generateObjects();
+            }, 100, this);
         },
 
         update: function() {
