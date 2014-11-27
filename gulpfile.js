@@ -67,6 +67,11 @@ gulp.task('dist-prepare', function(next) {
 
 gulp.task('dist-js', function() {
     return gulp.src('./src/js/**')
+        .pipe(order([
+            'Game.js',
+            'Game/utils/**/*.js',
+            'Game/**/*.js'
+        ]))
         .pipe(concat('scripts.js'))
         .pipe(gulp.dest('./dist'))
         .pipe(jsmin())
