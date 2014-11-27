@@ -44,22 +44,22 @@
          * @return {[type]} [description]
          */
         generateLevel: function() {
-            var bg = this.game.add.tileSprite(this.levelSize.x, this.levelSize.y, this.levelSize.width, this.levelSize.height, 'bg');
-
-            var map = this.map = this.game.add.tilemap('map');
-            map.addTilesetImage('tile');
+            this.map = this.game.add.tilemap('map');
+            this.map.addTilesetImage('tile');
 
             // The layer that the player does not interact with
-            var behind = map.createLayer('behind', this.levelSize.width, this.levelSize.height);
-            behind.fixedToCamera = false;
+            this.behind = this.map.createLayer('behind', this.levelSize.width, this.levelSize.height);
+            this.behind.fixedToCamera = false;
 
             // The layer containing platforms
-            var level = this.level = map.createLayer('Tile Layer 1', this.levelSize.width, this.levelSize.height);
-            level.resizeWorld();
-            level.fixedToCamera = false;
+            this.level = this.map.createLayer('Tile Layer 1', this.levelSize.width, this.levelSize.height);
+            this.level.resizeWorld();
+            this.level.fixedToCamera = false;
 
             // Sets collision on block IDs between 0 to 150. Check spritesheet for block index
-            map.setCollisionBetween(0, 150);
+            this.map.setCollisionBetween(0, 150);
+
+            this.game.add.tileSprite(this.levelSize.x, this.levelSize.y, this.levelSize.width, this.levelSize.height, 'bg');
         },
 
         setUtils: function() {
