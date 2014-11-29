@@ -39,6 +39,9 @@
             this.game.load.image('arrow', 'assets/arrow.png');
             this.game.load.image('circle', 'assets/circle.png');
 
+            this.game.load.script('filter', 'js/Game/filters/Plasma.js');
+            this.game.load.script('filter', 'js/Game/filters/Fire.js');
+
             this.game.load.tilemap('map', 'assets/spel.json', null, Phaser.Tilemap.TILED_JSON);
         },
 
@@ -97,16 +100,6 @@
             }, this);
         },
 
-        generateTouchControls: function() {
-            // this.controller = new Game.controller(this.game);
-            // this.controller.right.onDown.add(function() {
-            //     console.log(this.controller.right.isDown);
-            // }, this);
-            // this.controller.right.onUp.add(function() {
-            //     console.log(this.controller.right.isDown);
-            // }, this);
-        },
-
         /**
          * Initialization logic here
          */
@@ -121,11 +114,31 @@
                 self.generateObjects();
             }, 100, this);
 
-            this.generateTouchControls();
+
+            this.plasmaFilter = this.game.add.filter('Plasma', this.game.width, this.game.height);
+            this.fireFilter = this.game.add.filter('Fire', this.game.width, this.game.height);
+            this.f1 = this.game.input.keyboard.addKey(112);
+            this.f1.onUp.add(function() {
+                if (this.bg.filters) {
+                    switch (this.bg.filters[0]) {
+                        case this.plasmaFilter:
+                            this.bg.filters = undefined;
+                            break;
+                        case this.fireFilter:
+                            this.bg.filters = [this.plasmaFilter];
+                            break;
+                    }
+                } else {
+                    this.bg.filters = [this.fireFilter];
+                }
+            }, this);
         },
 
         update: function() {
             this.game.physics.arcade.collide(this.p1, this.level);
+            if (this.bg.filters) {
+                this.bg.filters[0].update();
+            }
         }
     });
 })();
