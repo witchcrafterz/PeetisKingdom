@@ -7,6 +7,7 @@
 
     <!-- bower:js -->
     <!-- endinject -->
+    <script src="vendors/modernizr/modernizr.js"></script>
 
     <!-- vendors:js -->
     <!-- endinject -->

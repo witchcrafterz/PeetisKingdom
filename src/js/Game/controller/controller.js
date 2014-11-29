@@ -4,6 +4,27 @@
     Game.controller = function(game) {
         this.game = game;
 
+        this.cursors = this.game.input.keyboard.createCursorKeys();
+
+        this.cursors.right.onDown.add(this.right.setDown, this);
+        this.cursors.right.onUp.add(this.right.setUp, this);
+
+        this.cursors.left.onDown.add(this.left.setDown, this);
+        this.cursors.left.onUp.add(this.left.setUp, this);
+
+        this.cursors.up.onDown.add(this.jump.setDown, this);
+        this.cursors.up.onUp.add(this.jump.setUp, this);
+
+        if (Modernizr.touch) {
+            this.generateTouchControls();
+        }
+
+        return this;
+    };
+
+    Game.controller.prototype.constructor = Game.controller;
+
+    Game.controller.prototype.generateTouchControls = function() {
         this.touchControlsGroup = this.game.add.group();
         var rightArrow = this.game.add.button(0, 0, 'arrow', null, null, null, null, null, null, this.touchControlsGroup);
         var leftArrow = this.game.add.button(0, 0, 'arrow', null, null, null, null, null, null, this.touchControlsGroup);
@@ -17,27 +38,16 @@
         this.touchControlsGroup.setAll('y', this.game.height - leftArrow.height);
         this.touchControlsGroup.setAll('fixedToCamera', true);
 
-        this.cursors = this.game.input.keyboard.createCursorKeys();
-
-        this.cursors.right.onDown.add(this.right.setDown, this);
-        this.cursors.right.onUp.add(this.right.setUp, this);
         rightArrow.onInputDown.add(this.right.setDown, this);
         rightArrow.onInputUp.add(this.right.setUp, this);
 
-        this.cursors.left.onDown.add(this.left.setDown, this);
-        this.cursors.left.onUp.add(this.left.setUp, this);
         leftArrow.onInputDown.add(this.left.setDown, this);
         leftArrow.onInputUp.add(this.left.setUp, this);
 
-        this.cursors.up.onDown.add(this.jump.setDown, this);
-        this.cursors.up.onUp.add(this.jump.setUp, this);
         jump.onInputDown.add(this.jump.setDown, this);
         jump.onInputUp.add(this.jump.setUp, this);
 
-        return this;
     };
-
-    Game.controller.prototype.constructor = Game.controller;
 
     Game.controller.prototype.left = {
         onDown: new Phaser.Signal(),
