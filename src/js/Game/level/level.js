@@ -39,8 +39,8 @@
             this.game.load.image('arrow', 'assets/arrow.png');
             this.game.load.image('circle', 'assets/circle.png');
 
-            this.game.load.script('filter', 'js/Game/filters/Plasma.js');
-            this.game.load.script('filter', 'js/Game/filters/Fire.js');
+            this.game.load.script('plasma', 'assets/filters/Plasma.js');
+            this.game.load.script('fire', 'assets/filters/Fire.js');
 
             this.game.load.tilemap('map', 'assets/spel.json', null, Phaser.Tilemap.TILED_JSON);
         },
