@@ -33,7 +33,7 @@ function getJS() {
 
 function getVendors() {
     console.log(bowerFiles());
-    return gulp.src(bowerFiles(), {read: false, cwd: './src'});
+    return gulp.src(bowerFiles().concat(['./vendors/modernizr/modernizr.js']), {read: false, cwd: './src'});
 }
 
 gulp.task('compile-index', function() {
@@ -87,7 +87,7 @@ gulp.task('dist-js-inject', ['dist-js'], function() {
 });
 
 gulp.task('dist-vendors', function() {
-    return gulp.src(bowerFiles())
+    return gulp.src(bowerFiles().concat(['./src/vendors/modernizr/modernizr.js']))
         .pipe(concat('vendors.js'))
         .pipe(gulp.dest('./dist'))
         .pipe(jsmin())
