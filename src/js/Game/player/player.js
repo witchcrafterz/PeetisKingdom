@@ -22,7 +22,7 @@
         this.body.collideWorldBounds = true;
         // this.body.bounce.y = 0.1;
 
-        this.cursors = this.game.input.keyboard.createCursorKeys();
+        this.controller = new Game.controller(this.game);
         this.jumpButton = this.game.input.keyboard.addKey(jumpKey);
 
         this.animations.add('running', [5, 6, 7, 8, 9, 10, 11, 12], 10, true);
@@ -50,13 +50,13 @@
 
     Game.player.prototype.update = function() {
 
-        if (this.cursors.right.isDown) {
+        if (this.controller.right.isDown) {
             this.body.acceleration.x = acc;
 
             this.animations.play('running');
 
             this.scale.x = 1;
-        } else if (this.cursors.left.isDown) {
+        } else if (this.controller.left.isDown) {
             this.body.acceleration.x = -acc;
 
             this.animations.play('running');
@@ -66,12 +66,12 @@
             this.body.acceleration.x = this.body.velocity.x * -5;
         }
 
-        if (this.cursors.up.isDown && this.jumpMeter > 0) {
+        if (this.controller.jump.isDown && this.jumpMeter > 0) {
             this.jumpMeter += jumpAcc;
             this.body.velocity.y = jumpAcc;
 
             this.animations.play('jump');
-        } else if (this.cursors.up.isUp && !(this.body.onFloor() || this.body.touching.down)) {
+        } else if (this.controller.jump.isUp && !(this.body.onFloor() || this.body.touching.down)) {
             this.jumpMeter = 0;
         }
         

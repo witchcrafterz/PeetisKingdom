@@ -36,6 +36,9 @@
             this.game.load.image('bg', 'assets/bg_castle.png');
             this.game.load.spritesheet('tile', 'assets/spritesheet.png', 70, 70);
 
+            this.game.load.image('arrow', 'assets/arrow.png');
+            this.game.load.image('circle', 'assets/circle.png');
+
             this.game.load.tilemap('map', 'assets/spel.json', null, Phaser.Tilemap.TILED_JSON);
         },
 
@@ -94,6 +97,16 @@
             }, this);
         },
 
+        generateTouchControls: function() {
+            // this.controller = new Game.controller(this.game);
+            // this.controller.right.onDown.add(function() {
+            //     console.log(this.controller.right.isDown);
+            // }, this);
+            // this.controller.right.onUp.add(function() {
+            //     console.log(this.controller.right.isDown);
+            // }, this);
+        },
+
         /**
          * Initialization logic here
          */
@@ -107,6 +120,8 @@
             setTimeout(function(self) {
                 self.generateObjects();
             }, 100, this);
+
+            this.generateTouchControls();
         },
 
         update: function() {
