@@ -30,7 +30,18 @@
             width: 100%;
             padding: 10px;
             background-color: #101010;
+
+            position: absolute;
+            left: 0;
+            top: 0;
         }
+    
+        @media screen and (max-height: 850px) {
+            #topBar {
+                display: none;
+            }
+        }
+
     </style>
 
 </head>
