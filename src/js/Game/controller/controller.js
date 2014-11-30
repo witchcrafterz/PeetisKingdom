@@ -15,6 +15,9 @@
         this.cursors.up.onDown.add(this.jump.setDown, this);
         this.cursors.up.onUp.add(this.jump.setUp, this);
 
+        this.cursors.down.onDown.add(this.down.setDown, this);
+        this.cursors.down.onUp.add(this.down.setUp, this);
+
         if (Modernizr.touch) {
             this.generateTouchControls();
         }
@@ -88,6 +91,20 @@
         setUp: function() {
             this.jump.isDown = false;
             this.jump.onUp.dispatch();
+        }
+    };
+
+    Game.controller.prototype.down = {
+        onDown: new Phaser.Signal(),
+        onUp: new Phaser.Signal(),
+        isDown: false,
+        setDown: function() {
+            this.down.isDown = true;
+            this.down.onDown.dispatch();
+        },
+        setUp: function() {
+            this.down.isDown = false;
+            this.down.onUp.dispatch();
         }
     };
 

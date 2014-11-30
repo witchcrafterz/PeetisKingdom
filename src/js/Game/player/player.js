@@ -66,13 +66,23 @@
             this.body.acceleration.x = this.body.velocity.x * -5;
         }
 
-        if (this.controller.jump.isDown && this.jumpMeter > 0) {
-            this.jumpMeter += jumpAcc;
-            this.body.velocity.y = jumpAcc;
+        if (this.game.physics.arcade.gravity === Game.gravity) {
+            if (this.controller.jump.isDown && this.jumpMeter > 0) {
+                this.jumpMeter += jumpAcc;
+                this.body.velocity.y = jumpAcc;
 
-            this.animations.play('jump');
-        } else if (this.controller.jump.isUp && !(this.body.onFloor() || this.body.touching.down)) {
-            this.jumpMeter = 0;
+                this.animations.play('jump');
+            } else if (this.controller.jump.isUp && !(this.body.onFloor() || this.body.touching.down)) {
+                this.jumpMeter = 0;
+            } 
+        } else {
+            if (this.controller.jump.isDown) {
+                this.body.velocity.y -= acc * 0.01;
+            } else if (this.controller.down.isDown) {
+                this.body.velocity.y += acc * 0.01;
+            } else {
+                this.body.velocity.y *= 0.2;
+            }
         }
         
         if (this.body.velocity.y > 0) {
