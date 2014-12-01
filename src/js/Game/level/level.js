@@ -68,14 +68,16 @@
             this.level.fixedToCamera = false;
 
             // Sets collision on block IDs between 0 to 150. Check spritesheet for block index
-            this.map.setCollision(1);
-            this.map.setCollision(4);
-            this.map.setCollision(36);
-            this.map.setCollision(87);
-            this.map.setCollision(102);
-            this.map.setCollision(112);
-            this.map.setCollision(113);
-            this.map.setCollision(128);
+            this.map.setCollision([
+                1,
+                4,
+                36,
+                87,
+                102,
+                112,
+                113,
+                128
+            ]);
         },
 
         setUtils: function() {
