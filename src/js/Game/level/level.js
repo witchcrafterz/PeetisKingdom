@@ -131,11 +131,13 @@
             this.setUtils();
             this.generateLevel();
 
+            // Timeout because of a bug that doesn't move the world along with camera, if the camera moves to fast
             setTimeout(function(self) {
                 self.generateObjects();
             }, 100, this);
 
 
+            // Just playing with shaders.. not crucial to any game functions
             this.plasmaFilter = this.game.add.filter('Plasma', this.game.width, this.game.height);
             this.fireFilter = this.game.add.filter('Fire', this.game.width, this.game.height);
             this.f1 = this.game.input.keyboard.addKey(112);
