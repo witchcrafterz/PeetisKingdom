@@ -40,13 +40,6 @@
                 this.scale.maxHeight = this.maxHeight;
             }, this);
 
-            var x = this.game.width * 0.35;
-            var y = this.game.height * 0.3;
-            var width = this.game.width * 0.65 - x;
-            var height = this.game.height * 0.7 - y;
-            var deadzone = new Phaser.Rectangle(x, y, width, height);
-            window.Game.cameraDeadzone = deadzone;
-
             window.Game.debugMode = this.game.net.getQueryString('debug') === 'true';
 
             this.state.start('Game.level');
