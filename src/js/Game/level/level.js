@@ -96,8 +96,8 @@
                 this.toggleFullScreen();
             }, this);
 
-            this.f5 = this.game.input.keyboard.addKey(116);
-            this.f5.onUp.add(function() {
+            this.f4 = this.game.input.keyboard.addKey(115);
+            this.f4.onUp.add(function() {
                 if (this.game.physics.arcade.gravity === Game.gravity) {
                     this.game.physics.arcade.gravity = { x: 0, y: 0 };
                 } else {
