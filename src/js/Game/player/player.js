@@ -6,10 +6,8 @@
      */
 
     var textureKey = 'player1';
-    var jumpKey = Phaser.Keyboard.SPACEBAR;
     var maxSpeed = 500;
-    var jumpAcc = -1000;
-    var fullJumpMeter = 5000;
+    var fullJumpMeter = 500;
     var acc = 2000;
     var maxJumps = 2;
 
@@ -21,10 +19,8 @@
         this.game.physics.enable(this, Phaser.Physics.ARCADE);
 
         this.body.collideWorldBounds = true;
-        // this.body.bounce.y = 0.1;
 
         this.controller = new Game.controller(this.game);
-        this.jumpButton = this.game.input.keyboard.addKey(jumpKey);
 
         this.animations.add('running', [5, 6, 7, 8, 9, 10, 11, 12], 10, true);
         this.animations.add('jump', [3], 20, true);
@@ -33,14 +29,14 @@
 
         this.currAnim = '';
 
-        // console.log(this.animations.sprite);
-
         var point = new Phaser.Point();
         point.x = 500;
         point.y = 1000;
         this.body.maxVelocity = point;
         this.jumpMeter = fullJumpMeter;
         this.currentJumps = 0;
+
+        this.ctrlKey = this.game.input.keyboard.addKey(17);
 
         return this;
     };
@@ -59,11 +55,15 @@
         if (this.controller.jump.isDown) {
             if (!this.jumpWasDown) {
                 this.currentJumps += 1;
+
+                if (this.currentJumps < maxJumps && this.body.velocity.y > 0) {
+                    this.body.velocity.y = 0;
+                }
             }
 
             if (this.jumpMeter > 0 && this.currentJumps < maxJumps) {
-                this.jumpMeter += jumpAcc;
-                this.body.velocity.y = jumpAcc;
+                this.body.velocity.y -= this.jumpMeter;
+                this.jumpMeter *= 0.5;
 
                 this.animations.play('jump');
             }
@@ -124,7 +124,17 @@
                 this.body.velocity.y *= 0.2;
             }
         }
-        
+
+        if (this.ctrlKey.isDown) {
+            this.body.maxVelocity.x = 0;
+            this.body.maxVelocity.y = 0;
+            this.body.acceleration.y *= 2;
+            this.body.acceleration.x *= 2;
+        } else {
+            this.body.maxVelocity.x = 500;
+            this.body.maxVelocity.y = 1000;
+        }
+
         if (this.body.velocity.y > 0) {
             this.animations.play('falling');
         }
