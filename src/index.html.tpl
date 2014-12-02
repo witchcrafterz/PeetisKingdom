@@ -54,7 +54,7 @@
 
     <script>
     window.onload = function() {
-        var game = new Phaser.Game(1280, 720, Phaser.AUTO, 'game');
+        var game = new Phaser.Game(1280, 720, Phaser.CANVAS, 'game');
 
         game.state.add('Game.init', Game.init);
         game.state.add('Game.level', Game.level);

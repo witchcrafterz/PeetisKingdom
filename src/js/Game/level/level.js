@@ -59,13 +59,11 @@
             this.bg = this.game.add.tileSprite(this.levelSize.x, this.levelSize.y, this.levelSize.width, this.levelSize.height, 'bg');
 
             // The layer that the player does not interact with
-            this.behind = this.map.createLayer('behind', this.levelSize.width, this.levelSize.height);
-            this.behind.fixedToCamera = false;
+            this.behind = this.map.createLayer('behind');
 
             // The layer containing platforms
-            this.level = this.map.createLayer('Tile Layer 1', this.levelSize.width, this.levelSize.height);
+            this.level = this.map.createLayer('Tile Layer 1');
             this.level.resizeWorld();
-            this.level.fixedToCamera = false;
 
             // Sets collision on block IDs between 0 to 150. Check spritesheet for block index
             this.map.setCollision([
@@ -131,37 +129,11 @@
             this.setUtils();
             this.generateLevel();
 
-            // Timeout because of a bug that doesn't move the world along with camera, if the camera moves to fast
-            setTimeout(function(self) {
-                self.generateObjects();
-            }, 100, this);
-
-
-            // Just playing with shaders.. not crucial to any game functions
-            this.plasmaFilter = this.game.add.filter('Plasma', this.game.width, this.game.height);
-            this.fireFilter = this.game.add.filter('Fire', this.game.width, this.game.height);
-            this.f1 = this.game.input.keyboard.addKey(112);
-            this.f1.onUp.add(function() {
-                if (this.bg.filters) {
-                    switch (this.bg.filters[0]) {
-                        case this.plasmaFilter:
-                            this.bg.filters = undefined;
-                            break;
-                        case this.fireFilter:
-                            this.bg.filters = [this.plasmaFilter];
-                            break;
-                    }
-                } else {
-                    this.bg.filters = [this.fireFilter];
-                }
-            }, this);
+            this.generateObjects();
         },
 
         update: function() {
             this.game.physics.arcade.collide(this.p1, this.level);
-            if (this.bg.filters) {
-                this.bg.filters[0].update();
-            }
         }
     });
 })();
