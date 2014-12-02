@@ -9,8 +9,9 @@
     var jumpKey = Phaser.Keyboard.SPACEBAR;
     var maxSpeed = 500;
     var jumpAcc = -1000;
-    var fullJumpMeter = 15000;
+    var fullJumpMeter = 5000;
     var acc = 2000;
+    var maxJumps = 2;
 
     Game.player = function(game, x, y) {
 
@@ -39,6 +40,7 @@
         point.y = 1000;
         this.body.maxVelocity = point;
         this.jumpMeter = fullJumpMeter;
+        this.currentJumps = 0;
 
         return this;
     };
@@ -47,6 +49,51 @@
     // This is how inheritance works in JavaScript btw
     Game.player.prototype = Object.create(Phaser.Sprite.prototype);
     Game.player.prototype.constructor = Game.player;
+
+    Game.player.prototype.resetJump = function() {
+        this.currentJumps = 0;
+        this.jumpMeter = fullJumpMeter;
+    };
+
+    Game.player.prototype.jump = function() {
+        if (this.controller.jump.isDown) {
+            if (!this.jumpWasDown) {
+                this.currentJumps += 1;
+            }
+
+            if (this.jumpMeter > 0 && this.currentJumps < maxJumps) {
+                this.jumpMeter += jumpAcc;
+                this.body.velocity.y = jumpAcc;
+
+                this.animations.play('jump');
+            }
+        } else {
+            if (this.jumpWasDown) {
+                if (maxJumps !== this.currentJumps) {
+                    this.jumpMeter = fullJumpMeter;
+                } else {
+                    this.jumpMeter = 0;
+                }
+            }
+        }
+
+
+        // if (this.controller.jump.isDown && this.jumpMeter > 0 && this.currentJumps !== maxJumps) {
+        //     this.jumpMeter += jumpAcc;
+        //     this.body.velocity.y += jumpAcc;
+        //     this.currentJumps += 1;
+
+        //     this.animations.play('jump');
+        // } else if (!this.controller.jump.isDown && !(this.body.onFloor() || this.body.touching.down)) {
+        //     if (maxJumps !== this.currentJumps) {
+        //         this.jumpMeter = fullJumpMeter;
+        //     } else {
+        //         this.jumpMeter = 0;
+        //     }
+        // }
+
+        this.jumpWasDown = this.controller.jump.isDown;
+    };
 
     Game.player.prototype.update = function() {
 
@@ -67,14 +114,7 @@
         }
 
         if (this.game.physics.arcade.gravity === Game.gravity) {
-            if (this.controller.jump.isDown && this.jumpMeter > 0) {
-                this.jumpMeter += jumpAcc;
-                this.body.velocity.y = jumpAcc;
-
-                this.animations.play('jump');
-            } else if (this.controller.jump.isUp && !(this.body.onFloor() || this.body.touching.down)) {
-                this.jumpMeter = 0;
-            } 
+            this.jump();
         } else {
             if (this.controller.jump.isDown) {
                 this.body.velocity.y -= acc * 0.01;
@@ -94,7 +134,7 @@
         }
 
         if (this.body.onFloor() || this.body.touching.down) {
-            this.jumpMeter = fullJumpMeter;
+            this.resetJump();
         }
     };
 
