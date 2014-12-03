@@ -69,7 +69,9 @@
             this.map.setCollision([
                 1,
                 4,
+                6,
                 36,
+                56,
                 87,
                 102,
                 112,
