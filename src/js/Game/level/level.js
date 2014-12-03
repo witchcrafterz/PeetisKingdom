@@ -109,6 +109,11 @@
         },
 
         generateObjects: function() {
+            _.forEach(this.map.objects['slope'], function(obj) {
+                var beginning = new Phaser.Point(obj.polyline[0][0], obj.polyline[0][1]);
+                var end = new Phaser.Point(obj.polyline[1][0], obj.polyline[1][1]);
+            });
+
             _.forEach(this.map.objects['objects'], function(obj) {
                 switch(obj.type) {
                     case 'spawn':
