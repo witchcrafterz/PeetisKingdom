@@ -26,6 +26,10 @@
             color: white;
         }
 
+        #game {
+            height: 100vh;
+        }
+
         #topBar {
             width: 100%;
             padding: 10px;
@@ -41,7 +45,6 @@
                 display: none;
             }
         }
-
     </style>
 
 </head>
@@ -54,7 +57,7 @@
 
     <script>
     window.onload = function() {
-        var game = new Phaser.Game(1280, 720, Phaser.CANVAS, 'game');
+        var game = new Phaser.Game(1920, 1080, Phaser.CANVAS, 'game');
 
         game.state.add('Game.init', Game.init);
         game.state.add('Game.level', Game.level);
