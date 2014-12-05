@@ -109,10 +109,16 @@
         },
 
         generateObjects: function() {
-            _.forEach(this.map.objects['slope'], function(obj) {
-                var beginning = new Phaser.Point(obj.polyline[0][0], obj.polyline[0][1]);
-                var end = new Phaser.Point(obj.polyline[1][0], obj.polyline[1][1]);
-            });
+            _.forEach(this.map.objects['slopes'], function(obj) {
+                var points = [];
+                _.forEach(obj.polyline, function(point) {
+                    points.push(new Phaser.Point(point[0] + obj.x, point[1] + obj.y));
+                });
+
+                this.slope = new Phaser.Polygon(points);
+                this.game.physics.arcade.enableBody(this.slope);
+                console.log(this.slope);
+            }, this);
 
             _.forEach(this.map.objects['objects'], function(obj) {
                 switch(obj.type) {
@@ -120,11 +126,11 @@
                         if (this.p1) {
                             var x = obj.x + obj.width / 2;
                             var y = obj.y + obj.height / 2;
-
+                            
                             // DUCK TAPE. No idea why it doesn't' work without this. Happened after Phaser 2.2.X update
                             setTimeout(function(self) {
                                 self.p1.reset(x, y);
-                            }, 0, this);
+                            }, 50, this);
                         }
                         break;
                 }
@@ -155,6 +161,15 @@
 
         update: function() {
             this.game.physics.arcade.collide(this.p1, this.level);
+
+            // var pos = {
+            //     x: this.p1.position.x,
+            //     y: this.p1.position.y + this.p1.height
+            // };
+
+            // if (this.slope.contains(pos.x, pos.y)) {
+            //     this.p1.body.velocity.y = -this.p1.body.velocity.y;
+            // }
         }
     });
 })();
