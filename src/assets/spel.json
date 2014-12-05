@@ -60,45 +60,6 @@
          "width":0,
          "x":0,
          "y":0
-        }, 
-        {
-         "draworder":"topdown",
-         "height":100,
-         "name":"slopes",
-         "objects":[
-                {
-                 "height":0,
-                 "name":"",
-                 "polyline":[
-                        {
-                         "x":0,
-                         "y":0
-                        }, 
-                        {
-                         "x":1466.66666666667,
-                         "y":-1472.72727272727
-                        }, 
-                        {
-                         "x":1460.60606060606,
-                         "y":-6.06060606060601
-                        }],
-                 "properties":
-                    {
-
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":2587.87878787879,
-                 "y":6996.9696969697
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "width":200,
-         "x":0,
-         "y":0
         }],
  "orientation":"orthogonal",
  "properties":

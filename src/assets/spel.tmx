@@ -19,9 +19,4 @@
   </object>
  </objectgroup>
  <objectgroup name="objectives"/>
- <objectgroup name="slopes">
-  <object x="2587.88" y="6996.97">
-   <polyline points="0,0 1466.67,-1472.73 1460.61,-6.06061"/>
-  </object>
- </objectgroup>
 </map>

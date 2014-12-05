@@ -1,6 +1,15 @@
 (function() {
     'use strict';
 
+    var specialCollision = {
+        bottomRight: [
+            129
+        ],
+        bottomLeft: [
+            30
+        ]
+    };
+
     Game.level = function(game) {
         this.levelSize = {
             x: 0,
@@ -63,21 +72,27 @@
 
             // The layer containing platforms
             this.level = this.map.createLayer('Tile Layer 1');
+            var firstID = this.map.tilesets[this.map.getTilesetIndex('tile')].firstgid;
+            var collisionTiles = [];
+            _.forEach(this.level.layer.data, function(e) {
+                _.forEach(e, function(t) {
+                    if (t.index > -1) {
+                        collisionTiles.push(t.index);
+                    }
+
+                    if (_.contains(specialCollision.bottomRight, t.index - firstID)) {
+                        t.slope = 'HALF_TRIANGLE_BOTTOM_RIGHT';
+                    }
+
+                    if (_.contains(specialCollision.bottomLeft, t.index - firstID)) {
+                        t.slope = 'HALF_TRIANGLE_BOTTOM_LEFT';
+                    }
+                });
+            });
+
             this.level.resizeWorld();
 
-            // Sets collision on block IDs between 0 to 150. Check spritesheet for block index
-            this.map.setCollision([
-                1,
-                4,
-                6,
-                36,
-                56,
-                87,
-                102,
-                112,
-                113,
-                128
-            ]);
+            this.map.setCollision(collisionTiles);
         },
 
         setUtils: function() {
@@ -109,17 +124,6 @@
         },
 
         generateObjects: function() {
-            _.forEach(this.map.objects['slopes'], function(obj) {
-                var points = [];
-                _.forEach(obj.polyline, function(point) {
-                    points.push(new Phaser.Point(point[0] + obj.x, point[1] + obj.y));
-                });
-
-                this.slope = new Phaser.Polygon(points);
-                this.game.physics.arcade.enableBody(this.slope);
-                console.log(this.slope);
-            }, this);
-
             _.forEach(this.map.objects['objects'], function(obj) {
                 switch(obj.type) {
                     case 'spawn':
@@ -161,15 +165,6 @@
 
         update: function() {
             this.game.physics.arcade.collide(this.p1, this.level);
-
-            // var pos = {
-            //     x: this.p1.position.x,
-            //     y: this.p1.position.y + this.p1.height
-            // };
-
-            // if (this.slope.contains(pos.x, pos.y)) {
-            //     this.p1.body.velocity.y = -this.p1.body.velocity.y;
-            // }
         }
     });
 })();
