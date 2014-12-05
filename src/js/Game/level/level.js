@@ -112,13 +112,25 @@
             _.forEach(this.map.objects['objects'], function(obj) {
                 switch(obj.type) {
                     case 'spawn':
-                        this.p1 = new Game.player(this.game, obj.x + obj.width / 2, obj.y + obj.height / 2);
-                        this.game.add.existing(this.p1);
-                        this.game.camera.follow(this.p1);
-                        this.game.camera.deadzone = this.getCameraDeadzone();
+                        if (this.p1) {
+                            var x = obj.x + obj.width / 2;
+                            var y = obj.y + obj.height / 2;
+
+                            // DUCK TAPE. No idea why it doesn't' work without this. Happened after Phaser 2.2.X update
+                            setTimeout(function(self) {
+                                self.p1.reset(x, y);
+                            }, 0, this);
+                        }
                         break;
                 }
             }, this);
+        },
+
+        spawnPlayer: function() {
+            this.p1 = new Game.player(this.game, 0, 0);
+            this.game.add.existing(this.p1);
+            this.game.camera.follow(this.p1);
+            this.game.camera.deadzone = this.getCameraDeadzone();
         },
 
         /**
@@ -130,6 +142,8 @@
 
             this.setUtils();
             this.generateLevel();
+
+            this.spawnPlayer();
 
             this.generateObjects();
         },
