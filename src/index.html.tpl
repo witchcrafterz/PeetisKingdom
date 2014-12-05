@@ -26,6 +26,10 @@
             color: white;
         }
 
+        #game {
+            height: 100vh;
+        }
+
         #topBar {
             width: 100%;
             padding: 10px;
@@ -41,7 +45,6 @@
                 display: none;
             }
         }
-
     </style>
 
 </head>
