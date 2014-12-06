@@ -26,7 +26,8 @@ function getJS() {
     return gulp.src('./js/**/*.js', {read: false, cwd: './src'})
         .pipe(order([
             'Game.js',
-            'Game/utils/**/*.js',
+            'Game/Utils/**/*.js',
+            'Game/Controller/Controller.js',
             'Game/**/*.js'
         ]));
 }
@@ -69,7 +70,8 @@ gulp.task('dist-js', function() {
     return gulp.src('./src/js/**')
         .pipe(order([
             'Game.js',
-            'Game/utils/**/*.js',
+            'Game/Utils/**/*.js',
+            'Game/Controller/Controller.js',
             'Game/**/*.js'
         ]))
         .pipe(concat('scripts.js'))

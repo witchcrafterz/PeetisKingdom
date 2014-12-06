@@ -1,12 +1,12 @@
 (function() {
     'use strict';
 
-    Game.init = function(game) {
+    Game.Init = function(game) {
         this.maxWidth = 1280;
         this.maxHeight = 720;
     };
 
-    Game.init.prototype = {
+    Game.Init.prototype = {
 
         /**
          * Load content here, e.g. this.load.image('myDude', '/assets/images/myDude.png')
@@ -42,7 +42,7 @@
 
             window.Game.debugMode = this.game.net.getQueryString('debug') === 'true';
 
-            this.state.start('Game.level');
+            this.state.start('Game.Level');
         }
 
     };

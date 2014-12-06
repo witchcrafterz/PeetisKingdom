@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    Game.utils.FpsMeter = function(game, x, y) {
+    Game.Utils.FpsMeter = function(game, x, y) {
 
         Phaser.Text.call(this, game, x, y);
 
@@ -13,10 +13,10 @@
 
     // Clone the Phaser.Sprite prototype, and use it as our own. 
     // This is how inheritance works in JavaScript btw
-    Game.utils.FpsMeter.prototype = Object.create(Phaser.Text.prototype);
-    Game.utils.FpsMeter.prototype.constructor = Game.utils.FpsMeter;
+    Game.Utils.FpsMeter.prototype = Object.create(Phaser.Text.prototype);
+    Game.Utils.FpsMeter.prototype.constructor = Game.Utils.FpsMeter;
 
-    Game.utils.FpsMeter.prototype.update = function() {
+    Game.Utils.FpsMeter.prototype.update = function() {
 
         this.text = 'FPS: ' + this.game.time.fps;
 

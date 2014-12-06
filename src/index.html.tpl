@@ -59,10 +59,10 @@
     window.onload = function() {
         var game = new Phaser.Game(1920, 1080, Phaser.CANVAS, 'game');
 
-        game.state.add('Game.init', Game.init);
-        game.state.add('Game.level', Game.level);
+        game.state.add('Game.Init', Game.Init);
+        game.state.add('Game.Level', Game.Level);
 
-        game.state.start('Game.init');
+        game.state.start('Game.Init');
     };
     </script>
 </body>

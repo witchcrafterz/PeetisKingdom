@@ -20,7 +20,7 @@
         ]
     };
 
-    Game.level = function(game) {
+    Game.Level = function(game) {
         this.levelSize = {
             x: 0,
             y: 0,
@@ -45,7 +45,8 @@
         };
     };
 
-    Game.level.prototype = _.merge(Object.create(self.Game.utils.BaseState.prototype), {
+    console.log(self.Game.Utils)
+    Game.Level.prototype = _.merge(Object.create(self.Game.Utils.BaseState.prototype), {
 
         /**
          * Load content here, e.g. this.load.image('myDude', '/assets/images/myDude.png')
@@ -108,7 +109,7 @@
         },
 
         setUtils: function() {
-            this.fpsMeter = new Game.utils.FpsMeter(this.game, 32, 32);
+            this.fpsMeter = new Game.Utils.FpsMeter(this.game, 32, 32);
             
             if (window.Game.debugMode) {
                 this.toggleDebug();
@@ -154,7 +155,7 @@
         },
 
         spawnPlayer: function() {
-            this.p1 = new Game.player(this.game, 0, 0);
+            this.p1 = new Game.Player(this.game, 0, 0);
             this.game.add.existing(this.p1);
             this.entitiesGroup.add(this.p1);
             this.game.camera.follow(this.p1);
@@ -175,7 +176,7 @@
 
             this.spawnPlayer();
 
-            this.alienYellow = new Game.enemy(this.game, 0, 0);
+            this.alienYellow = new Game.Enemy(this.game, 0, 0);
             this.game.add.existing(this.alienYellow);
             this.entitiesGroup.add(this.alienYellow);
 

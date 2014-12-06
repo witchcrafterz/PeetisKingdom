@@ -1,10 +1,10 @@
 (function() {
     'use strict';
 
-    Game.utils.BaseState = function(game) {
+    Game.Utils.BaseState = function(game) {
     };
 
-    Game.utils.BaseState.prototype = {
+    Game.Utils.BaseState.prototype = {
         getCameraDeadzone: function() {
             var x = this.game.width * 0.35;
             var y = this.game.height * 0.3;

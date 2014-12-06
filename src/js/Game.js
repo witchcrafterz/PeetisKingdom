@@ -16,7 +16,7 @@
         };
     };
 
-    Game.prototype.utils = function() {
+    Game.prototype.Utils = function() {
 
     };
 

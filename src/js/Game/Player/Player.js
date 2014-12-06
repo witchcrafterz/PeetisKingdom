@@ -11,7 +11,7 @@
     var acc = 2000;
     var maxJumps = 2;
 
-    Game.player = function(game, x, y) {
+    Game.Player = function(game, x, y) {
 
         Phaser.Sprite.call(this, game, x, y, textureKey);
 
@@ -20,7 +20,7 @@
 
         this.body.collideWorldBounds = true;
 
-        this.controller = new Game.controller(this.game);
+        this.controller = new Game.Controller(this.game);
 
         this.animations.add('running', [5, 6, 7, 8, 9, 10, 11, 12], 10, true);
         this.animations.add('jump', [3], 20, true);
@@ -43,15 +43,15 @@
 
     // Clone the Phaser.Sprite prototype, and use it as our own. 
     // This is how inheritance works in JavaScript btw
-    Game.player.prototype = Object.create(Phaser.Sprite.prototype);
-    Game.player.prototype.constructor = Game.player;
+    Game.Player.prototype = Object.create(Phaser.Sprite.prototype);
+    Game.Player.prototype.constructor = Game.Player;
 
-    Game.player.prototype.resetJump = function() {
+    Game.Player.prototype.resetJump = function() {
         this.currentJumps = 0;
         this.jumpMeter = fullJumpMeter;
     };
 
-    Game.player.prototype.jump = function() {
+    Game.Player.prototype.jump = function() {
         if (this.controller.jump.isDown) {
             if (!this.jumpWasDown) {
                 this.currentJumps += 1;
@@ -95,7 +95,7 @@
         this.jumpWasDown = this.controller.jump.isDown;
     };
 
-    Game.player.prototype.animate = function() {
+    Game.Player.prototype.animate = function() {
         if (this.controller.right.isDown || this.controller.left.isDown) {
             this.animations.play('running');
         }
@@ -109,7 +109,7 @@
         }
     };
 
-    Game.player.prototype.update = function() {
+    Game.Player.prototype.update = function() {
 
         if (this.controller.right.isDown) {
             this.body.acceleration.x = acc;

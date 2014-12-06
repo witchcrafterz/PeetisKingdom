@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    Game.controller = function(game) {
+    Game.Controller = function(game) {
         this.game = game;
 
         this.cursors = this.game.input.keyboard.createCursorKeys();
@@ -25,9 +25,9 @@
         return this;
     };
 
-    Game.controller.prototype.constructor = Game.controller;
+    Game.Controller.prototype.constructor = Game.Controller;
 
-    Game.controller.prototype.generateTouchControls = function() {
+    Game.Controller.prototype.generateTouchControls = function() {
         this.touchControlsGroup = this.game.add.group();
         var rightArrow = this.game.add.button(0, 0, 'arrow', null, null, null, null, null, null, this.touchControlsGroup);
         var leftArrow = this.game.add.button(0, 0, 'arrow', null, null, null, null, null, null, this.touchControlsGroup);
@@ -52,7 +52,7 @@
 
     };
 
-    Game.controller.prototype.left = {
+    Game.Controller.prototype.left = {
         onDown: new Phaser.Signal(),
         onUp: new Phaser.Signal(),
         isDown: false,
@@ -66,7 +66,7 @@
         }
     };
 
-    Game.controller.prototype.right = {
+    Game.Controller.prototype.right = {
         onDown: new Phaser.Signal(),
         onUp: new Phaser.Signal(),
         isDown: false,
@@ -80,7 +80,7 @@
         }
     };
 
-    Game.controller.prototype.jump = {
+    Game.Controller.prototype.jump = {
         onDown: new Phaser.Signal(),
         onUp: new Phaser.Signal(),
         isDown: false,
@@ -94,7 +94,7 @@
         }
     };
 
-    Game.controller.prototype.down = {
+    Game.Controller.prototype.down = {
         onDown: new Phaser.Signal(),
         onUp: new Phaser.Signal(),
         isDown: false,
