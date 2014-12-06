@@ -167,7 +167,7 @@
                 body.velocity.y=0;
             }
         }
-    }
+    };
     
 
     Phaser.Physics.Arcade._collisionSquareBottomLeft = function (i, body, tile) {
@@ -183,7 +183,7 @@
                 body.velocity.y=0;
             }
         }
-    }
+    };
     
 
     Phaser.Physics.Arcade.SLOPEMAP = {
