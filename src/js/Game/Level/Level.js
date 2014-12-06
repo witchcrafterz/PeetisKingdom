@@ -45,7 +45,6 @@
         };
     };
 
-    console.log(self.Game.Utils)
     Game.Level.prototype = _.merge(Object.create(self.Game.Utils.BaseState.prototype), {
 
         /**
