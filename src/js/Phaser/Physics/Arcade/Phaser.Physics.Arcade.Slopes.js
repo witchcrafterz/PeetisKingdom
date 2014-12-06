@@ -137,7 +137,11 @@
         if (body.velocity.y > 0 && (body.position.y + body.height - tile.bottom) + (body.position.x - tile.right) <= 0) {
             body.y = (body.position.x - tile.right) - (body.height - tile.bottom);
             body.blocked.down = true;
-            body.velocityPunish.x = body.gravity.y * Math.cos(45) * 0.1;
+
+            if (tile.hasOwnProperty('slipperyness')) {
+                var gravityY = body.game.physics.arcade.gravity.y;
+                body.velocity.x += (body.gravity.y || gravityY) * Math.cos(45) * tile.slipperyness;
+            }
             return false;
         }
         return true;
@@ -147,7 +151,11 @@
         if (body.velocity.y > 0 && (body.position.y + body.height - tile.top) - (body.position.x + body.width - tile.right) >= 0) {
             body.y = tile.bottom + tile.left - (body.position.x + body.width) - body.height;
             body.blocked.down = true;
-            body.velocityPunish.x = -body.gravity.y * Math.cos(45) * 0.1;
+
+            if (tile.hasOwnProperty('slipperyness')) {
+                var gravityY = body.game.physics.arcade.gravity.y;
+                body.velocity.x += -(body.gravity.y || gravityY) * Math.cos(45) * tile.slipperyness;
+            }
             return false;
         }
 
