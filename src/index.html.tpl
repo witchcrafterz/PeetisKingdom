@@ -18,16 +18,23 @@
     <!-- endinject -->
 
     <style>
+        html {
+            height: 100%;
+        }
+        
         body {
             background-color: #202020;
             padding: 0;
             margin: 0;
 
             color: white;
+
+            max-height: 100vh;
+            height: 100%;
         }
 
         #game {
-            height: 100vh;
+            height: 100%;
         }
 
         #topBar {
