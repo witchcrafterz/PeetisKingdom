@@ -95,6 +95,20 @@
         this.jumpWasDown = this.controller.jump.isDown;
     };
 
+    Game.player.prototype.animate = function() {
+        if (this.controller.right.isDown || this.controller.left.isDown) {
+            this.animations.play('running');
+        }
+
+        if (this.body.velocity.y > 0 && !this.body.onFloor()) {
+            this.animations.play('falling');
+        }
+
+        if ((this.body.touching.down || this.body.onFloor()) && Math.abs(this.body.velocity.x) < 40) {
+            this.animations.play('still');
+        }
+    };
+
     Game.player.prototype.update = function() {
 
         if (this.controller.right.isDown) {
@@ -135,17 +149,11 @@
             this.body.maxVelocity.y = 1000;
         }
 
-        if (this.body.velocity.y > 0) {
-            this.animations.play('falling');
-        }
-
-        if ((this.body.touching.down || this.body.onFloor()) && Math.abs(this.body.velocity.x) < 40) {
-            this.animations.play('still');
-        }
-
         if (this.body.onFloor() || this.body.touching.down) {
             this.resetJump();
         }
+
+        this.animate();
     };
 
 })();
