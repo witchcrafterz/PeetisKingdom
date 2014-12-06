@@ -4,6 +4,8 @@
     Game.Controller = function(game) {
         this.game = game;
 
+        this.initialize();
+
         this.cursors = this.game.input.keyboard.createCursorKeys();
 
         this.cursors.right.onDown.add(this.right.setDown, this);
@@ -49,63 +51,61 @@
 
         jump.onInputDown.add(this.jump.setDown, this);
         jump.onInputUp.add(this.jump.setUp, this);
-
     };
 
-    Game.Controller.prototype.left = {
-        onDown: new Phaser.Signal(),
-        onUp: new Phaser.Signal(),
-        isDown: false,
-        setDown: function() {
-            this.left.isDown = true;
-            this.left.onDown.dispatch();
-        },
-        setUp: function() {
-            this.left.isDown = false;
-            this.left.onUp.dispatch();
-        }
-    };
-
-    Game.Controller.prototype.right = {
-        onDown: new Phaser.Signal(),
-        onUp: new Phaser.Signal(),
-        isDown: false,
-        setDown: function() {
-            this.right.isDown = true;
-            this.right.onDown.dispatch();
-        },
-        setUp: function() {
-            this.right.isDown = false;
-            this.right.onUp.dispatch();
-        }
-    };
-
-    Game.Controller.prototype.jump = {
-        onDown: new Phaser.Signal(),
-        onUp: new Phaser.Signal(),
-        isDown: false,
-        setDown: function() {
-            this.jump.isDown = true;
-            this.jump.onDown.dispatch();
-        },
-        setUp: function() {
-            this.jump.isDown = false;
-            this.jump.onUp.dispatch();
-        }
-    };
-
-    Game.Controller.prototype.down = {
-        onDown: new Phaser.Signal(),
-        onUp: new Phaser.Signal(),
-        isDown: false,
-        setDown: function() {
-            this.down.isDown = true;
-            this.down.onDown.dispatch();
-        },
-        setUp: function() {
-            this.down.isDown = false;
-            this.down.onUp.dispatch();
-        }
+    Game.Controller.prototype.initialize = function() {
+        this.left = {
+            onDown: new Phaser.Signal(),
+            onUp: new Phaser.Signal(),
+            isDown: false,
+            setDown: function() {
+                this.left.isDown = true;
+                this.left.onDown.dispatch();
+            },
+            setUp: function() {
+                this.left.isDown = false;
+                this.left.onUp.dispatch();
+            }
+        };
+        this.right = {
+            onDown: new Phaser.Signal(),
+            onUp: new Phaser.Signal(),
+            isDown: false,
+            setDown: function() {
+                this.right.isDown = true;
+                this.right.onDown.dispatch();
+            },
+            setUp: function() {
+                this.right.isDown = false;
+                this.right.onUp.dispatch();
+            }
+        };
+        this.jump = {
+            onDown: new Phaser.Signal(),
+            onUp: new Phaser.Signal(),
+            isDown: false,
+            setDown: function() {
+                this.jump.isDown = true;
+                this.jump.onDown.dispatch();
+            },
+            setUp: function() {
+                this.jump.isDown = false;
+                this.jump.onUp.dispatch();
+            }
+        };
+        this.down = {
+            onDown: new Phaser.Signal(),
+            onUp: new Phaser.Signal(),
+            isDown: false,
+            setDown: function() {
+                this.down.isDown = true;
+                this.down.onDown.dispatch();
+            },
+            setUp: function() {
+                this.down.isDown = false;
+                this.down.onUp.dispatch();
+            }
+        };
     };
 
 })();

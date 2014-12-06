@@ -184,6 +184,7 @@
         },
 
         update: function() {
+            this.alienYellow.controller.update(this.p1);
             this.game.physics.arcade.collide(this.entitiesGroup, this.level);
         }
     });

@@ -10,7 +10,7 @@
     var acc = 2000;
     var controller = Game.Controller.AI;
 
-    Game.Enemy = function(game, x, y, textureKey, controller) {
+    Game.Enemy = function(game, x, y, textureKey) {
 
         Phaser.Sprite.call(this, game, x, y, _textureKey || textureKey);
 
@@ -19,7 +19,7 @@
 
         this.body.collideWorldBounds = true;
 
-        this.controller = new Game.Controller(this.game);
+        this.controller = new Game.Controller.AI(this.game, this);
 
         this.animations.add('running', [9, 10], 10, true);
         this.animations.add('jump', [5], 20, true);
@@ -41,15 +41,10 @@
     Game.Enemy.prototype = Object.create(Phaser.Sprite.prototype);
     Game.Enemy.prototype.constructor = Game.Enemy;
 
-    Game.Enemy.prototype.jump = function() {
-
-    };
-
     Game.Enemy.prototype.animate = function() {
     };
 
     Game.Enemy.prototype.update = function() {
-
         if (this.controller.right.isDown) {
             this.body.acceleration.x = acc;
 
@@ -66,9 +61,10 @@
             this.body.acceleration.x = this.body.velocity.x * -5;
         }
 
-        // if (this.body.onFloor() || this.body.touching.down) {
-        //     this.resetJump();
-        // }
+
+        if (this.body.onFloor() && this.controller.jump.isDown) {
+            this.body.velocity.y -= 2000;
+        }
 
         // this.animate();
     };
