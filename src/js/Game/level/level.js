@@ -61,6 +61,8 @@
             this.game.load.script('plasma', 'assets/filters/Plasma.js');
             this.game.load.script('fire', 'assets/filters/Fire.js');
 
+            this.game.load.atlasXML('alienYellow', 'assets/alienYellow.png', 'assets/alienYellow.xml');
+
             this.game.load.tilemap('map', 'assets/spel.json', null, Phaser.Tilemap.TILED_JSON);
         },
 
@@ -154,6 +156,7 @@
         spawnPlayer: function() {
             this.p1 = new Game.player(this.game, 0, 0);
             this.game.add.existing(this.p1);
+            this.entitiesGroup.add(this.p1);
             this.game.camera.follow(this.p1);
             this.game.camera.deadzone = this.getCameraDeadzone();
         },
@@ -168,13 +171,19 @@
             this.setUtils();
             this.generateLevel();
 
+            this.entitiesGroup = this.game.add.group();
+
             this.spawnPlayer();
+
+            this.alienYellow = new Game.enemy(this.game, 0, 0);
+            this.game.add.existing(this.alienYellow);
+            this.entitiesGroup.add(this.alienYellow);
 
             this.generateObjects();
         },
 
         update: function() {
-            this.game.physics.arcade.collide(this.p1, this.level);
+            this.game.physics.arcade.collide(this.entitiesGroup, this.level);
         }
     });
 })();
