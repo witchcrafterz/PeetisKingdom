@@ -3,10 +3,20 @@
 
     var specialCollision = {
         bottomRight: [
-            129
+            129,
+            136,
+            132,
+            67,
+            45,
+            15
         ],
         bottomLeft: [
-            30
+            30,
+            33,
+            37,
+            40,
+            95,
+            117
         ]
     };
 
