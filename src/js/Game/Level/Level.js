@@ -143,10 +143,7 @@
                             var x = obj.x + obj.width / 2;
                             var y = obj.y + obj.height / 2;
                             
-                            // DUCK TAPE. No idea why it doesn't' work without this. Happened after Phaser 2.2.X update
-                            setTimeout(function(self) {
-                                self.p1.reset(x, y);
-                            }, 100, this);
+                            this.p1.reset(x, y);
                         }
                         break;
                 }
