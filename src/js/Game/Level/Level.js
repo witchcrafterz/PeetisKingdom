@@ -52,7 +52,7 @@
      */
     Game.Level.prototype.preload = function() {
         this.game.load.spritesheet('player1', 'assets/player1.png', 80, 97);
-        this.game.load.image('bg', 'assets/bg_castle.png');
+        this.game.load.image('bg', 'assets/background.png');
         this.game.load.spritesheet('tile', 'assets/spritesheet.png', 70, 70);
 
         this.game.load.image('arrow', 'assets/arrow.png');
@@ -78,7 +78,8 @@
         this.levelSize.width = this.map.width * this.map.tileWidth;
         this.levelSize.height = this.map.height * this.map.tileHeight;
 
-        this.bg = this.game.add.tileSprite(this.levelSize.x, this.levelSize.y, this.levelSize.width, this.levelSize.height, 'bg');
+        this.bg = this.game.add.sprite(0, 0, 'bg');
+        this.bg.fixedToCamera = true;
 
         // The layer that the player does not interact with
         this.behind = this.map.createLayer('behind');
