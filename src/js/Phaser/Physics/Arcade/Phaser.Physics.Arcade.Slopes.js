@@ -148,7 +148,7 @@
     };
 
     Phaser.Physics.Arcade._collisionHalfTriangleBottomRight = function (i, body, tile) {
-        if (body.velocity.y > 0 && (body.position.y + body.height - tile.top) - (body.position.x + body.width - tile.right) >= 0) {
+        if (body.velocity.y > 0 && (body.position.y + body.height - tile.top) - (body.position.x + body.width - tile.right) >= 0 && (body.position.x + body.width) > tile.left) {
             body.y = tile.bottom + tile.left - (body.position.x + body.width) - body.height;
             body.blocked.down = true;
 
