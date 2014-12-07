@@ -62,6 +62,7 @@
         this.game.load.script('fire', 'assets/filters/Fire.js');
 
         this.game.load.atlasXML('alienYellow', 'assets/alienYellow.png', 'assets/alienYellow.xml');
+        this.game.load.atlasXML('UI', 'assets/UI.png', 'assets/UI.xml');
 
         this.game.load.tilemap('map', 'assets/spel.json', null, Phaser.Tilemap.TILED_JSON);
     };

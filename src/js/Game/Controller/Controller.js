@@ -31,23 +31,57 @@
 
     Game.Controller.prototype.generateTouchControls = function() {
         this.touchControlsGroup = this.game.add.group();
-        var rightArrow = this.game.add.button(0, 0, 'arrow', null, null, null, null, null, null, this.touchControlsGroup);
-        var leftArrow = this.game.add.button(0, 0, 'arrow', null, null, null, null, null, null, this.touchControlsGroup);
-        var jump = this.game.add.button(0, 0, 'circle', null, null, null, null, null, null, this.touchControlsGroup);
+
+        var dPad = this.game.add.button(0, 0, 'UI', null, null, 6, 6, 6, 6, this.touchControlsGroup);
+        var jump = this.game.add.button(0, 0, 'UI', null, null, 44, 44, 44, 44, this.touchControlsGroup);
+
+        dPad.scale.setTo(2);
+        jump.scale.setTo(3);
 
         jump.x = this.game.width - jump.width;
-        rightArrow.x = rightArrow.width;
-        leftArrow.x = leftArrow.width;
-        leftArrow.scale.x = -1;
+        jump.y = this.game.height - jump.height;
+        dPad.y = this.game.height - dPad.height;
 
-        this.touchControlsGroup.setAll('y', this.game.height - leftArrow.height);
-        this.touchControlsGroup.setAll('fixedToCamera', true);
+        this.touchControlsGroup.fixedToCamera = true;
+        this.touchControlsGroup.setAll('alpha', 0.85);
 
-        rightArrow.onInputDown.add(this.right.setDown, this);
-        rightArrow.onInputUp.add(this.right.setUp, this);
+        console.log(this.game.input);
 
-        leftArrow.onInputDown.add(this.left.setDown, this);
-        leftArrow.onInputUp.add(this.left.setUp, this);
+        var onDownHandler = function(sender, pointer) {
+            var relativeX = pointer.x - sender.x;
+            var deltaX = relativeX - sender.width / 2;
+
+            if (deltaX < 0) {
+                this.left.setDown.call(this);
+            } else {
+                this.left.setUp.call(this);
+            }
+
+            if (deltaX >= 0) {
+                this.right.setDown.call(this);
+            } else {
+                this.right.setUp.call(this);
+            }
+        };
+
+        var onDownLoop = function(sender, pointer) {
+            setTimeout(function(thisArg) {
+                if (pointer.isDown) {
+                    onDownHandler.call(thisArg, sender, pointer);
+                    onDownLoop.call(thisArg, sender, pointer);
+                } else {
+                    this.left.setUp.call(this);
+                    this.right.setUp.call(this);
+                }
+            }, 20, this);
+        };
+
+        dPad.onInputDown.add(onDownLoop, this);
+
+        dPad.onInputUp.add(function(sender, pointer) {
+            this.left.setUp.call(this);
+            this.right.setUp.call(this);
+        }, this);
 
         jump.onInputDown.add(this.jump.setDown, this);
         jump.onInputUp.add(this.jump.setUp, this);
