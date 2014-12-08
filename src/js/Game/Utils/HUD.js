@@ -19,7 +19,13 @@
         
         muteButton.animations.add('mute', [12]);
         muteButton.animations.add('unMute', [14]);
-        muteButton.animations.play('mute');
+
+        if (this.game.sound.mute) {
+            muteButton.animations.play('unMute');
+        } else {
+            muteButton.animations.play('mute');
+        }
+
         muteButton.x = this.game.width - muteButton.width;
 
         muteButton.onInputDown.add(function() {
@@ -28,6 +34,11 @@
             } else {
                 muteButton.animations.play('mute');
             }
+
+            if (self.localStorage) {
+                self.localStorage.muted = this.game.sound.mute.toString();
+            }
+
         }, this);
 
         this.add(muteButton);
