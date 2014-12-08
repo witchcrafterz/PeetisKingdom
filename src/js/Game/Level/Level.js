@@ -64,6 +64,8 @@
         this.game.load.atlasXML('alienYellow', 'assets/alienYellow.png', 'assets/alienYellow.xml');
         this.game.load.atlasXML('UI', 'assets/UI.png', 'assets/UI.xml');
 
+        this.game.load.audio('solskenspromenad', 'assets/Solskenspromenad.mp3');
+
         this.game.load.tilemap('map', 'assets/spel.json', null, Phaser.Tilemap.TILED_JSON);
     };
 
@@ -183,6 +185,11 @@
         this.entitiesGroup.add(this.alienYellow);
 
         this.generateObjects();
+
+        var solskenspromenad = this.game.add.audio('solskenspromenad', 0.6, true, true);
+        solskenspromenad.play();
+
+        this.HUD = new Game.Utils.HUD(this.game);
     };
 
     Game.Level.prototype.update = function() {
