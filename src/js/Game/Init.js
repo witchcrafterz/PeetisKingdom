@@ -11,7 +11,9 @@
         /**
          * Load content here, e.g. this.load.image('myDude', '/assets/images/myDude.png')
          */
-        preload: function() {},
+        preload: function() {
+            this.game.load.image('preloadBar', 'assets/loadingbar.png');
+        },
 
         /**
          * Initialization logic here

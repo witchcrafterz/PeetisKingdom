@@ -51,6 +51,11 @@
      * Load content here, e.g. this.load.image('myDude', '/assets/images/myDude.png')
      */
     Game.Level.prototype.preload = function() {
+        var preloadBar = this.game.add.sprite(this.game.width / 2, this.game.height / 2, 'preloadBar');
+        preloadBar.fixedToCamera = true;
+        preloadBar.anchor.set(0.5);
+        this.game.load.setPreloadSprite(preloadBar);
+
         this.game.load.spritesheet('player1', 'assets/player1.png', 80, 97);
         this.game.load.image('bg', 'assets/background.png');
         this.game.load.spritesheet('tile', 'assets/spritesheet.png', 70, 70);
