@@ -23,12 +23,10 @@
         muteButton.x = this.game.width - muteButton.width;
 
         muteButton.onInputDown.add(function() {
-            if (this.game.sound.mute) {
-                this.game.sound.mute = false;
-                muteButton.animations.play('mute');
-            } else {
-                this.game.sound.mute = true;
+            if (this.game.sound.toggleMute()) {
                 muteButton.animations.play('unMute');
+            } else {
+                muteButton.animations.play('mute');
             }
         }, this);
 
