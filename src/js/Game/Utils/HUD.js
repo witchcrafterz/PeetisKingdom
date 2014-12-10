@@ -7,6 +7,7 @@
         this.fixedToCamera = true;
 
         this.createMuteButton();
+        this.createFullscreenButton();
 
         return this;
     };
@@ -43,4 +44,17 @@
 
         this.add(muteButton);
     };
+
+    Game.Utils.HUD.prototype.createFullscreenButton = function() {
+        var fullscreenButton = this.fullscreenButton = new Phaser.Button(this.game, 0, 0, 'UI');
+
+        fullscreenButton.onInputDown.add(function() {
+            this.game.state.states[this.game.state.current].toggleFullScreen();
+        }, this);
+
+        fullscreenButton.frame = 29;
+
+        this.add(fullscreenButton);
+    };
+
 })();
