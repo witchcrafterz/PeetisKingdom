@@ -60,12 +60,6 @@
         this.game.load.image('bg', 'assets/background.png');
         this.game.load.spritesheet('tile', 'assets/spritesheet.png', 70, 70);
 
-        this.game.load.image('arrow', 'assets/arrow.png');
-        this.game.load.image('circle', 'assets/circle.png');
-
-        this.game.load.script('plasma', 'assets/filters/Plasma.js');
-        this.game.load.script('fire', 'assets/filters/Fire.js');
-
         this.game.load.atlasXML('alienYellow', 'assets/alienYellow.png', 'assets/alienYellow.xml');
         this.game.load.atlasXML('UI', 'assets/UI.png', 'assets/UI.xml');
 
@@ -185,11 +179,11 @@
 
         this.spawnPlayer();
 
-        this.alienYellow = new Game.Enemy(this.game, 0, 0);
+        this.generateObjects();
+
+        this.alienYellow = new Game.Enemy(this.game, this.p1.position.x - this.game.width, this.p1.position.y);
         this.game.add.existing(this.alienYellow);
         this.entitiesGroup.add(this.alienYellow);
-
-        this.generateObjects();
 
         var solskenspromenad = this.game.add.audio('solskenspromenad', 0.6, true, true);
         solskenspromenad.play();

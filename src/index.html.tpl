@@ -37,14 +37,22 @@
             height: 100%;
         }
 
+        #game canvas {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         #topBar {
             width: 100%;
-            padding: 10px;
             background-color: #101010;
 
             position: absolute;
             left: 0;
             top: 0;
+        }
+
+        #topBar p {
+            padding: 10px;
         }
     
         @media screen and (max-height: 850px) {

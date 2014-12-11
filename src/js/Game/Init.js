@@ -26,7 +26,6 @@
             this.scale.maxWidth = this.maxWidth;
             this.scale.maxHeight = this.maxHeight;
 
-            this.scale.pageAlignHorizontally = true;
             this.scale.pageAlignVertically = true;
             this.scale.setScreenSize(true);
 

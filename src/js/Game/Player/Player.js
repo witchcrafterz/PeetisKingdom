@@ -10,6 +10,7 @@
     var fullJumpMeter = 500;
     var acc = 2000;
     var maxJumps = 2;
+    var maxVelocity = new Phaser.Point(500, 0);
 
     Game.Player = function(game, x, y) {
 
@@ -19,6 +20,7 @@
         this.game.physics.enable(this, Phaser.Physics.ARCADE);
 
         this.body.collideWorldBounds = true;
+        this.body.drag.setTo(1000, 0);
 
         this.controller = new Game.Controller(this.game);
 
@@ -29,10 +31,6 @@
 
         this.currAnim = '';
 
-        var point = new Phaser.Point();
-        point.x = 500;
-        point.y = 1000;
-        this.body.maxVelocity = point;
         this.jumpMeter = fullJumpMeter;
         this.currentJumps = 0;
 
@@ -77,21 +75,6 @@
             }
         }
 
-
-        // if (this.controller.jump.isDown && this.jumpMeter > 0 && this.currentJumps !== maxJumps) {
-        //     this.jumpMeter += jumpAcc;
-        //     this.body.velocity.y += jumpAcc;
-        //     this.currentJumps += 1;
-
-        //     this.animations.play('jump');
-        // } else if (!this.controller.jump.isDown && !(this.body.onFloor() || this.body.touching.down)) {
-        //     if (maxJumps !== this.currentJumps) {
-        //         this.jumpMeter = fullJumpMeter;
-        //     } else {
-        //         this.jumpMeter = 0;
-        //     }
-        // }
-
         this.jumpWasDown = this.controller.jump.isDown;
     };
 
@@ -110,21 +93,22 @@
     };
 
     Game.Player.prototype.update = function() {
-
         if (this.controller.right.isDown) {
             this.body.acceleration.x = acc;
+            this.body.velocity.x = Math.clamp(this.body.velocity.x, -maxVelocity.x, maxVelocity.x);
 
             this.animations.play('running');
 
             this.scale.x = 1;
         } else if (this.controller.left.isDown) {
             this.body.acceleration.x = -acc;
+            this.body.velocity.x = Math.clamp(this.body.velocity.x, -maxVelocity.x, maxVelocity.x);
 
             this.animations.play('running');
 
             this.scale.x = -1;
         } else {
-            this.body.acceleration.x = this.body.velocity.x * -5;
+            this.body.acceleration.x = 0;
         }
 
         if (this.game.physics.arcade.gravity === Game.gravity) {
@@ -145,8 +129,7 @@
             this.body.acceleration.y *= 2;
             this.body.acceleration.x *= 2;
         } else {
-            this.body.maxVelocity.x = 500;
-            this.body.maxVelocity.y = 1000;
+            // this.body.maxVelocity = maxVelocity;
         }
 
         if (this.body.onFloor() || this.body.touching.down) {
