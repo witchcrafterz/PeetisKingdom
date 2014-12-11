@@ -10,7 +10,7 @@
     var fullJumpMeter = 500;
     var acc = 2000;
     var maxJumps = 2;
-    var maxVelocity = new Phaser.Point(500, 0);
+    var maxVelocity = new Phaser.Point(500, 2000);
 
     Game.Player = function(game, x, y) {
 
@@ -21,6 +21,7 @@
 
         this.body.collideWorldBounds = true;
         this.body.drag.setTo(1000, 0);
+        this.body.maxVelocity = maxVelocity;
 
         this.controller = new Game.Controller(this.game);
 

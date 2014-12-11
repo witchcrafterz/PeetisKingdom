@@ -125,7 +125,7 @@
 
 
     Phaser.Physics.Arcade._collisionHalfTriangleBottomLeft = function(i, body, tile) {
-        if (body.velocity.y > 0 && (body.position.y + body.height - tile.bottom) + (body.position.x - tile.right) <= 0 && (body.position.y + body.height) > tile.top) {
+        if (body.velocity.y > 0 && (tile.worldY + tile.height - body.position.y - body.height) - (tile.worldX + tile.width - body.position.x) <= 0 && (body.position.x) >= tile.left && (body.position.x) <= tile.right) {
             body.y = (body.position.x - tile.right) - (body.height - tile.bottom);
             body.blocked.down = true;
 
@@ -139,7 +139,7 @@
     };
 
     Phaser.Physics.Arcade._collisionHalfTriangleBottomRight = function(i, body, tile) {
-        if (body.velocity.y > 0 && (body.position.y + body.height - tile.top) - (body.position.x + body.width - tile.right) >= 0 && (body.position.x + body.width) > tile.left) {
+        if (body.velocity.y > 0 && (tile.worldY + tile.height - body.position.y - body.height) - (body.position.x + body.width - tile.left) <= 0 && (body.position.x + body.width) >= tile.left && (body.position.x + body.width) <= tile.right) {
             body.y = tile.bottom + tile.left - (body.position.x + body.width) - body.height;
             body.blocked.down = true;
 
