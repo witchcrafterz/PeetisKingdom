@@ -20,7 +20,7 @@
             var dir = toTrack.position.x > this.controlled.position.x ? 1 : -1;
 
             toTrack.body.position.y -= 5;
-            toTrack.body.velocity.setTo(1500 * dir, -1500);
+            toTrack.body.velocity.setTo(1250 * dir, -3500);
         } else {
 
         }
