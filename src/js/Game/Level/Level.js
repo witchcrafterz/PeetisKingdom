@@ -185,11 +185,11 @@
 
         this.spawnPlayer();
 
-        this.alienYellow = new Game.Enemy(this.game, 0, 0);
+        this.generateObjects();
+
+        this.alienYellow = new Game.Enemy(this.game, this.p1.position.x - this.game.width, this.p1.position.y);
         this.game.add.existing(this.alienYellow);
         this.entitiesGroup.add(this.alienYellow);
-
-        this.generateObjects();
 
         var solskenspromenad = this.game.add.audio('solskenspromenad', 0.6, true, true);
         solskenspromenad.play();
