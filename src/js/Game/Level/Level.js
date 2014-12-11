@@ -21,6 +21,8 @@
     };
 
     Game.Level = function(game) {
+        this.debugMode = false;
+
         this.levelSize = {
             x: 0,
             y: 0,
@@ -37,11 +39,16 @@
         };
 
         this.toggleDebug = function() {
-            if (this.fpsMeter.stage) {
+            if (this.debugMode) {
                 this.fpsMeter.parent.remove(this.fpsMeter);
+                this.level.debug = false;
             } else {
                 this.game.add.existing(this.fpsMeter);
+                this.level.debug = true;
             }
+
+            this.level.dirty = true;
+            this.debugMode = !this.debugMode;
         };
     };
 
@@ -113,11 +120,6 @@
     Game.Level.prototype.setUtils = function() {
         this.fpsMeter = new Game.Utils.FpsMeter(this.game, 32, 32);
 
-        if (window.Game.debugMode) {
-            this.toggleDebug();
-        }
-
-        // Binds the f11 key to an event
         this.f2 = this.game.input.keyboard.addKey(113);
         this.f2.onUp.add(function() {
             this.toggleDebug();
@@ -194,5 +196,13 @@
     Game.Level.prototype.update = function() {
         this.alienYellow.controller.update(this.p1);
         this.game.physics.arcade.collide(this.entitiesGroup, this.level);
+    };
+
+    Game.Level.prototype.render = function() {
+        if (this.debugMode) {
+            this.entitiesGroup.forEach(function(entity) {
+                this.game.debug.body(entity);
+            }, this);
+        }
     };
 })();

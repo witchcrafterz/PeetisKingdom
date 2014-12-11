@@ -41,8 +41,6 @@
                 this.scale.maxHeight = this.maxHeight;
             }, this);
 
-            window.Game.debugMode = this.game.net.getQueryString('debug') === 'true';
-
             if (self.localStorage && self.localStorage.hasOwnProperty('muted')) {
                 if (self.localStorage.muted === 'true') {
                     this.game.sound.mute = true;
