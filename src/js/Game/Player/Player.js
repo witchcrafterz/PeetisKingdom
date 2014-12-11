@@ -19,6 +19,7 @@
         this.game.physics.enable(this, Phaser.Physics.ARCADE);
 
         this.body.collideWorldBounds = true;
+        this.body.drag.setTo(1000, 0);
 
         this.controller = new Game.Controller(this.game);
 
@@ -110,7 +111,6 @@
     };
 
     Game.Player.prototype.update = function() {
-
         if (this.controller.right.isDown) {
             this.body.acceleration.x = acc;
 
@@ -124,7 +124,7 @@
 
             this.scale.x = -1;
         } else {
-            this.body.acceleration.x = this.body.velocity.x * -5;
+            this.body.acceleration.x = 0;
         }
 
         if (this.game.physics.arcade.gravity === Game.gravity) {
