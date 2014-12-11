@@ -1,10 +1,10 @@
 // SOURCE: https://github.com/eugenioclrc/super-mean-boy
 /* global Phaser */
-(function () {
+(function() {
     'use strict';
     Phaser.Physics.Arcade.Body.prototype.velocityPunish = new Phaser.Point(0, 0);
 
-    Phaser.Physics.Arcade.prototype.collideSpriteVsTilemapLayer = function (sprite, tilemapLayer, collideCallback, processCallback, callbackContext) {
+    Phaser.Physics.Arcade.prototype.collideSpriteVsTilemapLayer = function(sprite, tilemapLayer, collideCallback, processCallback, callbackContext) {
         if (!sprite.body) {
             return;
         }
@@ -27,18 +27,13 @@
                 slopeFunction = tile.slopeFunction;
             } else {
                 _slope = tile.hasOwnProperty('slope') ? tile.slope : Phaser.Physics.Arcade.FULL_SQUARE;
-                if (!Phaser.Physics.Arcade.SLOPEMAP.hasOwnProperty(_slope))
-                {
+                if (!Phaser.Physics.Arcade.SLOPEMAP.hasOwnProperty(_slope)) {
                     _slope = 'FULL_SQUARE';
-
                 }
                 slopeFunction = Phaser.Physics.Arcade.SLOPEMAP[_slope];
             }
 
-
-            //if (this.separateTile(i, sprite.body, tile))
             if (slopeFunction.call(this, i, sprite.body, tile)) {
-                //  They collided, is there a custom process callback?
                 if (processCallback) {
                     if (processCallback.call(callbackContext, sprite, this._mapData[i])) {
                         this._total += 1;
@@ -61,16 +56,12 @@
 
     // Slope tile functions
 
-    Phaser.Physics.Arcade._collisionFullSquare = function (i, body, tile) {
-        var collides = this.separateTile(i, body, tile);
-        if (collides) {
-            body.velocityPunish.x = 0;
-        }
-        return collides;
+    Phaser.Physics.Arcade._collisionFullSquare = function(i, body, tile) {
+        return this.separateTile(i, body, tile);
     };
 
 
-    Phaser.Physics.Arcade.halfRectangleTop = function(i, body, tile){
+    Phaser.Physics.Arcade.halfRectangleTop = function(i, body, tile) {
         // check intersection
         /*var intersects = (body.bottom.right <= tile.worldX);
         intersects = intersects || (body.bottom <= tile.worldY + (tile.height / 2));
@@ -104,7 +95,7 @@
         }
     */
         var oy = 0;
-        
+
         if (body.deltaY() < 0 && !body.blocked.up) {
             //  Body is moving UP
             if (tile.faceBottom && body.y < tile.bottom) {
@@ -133,7 +124,7 @@
     };
 
 
-    Phaser.Physics.Arcade._collisionHalfTriangleBottomLeft = function (i, body, tile) {
+    Phaser.Physics.Arcade._collisionHalfTriangleBottomLeft = function(i, body, tile) {
         if (body.velocity.y > 0 && (body.position.y + body.height - tile.bottom) + (body.position.x - tile.right) <= 0 && (body.position.y + body.height) > tile.top) {
             body.y = (body.position.x - tile.right) - (body.height - tile.bottom);
             body.blocked.down = true;
@@ -147,7 +138,7 @@
         return true;
     };
 
-    Phaser.Physics.Arcade._collisionHalfTriangleBottomRight = function (i, body, tile) {
+    Phaser.Physics.Arcade._collisionHalfTriangleBottomRight = function(i, body, tile) {
         if (body.velocity.y > 0 && (body.position.y + body.height - tile.top) - (body.position.x + body.width - tile.right) >= 0 && (body.position.x + body.width) > tile.left) {
             body.y = tile.bottom + tile.left - (body.position.x + body.width) - body.height;
             body.blocked.down = true;
@@ -162,37 +153,37 @@
         return true;
     };
 
-    Phaser.Physics.Arcade._collisionRectangleBottom = function (i, body, tile) {
-        var intersects = (body.position.x >= tile.worldX && body.position.x <=  tile.worldX + tile.width);
-        
-        if (intersects){
-            // falling
-            if(body.velocity.y > 0 && (body.bottom >= tile.worldY + tile.height / 2)){
-                body.position.y = tile.worldY - tile.height / 2;
-                body.blocked.down = true;
-            } else {
-                body.position.y = tile.worldY + tile.height;
-                body.velocity.y=0;
-            }
-        }
-    };
-    
+    Phaser.Physics.Arcade._collisionRectangleBottom = function(i, body, tile) {
+        var intersects = (body.position.x >= tile.worldX && body.position.x <= tile.worldX + tile.width);
 
-    Phaser.Physics.Arcade._collisionSquareBottomLeft = function (i, body, tile) {
-        var intersects = (body.position.x + body.halfWidth >= tile.worldX && body.position.x <=  tile.worldX + tile.width);
-        
-        if (intersects){
+        if (intersects) {
             // falling
-            if(body.velocity.y > 0 && (body.bottom >= tile.worldY + tile.height / 2)){
+            if (body.velocity.y > 0 && (body.bottom >= tile.worldY + tile.height / 2)) {
                 body.position.y = tile.worldY - tile.height / 2;
                 body.blocked.down = true;
             } else {
                 body.position.y = tile.worldY + tile.height;
-                body.velocity.y=0;
+                body.velocity.y = 0;
             }
         }
     };
-    
+
+
+    Phaser.Physics.Arcade._collisionSquareBottomLeft = function(i, body, tile) {
+        var intersects = (body.position.x + body.halfWidth >= tile.worldX && body.position.x <= tile.worldX + tile.width);
+
+        if (intersects) {
+            // falling
+            if (body.velocity.y > 0 && (body.bottom >= tile.worldY + tile.height / 2)) {
+                body.position.y = tile.worldY - tile.height / 2;
+                body.blocked.down = true;
+            } else {
+                body.position.y = tile.worldY + tile.height;
+                body.velocity.y = 0;
+            }
+        }
+    };
+
 
     Phaser.Physics.Arcade.SLOPEMAP = {
         // id: 1
