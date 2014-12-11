@@ -10,7 +10,8 @@
     var fullJumpMeter = 500;
     var acc = 2000;
     var maxJumps = 2;
-    var maxVelocity = new Phaser.Point(0, 2000);
+    var maxVelocity = new Phaser.Point(3000, 2000);
+    var maxWalkingVelocity = new Phaser.Point(500, 0);
 
     Game.Player = function(game, x, y) {
 
@@ -96,14 +97,14 @@
     Game.Player.prototype.update = function() {
         if (this.controller.right.isDown) {
             this.body.acceleration.x = acc;
-            this.body.velocity.x = Math.clamp(this.body.velocity.x, -maxVelocity.x, maxVelocity.x);
+            this.body.velocity.x = Math.clamp(this.body.velocity.x, -maxWalkingVelocity.x, maxWalkingVelocity.x);
 
             this.animations.play('running');
 
             this.scale.x = 1;
         } else if (this.controller.left.isDown) {
             this.body.acceleration.x = -acc;
-            this.body.velocity.x = Math.clamp(this.body.velocity.x, -maxVelocity.x, maxVelocity.x);
+            this.body.velocity.x = Math.clamp(this.body.velocity.x, -maxWalkingVelocity.x, maxWalkingVelocity.x);
 
             this.animations.play('running');
 
