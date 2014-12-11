@@ -60,12 +60,6 @@
         this.game.load.image('bg', 'assets/background.png');
         this.game.load.spritesheet('tile', 'assets/spritesheet.png', 70, 70);
 
-        this.game.load.image('arrow', 'assets/arrow.png');
-        this.game.load.image('circle', 'assets/circle.png');
-
-        this.game.load.script('plasma', 'assets/filters/Plasma.js');
-        this.game.load.script('fire', 'assets/filters/Fire.js');
-
         this.game.load.atlasXML('alienYellow', 'assets/alienYellow.png', 'assets/alienYellow.xml');
         this.game.load.atlasXML('UI', 'assets/UI.png', 'assets/UI.xml');
 
