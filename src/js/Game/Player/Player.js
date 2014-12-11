@@ -75,21 +75,6 @@
             }
         }
 
-
-        // if (this.controller.jump.isDown && this.jumpMeter > 0 && this.currentJumps !== maxJumps) {
-        //     this.jumpMeter += jumpAcc;
-        //     this.body.velocity.y += jumpAcc;
-        //     this.currentJumps += 1;
-
-        //     this.animations.play('jump');
-        // } else if (!this.controller.jump.isDown && !(this.body.onFloor() || this.body.touching.down)) {
-        //     if (maxJumps !== this.currentJumps) {
-        //         this.jumpMeter = fullJumpMeter;
-        //     } else {
-        //         this.jumpMeter = 0;
-        //     }
-        // }
-
         this.jumpWasDown = this.controller.jump.isDown;
     };
 
