@@ -55,6 +55,7 @@
         if (this.controller.jump.isDown) {
             if (!this.jumpWasDown) {
                 this.currentJumps += 1;
+                this.animations.play('jump');
 
                 if (this.currentJumps < maxJumps && this.body.velocity.y > 0) {
                     this.body.velocity.y = 0;
@@ -65,7 +66,6 @@
                 this.body.velocity.y -= this.jumpMeter;
                 this.jumpMeter *= 0.5;
 
-                this.animations.play('jump');
             }
         } else {
             if (this.jumpWasDown) {
