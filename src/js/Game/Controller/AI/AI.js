@@ -8,6 +8,13 @@
 
         this.controlled = controlled;
 
+        this.hostile = true;
+
+        this.f1 = this.game.input.keyboard.addKey(112);
+        this.f1.onUp.add(function() {
+            this.hostile = !this.hostile;
+        }, this);
+
         return this;
     };
 
@@ -15,14 +22,19 @@
     Game.Controller.AI.prototype.constructor = Game.Controller.AI;
 
     Game.Controller.AI.prototype.update = function(toTrack) {
+        if (!this.hostile) {
+            this.right.setUp.call(this);
+            this.left.setUp.call(this);
+            this.jump.setUp.call(this);
+            return;
+        }
+
         if (this.game.physics.arcade.intersects(toTrack.body, this.controlled.body)) {
 
             var dir = toTrack.position.x > this.controlled.position.x ? 1 : -1;
 
             toTrack.body.position.y -= 5;
             toTrack.body.velocity.setTo(750 * dir, -1250);
-        } else {
-
         }
 
         if (toTrack.position.x > this.controlled.position.x) {
