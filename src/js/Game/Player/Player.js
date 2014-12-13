@@ -12,6 +12,7 @@
     var maxJumps = 2;
     var maxVelocity = new Phaser.Point(3000, 2000);
     var maxWalkingVelocity = new Phaser.Point(500, 0);
+    var drag = {x: 1000, y: 0};
 
     Game.Player = function(game, x, y) {
 
@@ -21,7 +22,6 @@
         this.game.physics.enable(this, Phaser.Physics.ARCADE);
 
         this.body.collideWorldBounds = true;
-        this.body.drag.setTo(1000, 0);
         this.body.maxVelocity = maxVelocity;
 
         this.controller = new Game.Controller(this.game);
@@ -81,15 +81,19 @@
     };
 
     Game.Player.prototype.animate = function() {
-        if (this.controller.right.isDown || this.controller.left.isDown) {
+        var walking = this.controller.right.isDown || this.controller.left.isDown;
+        var falling = this.body.velocity.y > 0 && !this.body.onFloor();
+        var still = (this.body.touching.down || this.body.onFloor()) && Math.abs(this.body.velocity.x) < 40;
+
+        if (walking) {
             this.animations.play('running');
         }
 
-        if (this.body.velocity.y > 0 && !this.body.onFloor()) {
+        if (falling && !walking) {
             this.animations.play('falling');
         }
 
-        if ((this.body.touching.down || this.body.onFloor()) && Math.abs(this.body.velocity.x) < 40) {
+        if (still) {
             this.animations.play('still');
         }
     };
@@ -127,6 +131,9 @@
 
         if (this.body.onFloor() || this.body.touching.down) {
             this.resetJump();
+            this.body.drag.setTo(drag.x, drag.y);
+        } else {
+            this.body.drag.setTo(0);
         }
 
         this.animate();
