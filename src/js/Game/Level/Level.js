@@ -183,9 +183,13 @@
 
         this.spawnPlayer();
 
+        this.objectiveManager = new Game.ObjectiveManager(this.game, this.game.width - 50, this.game.height * 0.5);
+        this.game.add.existing(this.objectiveManager);
+
         this.generateObjects();
 
         this.alienYellow = new Game.Enemy(this.game, this.p1.position.x - this.game.width, this.p1.position.y);
+        this.alienYellow.controller.hostile = false;
         this.game.add.existing(this.alienYellow);
         this.entitiesGroup.add(this.alienYellow);
 

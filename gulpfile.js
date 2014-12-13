@@ -22,14 +22,19 @@ gulp.task('browser-sync-reload', function() {
     browserSync.reload();
 });
 
+function getJsOrder() {
+    return order([
+        'Game.js',
+        'Game/Utils/**/*.js',
+        'Game/Controller/Controller.js',
+        'Game/ObjectiveManager/ObjectiveManager.js',
+        'Game/**/*.js'
+    ]);
+}
+
 function getJS() {
     return gulp.src('./js/**/*.js', {read: false, cwd: './src'})
-        .pipe(order([
-            'Game.js',
-            'Game/Utils/**/*.js',
-            'Game/Controller/Controller.js',
-            'Game/**/*.js'
-        ]));
+        .pipe(getJsOrder());
 }
 
 function getVendors() {
@@ -68,12 +73,7 @@ gulp.task('dist-prepare', function(next) {
 
 gulp.task('dist-js', function() {
     return gulp.src('./src/js/**')
-        .pipe(order([
-            'Game.js',
-            'Game/Utils/**/*.js',
-            'Game/Controller/Controller.js',
-            'Game/**/*.js'
-        ]))
+        .pipe(getJsOrder())
         .pipe(concat('scripts.js'))
         .pipe(gulp.dest('./dist'))
         .pipe(jsmin())
