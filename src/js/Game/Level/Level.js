@@ -90,10 +90,10 @@
         this.bg.fixedToCamera = true;
 
         // The layer that the player does not interact with
-        this.behind = this.map.createLayer('behind');
+        this.behind = this.map.createLayer('behind', this.game.width, this.game.height);
 
         // The layer containing platforms
-        this.level = this.map.createLayer('Tile Layer 1');
+        this.level = this.map.createLayer('Tile Layer 1', this.game.width, this.game.height);
         var firstID = this.map.tilesets[this.map.getTilesetIndex('tile')].firstgid;
         var collisionTiles = [];
         _.forEach(this.level.layer.data, function(e) {
@@ -152,18 +152,20 @@
                         var y = obj.y + obj.height / 2;
 
                         this.p1.reset(x, y);
+                        this.p1._cache[4] = 0;
                     }
                     break;
             }
         }, this);
     };
 
-    Game.Level.prototype.spawnPlayer = function() {
-        this.p1 = new Game.Player(this.game, 0, 0);
+    Game.Level.prototype.spawnPlayer = function(x, y) {
+        this.p1 = new Game.Player(this.game, x || 0, y || 0);
         this.game.add.existing(this.p1);
         this.entitiesGroup.add(this.p1);
         this.game.camera.follow(this.p1);
         this.game.camera.deadzone = this.getCameraDeadzone();
+        this.game.camera.roundPx = false;
     };
 
     /**

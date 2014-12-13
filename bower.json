@@ -19,5 +19,8 @@
     "phaser": "2.1",
     "lodash": "~2.4.1",
     "modernizr": "~2.8.3"
+  },
+  "resolutions": {
+    "phaser": "~2.2.1"
   }
 }
