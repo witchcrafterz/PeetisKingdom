@@ -125,13 +125,22 @@
 
 
     Phaser.Physics.Arcade._collisionHalfTriangleBottomLeft = function(i, body, tile) {
-        if (body.velocity.y > 0 && (tile.worldY + tile.height - body.position.y - body.height) - (tile.worldX + tile.width - body.position.x) <= 0 && (body.position.x) >= tile.left && (body.position.x) <= tile.right) {
-            body.y = (body.position.x - tile.right) - (body.height - tile.bottom);
-            body.blocked.down = true;
+        var deltaXY = (tile.worldY + tile.height - body.position.y - body.height) - (tile.worldX + tile.width - body.position.x);
 
+        if (body.velocity.y > 0 && (tile.worldY + tile.height - body.position.y - body.height) - (tile.worldX + tile.width - body.position.x) <= 0 && (body.position.x) >= tile.left && (body.position.x) <= tile.right) {
+            body.position.y += deltaXY;
+            // body.y = (body.position.x - tile.right) - (body.height - tile.bottom);
+            body.blocked.down = true;
+            
             if (tile.hasOwnProperty('slipperyness')) {
                 var gravityY = body.game.physics.arcade.gravity.y;
-                body.velocity.x += (body.gravity.y || gravityY) * Math.cos(45) * tile.slipperyness;
+                body.velocity.x -= (body.gravity.y || gravityY) * Math.cos(45) * tile.slipperyness;
+            } else if (body.bounce.y === 0) {
+                // Limit y speed, to prevent falling through
+                body.velocity.y *= 0.95;
+            } else {
+                body.velocity.y = Math.sin(45) * -body.velocity.y * body.bounce.y;
+                body.velocity.x = -Math.cos(45) * body.velocity.y * body.bounce.x;
             }
             return false;
         }
@@ -139,13 +148,23 @@
     };
 
     Phaser.Physics.Arcade._collisionHalfTriangleBottomRight = function(i, body, tile) {
-        if (body.velocity.y > 0 && (tile.worldY + tile.height - body.position.y - body.height) - (body.position.x + body.width - tile.left) <= 0 && (body.position.x + body.width) >= tile.left && (body.position.x + body.width) <= tile.right) {
-            body.y = tile.bottom + tile.left - (body.position.x + body.width) - body.height;
+        var deltaXY = (tile.worldY + tile.height - body.position.y - body.height) - (body.position.x + body.width - tile.left);
+
+        if (body.velocity.y > 0 && deltaXY <= 0 && (body.position.x + body.width) >= tile.left && (body.position.x + body.width) <= tile.right) {
+            body.position.y += deltaXY;
             body.blocked.down = true;
 
             if (tile.hasOwnProperty('slipperyness')) {
                 var gravityY = body.game.physics.arcade.gravity.y;
-                body.velocity.x += -(body.gravity.y || gravityY) * Math.cos(45) * tile.slipperyness;
+                body.velocity.x -= (body.gravity.y || gravityY) * Math.cos(45) * tile.slipperyness;
+            }
+
+            if (body.bounce.y === 0) {
+                // Limit y speed, to prevent falling through
+                body.velocity.y *= 0.95;
+            } else {
+                body.velocity.y = Math.sin(45) * -body.velocity.y * body.bounce.y;
+                body.velocity.x = Math.cos(45) * body.velocity.y * body.bounce.x;
             }
             return false;
         }
