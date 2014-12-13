@@ -174,7 +174,7 @@
     Game.Level.prototype.create = function() {
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
         this.game.physics.arcade.gravity = Game.gravity;
-        this.game.physics.arcade.TILE_BIAS = 70;
+        this.game.physics.arcade.TILE_BIAS = 35;
 
         this.setUtils();
         this.generateLevel();
