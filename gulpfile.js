@@ -28,6 +28,7 @@ function getJsOrder() {
         'Game/Utils/**/*.js',
         'Game/Controller/Controller.js',
         'Game/ObjectiveManager/ObjectiveManager.js',
+        'Game/ObjectiveManager/Objective/Objective.js',
         'Game/**/*.js'
     ]);
 }
