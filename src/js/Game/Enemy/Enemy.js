@@ -9,6 +9,8 @@
     var maxSpeed = 500;
     var acc = 2000;
     var controller = Game.Controller.AI;
+    var maxVelocity = new Phaser.Point(3000, 2000);
+    var maxWalkingVelocity = new Phaser.Point(500, 0);
 
     Game.Enemy = function(game, x, y, textureKey) {
 
@@ -18,6 +20,8 @@
         this.game.physics.enable(this, Phaser.Physics.ARCADE);
 
         this.body.collideWorldBounds = true;
+        this.body.drag.setTo(1000, 0);
+        this.body.maxVelocity = maxVelocity;
 
         this.controller = new Game.Controller.AI(this.game, this);
 
@@ -47,18 +51,20 @@
     Game.Enemy.prototype.update = function() {
         if (this.controller.right.isDown) {
             this.body.acceleration.x = acc;
+            this.body.velocity.x = Math.clamp(this.body.velocity.x, -maxWalkingVelocity.x, maxWalkingVelocity.x);
 
             this.animations.play('running');
 
             this.scale.x = 1;
         } else if (this.controller.left.isDown) {
             this.body.acceleration.x = -acc;
+            this.body.velocity.x = Math.clamp(this.body.velocity.x, -maxWalkingVelocity.x, maxWalkingVelocity.x);
 
             this.animations.play('running');
 
             this.scale.x = -1;
         } else {
-            this.body.acceleration.x = this.body.velocity.x * -5;
+            this.body.acceleration.setTo(0);
         }
 
 

@@ -110,7 +110,7 @@
 
             this.scale.x = -1;
         } else {
-            this.body.acceleration.x = 0;
+            this.body.acceleration.setTo(0);
         }
 
         if (this.game.physics.arcade.gravity === Game.gravity) {
@@ -123,15 +123,6 @@
             } else {
                 this.body.velocity.y *= 0.2;
             }
-        }
-
-        if (this.ctrlKey.isDown) {
-            this.body.maxVelocity.x = 0;
-            this.body.maxVelocity.y = 0;
-            this.body.acceleration.y *= 2;
-            this.body.acceleration.x *= 2;
-        } else {
-            // this.body.maxVelocity = maxVelocity;
         }
 
         if (this.body.onFloor() || this.body.touching.down) {
