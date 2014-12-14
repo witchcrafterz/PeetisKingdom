@@ -168,6 +168,17 @@
         this.game.camera.roundPx = false;
     };
 
+    Game.Level.prototype.createTestObjective = function() {
+        var itemsGroup = this.game.add.group();
+        itemsGroup.enableBody = true;
+        for (var i = 0; i < 6; i++) {
+            var sprite = this.game.add.sprite(this.p1.position.x - 700 + i * 200, this.p1.position.y - 200, 'UI', 27, itemsGroup);
+        }
+        itemsGroup.setAll('body.allowGravity', false);
+        var collectObjective = new Game.ObjectiveManager.CollectObjective(this.game, this.objectiveManager, 'collect thingys', this.p1, itemsGroup);
+        this.objectiveManager.addObjective(collectObjective);
+    };
+
     /**
      * Initialization logic here
      */
@@ -187,6 +198,8 @@
         this.game.add.existing(this.objectiveManager);
 
         this.generateObjects();
+
+        this.createTestObjective();
 
         this.alienYellow = new Game.Enemy(this.game, this.p1.position.x - this.game.width, this.p1.position.y);
         this.alienYellow.controller.hostile = false;
