@@ -133,13 +133,14 @@
 
         this.f4 = this.game.input.keyboard.addKey(115);
         this.f4.onUp.add(function() {
-            if (this.game.physics.arcade.gravity === Game.gravity) {
-                this.game.physics.arcade.gravity = {
-                    x: 0,
-                    y: 0
-                };
-            } else {
-                this.game.physics.arcade.gravity = Game.gravity;
+            if (this.p1) {
+                this.p1.godMode = !this.p1.godMode;
+
+                if (this.p1.godMode) {
+                    this.p1.allowGravity = false;
+                } else {
+                    this.p1.allowGravity = true;
+                }
             }
         }, this);
     };

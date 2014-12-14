@@ -38,6 +38,8 @@
 
         this.ctrlKey = this.game.input.keyboard.addKey(17);
 
+        this.godMode = false;
+
         return this;
     };
 
@@ -126,14 +128,20 @@
 
         if (this.controller.right.isDown) {
             this.body.acceleration.x = acc;
-            this.body.velocity.x = Math.clamp(this.body.velocity.x, -maxWalkingVelocity.x, maxWalkingVelocity.x);
+
+            if (!this.ctrlKey.isDown) {
+                this.body.velocity.x = Math.clamp(this.body.velocity.x, -maxWalkingVelocity.x, maxWalkingVelocity.x);
+            }
 
             this.animations.play('running');
 
             this.scale.x = 1;
         } else if (this.controller.left.isDown) {
             this.body.acceleration.x = -acc;
-            this.body.velocity.x = Math.clamp(this.body.velocity.x, -maxWalkingVelocity.x, maxWalkingVelocity.x);
+
+            if (!this.ctrlKey.isDown) {
+                this.body.velocity.x = Math.clamp(this.body.velocity.x, -maxWalkingVelocity.x, maxWalkingVelocity.x);
+            }
 
             this.animations.play('running');
 
@@ -142,13 +150,13 @@
             this.body.acceleration.setTo(0);
         }
 
-        if (this.game.physics.arcade.gravity === Game.gravity) {
+        if (!this.godMode) {
             this.jump();
         } else {
             if (this.controller.jump.isDown) {
-                this.body.velocity.y -= acc * 0.01;
+                this.body.velocity.y -= 100;
             } else if (this.controller.down.isDown) {
-                this.body.velocity.y += acc * 0.01;
+                this.body.velocity.y += 10;
             } else {
                 this.body.velocity.y *= 0.2;
             }
