@@ -115,6 +115,7 @@
     });
 
     Game.ObjectiveManager.Objective.prototype._onCompletionHandler = function() {
+        this.completed = true;
         this._statusTextStyle.fill = '#01C611';
         this._statusText.setStyle(this._statusTextStyle);
     };

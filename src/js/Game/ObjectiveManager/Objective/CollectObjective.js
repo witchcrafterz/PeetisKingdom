@@ -54,7 +54,7 @@
     };
 
     Game.ObjectiveManager.CollectObjective.prototype.checkWin = function() {
-        if (this.collected >= this.toCollect) {
+        if (this.collected >= this.toCollect && !this.completed) {
             if (!this.isReturn) {
                 this.onCompletion.dispatch(this);
             } else if (this.activationRectangle.contains(this.player.x, this.player.y)) {

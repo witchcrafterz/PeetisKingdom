@@ -137,9 +137,11 @@
 
     Game.ObjectiveManager.prototype._updatePositioning = function() {
         if (this.objectives.length === 0) {
+            console.log(this.objectives);
             this.game.add.tween(this).to({alpha: 0}, this.animationSpeed, this.easing, true);
             return;
         } else {
+            console.log(this.objectives);
             this.game.add.tween(this).to({alpha: 1}, this.animationSpeed, this.easing, true);
         }
 
