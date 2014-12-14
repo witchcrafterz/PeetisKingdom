@@ -18,6 +18,7 @@
 
         this.objectives = [];
         this.objectiveLog = [];
+        this.inactiveObjectives = [];
 
         this._updatePositioning();
 
@@ -26,6 +27,17 @@
 
     Game.ObjectiveManager.prototype = Object.create(Phaser.Group.prototype);
     Game.ObjectiveManager.prototype.constructor = Game.ObjectiveManager;
+
+    Game.ObjectiveManager.prototype.update = function() {
+        Phaser.Group.prototype.update.call(this);
+
+        _.forEach(this.inactiveObjectives, function(obj, index) {
+            if (obj.rectangle.contains(obj.player.x, obj.player.y)) {
+                this.addObjective(obj.objective);
+                this.inactiveObjectives.splice(index, 1);
+            }
+        }, this);
+    };
 
     Game.ObjectiveManager.prototype.createObjectives = function(map, objectivesLayer, player) {
         _.forEach(objectivesLayer, function(objective) {
@@ -56,7 +68,11 @@
         }, this);
 
         var collectObjective = new Game.ObjectiveManager.CollectObjective(this.game, this, objective.name, player, itemsGroup);
-        this.addObjective(collectObjective);
+        this.inactiveObjectives.push({
+            rectangle: activeRect,
+            objective: collectObjective,
+            player: player
+        });
 
         return collectObjective;
     };
