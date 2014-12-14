@@ -156,7 +156,7 @@
 
         if (this.body.onFloor() || this.body.touching.down) {
             this.resetJump();
-            // this.body.drag.setTo(drag.x, drag.y);
+            this.body.drag.setTo(drag.x, drag.y);
         } else {
             this.body.drag.setTo(0);
         }
