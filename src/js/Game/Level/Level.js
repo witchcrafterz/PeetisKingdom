@@ -210,6 +210,8 @@
         solskenspromenad.play();
 
         this.HUD = new Game.Utils.HUD(this.game);
+
+        this.game.world.bringToTop(this.objectiveManager);
     };
 
     Game.Level.prototype.update = function() {
