@@ -1,8 +1,9 @@
 (function() {
     'use strict';
 
-    Game.ObjectiveManager.Objective = function(game, objectiveManager, name, statusTemplate) {
-        Phaser.Group.call(this, game, objectiveManager, name);
+    Game.ObjectiveManager.Objective = function(game, objectiveManager, tilemap, objectiveLayer, player) {
+        Phaser.Group.call(this, game, objectiveManager, objectiveLayer.name);
+        this.alpha = 0;
 
         /**
          * Game instance
@@ -11,16 +12,34 @@
         this.game = game;
 
         /**
+         * The player who are to complete the objective
+         * @type {Phaser.Sprite}
+         */
+        this.player = player;
+
+        /**
          * Instance of objectiveManager
          * @type {Game.ObjectiveManager.Objective}
          */
         this.objectiveManager = objectiveManager;
 
         /**
+         * The objective layer that this objective belongs to
+         * @type {Phaser.TilemapLayer}
+         */
+        this.objectiveLayer = objectiveLayer;
+
+        /**
+         * The tilemap of which this objectives objective layer belongs to
+         * @type {Phaser.Tilemap}
+         */
+        this.tilemap = tilemap;
+
+        /**
          * Name of the objective
          * @type {String}
          */
-        this.name = name;
+        this.name = this.objectiveLayer.name;
 
         /**
          * Is the objective completed or not
@@ -73,7 +92,7 @@
          * The status template to be used for this objective. Formatting is to be implemented by children inheriting the Game.ObjectiveManager.Objective class
          * @type {String}
          */
-        this._statusTemplate = statusTemplate || this.name;
+        this._statusTemplate = this.objectiveLayer.properties.status || this.name;
     };
 
     Game.ObjectiveManager.Objective.prototype = Object.create(Phaser.Group.prototype);

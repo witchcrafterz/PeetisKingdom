@@ -2,12 +2,12 @@
  "layers":[
         {
          "draworder":"topdown",
-         "height":100,
+         "height":0,
          "name":"objects",
          "objects":[
                 {
                  "ellipse":true,
-                 "height":118.181818181818,
+                 "height":118.182,
                  "name":"",
                  "properties":
                     {
@@ -16,14 +16,14 @@
                  "rotation":0,
                  "type":"spawn",
                  "visible":true,
-                 "width":63.6363636363631,
-                 "x":4969.69696969697,
-                 "y":5393.93939393939
+                 "width":63.6364,
+                 "x":4969.7,
+                 "y":5393.94
                 }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
-         "width":200,
+         "width":0,
          "x":0,
          "y":0
         }, 
@@ -74,6 +74,93 @@
                  "width":1312,
                  "x":9624,
                  "y":6336
+                }, 
+                {
+                 "height":632,
+                 "name":"I am the pauser",
+                 "properties":
+                    {
+                     "frame":"13",
+                     "itemLayer":"pauser",
+                     "return":"true",
+                     "spritesheet":"UI",
+                     "status":"I BADLY NEED TO PAUS, HELP ME!",
+                     "statusReturn":"Return with the pause button"
+                    },
+                 "rotation":0,
+                 "type":"collect",
+                 "visible":true,
+                 "width":1312,
+                 "x":632,
+                 "y":6340
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":0,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "height":0,
+         "name":"wheres_my_stars",
+         "objects":[
+                {
+                 "height":75.7576,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":81.8182,
+                 "x":8975.76,
+                 "y":6542.42
+                }, 
+                {
+                 "height":84.8485,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":96.9697,
+                 "x":9200,
+                 "y":6312.12
+                }, 
+                {
+                 "height":75.7576,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":81.8182,
+                 "x":11206.1,
+                 "y":6330.3
+                }, 
+                {
+                 "height":93.9394,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":87.8788,
+                 "x":11336.4,
+                 "y":6596.97
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -85,10 +172,10 @@
         {
          "draworder":"topdown",
          "height":100,
-         "name":"wheres_my_stars",
+         "name":"pauser",
          "objects":[
                 {
-                 "height":75.757575757576,
+                 "height":148,
                  "name":"",
                  "properties":
                     {
@@ -97,51 +184,9 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":81.818181818182,
-                 "x":8975.75757575758,
-                 "y":6542.42424242424
-                }, 
-                {
-                 "height":84.848484848485,
-                 "name":"",
-                 "properties":
-                    {
-
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":96.9696969696961,
-                 "x":9200,
-                 "y":6312.12121212121
-                }, 
-                {
-                 "height":75.757575757576,
-                 "name":"",
-                 "properties":
-                    {
-
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":81.818181818182,
-                 "x":11206.0606060606,
-                 "y":6330.30303030303
-                }, 
-                {
-                 "height":93.9393939393931,
-                 "name":"",
-                 "properties":
-                    {
-
-                    },
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":87.878787878788,
-                 "x":11336.3636363636,
-                 "y":6596.9696969697
+                 "width":132,
+                 "x":81.7575757575757,
+                 "y":6664.48484848485
                 }],
          "opacity":1,
          "type":"objectgroup",

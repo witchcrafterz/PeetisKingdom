@@ -4,21 +4,54 @@
     Game.ObjectiveManager = function(game, x, y) {
         Phaser.Group.call(this, game, null, 'ObjectiveManager');
 
-        this.fixedToCamera = true;
-
-        this.cameraOffset.setTo(x, y);
-
+        /**
+         * The vertical padding in pixel of every objective
+         * @type {Number}
+         */
         this.padding = 10;
 
+        /**
+         * The speed of the animations made in ObjectiveManager
+         * @type {Number}
+         */
         this.animationSpeed = 300;
+
+        /**
+         * The easing function to use for animations
+         * @type {Phaser.Easing}
+         */
         this.easing = Phaser.Easing.Quadratic.Out;
 
+        /**
+         * The title of the objective manager
+         * @type {Phaser.Text}
+         */
         this.titleText = this.game.add.text(0, 0, 'Objectives');
         this.add(this.titleText);
 
+        /**
+         * An array of all current objectives
+         * @type {Array#Game.ObjectiveManager.Objective}
+         */
         this.objectives = [];
+
+        /**
+         * An array containing all objectives that have ever been added to ObjectiveManager.objectives
+         * @type {Array#Game.ObjectiveManager.Objective}
+         */
         this.objectiveLog = [];
+
+        /**
+         * An array containing all objectives that exists in the tilemap, but have as of yet not been added to ObjectiveManager.objectives
+         * Each entry have three properties: objective -- the objective object, player -- the player who ought to perform the objective, rectangle -- the rectangle in which the objective becomes activated
+         * @type {Array#Object}
+         */
         this.inactiveObjectives = [];
+
+
+        this.fixedToCamera = true;
+
+        this.cameraOffset.setTo(x, y);
 
         this._updatePositioning();
 
@@ -31,12 +64,14 @@
     Game.ObjectiveManager.prototype.update = function() {
         Phaser.Group.prototype.update.call(this);
 
-        _.forEach(this.inactiveObjectives, function(obj, index) {
+        for (var i = 0; i < this.inactiveObjectives.length; i++) {
+            var obj = this.inactiveObjectives[i];
             if (obj.rectangle.contains(obj.player.x, obj.player.y)) {
                 this.addObjective(obj.objective);
-                this.inactiveObjectives.splice(index, 1);
+                this.inactiveObjectives.splice(i, 1);
+                i--;
             }
-        }, this);
+        }
     };
 
     Game.ObjectiveManager.prototype.createObjectives = function(map, objectivesLayer, player) {
@@ -67,8 +102,7 @@
             sprite.body.allowGravity = object.properties.allowGravity || false;
         }, this);
 
-        var collectObjective = new Game.ObjectiveManager.CollectObjective(this.game, this, objective.name, player, itemsGroup);
-        collectObjective.statusTemplate = objective.properties.status;
+        var collectObjective = new Game.ObjectiveManager.CollectObjective(this.game, this, map, objective, player, itemsGroup);
         this.inactiveObjectives.push({
             rectangle: activeRect,
             objective: collectObjective,
@@ -83,7 +117,6 @@
         this.objectives.push(objective);
         this.objectiveLog.push(objective);
 
-        objective.alpha = 0;
         objective.game.add.tween(objective).to({alpha: 1}, this.animationSpeed, this.easing, true);
 
         objective.onCompletion.add(this._removeObjective, this);
