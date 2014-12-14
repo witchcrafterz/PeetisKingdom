@@ -9,6 +9,7 @@ var jsmin = require('gulp-jsmin');
 var concat = require('gulp-concat');
 var runSequence = require('run-sequence');
 var order = require('gulp-order');
+var modernizr = require('gulp-modernizr');
 
 gulp.task('browser-sync', function() {
     browserSync({
@@ -35,26 +36,38 @@ function getJsOrder() {
 }
 
 function getJS() {
-    return gulp.src('./js/**/*.js', {read: false, cwd: './src'})
-        .pipe(getJsOrder());
+    return [
+        './src/js/**'
+    ];
+}
+
+function getModernizrPath() {
+    return './src/modernizr.js';
 }
 
 function getVendors() {
-    console.log(bowerFiles());
-    return gulp.src(bowerFiles().concat(['./vendors/modernizr/modernizr.js']), {read: false, cwd: './src'});
+    return bowerFiles().concat([ getModernizrPath() ]);
 }
 
-gulp.task('compile-index', function() {
-    var target = gulp.src('./index.html.tpl', {cwd: './src'}).pipe(rename('index.html'));
-
-    return target
-        .pipe(inject(getVendors(), {name: 'bower', addRootSlash: false}))
-        .pipe(inject(getJS(), { addRootSlash: false }))
+gulp.task('modernizr', function() {
+    return gulp.src(getJS())
+        .pipe(modernizr())
         .pipe(gulp.dest('./src'));
-
 });
 
-gulp.task('serve', ['compile-index', 'browser-sync'], function() {
+gulp.task('compile-index', function() {
+    return gulp.src('./src/index.html.tpl')
+        .pipe(rename('index.html'))
+        .pipe(inject(gulp.src(getVendors(), {read: false}), {name: 'bower', addRootSlash: false, ignorePath: 'src'}))
+        .pipe(inject(gulp.src(getJS(), {read: false}), { addRootSlash: false, ignorePath: 'src' }))
+        .pipe(gulp.dest('./src'));
+});
+
+gulp.task('serve-prepare', function(next) {
+    runSequence('modernizr', 'compile-index', 'browser-sync', next);
+});
+
+gulp.task('serve', ['serve-prepare'], function() {
     gulp.watch('./src/**/*.js', ['compile-index', 'browser-sync-reload']);
     gulp.watch('./src/**/*.html', ['browser-sync-reload']);
 });
@@ -74,7 +87,7 @@ gulp.task('dist-prepare', function(next) {
 });
 
 gulp.task('dist-js', function() {
-    return gulp.src('./src/js/**')
+    return gulp.src(getJS())
         .pipe(getJsOrder())
         .pipe(concat('scripts.js'))
         .pipe(gulp.dest('./dist'))
@@ -90,8 +103,8 @@ gulp.task('dist-js-inject', ['dist-js'], function() {
         .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('dist-vendors', function() {
-    return gulp.src(bowerFiles().concat(['./src/vendors/modernizr/modernizr.js']))
+gulp.task('dist-vendors', ['modernizr'], function() {
+    return gulp.src(getVendors())
         .pipe(concat('vendors.js'))
         .pipe(gulp.dest('./dist'))
         .pipe(jsmin())
