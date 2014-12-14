@@ -30,6 +30,7 @@
                 toCollectItem.collected = true;
                 toCollectItem.kill();
                 this.updateStatusText();
+                this.checkWin();
             }
         }, this);
 

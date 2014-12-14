@@ -33,31 +33,55 @@
          * @type {Phaser.Signal}
          */
         this.onCompletion = new Phaser.Signal();
+        this.onCompletion.add(this._onCompletionHandler, this);
 
         /**
          * Signal that fires upon failure of objective
          * @type {Phaser.Signal}
          */
         this.onFailure = new Phaser.Signal();
+        this.onFailure.add(this._onFailureHandler, this);
+
+        /**
+         * An object containing style information for _titleText
+         * @type {Object}
+         */
+        this._titleTextStyle = {
+            font: '17pt arial'
+        };
 
         /**
          * The Phaser.Text instance of the title
          * @type {Phaser.Text}
          */
-        this._titleText = this.game.add.text(0, 0, this.name, { font: '17pt arial' });
+        this._titleText = this.game.add.text(0, 0, this.name, this._titleTextStyle);
         this.add(this._titleText);
+
+        this._statusTextStyle = { 
+            font: '14pt arial' 
+        };
 
         /**
          * The Phaser.Text instance of the status
          * @type {Phaser.Text}
          */
-        this._statusText = this.game.add.text(0, 0, this.statusText, { font: '14pt arial' });
+        this._statusText = this.game.add.text(0, 0, this.statusText, this._statusTextStyle);
         this._statusText.y = this._titleText.height;
         this.add(this._statusText);
     };
 
     Game.ObjectiveManager.Objective.prototype = Object.create(Phaser.Group.prototype);
     Game.ObjectiveManager.Objective.prototype.constructor = Game.ObjectiveManager.Objective;
+
+    Game.ObjectiveManager.Objective.prototype._onCompletionHandler = function() {
+        this._statusTextStyle.fill = '#01C611';
+        this._statusText.setStyle(this._statusTextStyle);
+    };
+
+    Game.ObjectiveManager.Objective.prototype._onFailureHandler = function() {
+        this._statusTextStyle.fill = '#ff0000';
+        this._statusText.setStyle(this._statusTextStyle);
+    };
 
     Game.ObjectiveManager.Objective.prototype.toString = function() {
         return this.name;

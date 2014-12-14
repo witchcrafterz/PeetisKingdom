@@ -20,6 +20,8 @@
         this.objectiveLog = [];
 
         this._updatePositioning();
+
+        this.alpha = 0;
     };
 
     Game.ObjectiveManager.prototype = Object.create(Phaser.Group.prototype);
@@ -32,6 +34,9 @@
 
         objective.alpha = 0;
         objective.game.add.tween(objective).to({alpha: 1}, this.animationSpeed, this.easing, true);
+
+        objective.onCompletion.add(this._removeObjective, this);
+        objective.onFailure.add(this._removeObjective, this);
 
         this._updatePositioning();
     };
@@ -48,10 +53,10 @@
 
     Game.ObjectiveManager.prototype._updatePositioning = function() {
         if (this.objectives.length === 0) {
-            this.alpha = 0;
+            this.game.add.tween(this).to({alpha: 0}, this.animationSpeed, this.easing, true);
             return;
         } else {
-            this.alpha = 1;
+            this.game.add.tween(this).to({alpha: 1}, this.animationSpeed, this.easing, true);
         }
 
         this.pivot.x = this.width;
