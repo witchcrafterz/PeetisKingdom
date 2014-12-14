@@ -68,7 +68,6 @@
         if (this.controller.jump.isDown) {
             if (!this.jumpWasDown) {
                 this.currentJumps += 1;
-                this.animations.play('jump');
 
                 if (this.currentJumps < maxJumps && this.body.velocity.y > 0) {
                     this.body.velocity.y = 0;
@@ -94,20 +93,30 @@
     };
 
     Game.Player.prototype.animate = function() {
-        var walking = this.controller.right.isDown || this.controller.left.isDown;
-        var falling = this.body.velocity.y > 0 && !this.body.onFloor();
+        var airborn = !this.body.onFloor();
+        var walking = (this.controller.right.isDown || this.controller.left.isDown) && !airborn;
+        var falling = airborn && this.body.velocity.y > 0;
+        var rising = airborn && this.body.velocity.y < 0;
         var still = (this.body.touching.down || this.body.onFloor()) && Math.abs(this.body.velocity.x) < 40;
 
         if (walking) {
             this.animations.play('running');
+            return;
         }
 
-        if (falling && !walking) {
+        if (falling) {
             this.animations.play('falling');
+            return;
+        }
+
+        if (rising) {
+            this.animations.play('jump');
+            return;
         }
 
         if (still) {
             this.animations.play('still');
+            return;
         }
     };
 
