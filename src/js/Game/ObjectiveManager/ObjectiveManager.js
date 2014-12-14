@@ -68,6 +68,7 @@
         }, this);
 
         var collectObjective = new Game.ObjectiveManager.CollectObjective(this.game, this, objective.name, player, itemsGroup);
+        collectObjective.statusTemplate = objective.properties.status;
         this.inactiveObjectives.push({
             rectangle: activeRect,
             objective: collectObjective,

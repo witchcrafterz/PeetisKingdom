@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    Game.ObjectiveManager.Objective = function(game, objectiveManager, name) {
+    Game.ObjectiveManager.Objective = function(game, objectiveManager, name, statusTemplate) {
         Phaser.Group.call(this, game, objectiveManager, name);
 
         /**
@@ -68,10 +68,32 @@
         this._statusText = this.game.add.text(0, 0, this.statusText, this._statusTextStyle);
         this._statusText.y = this._titleText.height;
         this.add(this._statusText);
+
+        /**
+         * The status template to be used for this objective. Formatting is to be implemented by children inheriting the Game.ObjectiveManager.Objective class
+         * @type {String}
+         */
+        this._statusTemplate = statusTemplate || this.name;
     };
 
     Game.ObjectiveManager.Objective.prototype = Object.create(Phaser.Group.prototype);
     Game.ObjectiveManager.Objective.prototype.constructor = Game.ObjectiveManager.Objective;
+
+    Game.ObjectiveManager.Objective.prototype.updateStatusText = function() {
+    };
+
+    Object.defineProperty(Game.ObjectiveManager.Objective.prototype, 'statusTemplate', {
+
+        get: function() {
+            return this._statusTemplate;
+        },
+
+        set: function(value) {
+            this._statusTemplate = value;
+            this.updateStatusText();
+        }
+
+    });
 
     Game.ObjectiveManager.Objective.prototype._onCompletionHandler = function() {
         this._statusTextStyle.fill = '#01C611';

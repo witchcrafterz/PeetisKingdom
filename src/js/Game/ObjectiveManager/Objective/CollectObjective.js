@@ -37,7 +37,7 @@
     };
 
     Game.ObjectiveManager.CollectObjective.prototype.updateStatusText = function() {
-        this.statusText = 'You have collected ' + this.collected + '/' + this.toCollect + ' things';
+        this.statusText = this.statusTemplate.format(this.collected, this.toCollect);
     };
 
     Game.ObjectiveManager.CollectObjective.prototype.checkWin = function() {
