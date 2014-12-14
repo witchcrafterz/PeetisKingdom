@@ -129,7 +129,7 @@
         if (this.controller.right.isDown) {
             this.body.acceleration.x = acc;
 
-            if (!this.ctrlKey.isDown) {
+            if (!this.ctrlKey.isDown && !this.godMode) {
                 this.body.velocity.x = Math.clamp(this.body.velocity.x, -maxWalkingVelocity.x, maxWalkingVelocity.x);
             }
 
@@ -139,7 +139,7 @@
         } else if (this.controller.left.isDown) {
             this.body.acceleration.x = -acc;
 
-            if (!this.ctrlKey.isDown) {
+            if (!this.ctrlKey.isDown && !this.godMode) {
                 this.body.velocity.x = Math.clamp(this.body.velocity.x, -maxWalkingVelocity.x, maxWalkingVelocity.x);
             }
 
@@ -148,17 +148,20 @@
             this.scale.x = -1;
         } else {
             this.body.acceleration.setTo(0);
+            if (this.godMode) {
+                this.body.velocity.x *= 0.95;
+            }
         }
 
         if (!this.godMode) {
             this.jump();
         } else {
             if (this.controller.jump.isDown) {
-                this.body.velocity.y -= 100;
+                this.body.acceleration.y = -2000;
             } else if (this.controller.down.isDown) {
-                this.body.velocity.y += 10;
+                this.body.acceleration.y = 2000;
             } else {
-                this.body.velocity.y *= 0.2;
+                this.body.velocity.y *= 0.95;
             }
         }
 

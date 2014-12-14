@@ -137,9 +137,9 @@
                 this.p1.godMode = !this.p1.godMode;
 
                 if (this.p1.godMode) {
-                    this.p1.allowGravity = false;
+                    this.p1.body.allowGravity = false;
                 } else {
-                    this.p1.allowGravity = true;
+                    this.p1.body.allowGravity = true;
                 }
             }
         }, this);
