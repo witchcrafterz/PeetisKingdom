@@ -7,7 +7,8 @@
 
     var textureKey = 'p1';
     var maxSpeed = 500;
-    var fullJumpMeter = 300;
+    var fullJumpMeter = 20000;
+    var jumpFactor = 0.7;
     var acc = 2000;
     var maxJumps = 2;
     var maxVelocity = new Phaser.Point(3000, 2000);
@@ -70,16 +71,14 @@
             if (!this.jumpWasDown) {
                 this.currentJumps += 1;
 
-                if (this.currentJumps < maxJumps/* && this.body.velocity.y > 0*/) {
-                    console.log('reset');
+                if (this.currentJumps < maxJumps) {
                     this.body.velocity.y = 0;
-                    this.body.blocked.down = true;
                 }
             }
 
             if (Math.floor(this.jumpMeter) > 0 && this.currentJumps < maxJumps) {
-                this.body.velocity.y -= this.jumpMeter;
-                this.jumpMeter *= 0.7;
+                this.body.acceleration.y -= this.jumpMeter;
+                this.jumpMeter *= jumpFactor;
 
             }
         } else {
@@ -125,6 +124,7 @@
 
     Game.Player.prototype.update = function() {
         this.updateBodySize();
+        this.body.acceleration.y = 0;
 
         if (this.controller.right.isDown) {
             this.body.acceleration.x = acc;
