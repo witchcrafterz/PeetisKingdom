@@ -31,8 +31,6 @@
         this.animations.add('falling', [2], 20, true);
         this.animations.add('still', [1], 20, true);
 
-        console.log(this.animations);
-
         this.currAnim = '';
 
         this.jumpMeter = fullJumpMeter;
