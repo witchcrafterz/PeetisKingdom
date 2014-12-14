@@ -26,8 +26,6 @@
             this.scale.maxWidth = this.maxWidth;
             this.scale.maxHeight = this.maxHeight;
 
-            this.scale.pageAlignVertically = true;
-
             //Fullscreen mode = maintain aspect radio
             this.game.scale.fullScreenTarget = document.getElementById('game');
             this.game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
