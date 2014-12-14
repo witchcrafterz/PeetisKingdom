@@ -27,6 +27,33 @@
     Game.ObjectiveManager.prototype = Object.create(Phaser.Group.prototype);
     Game.ObjectiveManager.prototype.constructor = Game.ObjectiveManager;
 
+    Game.ObjectiveManager.prototype.createObjectives = function(map, objectivesLayer, player) {
+        _.forEach(objectivesLayer, function(objective) {
+            switch (objective.type) {
+                case 'collect':
+                    var activeRect = new Phaser.Rectangle(objective.x, objective.y, objective.width, objective.height);
+                    var objectLayer = map.objects[objective.properties.itemLayer];
+                    var itemsGroup = this.game.add.group(undefined, objective.name);
+                    itemsGroup.enableBody = true;
+
+                    _.forEach(objectLayer, function(object) {
+                        var key = object.properties.spritesheet || objective.properties.spritesheet;
+                        var frame = object.properties.frame || objective.properties.frame;
+
+                        var sprite = itemsGroup.create(object.x, object.y, key, parseInt(frame));
+
+                        sprite.body.allowGravity = object.properties.allowGravity || false;
+
+                    }, this);
+
+                    var collectObjective = new Game.ObjectiveManager.CollectObjective(this.game, this, objective.name, player, itemsGroup);
+                    this.addObjective(collectObjective);
+
+                    break;
+            }            
+        }, this);
+    };
+
     Game.ObjectiveManager.prototype.addObjective = function(objective) {
         objective.y = this._calculateHeightTo(this.objectives.length - 1);
         this.objectives.push(objective);
