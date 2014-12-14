@@ -69,6 +69,7 @@
 
         this.game.load.atlasXML('alienYellow', 'assets/alienYellow.png', 'assets/alienYellow.xml');
         this.game.load.atlasXML('UI', 'assets/UI.png', 'assets/UI.xml');
+        this.game.load.atlasXML('p1', 'assets/p1_spritesheet.png', 'assets/p1_spritesheet.xml');
 
         this.game.load.audio('solskenspromenad', 'assets/Solskenspromenad.mp3');
 

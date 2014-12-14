@@ -1,0 +1,18 @@
+<TextureAtlas imagePath="assets/p1_spritesheet.png">
+    <SubTexture name="p1_duck" x="365" y="98" width="69" height="71" />
+    <SubTexture name="p1_front" x="0" y="196" width="66" height="92" />
+    <SubTexture name="p1_hurt" x="438" y="0" width="69" height="92" />
+    <SubTexture name="p1_jump" x="438" y="93" width="67" height="94" />
+    <SubTexture name="p1_stand" x="67" y="196" width="66" height="92" />
+    <SubTexture name="p1_walk01" x="0" y="0" width="72" height="97" />
+    <SubTexture name="p1_walk02" x="73" y="0" width="72" height="97" />
+    <SubTexture name="p1_walk03" x="146" y="0" width="72" height="97" />
+    <SubTexture name="p1_walk04" x="0" y="98" width="72" height="97" />
+    <SubTexture name="p1_walk05" x="73" y="98" width="72" height="97" />
+    <SubTexture name="p1_walk06" x="146" y="98" width="72" height="97" />
+    <SubTexture name="p1_walk07" x="219" y="0" width="72" height="97" />
+    <SubTexture name="p1_walk08" x="292" y="0" width="72" height="97" />
+    <SubTexture name="p1_walk09" x="219" y="98" width="72" height="97" />
+    <SubTexture name="p1_walk10" x="365" y="0" width="72" height="97" />
+    <SubTexture name="p1_walk11" x="292" y="98" width="72" height="97" />
+</TextureAtlas>

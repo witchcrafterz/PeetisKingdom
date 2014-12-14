@@ -5,7 +5,7 @@
      * Reference file: https://github.com/photonstorm/phaser-examples/blob/master/projects/rox/src/Player.js
      */
 
-    var textureKey = 'player1';
+    var textureKey = 'p1';
     var maxSpeed = 500;
     var fullJumpMeter = 500;
     var acc = 2000;
@@ -26,10 +26,12 @@
 
         this.controller = new Game.Controller(this.game);
 
-        this.animations.add('running', [5, 6, 7, 8, 9, 10, 11, 12], 10, true);
+        this.animations.add('running', [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 10, true);
         this.animations.add('jump', [3], 20, true);
         this.animations.add('falling', [2], 20, true);
         this.animations.add('still', [1], 20, true);
+
+        console.log(this.animations);
 
         this.currAnim = '';
 
@@ -45,6 +47,18 @@
     // This is how inheritance works in JavaScript btw
     Game.Player.prototype = Object.create(Phaser.Sprite.prototype);
     Game.Player.prototype.constructor = Game.Player;
+
+    Game.Player.prototype.updateBodySize = function() {
+        var currentFrame = this.animations.currentAnim.currentFrame;
+        if (!currentFrame) return;
+
+        if (this.body.height !== currentFrame.height) {
+            this.body.height = currentFrame.height;
+        }
+        if (this.body.width !== currentFrame.width) {
+            this.body.width = currentFrame.width;
+        }
+    };
 
     Game.Player.prototype.resetJump = function() {
         this.currentJumps = 0;
@@ -99,6 +113,8 @@
     };
 
     Game.Player.prototype.update = function() {
+        this.updateBodySize();
+
         if (this.controller.right.isDown) {
             this.body.acceleration.x = acc;
             this.body.velocity.x = Math.clamp(this.body.velocity.x, -maxWalkingVelocity.x, maxWalkingVelocity.x);
