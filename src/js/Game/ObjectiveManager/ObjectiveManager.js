@@ -31,27 +31,34 @@
         _.forEach(objectivesLayer, function(objective) {
             switch (objective.type) {
                 case 'collect':
-                    var activeRect = new Phaser.Rectangle(objective.x, objective.y, objective.width, objective.height);
-                    var objectLayer = map.objects[objective.properties.itemLayer];
-                    var itemsGroup = this.game.add.group(undefined, objective.name);
-                    itemsGroup.enableBody = true;
-
-                    _.forEach(objectLayer, function(object) {
-                        var key = object.properties.spritesheet || objective.properties.spritesheet;
-                        var frame = object.properties.frame || objective.properties.frame;
-
-                        var sprite = itemsGroup.create(object.x, object.y, key, parseInt(frame));
-
-                        sprite.body.allowGravity = object.properties.allowGravity || false;
-
-                    }, this);
-
-                    var collectObjective = new Game.ObjectiveManager.CollectObjective(this.game, this, objective.name, player, itemsGroup);
-                    this.addObjective(collectObjective);
-
+                    this.createCollectObjective(map, objective, player);
+                    break;
+                default:
+                    console.log('Objective of type ' + objective.type + ' not yet implemented');
                     break;
             }            
         }, this);
+    };
+
+    Game.ObjectiveManager.prototype.createCollectObjective = function(map, objective, player) {
+        var activeRect = new Phaser.Rectangle(objective.x, objective.y, objective.width, objective.height);
+        var objectLayer = map.objects[objective.properties.itemLayer];
+        var itemsGroup = this.game.add.group(undefined, objective.name);
+        itemsGroup.enableBody = true;
+
+        _.forEach(objectLayer, function(object) {
+            var key = object.properties.spritesheet || objective.properties.spritesheet;
+            var frame = object.properties.frame || objective.properties.frame;
+
+            var sprite = itemsGroup.create(object.x, object.y, key, parseInt(frame));
+
+            sprite.body.allowGravity = object.properties.allowGravity || false;
+        }, this);
+
+        var collectObjective = new Game.ObjectiveManager.CollectObjective(this.game, this, objective.name, player, itemsGroup);
+        this.addObjective(collectObjective);
+
+        return collectObjective;
     };
 
     Game.ObjectiveManager.prototype.addObjective = function(objective) {
