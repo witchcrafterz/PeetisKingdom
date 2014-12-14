@@ -24,6 +24,7 @@ gulp.task('browser-sync-reload', function() {
 
 function getJsOrder() {
     return order([
+        'String/String.js',
         'Game.js',
         'Game/Utils/**/*.js',
         'Game/Controller/Controller.js',
