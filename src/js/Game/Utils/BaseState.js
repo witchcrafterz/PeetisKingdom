@@ -6,10 +6,13 @@
 
     Game.Utils.BaseState.prototype = {
         getCameraDeadzone: function() {
-            var x = this.game.width * 0.35;
-            var y = this.game.height * 0.3;
-            var width = this.game.width * 0.65 - x;
-            var height = this.game.height * 0.7 - y;
+            var yFactor = 0.4;
+            var xFactor = 0.35;
+
+            var x = this.game.width * xFactor;
+            var y = this.game.height * yFactor;
+            var width = this.game.width * (1 - xFactor) - x;
+            var height = this.game.height * (1 - yFactor) - y;
             return new Phaser.Rectangle(x, y, width, height);
         }
     };
