@@ -59,7 +59,7 @@ gulp.task('compile-index', function() {
     return gulp.src('./src/index.html.tpl')
         .pipe(rename('index.html'))
         .pipe(inject(gulp.src(getVendors(), {read: false}), {name: 'bower', addRootSlash: false, ignorePath: 'src'}))
-        .pipe(inject(gulp.src(getJS(), {read: false}), { addRootSlash: false, ignorePath: 'src' }))
+        .pipe(inject(gulp.src(getJS(), {read: false}).pipe(getJsOrder()), { addRootSlash: false, ignorePath: 'src' }))
         .pipe(gulp.dest('./src'));
 });
 
