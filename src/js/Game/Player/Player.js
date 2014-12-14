@@ -7,7 +7,8 @@
 
     var textureKey = 'p1';
     var maxSpeed = 500;
-    var fullJumpMeter = 500;
+    var fullJumpMeter = 5000;
+    var jumpVelocity = -750;
     var acc = 2000;
     var maxJumps = 2;
     var maxVelocity = new Phaser.Point(3000, 2000);
@@ -74,8 +75,8 @@
                 }
             }
 
-            if (this.jumpMeter > 0 && this.currentJumps < maxJumps) {
-                this.body.velocity.y -= this.jumpMeter;
+            if (Math.floor(this.jumpMeter) > 0 && this.currentJumps < maxJumps) {
+                this.body.velocity.y = jumpVelocity;
                 this.jumpMeter *= 0.5;
 
             }
