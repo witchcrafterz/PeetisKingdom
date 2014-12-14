@@ -169,15 +169,31 @@
         this.game.camera.roundPx = false;
     };
 
-    Game.Level.prototype.createTestObjective = function() {
-        var itemsGroup = this.game.add.group();
-        itemsGroup.enableBody = true;
-        for (var i = 0; i < 6; i++) {
-            var sprite = this.game.add.sprite(this.p1.position.x - 700 + i * 200, this.p1.position.y - 200, 'UI', 27, itemsGroup);
-        }
-        itemsGroup.setAll('body.allowGravity', false);
-        var collectObjective = new Game.ObjectiveManager.CollectObjective(this.game, this.objectiveManager, 'collect thingys', this.p1, itemsGroup);
-        this.objectiveManager.addObjective(collectObjective);
+    Game.Level.prototype.createObjectives = function() {
+        _.forEach(this.map.objects['objectives'], function(objective) {
+            switch (objective.type) {
+                case 'collect':
+                    var activeRect = new Phaser.Rectangle(objective.x, objective.y, objective.width, objective.height);
+                    var objectLayer = this.map.objects[objective.properties.itemLayer];
+                    var itemsGroup = this.game.add.group(undefined, objective.name);
+                    itemsGroup.enableBody = true;
+
+                    _.forEach(objectLayer, function(object) {
+                        var key = object.properties.spritesheet || objective.properties.spritesheet;
+                        var frame = object.properties.frame || objective.properties.frame;
+
+                        var sprite = itemsGroup.create(object.x, object.y, key, parseInt(frame));
+
+                        sprite.body.allowGravity = object.properties.allowGravity || false;
+
+                    }, this);
+
+                    var collectObjective = new Game.ObjectiveManager.CollectObjective(this.game, this.objectiveManager, objective.name, this.p1, itemsGroup);
+                    this.objectiveManager.addObjective(collectObjective);
+
+                    break;
+            }            
+        }, this);
     };
 
     /**
@@ -200,7 +216,7 @@
 
         this.generateObjects();
 
-        this.createTestObjective();
+        this.createObjectives();
 
         this.alienYellow = new Game.Enemy(this.game, this.p1.position.x - this.game.width, this.p1.position.y);
         this.alienYellow.controller.hostile = false;
