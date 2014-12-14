@@ -33,4 +33,4 @@ src/vendors/
 
 dist
 src/index.html
-src/modernizr.js
+src/js/modernizr.js

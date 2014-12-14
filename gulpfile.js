@@ -42,7 +42,7 @@ function getJS() {
 }
 
 function getModernizrPath() {
-    return './src/modernizr.js';
+    return './src/js/modernizr.js';
 }
 
 function getVendors() {
@@ -52,7 +52,7 @@ function getVendors() {
 gulp.task('modernizr', function() {
     return gulp.src(getJS())
         .pipe(modernizr())
-        .pipe(gulp.dest('./src'));
+        .pipe(gulp.dest('./src/js'));
 });
 
 gulp.task('compile-index', function() {
