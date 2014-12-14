@@ -27,7 +27,6 @@
             this.scale.maxHeight = this.maxHeight;
 
             this.scale.pageAlignVertically = true;
-            this.scale.setScreenSize(true);
 
             //Fullscreen mode = maintain aspect radio
             this.game.scale.fullScreenTarget = document.getElementById('game');
