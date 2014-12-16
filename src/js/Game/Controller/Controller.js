@@ -21,7 +21,7 @@
         this.cursors.down.onDown.add(this.down.setDown, this);
         this.cursors.down.onUp.add(this.down.setUp, this);
 
-        if (Modernizr.touch) {
+        if (Modernizr.touchevents) {
             this.generateTouchControls();
         }
 
