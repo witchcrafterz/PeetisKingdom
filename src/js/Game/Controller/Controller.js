@@ -14,8 +14,9 @@
         this.cursors.left.onDown.add(this.left.setDown, this);
         this.cursors.left.onUp.add(this.left.setUp, this);
 
-        this.cursors.up.onDown.add(this.jump.setDown, this);
-        this.cursors.up.onUp.add(this.jump.setUp, this);
+        this.spaceBar = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+        this.spaceBar.onDown.add(this.jump.setDown, this);
+        this.spaceBar.onUp.add(this.jump.setUp, this);
 
         this.cursors.down.onDown.add(this.down.setDown, this);
         this.cursors.down.onUp.add(this.down.setUp, this);

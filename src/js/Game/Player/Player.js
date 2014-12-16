@@ -31,6 +31,7 @@
         this.animations.add('jump', [3], 20, true);
         this.animations.add('falling', [2], 20, true);
         this.animations.add('still', [1], 20, true);
+        this.animations.add('duck', [0], 20, true);
 
         this.currAnim = '';
 
@@ -100,6 +101,12 @@
         var falling = airborn && this.body.velocity.y > 0;
         var rising = airborn && this.body.velocity.y < 0;
         var still = (this.body.touching.down || this.body.onFloor()) && Math.abs(this.body.velocity.x) < 40;
+        var ducking = this.controller.down.isDown;
+
+        if (ducking) {
+            this.animations.play('duck');
+            return;
+        }
 
         if (walking) {
             this.animations.play('running');
