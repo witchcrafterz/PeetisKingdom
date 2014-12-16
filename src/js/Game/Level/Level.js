@@ -93,8 +93,8 @@
         // The layer that the player does not interact with
         this.behind = this.map.createLayer('behind', this.game.width, this.game.height);
 
+        this.level = this.map.createLayer('collision', this.game.width, this.game.height);
         // The layer containing platforms
-        this.level = this.map.createLayer('Tile Layer 1', this.game.width, this.game.height);
         var firstID = this.map.tilesets[this.map.getTilesetIndex('tile')].firstgid;
         var collisionTiles = [];
         _.forEach(this.level.layer.data, function(e) {
@@ -113,8 +113,11 @@
             });
         });
 
+        this.front = this.map.createLayer('front');
+
         this.level.resizeWorld();
 
+        this.map.setLayer(this.level);
         this.map.setCollision(collisionTiles);
     };
 
