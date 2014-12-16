@@ -18,6 +18,15 @@
             95,
             117
         ],
+        bottomThird: [
+            102
+        ],
+        topThird: [
+        ],
+        topHalf: [
+        ],
+        bottomHalf: [
+        ],
         exclude: [
             93,
             118,
@@ -117,6 +126,24 @@
 
                 if (_.contains(specialCollision.bottomLeft, t.index - firstID)) {
                     t.slope = 'HALF_TRIANGLE_BOTTOM_LEFT';
+                }
+
+                if (_.contains(specialCollision.bottomThird, t.index - firstID)) {
+                    t.worldY += 2 * t.height / 3;
+                    t.height /= 3;
+                }
+
+                if (_.contains(specialCollision.topThird, t.index - firstID)) {
+                    t.height /= 3;
+                }
+
+                if (_.contains(specialCollision.bottomHalf, t.index - firstID)) {
+                    t.worldY += t.height * 0.5;
+                    t.height *= 0.5;
+                }
+
+                if (_.contains(specialCollision.bottomHalf, t.index - firstID)) {
+                    t.height *= 0.5;
                 }
             });
         });
