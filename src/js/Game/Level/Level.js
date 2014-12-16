@@ -90,6 +90,8 @@
 
         this.game.load.audio('solskenspromenad', 'assets/Solskenspromenad.mp3');
 
+        this.game.load.image('plank', 'assets/plank.png');
+
         this.game.load.tilemap('map', 'assets/spel.json', null, Phaser.Tilemap.TILED_JSON);
     };
 
@@ -245,6 +247,12 @@
         solskenspromenad.play();
 
         this.HUD = new Game.HUD(this.game);
+
+        this.dialogueManager = new Game.DialogueManager(this.game, this.HUD);
+        var dialogue = new Game.Dialogue(this.game, {
+            text: 'Use arrows keys to walk, and spacebar to jump'
+        }, 'TEST TU TRE');
+        this.dialogueManager.setDialogue(dialogue);
 
         this.game.world.bringToTop(this.objectiveManager);
     };
