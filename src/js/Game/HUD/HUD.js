@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    Game.Utils.HUD = function(game) {
+    Game.HUD = function(game) {
         Phaser.Group.call(this, game);
 
         this.fixedToCamera = true;
@@ -12,10 +12,10 @@
         return this;
     };
 
-    Game.Utils.HUD.prototype = Object.create(Phaser.Group.prototype);
-    Game.Utils.HUD.prototype.constructor = Game.Utils.HUD;
+    Game.HUD.prototype = Object.create(Phaser.Group.prototype);
+    Game.HUD.prototype.constructor = Game.HUD;
 
-    Game.Utils.HUD.prototype.createMuteButton = function() {
+    Game.HUD.prototype.createMuteButton = function() {
         var muteButton = this.muteButton = new Phaser.Button(this.game, 0, 0, 'UI');
         
         muteButton.animations.add('mute', [12]);
@@ -45,7 +45,7 @@
         this.add(muteButton);
     };
 
-    Game.Utils.HUD.prototype.createFullscreenButton = function() {
+    Game.HUD.prototype.createFullscreenButton = function() {
         var fullscreenButton = this.fullscreenButton = new Phaser.Button(this.game, 0, 0, 'UI');
 
         fullscreenButton.onInputDown.add(function() {

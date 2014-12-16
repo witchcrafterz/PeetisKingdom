@@ -244,7 +244,7 @@
         var solskenspromenad = this.game.add.audio('solskenspromenad', 0.6, true, true);
         solskenspromenad.play();
 
-        this.HUD = new Game.Utils.HUD(this.game);
+        this.HUD = new Game.HUD(this.game);
 
         this.game.world.bringToTop(this.objectiveManager);
     };
