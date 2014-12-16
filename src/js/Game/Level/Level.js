@@ -91,9 +91,9 @@
         this.bg.fixedToCamera = true;
 
         // The layer that the player does not interact with
-        this.behind = this.map.createLayer('behind', this.game.width, this.game.height);
+        this.behind = this.map.createLayer('behind');
 
-        this.level = this.map.createLayer('collision', this.game.width, this.game.height);
+        this.level = this.map.createLayer('collision');
         // The layer containing platforms
         var firstID = this.map.tilesets[this.map.getTilesetIndex('tile')].firstgid;
         var collisionTiles = [];
