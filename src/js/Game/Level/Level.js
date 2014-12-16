@@ -17,6 +17,14 @@
             40,
             95,
             117
+        ],
+        exclude: [
+            93,
+            118,
+            143,
+            65,
+            90,
+            155
         ]
     };
 
@@ -99,7 +107,7 @@
         var collisionTiles = [];
         _.forEach(this.level.layer.data, function(e) {
             _.forEach(e, function(t) {
-                if (t.index > -1) {
+                if (t.index > -1 && !_.contains(specialCollision.exclude, t.index - firstID)) {
                     collisionTiles.push(t.index);
                 }
 
