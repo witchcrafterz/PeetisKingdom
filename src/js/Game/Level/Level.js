@@ -120,10 +120,16 @@
                 }
             });
         });
-
         this.front = this.map.createLayer('front');
 
         this.level.resizeWorld();
+
+        var renderSettings = {
+            enableScrollDelta: true
+        };
+        this.level.renderSettings = renderSettings;
+        this.behind.renderSettings = renderSettings;
+        this.front.renderSettings = renderSettings;
 
         this.map.setLayer(this.level);
         this.map.setCollision(collisionTiles);
