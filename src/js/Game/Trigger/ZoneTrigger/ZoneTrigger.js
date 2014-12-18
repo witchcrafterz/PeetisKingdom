@@ -53,6 +53,8 @@
     };
 
     Game.Trigger.ZoneTrigger.prototype.update = function() {
+        if (!this.enabled) return;
+
         _.forEach(this.toTrack, function(toTrack, iToTrack) {
             _.forEach(this.zones, function(zone, iZone) {
 
