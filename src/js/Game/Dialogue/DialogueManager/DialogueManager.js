@@ -98,10 +98,16 @@
 
     Game.DialogueManager.prototype.constructor = Game.DialogueManager;
 
-    Game.DialogueManager.prototype.setDialogue = function(dialogue, autoShow) {
+    Game.DialogueManager.prototype.setDialogue = function(dialogue, autoShow, reset) {
         this.currentDialogue = dialogue;
 
-        autoShow = typeof autoShow === 'undefined' ? true : autoShow;
+        autoShow = typeof autoShow !== 'undefined' ? autoShow : true;
+        reset = typeof reset !== 'undefined' ? reset : true;
+
+
+        if (reset === true) {
+            this.currentDialogue.currentSlide = -1;
+        }
 
         this.nextSlide();
 
