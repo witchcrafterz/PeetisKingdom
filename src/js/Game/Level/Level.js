@@ -216,6 +216,11 @@
                 case 'dialogue':
                     var dialogueKey = obj.properties.dialogue;
                     var dialogue = this.dialogues[dialogueKey];
+                    var criteria = 
+                        obj.properties.requireActivation ? function(sender) {
+                            return this.activateKey.isDown;
+                        } : undefined;
+                                       
 
                     if (dialogue) {
                         var trigger = new Game.Trigger.ZoneTrigger(
@@ -223,9 +228,7 @@
                             true, 
                             new Phaser.Rectangle(obj.x, obj.y, obj.width, obj.height), 
                             this.p1,
-                            function(sender) {
-                                return this.activateKey.isDown;
-                            }, 
+                            criteria, 
                             undefined,
                             this);
                         this.triggerManager.addTrigger(trigger);
