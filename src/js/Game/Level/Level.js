@@ -224,6 +224,8 @@
         this.game.physics.arcade.gravity = Game.gravity;
         this.game.physics.arcade.TILE_BIAS = 70;
 
+        this.activateKey = this.game.input.keyboard.addKey(Phaser.Keyboard.UP);
+
         this.setUtils();
         this.generateLevel();
 
@@ -261,6 +263,9 @@
             }
         ], 'TEST TU TRE');
 
+        this.activateKey.onDown.add(function() {
+            this.dialogueManager.nextSlide();
+        }, this);
 
         var trigger = new Game.Trigger.ZoneTrigger(
             this.game, 
