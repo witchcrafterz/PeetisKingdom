@@ -117,10 +117,13 @@
     };
 
     Game.DialogueManager.prototype.nextSlide = function() {
+        if (!this.currentDialogue) return;
+
         this.currentDialogue.currentSlide++;
 
         if (this.currentDialogue.currentSlide === this.currentDialogue.conversation.length) {
             this.hidden = true;
+            this.currentDialogue.currentSlide = -1;
         } else {
             this.refreshDialogue();
         }
