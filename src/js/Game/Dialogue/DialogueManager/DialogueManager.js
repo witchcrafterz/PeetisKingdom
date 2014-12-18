@@ -44,15 +44,15 @@
          */
         this.dialoguePanel = this.game.add.group(this.parent, 'Dialogue Panel');
         this.dialoguePanel.x = this.game.width * 0.2;
-        this.dialoguePanel.width = this.game.width - this.dialoguePanel.x;
         this.dialoguePanel.y = this.game.height;
 
         /**
-         * TODO: Make a general "background" property, ideally in Dialogue object
-         * @type {[type]}
+         * The background of the dialogue panel
+         * @type {Phaser.Sprite}
          */
-        var bg = this.game.add.image(0, 0, 'plank', undefined, this.dialoguePanel);
-        bg.anchor.setTo(0.2, 0.4);
+        this._background = new Phaser.Sprite(this.game, this.game.width * 0.5 - this.dialoguePanel.x, 0, '');
+        this._background.anchor.setTo(0.5);
+        this.dialoguePanel.add(this._background);
 
         /**
          * The text object of the title
@@ -86,21 +86,29 @@
 
         this.dialoguePanel.add(this.titleText);
         this.dialoguePanel.add(this.textText);
+        this.updateBackground('plank');
+        
         return this;
     };
 
     Game.DialogueManager.prototype.constructor = Game.DialogueManager;
+
+    Game.DialogueManager.prototype.updateBackground = function(bg) {
+        if (bg) {
+            this._background.loadTexture(bg);
+        }
+    };
 
     Game.DialogueManager.prototype.setDialogue = function(dialogue, autoShow) {
         this.currentDialogue = dialogue;
 
         autoShow = typeof autoShow === 'undefined' ? true : autoShow;
 
+        this.nextSlide();
+
         if (autoShow) {
             this.hidden = false;
         }
-
-        this.nextSlide();
     };
 
     Game.DialogueManager.prototype.nextSlide = function() {
@@ -120,6 +128,8 @@
         this.textText.text = this.currentDialogue.conversation[this.currentDialogue.currentSlide].text || this.currentDialogue.defaultText || '';
         this.textText.setStyle(this.currentDialogue.conversation[this.currentDialogue.currentSlide].textStyle || this.currentDialogue.defaultTextStyle || this.defaultTextStyle);
         this.textText.y = this.titleText.height + this.padding;
+
+        this._background.position.y = (this.titleText.height + this.textText.height + 2 * this.padding) * 0.5;
     };
 
     Object.defineProperty(Game.DialogueManager.prototype, 'hidden', {
@@ -132,9 +142,15 @@
             this._hidden = value;
 
             if (this._hidden) {
-                this.game.add.tween(this.dialoguePanel.position).to({ y: this.game.height }, 1000, this.easing).start();
+                
+                var add = 0;
+                if (this._background) {
+                    add = this._background.height * 0.5;
+                }
+
+                this.game.add.tween(this.dialoguePanel.position).to({ y: this.game.height + add }, 1000, this.easing).start();
             } else {
-                this.game.add.tween(this.dialoguePanel.position).to({ y: this.game.height - this.height }, 1000, this.easing).start();
+                this.game.add.tween(this.dialoguePanel.position).to({ y: this.game.height - this.dialoguePanel.height }, 1000, this.easing).start();
             }
         }
 
