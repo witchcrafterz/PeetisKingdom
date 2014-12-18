@@ -249,10 +249,34 @@
         this.HUD = new Game.HUD(this.game);
 
         this.dialogueManager = new Game.DialogueManager(this.game, this.HUD);
-        var dialogue = new Game.Dialogue(this.game, {
-            text: 'Use arrows keys to walk, and spacebar to jump'
-        }, 'TEST TU TRE');
-        this.dialogueManager.setDialogue(dialogue);
+
+        this.triggerManager = new Game.Trigger.TriggerManager(this.game);
+
+        var dialogue = new Game.Dialogue(this.game, [
+            {
+                text: 'Use arrows keys to walk, and spacebar to jump'
+            }, {
+                text: 'And remember, have fun!',
+                title: 'lplasödlasd'
+            }
+        ], 'TEST TU TRE');
+
+        var trigger = new Game.Trigger.ZoneTrigger(this.game, true, new Phaser.Rectangle(this.p1.position.x - 200, this.p1.position.y - 50, 100, 100), this.p1);
+        this.triggerManager.addTrigger(trigger);
+
+        trigger.onActive.add(function() {
+            this.dialogueManager.setDialogue(dialogue);
+        }, this);
+
+        trigger.onInactive.add(function() {
+            this.dialogueManager.hidden = true;
+        }, this);
+
+
+        this.f6 = this.game.input.keyboard.addKey(117);
+        this.f6.onUp.add(function() {
+            this.dialogueManager.nextSlide();
+        }, this);
 
         this.game.world.bringToTop(this.objectiveManager);
     };
