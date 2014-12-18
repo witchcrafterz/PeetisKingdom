@@ -191,6 +191,16 @@
         }, this);
     };
 
+    Game.Level.prototype.generateDialogues = function() {
+        this.dialogues = {
+            'instruction': new Game.Dialogue(this.game, [{
+                text: 'Use arrow keys to walk, and the up key to interact with objects!'
+            }, {
+                text: 'To jump, press spacebar. Press it twice to double jump!'
+            }], 'Instructions')
+        };
+    };
+
     Game.Level.prototype.generateObjects = function() {
         _.forEach(this.map.objects['objects'], function(obj) {
             switch (obj.type) {
@@ -202,6 +212,34 @@
                         this.p1.reset(x, y);
                         this.p1._cache[4] = 0;
                     }
+                    break;
+                case 'dialogue':
+                    var dialogueKey = obj.properties.dialogue;
+                    var dialogue = this.dialogues[dialogueKey];
+
+                    if (dialogue) {
+                        var trigger = new Game.Trigger.ZoneTrigger(
+                            this.game, 
+                            true, 
+                            new Phaser.Rectangle(obj.x, obj.y, obj.width, obj.height), 
+                            this.p1,
+                            function(sender) {
+                                return this.activateKey.isDown;
+                            }, 
+                            undefined,
+                            this);
+                        this.triggerManager.addTrigger(trigger);
+
+                        trigger.onActive.add(function() {
+                            this.dialogueManager.setDialogue(dialogue);
+                        }, this);
+
+                        trigger.onInactive.add(function() {
+                            this.dialogueManager.hidden = true;
+                        }, this);
+
+                    }
+
                     break;
             }
         }, this);
@@ -228,6 +266,7 @@
 
         this.setUtils();
         this.generateLevel();
+        this.generateDialogues();
 
         this.entitiesGroup = this.game.add.group();
 
@@ -235,6 +274,9 @@
 
         this.objectiveManager = new Game.ObjectiveManager(this.game, this.game.width - 50, this.game.height * 0.5);
         this.game.add.existing(this.objectiveManager);
+        this.HUD = new Game.HUD(this.game);
+        this.dialogueManager = new Game.DialogueManager(this.game, this.HUD);
+        this.triggerManager = new Game.Trigger.TriggerManager(this.game);
 
         this.generateObjects();
 
@@ -248,43 +290,8 @@
         var solskenspromenad = this.game.add.audio('solskenspromenad', 0.6, true, true);
         solskenspromenad.play();
 
-        this.HUD = new Game.HUD(this.game);
-
-        this.dialogueManager = new Game.DialogueManager(this.game, this.HUD);
-
-        this.triggerManager = new Game.Trigger.TriggerManager(this.game);
-
-        var dialogue = new Game.Dialogue(this.game, [
-            {
-                text: 'Use arrows keys to walk, and spacebar to jump'
-            }, {
-                text: 'And remember, have fun!',
-                title: 'lplasödlasd'
-            }
-        ], 'TEST TU TRE');
-
         this.activateKey.onDown.add(function() {
             this.dialogueManager.nextSlide();
-        }, this);
-
-        var trigger = new Game.Trigger.ZoneTrigger(
-            this.game, 
-            true, 
-            new Phaser.Rectangle(this.p1.position.x - 200, this.p1.position.y - 50, 100, 100), 
-            this.p1,
-            function(sender) {
-                return this.activateKey.isDown;
-            }, 
-            undefined,
-            this);
-        this.triggerManager.addTrigger(trigger);
-
-        trigger.onActive.add(function() {
-            this.dialogueManager.setDialogue(dialogue);
-        }, this);
-
-        trigger.onInactive.add(function() {
-            this.dialogueManager.hidden = true;
         }, this);
 
 
@@ -294,6 +301,7 @@
         }, this);
 
         this.game.world.bringToTop(this.objectiveManager);
+        this.game.world.bringToTop(this.HUD);
     };
 
     Game.Level.prototype.update = function() {
