@@ -261,7 +261,17 @@
             }
         ], 'TEST TU TRE');
 
-        var trigger = new Game.Trigger.ZoneTrigger(this.game, true, new Phaser.Rectangle(this.p1.position.x - 200, this.p1.position.y - 50, 100, 100), this.p1);
+
+        var trigger = new Game.Trigger.ZoneTrigger(
+            this.game, 
+            true, 
+            new Phaser.Rectangle(this.p1.position.x - 200, this.p1.position.y - 50, 100, 100), 
+            this.p1,
+            function(sender) {
+                return this.activateKey.isDown;
+            }, 
+            undefined,
+            this);
         this.triggerManager.addTrigger(trigger);
 
         trigger.onActive.add(function() {
