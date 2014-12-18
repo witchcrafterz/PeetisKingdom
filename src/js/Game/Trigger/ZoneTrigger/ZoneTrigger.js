@@ -8,7 +8,7 @@
      * @param {Array#Phaser.Rectangle | Phaser.Rectangle}   zone    [description]
      * @param {Array#Phaser.Sprite | Phaser.Sprite}         toTrack    [description]
      */
-    Game.Trigger.ZoneTrigger = function(game, enabled, zone, toTrack) {
+    Game.Trigger.ZoneTrigger = function(game, enabled, zone, toTrack, criteriaActive, criteriaInactive, thisArg) {
         Game.Trigger.call(this, game, enabled);
 
         /**
@@ -34,8 +34,11 @@
             this.toTrack = [this.toTrack];
         }
 
-        console.log(this.zones);
-        console.log(this.toTrack);
+        this.criteriaActive = criteriaActive;
+
+        this.criteriaInactive = criteriaInactive;
+
+        this.thisArg = thisArg;
 
         this._refreshInZone();
 
@@ -59,14 +62,32 @@
             _.forEach(this.zones, function(zone, iZone) {
 
                 var intersects = zone.contains(toTrack.position.x, toTrack.position.y);
+                var entered = intersects && !this._wasInZone[iToTrack];
+                var left = !intersects && this._wasInZone[iToTrack];
 
-                if (intersects && !this._wasInZone[iToTrack]) {
-                    this.onActive.dispatch(this, toTrack, zone);
-                } else if(!intersects && this._wasInZone[iToTrack]) {
-                    this.onInactive.dispatch(this, toTrack, zone);
+                var updateInZone = false;
+
+                if (entered) {
+                    if (this.criteriaActive && this.criteriaActive.call(this.thisArg || this, this, toTrack, zone)) {
+                        this.onActive.dispatch(this, toTrack, zone);
+                        updateInZone = true;
+                    } else if (!this.criteriaActive) {
+                        this.onActive.dispatch(this, toTrack, zone);
+                        updateInZone = true;
+                    }
+                } else if (left) {
+                    if (this.criteriaInactive && this.criteriaInactive.call(this.thisArg || this, this, toTrack, zone)) {
+                        this.onInactive.dispatch(this, toTrack, zone);
+                        updateInZone = true;
+                    } else if (!this.criteriaInactive) {
+                        this.onInactive.dispatch(this, toTrack, zone);
+                        updateInZone = true;
+                    }
                 }
 
-                this._wasInZone[iToTrack] = intersects;
+                if (updateInZone) {
+                    this._wasInZone[iToTrack] = intersects;
+                }
             }, this);
         }, this);
     };
