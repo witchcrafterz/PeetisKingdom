@@ -19,6 +19,8 @@
 
         Phaser.Sprite.call(this, game, x, y, textureKey);
 
+        this.inventory = [];
+
         this.anchor.set(0.5);
         this.game.physics.enable(this, Phaser.Physics.ARCADE);
 
