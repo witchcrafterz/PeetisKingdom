@@ -84,20 +84,19 @@
          */
         this.defaultTextStyle = {font: '20pt Arial'};
 
+        /**
+         * The default background for the dialogue panel
+         * @type {String}
+         */
+        this.defaultBackground = 'plank';
+
         this.dialoguePanel.add(this.titleText);
         this.dialoguePanel.add(this.textText);
-        this.updateBackground('plank');
-        
+
         return this;
     };
 
     Game.DialogueManager.prototype.constructor = Game.DialogueManager;
-
-    Game.DialogueManager.prototype.updateBackground = function(bg) {
-        if (bg) {
-            this._background.loadTexture(bg);
-        }
-    };
 
     Game.DialogueManager.prototype.setDialogue = function(dialogue, autoShow) {
         this.currentDialogue = dialogue;
@@ -122,12 +121,23 @@
     };
 
     Game.DialogueManager.prototype.refreshDialogue = function() {
-        this.titleText.text = this.currentDialogue.conversation[this.currentDialogue.currentSlide].title || this.currentDialogue.defaultTitle || '';
-        this.titleText.setStyle(this.currentDialogue.conversation[this.currentDialogue.currentSlide].titleStyle || this.currentDialogue.defaultTitleStyle || this.defaultTitleStyle);
+        var currentSlide = this.currentDialogue.conversation[this.currentDialogue.currentSlide];
 
-        this.textText.text = this.currentDialogue.conversation[this.currentDialogue.currentSlide].text || this.currentDialogue.defaultText || '';
-        this.textText.setStyle(this.currentDialogue.conversation[this.currentDialogue.currentSlide].textStyle || this.currentDialogue.defaultTextStyle || this.defaultTextStyle);
+        this.titleText.text = currentSlide.title || this.currentDialogue.defaultTitle || '';
+        this.titleText.setStyle(currentSlide.titleStyle || this.currentDialogue.defaultTitleStyle || this.defaultTitleStyle);
+
+        this.textText.text = currentSlide.text || this.currentDialogue.defaultText || '';
+        this.textText.setStyle(currentSlide.textStyle || this.currentDialogue.defaultTextStyle || this.defaultTextStyle);
         this.textText.y = this.titleText.height + this.padding;
+
+        var newBG = currentSlide.background || this.currentDialogue.defaultBackground || this.defaultBackground;
+        if (this._background.key !== newBG) {
+            this._background.loadTexture(newBG);
+
+            if (!this.hidden) {
+                this.hidden = false;
+            }
+        }
 
         this._background.position.y = (this.titleText.height + this.textText.height + 2 * this.padding) * 0.5;
     };

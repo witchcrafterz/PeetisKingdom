@@ -8,14 +8,16 @@
      * @param {String}                  conversation.title      The title of this slide
      * @param {String}                  conversation.text       The actual text of this slide in the dialogue
      * @param {Phaser.Sprite}           conversation.sprite     The sprite for this slide in the dialogue
+     * @param {Phaser.Sprite|String}    conversation.background The background for this silde in the dialogue
      * @param {String}                  conversation.textStyle  The font style of this font in the conversation for the text
      * @param {String}                  conversation.titleStyle The font style of this font in the conversation for the title
      * @param {String}                  title                   Default title if a slide in the conversation does not have one
      * @param {Object}                  textStyle               Default font style if a slide in the conversation does not have one
      * @param {Object}                  titleStyle              Default font style for the title if a slide in the conversation does not have one
      * @param {Phaser.Sprite}           sprite                  Default sprite if a slide in the conversation does not have one
+     * @param {Phaser.Sprite|String}    background              Default background if a slide in the conversation does not have one
      */
-    Game.Dialogue = function(game, conversation, title, textStyle, titleStyle, sprite) {
+    Game.Dialogue = function(game, conversation, title, textStyle, titleStyle, sprite, background) {
         this.game = game;
 
         /**
@@ -62,6 +64,12 @@
          * @type {Object}
          */
         this.defaulTitleStyle = titleStyle;
+
+        /**
+         * Default background if a slide in the conversation does not have one
+         * @type {Phaser.Sprite|String}
+         */
+        this.defaultBackground = background;
 
         return this;
     };
