@@ -52,6 +52,20 @@
                  "width":70,
                  "x":5036.79,
                  "y":4536.48
+                }, 
+                {
+                 "height":100,
+                 "name":"",
+                 "properties":
+                    {
+                     "dialogue":"instruction"
+                    },
+                 "rotation":0,
+                 "type":"dialogue",
+                 "visible":true,
+                 "width":114,
+                 "x":4878,
+                 "y":4608
                 }],
          "opacity":1,
          "type":"objectgroup",

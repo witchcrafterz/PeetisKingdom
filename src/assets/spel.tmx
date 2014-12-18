@@ -22,6 +22,11 @@
   <object name="spawnPoint" type="spawn" x="5036.79" y="4536.48" width="70" height="140">
    <ellipse/>
   </object>
+  <object type="dialogue" x="4878" y="4608" width="114" height="100">
+   <properties>
+    <property name="dialogue" value="instruction"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="objectives"/>
 </map>
