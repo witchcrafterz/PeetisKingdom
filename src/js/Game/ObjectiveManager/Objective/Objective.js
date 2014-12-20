@@ -117,7 +117,7 @@
     };
 
     Game.ObjectiveManager.Objective.prototype.activate = function() {
-        if (!this.isActive) {
+        if (!this.isActive && !this.completed) {
             this.objectiveManager.addObjective(this);
         }
     };
