@@ -95,18 +95,19 @@
         };
 
         /**
-         * The Phaser.Text instance of the status
-         * @type {Phaser.Text}
-         */
-        this._statusText = this.game.add.text(0, 0, this.statusText, this._statusTextStyle);
-        this._statusText.y = this._titleText.height;
-        this.add(this._statusText);
-
-        /**
          * The status template to be used for this objective. Formatting is to be implemented by children inheriting the Game.ObjectiveManager.Objective class
          * @type {String}
          */
         this._statusTemplate = this.objectiveLayer.properties.status || this.name;
+
+        /**
+         * The Phaser.Text instance of the status
+         * @type {Phaser.Text}
+         */
+        this._statusText = this.game.add.text(0, 0, this._statusTemplate, this._statusTextStyle);
+        this._statusText.y = this._titleText.height;
+        this.add(this._statusText);
+
     };
 
     Game.ObjectiveManager.Objective.prototype = Object.create(Phaser.Group.prototype);
