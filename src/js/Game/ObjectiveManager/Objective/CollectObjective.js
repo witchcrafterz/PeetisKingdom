@@ -16,6 +16,8 @@
          */
         this.isReturn = this.objectiveLayer.properties['return'] ? this.objectiveLayer.properties['return'] === 'true' : false;
 
+        this.removeOnInactive = false;
+
         /**
          * The place where this objective was activated
          * @type {Phaser.Rectangle}
@@ -37,6 +39,7 @@
                 toCollectItem.kill();
                 this.updateStatusText();
                 this.checkWin();
+                this.activate();
             }
         }, this);
 
@@ -57,7 +60,7 @@
         if (this.collected >= this.toCollect && !this.completed) {
             if (!this.isReturn) {
                 this.onCompletion.dispatch(this);
-            } else if (this.trigger.isInactive) {
+            } else if (this.trigger.isActive) {
                 this.onCompletion.dispatch(this);
             }
         }
