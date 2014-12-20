@@ -85,19 +85,26 @@
         var itemsGroup = this.game.add.group(undefined, objective.name);
         itemsGroup.enableBody = true;
 
+        var endTrigger;
+
         _.forEach(objectLayer, function(object) {
-            var key = object.properties.spritesheet || objective.properties.spritesheet;
-            var frame = object.properties.frame || objective.properties.frame;
+            if (object.type && object.type === 'end') {
+                endTrigger = new Game.Trigger.ZoneTrigger(this.game, true, new Phaser.Rectangle(object.x, object.y, object.width, object.height), player);
+            } else {
+                var key = object.properties.spritesheet || objective.properties.spritesheet;
+                var frame = object.properties.frame || objective.properties.frame;
 
-            var sprite = itemsGroup.create(object.x, object.y, key, parseInt(frame));
+                var sprite = itemsGroup.create(object.x, object.y, key, parseInt(frame));
 
-            sprite.body.allowGravity = object.properties.allowGravity || false;
+                sprite.body.allowGravity = object.properties.allowGravity || false;
+            }
         }, this);
 
         var dependencies = objective.properties.dependencies ? objective.properties.dependencies.split(',') : undefined;
 
-        var collectObjective = new Game.ObjectiveManager.CollectObjective(this.game, this, trigger, map, objective, player, dependencies, itemsGroup);
+        var collectObjective = new Game.ObjectiveManager.CollectObjective(this.game, this, trigger, map, objective, player, dependencies, itemsGroup, endTrigger);
         this.game.triggerManager.addTrigger(trigger);
+        if (endTrigger) this.game.triggerManager.addTrigger(endTrigger);
 
         return collectObjective;
     };

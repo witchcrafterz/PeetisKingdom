@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    Game.ObjectiveManager.CollectObjective = function(game, objectiveManager, trigger, tilemap, objectiveLayer, player, dependencies, toCollectGroup) {
+    Game.ObjectiveManager.CollectObjective = function(game, objectiveManager, trigger, tilemap, objectiveLayer, player, dependencies, toCollectGroup, endTrigger) {
         Game.ObjectiveManager.Objective.call(this, game, objectiveManager, trigger, tilemap, objectiveLayer, player, dependencies);
 
         /**
@@ -15,6 +15,15 @@
          * @type {Boolean}
          */
         this.isReturn = this.objectiveLayer.properties['return'] ? this.objectiveLayer.properties['return'] === 'true' : false;
+
+        /**
+         * If is return, this will be where the objective is handed in
+         * @type {Game.Trigger.ZoneTrigger}
+         */
+        this.endTrigger = endTrigger;
+        if (this.endTrigger) {
+            this.isReturn = true;
+        }
 
         this.removeOnInactive = false;
         this.updateStatusText();
@@ -43,7 +52,7 @@
 
     Game.ObjectiveManager.CollectObjective.prototype.updateStatusText = function() {
         if (this.isReturn && this.collected >= this.toCollect) {
-            this.statusText = this.objectiveLayer.properties.statusReturn;
+            this.statusText = this.objectiveLayer.properties.statusReturn || this.statusTemplate.format(this.collected, this.toCollect);
         } else {
             this.statusText = this.statusTemplate.format(this.collected, this.toCollect);
         }
@@ -53,6 +62,10 @@
         if (this.collected >= this.toCollect && !this.completed) {
             if (!this.isReturn) {
                 this.onCompletion.dispatch(this);
+            } else if (this.endTrigger) {
+                if (this.endTrigger.isActive) {
+                    this.onCompletion.dispatch(this);
+                }
             } else if (this.trigger.isActive) {
                 this.onCompletion.dispatch(this);
             }
