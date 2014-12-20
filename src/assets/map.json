@@ -54,7 +54,7 @@
                  "y":9041
                 }, 
                 {
-                 "height":142.424242424242,
+                 "height":142.424,
                  "name":"welcome dialogue",
                  "properties":
                     {
@@ -63,13 +63,13 @@
                  "rotation":0,
                  "type":"dialogue",
                  "visible":true,
-                 "width":436.363636363636,
-                 "x":6412.12121212121,
-                 "y":9027.27272727273
+                 "width":436.364,
+                 "x":6412.12,
+                 "y":9027.27
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "width":0,
          "x":0,
          "y":0
@@ -101,6 +101,7 @@
                  "name":"A2B Test",
                  "properties":
                     {
+                     "dependencies":"test",
                      "endLayer":"a2bTest",
                      "status":"Go to the left. Or right. idc."
                     },
@@ -113,7 +114,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "width":0,
          "x":0,
          "y":0
