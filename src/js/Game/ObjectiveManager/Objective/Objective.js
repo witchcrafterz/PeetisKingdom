@@ -116,11 +116,13 @@
     };
 
     Game.ObjectiveManager.Objective.prototype.activate = function() {
-        this.objectiveManager.addObjective(this);
+        if (!this.objectiveManager.isActive(this)) {
+            this.objectiveManager.addObjective(this);
+        }
     };
 
     Game.ObjectiveManager.Objective.prototype.inactivate = function() {
-        if (this.removeOnInactive) {
+        if (this.removeOnInactive && this.objectiveManager.isActive(this)) {
             this.objectiveManager._removeObjective(this);
         }
     };

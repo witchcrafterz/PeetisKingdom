@@ -110,6 +110,10 @@
         this._updatePositioning();
     };
 
+    Game.ObjectiveManager.prototype.isActive = function(objective) {
+        return _.contains(this.objectives, objective);
+    };
+
     Game.ObjectiveManager.prototype._removeObjective = function(objective) {
         objective.game.add.tween(objective)
             .to({alpha: 0}, this.animationSpeed, this.easing, true);
