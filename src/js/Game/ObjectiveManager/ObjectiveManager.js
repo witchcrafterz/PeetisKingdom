@@ -27,6 +27,7 @@
          * @type {Phaser.Text}
          */
         this.titleText = this.game.add.text(0, 0, 'Objectives');
+        this.titleText.setStyle({font: 'bold 20pt serif'});
         this.add(this.titleText);
 
         /**

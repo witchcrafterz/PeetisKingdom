@@ -76,13 +76,13 @@
          * The default title style
          * @type {Object}
          */
-        this.defaultTitleStyle = {font: 'bold 24pt Arial'};
+        this.defaultTitleStyle = {font: 'bold 24pt serif'};
 
         /**
          * The default text style
          * @type {Object}
          */
-        this.defaultTextStyle = {font: '20pt Arial'};
+        this.defaultTextStyle = {font: '20pt serif'};
 
         /**
          * The default background for the dialogue panel

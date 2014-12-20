@@ -80,7 +80,7 @@
          * @type {Object}
          */
         this._titleTextStyle = {
-            font: '17pt arial'
+            font: '17pt serif'
         };
 
         /**
@@ -91,7 +91,7 @@
         this.add(this._titleText);
 
         this._statusTextStyle = { 
-            font: '14pt arial' 
+            font: '14pt serif' 
         };
 
         /**
