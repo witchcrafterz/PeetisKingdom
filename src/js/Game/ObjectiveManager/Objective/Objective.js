@@ -56,6 +56,12 @@
         this.trigger.onInactive.add(this.inactivate, this);
 
         /**
+         * Whether or not to remove objective on inactive
+         * @type {Boolean}
+         */
+        this.removeOnInactive = true;
+
+        /**
          * Signal that fires upon completion of objective
          * @type {Phaser.Signal}
          */
@@ -114,7 +120,9 @@
     };
 
     Game.ObjectiveManager.Objective.prototype.inactivate = function() {
-        this.objectiveManager._removeObjective(this);
+        if (this.removeOnInactive) {
+            this.objectiveManager._removeObjective(this);
+        }
     };
 
     Object.defineProperty(Game.ObjectiveManager.Objective.prototype, 'statusTemplate', {
