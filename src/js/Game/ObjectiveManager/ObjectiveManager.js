@@ -67,6 +67,9 @@
                 case 'collect':
                     this.createCollectObjective(map, objective, player);
                     break;
+                case 'a2b':
+                    this.createA2BObjective(map, objective, player);
+                    break;
                 default:
                     console.log('Objective of type ' + objective.type + ' not yet implemented');
                     break;
@@ -95,6 +98,27 @@
         this.game.triggerManager.addTrigger(trigger);
 
         return collectObjective;
+    };
+
+    Game.ObjectiveManager.prototype.createA2BObjective = function(map, objective, player) {
+        var activeRect = new Phaser.Rectangle(objective.x, objective.y, objective.width, objective.height);
+        var trigger = new Game.Trigger.ZoneTrigger(this.game, true, activeRect, player);
+
+        var endLayer = map.objects[objective.properties.endLayer];
+
+        var rectangles = [];
+
+        _.forEach(endLayer, function(object) {
+            rectangles.push(new Phaser.Rectangle(object.x, object.y, object.width, object.height));
+        });
+
+        var endTrigger = new Game.Trigger.ZoneTrigger(this.game, false, rectangles, player);
+
+        var a2bObjective = new Game.ObjectiveManager.A2BObjective(this.game, this, trigger, map, objective, player, endTrigger);
+        this.game.triggerManager.addTrigger(trigger);
+        this.game.triggerManager.addTrigger(endTrigger);
+
+        return a2bObjective;
     };
 
     Game.ObjectiveManager.prototype.addObjective = function(objective) {
