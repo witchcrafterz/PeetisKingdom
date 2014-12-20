@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    Game.ObjectiveManager.Objective = function(game, objectiveManager, tilemap, objectiveLayer, player) {
+    Game.ObjectiveManager.Objective = function(game, objectiveManager, trigger, tilemap, objectiveLayer, player) {
         Phaser.Group.call(this, game, objectiveManager, objectiveLayer.name);
         this.alpha = 0;
 
@@ -46,6 +46,14 @@
          * @type {Boolean}
          */
         this.completed = false;
+
+        /**
+         * The trigger that will trigger this objective
+         * @type {Game.Trigger}
+         */
+        this.trigger = trigger;
+        this.trigger.onActive.add(this.activate, this);
+        this.trigger.onInactive.add(this.inactivate, this);
 
         /**
          * Signal that fires upon completion of objective
@@ -99,6 +107,14 @@
     Game.ObjectiveManager.Objective.prototype.constructor = Game.ObjectiveManager.Objective;
 
     Game.ObjectiveManager.Objective.prototype.updateStatusText = function() {
+    };
+
+    Game.ObjectiveManager.Objective.prototype.activate = function() {
+        this.objectiveManager.addObjective(this);
+    };
+
+    Game.ObjectiveManager.Objective.prototype.inactivate = function() {
+        this.objectiveManager._removeObjective(this);
     };
 
     Object.defineProperty(Game.ObjectiveManager.Objective.prototype, 'statusTemplate', {

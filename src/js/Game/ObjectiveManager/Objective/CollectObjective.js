@@ -1,8 +1,8 @@
 (function() {
     'use strict';
 
-    Game.ObjectiveManager.CollectObjective = function(game, objectiveManager, tilemap, objectiveLayer, player, toCollectGroup) {
-        Game.ObjectiveManager.Objective.call(this, game, objectiveManager, tilemap, objectiveLayer, player);
+    Game.ObjectiveManager.CollectObjective = function(game, objectiveManager, trigger, tilemap, objectiveLayer, player, toCollectGroup) {
+        Game.ObjectiveManager.Objective.call(this, game, objectiveManager, trigger, tilemap, objectiveLayer, player);
 
         /**
          * The group containing the items to collect
@@ -20,7 +20,7 @@
          * The place where this objective was activated
          * @type {Phaser.Rectangle}
          */
-        this.activationRectangle = new Phaser.Rectangle(objectiveLayer.x, objectiveLayer.y, objectiveLayer.width, objectiveLayer.height);
+        // this.activationRectangle = new Phaser.Rectangle(objectiveLayer.x, objectiveLayer.y, objectiveLayer.width, objectiveLayer.height);
 
         this.updateStatusText();
     };
@@ -57,7 +57,7 @@
         if (this.collected >= this.toCollect && !this.completed) {
             if (!this.isReturn) {
                 this.onCompletion.dispatch(this);
-            } else if (this.activationRectangle.contains(this.player.x, this.player.y)) {
+            } else if (this.trigger.isInactive) {
                 this.onCompletion.dispatch(this);
             }
         }

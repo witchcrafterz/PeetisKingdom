@@ -61,19 +61,6 @@
     Game.ObjectiveManager.prototype = Object.create(Phaser.Group.prototype);
     Game.ObjectiveManager.prototype.constructor = Game.ObjectiveManager;
 
-    Game.ObjectiveManager.prototype.update = function() {
-        Phaser.Group.prototype.update.call(this);
-
-        for (var i = 0; i < this.inactiveObjectives.length; i++) {
-            var obj = this.inactiveObjectives[i];
-            if (obj.rectangle.contains(obj.player.x, obj.player.y)) {
-                this.addObjective(obj.objective);
-                this.inactiveObjectives.splice(i, 1);
-                i--;
-            }
-        }
-    };
-
     Game.ObjectiveManager.prototype.createObjectives = function(map, objectivesLayer, player) {
         _.forEach(objectivesLayer, function(objective) {
             switch (objective.type) {
@@ -89,6 +76,8 @@
 
     Game.ObjectiveManager.prototype.createCollectObjective = function(map, objective, player) {
         var activeRect = new Phaser.Rectangle(objective.x, objective.y, objective.width, objective.height);
+        var trigger = new Game.Trigger.ZoneTrigger(this.game, true, activeRect, player);
+
         var objectLayer = map.objects[objective.properties.itemLayer];
         var itemsGroup = this.game.add.group(undefined, objective.name);
         itemsGroup.enableBody = true;
@@ -102,12 +91,8 @@
             sprite.body.allowGravity = object.properties.allowGravity || false;
         }, this);
 
-        var collectObjective = new Game.ObjectiveManager.CollectObjective(this.game, this, map, objective, player, itemsGroup);
-        this.inactiveObjectives.push({
-            rectangle: activeRect,
-            objective: collectObjective,
-            player: player
-        });
+        var collectObjective = new Game.ObjectiveManager.CollectObjective(this.game, this, trigger, map, objective, player, itemsGroup);
+        this.game.triggerManager.addTrigger(trigger);
 
         return collectObjective;
     };
