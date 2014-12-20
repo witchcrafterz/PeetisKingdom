@@ -51,7 +51,10 @@
     Game.Trigger.ZoneTrigger.prototype._refreshInZone = function() {
         this._wasInZone = [];
         for (var i = 0; i < this.toTrack.length; i++) {
-            this._wasInZone.push(false);
+            this._wasInZone.push([]);
+            for (var x = 0; x < this.zones.length; x++) {
+                this._wasInZone[i].push(false);
+            }
         }
     };
 
@@ -62,8 +65,8 @@
             _.forEach(this.zones, function(zone, iZone) {
 
                 var intersects = zone.contains(toTrack.position.x, toTrack.position.y);
-                var entered = intersects && !this._wasInZone[iToTrack];
-                var left = !intersects && this._wasInZone[iToTrack];
+                var entered = intersects && !this._wasInZone[iToTrack][iZone];
+                var left = !intersects && this._wasInZone[iToTrack][iZone];
 
                 var updateInZone = false;
 
@@ -86,7 +89,7 @@
                 }
 
                 if (updateInZone) {
-                    this._wasInZone[iToTrack] = intersects;
+                    this._wasInZone[iToTrack][iZone] = intersects;
                 }
             }, this);
         }, this);
