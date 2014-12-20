@@ -139,6 +139,8 @@
     };
 
     Game.ObjectiveManager.prototype._removeObjective = function(objective) {
+        if (!objective.isActive) return;
+
         objective.game.add.tween(objective)
             .to({alpha: 0}, this.animationSpeed, this.easing, true);
 
