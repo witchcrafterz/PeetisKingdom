@@ -116,13 +116,13 @@
     };
 
     Game.ObjectiveManager.Objective.prototype.activate = function() {
-        if (!this.objectiveManager.isActive(this)) {
+        if (!this.isActive) {
             this.objectiveManager.addObjective(this);
         }
     };
 
     Game.ObjectiveManager.Objective.prototype.inactivate = function() {
-        if (this.removeOnInactive && this.objectiveManager.isActive(this)) {
+        if (this.removeOnInactive && this.isActive) {
             this.objectiveManager._removeObjective(this);
         }
     };
@@ -169,5 +169,13 @@
         }
 
     });  
+
+    Object.defineProperty(Game.ObjectiveManager.Objective.prototype, 'isActive', {
+
+        get: function() {
+            return this.objectiveManager.isActive(this);
+        }
+
+    });
 
 })();
