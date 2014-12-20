@@ -76,7 +76,7 @@
 
     <script>
     window.onload = function() {
-        var game = new Phaser.Game(1600, 900, Phaser.CANVAS, 'game');
+        var game = new Phaser.Game(1600, 900, Phaser.CANVAS, 'game', undefined, undefined, false);
 
         game.state.add('Game.Init', Game.Init);
         game.state.add('Game.Level', Game.Level);

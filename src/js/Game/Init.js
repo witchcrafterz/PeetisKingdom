@@ -18,7 +18,7 @@
         /**
          * Initialization logic here
          */
-        create: function() {
+        create: function() {            
             this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 
             this.scale.minWidth = 256;
@@ -38,6 +38,7 @@
             this.game.scale.leaveFullScreen.add(function() {
                 this.scale.maxWidth = this.maxWidth;
                 this.scale.maxHeight = this.maxHeight;
+                Phaser.Canvas.setSmoothingEnabled(this.game.context, false);
             }, this);
 
             if (self.localStorage && self.localStorage.hasOwnProperty('muted')) {
@@ -50,7 +51,5 @@
 
             this.state.start('Game.Level');
         }
-
     };
-
 })();
