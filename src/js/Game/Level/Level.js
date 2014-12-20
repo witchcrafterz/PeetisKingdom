@@ -90,7 +90,7 @@
 
         this.game.load.audio('solskenspromenad', 'assets/Solskenspromenad.mp3');
 
-        this.game.load.image('plank', 'assets/plank.png');
+        this.game.load.image('dialoguePanel', 'assets/dialoguePanel.png');
 
         this.game.load.tilemap('map', 'assets/map.json', null, Phaser.Tilemap.TILED_JSON);
     };
@@ -199,7 +199,15 @@
                 text: 'Use arrow keys to walk, and the up key to interact with objects!'
             }, {
                 text: 'To jump, press spacebar. Press it twice to double jump!'
-            }], 'Instructions')
+            }], 'Instructions'),
+
+            'welcome': new Game.Dialogue(this.game, [{
+                title: 'Welcome!',
+                text: 'Pro tip -- try the \'up\' arrow key!'
+            }, {
+                title: 'Controls',
+                text: 'Use arrow keys to walk, up to interact, and spacebar to jump'
+            }])
         };
     };
 
@@ -222,7 +230,8 @@
                         obj.properties.requireActivation ? function(sender) {
                             return this.activateKey.isDown;
                         } : undefined;
-                                       
+                                     
+                    console.log(dialogue)  
 
                     if (dialogue) {
                         var trigger = new Game.Trigger.ZoneTrigger(

@@ -88,7 +88,7 @@
          * The default background for the dialogue panel
          * @type {String}
          */
-        this.defaultBackground = 'plank';
+        this.defaultBackground = 'dialoguePanel';
 
         this.dialoguePanel.add(this.titleText);
         this.dialoguePanel.add(this.textText);
