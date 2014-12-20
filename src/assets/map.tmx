@@ -23,5 +23,19 @@
    <ellipse/>
   </object>
  </objectgroup>
- <objectgroup name="objectives"/>
+ <objectgroup name="objectives">
+  <object name="test" type="collect" x="7092" y="8879" width="780" height="370">
+   <properties>
+    <property name="frame" value="27"/>
+    <property name="itemLayer" value="testObjective"/>
+    <property name="spritesheet" value="UI"/>
+    <property name="status" value="You have collected {0} out of {1} test thingys"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="testObjective">
+  <object x="7139" y="8920" width="38" height="35"/>
+  <object x="7445" y="8919" width="39" height="32"/>
+  <object x="7764" y="8921" width="44" height="33"/>
+ </objectgroup>
 </map>

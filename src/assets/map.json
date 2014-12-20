@@ -64,11 +64,82 @@
          "draworder":"topdown",
          "height":0,
          "name":"objectives",
-         "objects":[],
+         "objects":[
+                {
+                 "height":370,
+                 "name":"test",
+                 "properties":
+                    {
+                     "frame":"27",
+                     "itemLayer":"testObjective",
+                     "spritesheet":"UI",
+                     "status":"You have collected {0} out of {1} test thingys"
+                    },
+                 "rotation":0,
+                 "type":"collect",
+                 "visible":true,
+                 "width":780,
+                 "x":7092,
+                 "y":8879
+                }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
          "width":0,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "height":250,
+         "name":"testObjective",
+         "objects":[
+                {
+                 "height":35,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":38,
+                 "x":7139,
+                 "y":8920
+                }, 
+                {
+                 "height":32,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":39,
+                 "x":7445,
+                 "y":8919
+                }, 
+                {
+                 "height":33,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":44,
+                 "x":7764,
+                 "y":8921
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":500,
          "x":0,
          "y":0
         }],
