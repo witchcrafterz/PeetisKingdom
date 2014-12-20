@@ -79,8 +79,23 @@
                  "type":"collect",
                  "visible":true,
                  "width":780,
-                 "x":7092,
+                 "x":7936,
                  "y":8879
+                }, 
+                {
+                 "height":326,
+                 "name":"A2B Test",
+                 "properties":
+                    {
+                     "endLayer":"a2bTest",
+                     "status":"Go to the left. Or right. idc."
+                    },
+                 "rotation":0,
+                 "type":"a2b",
+                 "visible":true,
+                 "width":452,
+                 "x":6404,
+                 "y":8912
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -105,8 +120,8 @@
                  "type":"",
                  "visible":true,
                  "width":38,
-                 "x":7139,
-                 "y":8920
+                 "x":7999,
+                 "y":8918
                 }, 
                 {
                  "height":32,
@@ -119,8 +134,8 @@
                  "type":"",
                  "visible":true,
                  "width":39,
-                 "x":7445,
-                 "y":8919
+                 "x":8305,
+                 "y":8917
                 }, 
                 {
                  "height":33,
@@ -133,8 +148,48 @@
                  "type":"",
                  "visible":true,
                  "width":44,
-                 "x":7764,
-                 "y":8921
+                 "x":8624,
+                 "y":8919
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":500,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "height":250,
+         "name":"a2bTest",
+         "objects":[
+                {
+                 "height":280,
+                 "name":"endA2B",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":300,
+                 "x":5468,
+                 "y":8930
+                }, 
+                {
+                 "height":366,
+                 "name":"endA2B",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":104,
+                 "x":7878,
+                 "y":8854
                 }],
          "opacity":1,
          "type":"objectgroup",
