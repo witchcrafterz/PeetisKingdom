@@ -5,7 +5,7 @@
      * Reference file: https://github.com/photonstorm/phaser-examples/blob/master/projects/rox/src/Player.js
      */
 
-    var textureKey = 'p1';
+    var textureKey = 'player1';
     var maxSpeed = 500;
     var fullJumpMeter = 20000;
     var jumpFactor = 0.7;
@@ -19,6 +19,10 @@
 
         Phaser.Sprite.call(this, game, x, y, textureKey);
 
+        // var desiredHeight = 20;
+        // var scaleFactor = desiredHeight / this.height;
+        // this.scale.setTo(scaleFactor)
+
         this.inventory = [];
 
         this.anchor.set(0.5);
@@ -29,11 +33,11 @@
 
         this.controller = new Game.Controller(this.game);
 
-        this.animations.add('running', [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 10, true);
-        this.animations.add('jump', [3], 20, true);
-        this.animations.add('falling', [2], 20, true);
-        this.animations.add('still', [1], 20, true);
-        this.animations.add('duck', [0], 20, true);
+        // this.animations.add('running', [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 10, true);
+        // this.animations.add('jump', [3], 20, true);
+        // this.animations.add('falling', [2], 20, true);
+        this.animations.add('still', [0], 20, true);
+        // this.animations.add('duck', [0], 20, true);
 
         this.currAnim = '';
 
@@ -53,15 +57,15 @@
     Game.Player.prototype.constructor = Game.Player;
 
     Game.Player.prototype.updateBodySize = function() {
-        var currentFrame = this.animations.currentAnim.currentFrame;
-        if (!currentFrame) return;
+        // var currentFrame = this.animations.currentAnim.currentFrame;
+        // if (!currentFrame) return;
 
-        if (this.body.height !== currentFrame.height) {
-            this.body.height = currentFrame.height;
-        }
-        if (this.body.width !== currentFrame.width) {
-            this.body.width = currentFrame.width;
-        }
+        // if (this.body.height !== currentFrame.height) {
+        //     this.body.height = currentFrame.height;
+        // }
+        // if (this.body.width !== currentFrame.width) {
+        //     this.body.width = currentFrame.width;
+        // }
     };
 
     Game.Player.prototype.resetJump = function() {
@@ -105,30 +109,30 @@
         var still = (this.body.touching.down || this.body.onFloor()) && Math.abs(this.body.velocity.x) < 40;
         var ducking = this.controller.down.isDown;
 
-        if (ducking) {
-            this.animations.play('duck');
-            return;
-        }
+        // if (ducking) {
+        //     this.animations.play('duck');
+        //     return;
+        // }
 
-        if (walking) {
-            this.animations.play('running');
-            return;
-        }
+        // if (walking) {
+        //     this.animations.play('running');
+        //     return;
+        // }
 
-        if (falling) {
-            this.animations.play('falling');
-            return;
-        }
+        // if (falling) {
+        //     this.animations.play('falling');
+        //     return;
+        // }
 
-        if (rising) {
-            this.animations.play('jump');
-            return;
-        }
+        // if (rising) {
+        //     this.animations.play('jump');
+        //     return;
+        // }
 
-        if (still) {
-            this.animations.play('still');
-            return;
-        }
+        // if (still) {
+        //     this.animations.play('still');
+        //     return;
+        // }
     };
 
     Game.Player.prototype.update = function() {
@@ -144,7 +148,9 @@
 
             this.animations.play('running');
 
-            this.scale.x = 1;
+            if (this.scale.x < 0) {
+                this.scale.x *= -1;
+            }
         } else if (this.controller.left.isDown) {
             this.body.acceleration.x = -acc;
 
@@ -154,7 +160,9 @@
 
             this.animations.play('running');
 
-            this.scale.x = -1;
+            if (this.scale.x > 0) {
+                this.scale.x *= -1;
+            }
         } else {
             this.body.acceleration.setTo(0);
             if (this.godMode) {
