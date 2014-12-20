@@ -68,7 +68,8 @@ gulp.task('serve-prepare', function(next) {
 });
 
 gulp.task('serve', ['serve-prepare'], function() {
-    gulp.watch('./src/**/*.js', ['compile-index', 'browser-sync-reload']);
+    gulp.watch('./src/**/*.js', ['browser-sync-reload']);
+    gulp.watch('./src/**/*.html.tpl', ['compile-index']);
     gulp.watch('./src/**/*.html', ['browser-sync-reload']);
 });
 
