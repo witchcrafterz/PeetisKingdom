@@ -24,7 +24,7 @@
     Game.ObjectiveManager.CollectObjective.prototype.constructor = Game.ObjectiveManager.CollectObjective;
 
     Game.ObjectiveManager.CollectObjective.prototype.update = function() {
-        Phaser.Group.prototype.update.call(this);
+        Game.ObjectiveManager.Objective.prototype.update.call(this);
 
         this.toCollectGroup.forEachAlive(function(toCollectItem) {
             if (this.game.physics.arcade.intersects(this.player.body, toCollectItem.body)) {

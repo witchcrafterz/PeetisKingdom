@@ -119,6 +119,10 @@
     Game.ObjectiveManager.Objective.prototype = Object.create(Phaser.Group.prototype);
     Game.ObjectiveManager.Objective.prototype.constructor = Game.ObjectiveManager.Objective;
 
+    Game.ObjectiveManager.Objective.prototype.update = function() {
+        Phaser.Group.prototype.update.call(this);
+    };
+    
     Game.ObjectiveManager.Objective.prototype.updateStatusText = function() {
     };
 
