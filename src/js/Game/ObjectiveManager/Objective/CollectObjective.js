@@ -1,8 +1,8 @@
 (function() {
     'use strict';
 
-    Game.ObjectiveManager.CollectObjective = function(game, objectiveManager, trigger, tilemap, objectiveLayer, player, toCollectGroup) {
-        Game.ObjectiveManager.Objective.call(this, game, objectiveManager, trigger, tilemap, objectiveLayer, player);
+    Game.ObjectiveManager.CollectObjective = function(game, objectiveManager, trigger, tilemap, objectiveLayer, player, dependencies, toCollectGroup) {
+        Game.ObjectiveManager.Objective.call(this, game, objectiveManager, trigger, tilemap, objectiveLayer, player, dependencies);
 
         /**
          * The group containing the items to collect

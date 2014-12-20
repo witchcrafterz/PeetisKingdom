@@ -43,11 +43,10 @@
         this.objectiveLog = [];
 
         /**
-         * An array containing all objectives that exists in the tilemap, but have as of yet not been added to ObjectiveManager.objectives
-         * Each entry have three properties: objective -- the objective object, player -- the player who ought to perform the objective, rectangle -- the rectangle in which the objective becomes activated
-         * @type {Array#Object}
+         * An array containing all objectives that exists in the tilemap
+         * @type {Array#Objective}
          */
-        this.inactiveObjectives = [];
+        this.allObjectives = [];
 
 
         this.fixedToCamera = true;
@@ -66,10 +65,10 @@
         _.forEach(objectivesLayer, function(objective) {
             switch (objective.type) {
                 case 'collect':
-                    this.createCollectObjective(map, objective, player);
+                    this.allObjectives.push(this.createCollectObjective(map, objective, player));
                     break;
                 case 'a2b':
-                    this.createA2BObjective(map, objective, player);
+                    this.allObjectives.push(this.createA2BObjective(map, objective, player));
                     break;
                 default:
                     console.log('Objective of type ' + objective.type + ' not yet implemented');
@@ -95,7 +94,9 @@
             sprite.body.allowGravity = object.properties.allowGravity || false;
         }, this);
 
-        var collectObjective = new Game.ObjectiveManager.CollectObjective(this.game, this, trigger, map, objective, player, itemsGroup);
+        var dependencies = objective.properties.dependencies ? objective.properties.dependencies.split(',') : undefined;
+
+        var collectObjective = new Game.ObjectiveManager.CollectObjective(this.game, this, trigger, map, objective, player, dependencies, itemsGroup);
         this.game.triggerManager.addTrigger(trigger);
 
         return collectObjective;
@@ -115,7 +116,9 @@
 
         var endTrigger = new Game.Trigger.ZoneTrigger(this.game, false, rectangles, player);
 
-        var a2bObjective = new Game.ObjectiveManager.A2BObjective(this.game, this, trigger, map, objective, player, endTrigger);
+        var dependencies = objective.properties.dependencies ? objective.properties.dependencies.split(',') : undefined;
+
+        var a2bObjective = new Game.ObjectiveManager.A2BObjective(this.game, this, trigger, map, objective, player, dependencies, endTrigger);
         this.game.triggerManager.addTrigger(trigger);
         this.game.triggerManager.addTrigger(endTrigger);
 
@@ -137,6 +140,23 @@
 
     Game.ObjectiveManager.prototype.isActive = function(objective) {
         return _.contains(this.objectives, objective);
+    };
+
+    Game.ObjectiveManager.prototype.isCompleted = function(objectives) {
+        if (!objectives) return true;
+
+        var toCheck = _.filter(this.allObjectives, function(objective) {
+                return _.contains(objectives, objective.name);
+            });
+
+        console.log(toCheck)
+
+        if (toCheck.length < objectives.length) {
+            console.log('Could not find all dependencies. Did you spell all correctly?');
+            return false;
+        }
+
+        return _.every(toCheck, 'completed');
     };
 
     Game.ObjectiveManager.prototype._removeObjective = function(objective) {

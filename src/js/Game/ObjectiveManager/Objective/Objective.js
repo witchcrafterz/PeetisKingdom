@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    Game.ObjectiveManager.Objective = function(game, objectiveManager, trigger, tilemap, objectiveLayer, player) {
+    Game.ObjectiveManager.Objective = function(game, objectiveManager, trigger, tilemap, objectiveLayer, player, dependencies) {
         Phaser.Group.call(this, game, objectiveManager, objectiveLayer.name);
         this.alpha = 0;
 
@@ -46,6 +46,12 @@
          * @type {Boolean}
          */
         this.completed = false;
+
+        /**
+         * List of objective name in strings that has to be completed before this objective can be activated
+         * @type {Array#String}
+         */
+        this.dependencies = dependencies;
 
         /**
          * The trigger that will trigger this objective
@@ -117,7 +123,7 @@
     };
 
     Game.ObjectiveManager.Objective.prototype.activate = function() {
-        if (!this.isActive && !this.completed) {
+        if (!this.isActive && !this.completed && this.objectiveManager.isCompleted(this.dependencies)) {
             this.objectiveManager.addObjective(this);
         }
     };
