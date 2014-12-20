@@ -17,13 +17,6 @@
         this.isReturn = this.objectiveLayer.properties['return'] ? this.objectiveLayer.properties['return'] === 'true' : false;
 
         this.removeOnInactive = false;
-
-        /**
-         * The place where this objective was activated
-         * @type {Phaser.Rectangle}
-         */
-        // this.activationRectangle = new Phaser.Rectangle(objectiveLayer.x, objectiveLayer.y, objectiveLayer.width, objectiveLayer.height);
-
         this.updateStatusText();
     };
 
