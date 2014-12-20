@@ -156,7 +156,7 @@
         this.level.resizeWorld();
 
         var renderSettings = {
-            enableScrollDelta: true
+            enableScrollDelta: false
         };
         this.level.renderSettings = renderSettings;
         this.behind.renderSettings = renderSettings;
