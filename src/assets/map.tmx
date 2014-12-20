@@ -22,8 +22,13 @@
   <object name="spawn point" type="spawn" x="6590.42" y="9041" width="56" height="79.5">
    <ellipse/>
   </object>
+  <object name="welcome dialogue" type="dialogue" x="6412.12" y="9027.27" width="436.364" height="142.424">
+   <properties>
+    <property name="dialogue" value="welcome"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup name="objectives">
+ <objectgroup name="objectives" visible="0">
   <object name="test" type="collect" x="7936" y="8879" width="780" height="370">
    <properties>
     <property name="frame" value="27"/>
@@ -39,12 +44,12 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="testObjective">
+ <objectgroup name="testObjective" visible="0">
   <object x="7999" y="8918" width="38" height="35"/>
   <object x="8305" y="8917" width="39" height="32"/>
   <object x="8624" y="8919" width="44" height="33"/>
  </objectgroup>
- <objectgroup name="a2bTest">
+ <objectgroup name="a2bTest" visible="0">
   <object name="endA2B" x="5468" y="8930" width="300" height="280"/>
   <object name="endA2B" x="7878" y="8854" width="104" height="366"/>
  </objectgroup>

@@ -50,8 +50,22 @@
                  "type":"spawn",
                  "visible":true,
                  "width":56,
-                 "x":6590.41666666667,
+                 "x":6590.42,
                  "y":9041
+                }, 
+                {
+                 "height":142.424242424242,
+                 "name":"welcome dialogue",
+                 "properties":
+                    {
+                     "dialogue":"welcome"
+                    },
+                 "rotation":0,
+                 "type":"dialogue",
+                 "visible":true,
+                 "width":436.363636363636,
+                 "x":6412.12121212121,
+                 "y":9027.27272727273
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -99,14 +113,14 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "width":0,
          "x":0,
          "y":0
         }, 
         {
          "draworder":"topdown",
-         "height":250,
+         "height":0,
          "name":"testObjective",
          "objects":[
                 {
@@ -153,14 +167,14 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
-         "width":500,
+         "visible":false,
+         "width":0,
          "x":0,
          "y":0
         }, 
         {
          "draworder":"topdown",
-         "height":250,
+         "height":0,
          "name":"a2bTest",
          "objects":[
                 {
@@ -193,8 +207,8 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
-         "width":500,
+         "visible":false,
+         "width":0,
          "x":0,
          "y":0
         }],
