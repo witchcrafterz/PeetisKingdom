@@ -80,9 +80,9 @@
         preloadBar.anchor.set(0.5);
         this.game.load.setPreloadSprite(preloadBar);
 
-        this.game.load.spritesheet('player1', 'assets/player1.png', 80, 97);
+        this.game.load.spritesheet('player1', 'assets/player.png', 68, 84);
         this.game.load.image('bg', 'assets/background.png');
-        this.game.load.spritesheet('tile', 'assets/spritesheet.png', 70, 70);
+        this.game.load.spritesheet('spritesheet', 'assets/spritesheet.png', 64, 64);
 
         this.game.load.atlasXML('alienYellow', 'assets/alienYellow.png', 'assets/alienYellow.xml');
         this.game.load.atlasXML('UI', 'assets/UI.png', 'assets/UI.xml');
@@ -92,7 +92,7 @@
 
         this.game.load.image('plank', 'assets/plank.png');
 
-        this.game.load.tilemap('map', 'assets/spel.json', null, Phaser.Tilemap.TILED_JSON);
+        this.game.load.tilemap('map', 'assets/map.json', null, Phaser.Tilemap.TILED_JSON);
     };
 
     /**
@@ -101,12 +101,14 @@
      */
     Game.Level.prototype.generateLevel = function() {
         this.map = this.game.add.tilemap('map');
-        this.map.addTilesetImage('tile');
+        this.map.addTilesetImage('spritesheet');
 
         this.levelSize.width = this.map.width * this.map.tileWidth;
         this.levelSize.height = this.map.height * this.map.tileHeight;
 
         this.bg = this.game.add.sprite(0, 0, 'bg');
+        this.bg.width = this.game.width;
+        this.bg.height = this.game.height;
         this.bg.fixedToCamera = true;
 
         // The layer that the player does not interact with
@@ -114,11 +116,11 @@
 
         this.level = this.map.createLayer('collision');
         // The layer containing platforms
-        var firstID = this.map.tilesets[this.map.getTilesetIndex('tile')].firstgid;
+        var firstID = this.map.tilesets[this.map.getTilesetIndex('spritesheet')].firstgid;
         var collisionTiles = [];
         _.forEach(this.level.layer.data, function(e) {
             _.forEach(e, function(t) {
-                if (t.index > -1 && !_.contains(specialCollision.exclude, t.index - firstID)) {
+                if (t.index > -1 && !_.contains(specialCollision.exclude, t.index - firstID) && !_.contains(collisionTiles, t.index)) {
                     collisionTiles.push(t.index);
                 }
 
