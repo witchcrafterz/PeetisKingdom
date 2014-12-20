@@ -165,10 +165,24 @@
                  "width":44,
                  "x":8624,
                  "y":8919
+                }, 
+                {
+                 "height":240,
+                 "name":"end",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"end",
+                 "visible":true,
+                 "width":554,
+                 "x":6352,
+                 "y":8966
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "width":0,
          "x":0,
          "y":0

@@ -45,10 +45,11 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="testObjective" visible="0">
+ <objectgroup name="testObjective">
   <object x="7999" y="8918" width="38" height="35"/>
   <object x="8305" y="8917" width="39" height="32"/>
   <object x="8624" y="8919" width="44" height="33"/>
+  <object name="end" type="end" x="6352" y="8966" width="554" height="240"/>
  </objectgroup>
  <objectgroup name="a2bTest" visible="0">
   <object name="endA2B" x="5468" y="8930" width="300" height="280"/>
