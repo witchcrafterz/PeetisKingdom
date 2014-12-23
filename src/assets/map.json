@@ -69,7 +69,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "width":0,
          "x":0,
          "y":0
@@ -81,13 +81,14 @@
          "objects":[
                 {
                  "height":370,
-                 "name":"test",
+                 "name":"Starstruck",
                  "properties":
                     {
                      "frame":"27",
                      "itemLayer":"testObjective",
                      "spritesheet":"UI",
-                     "status":"You have collected {0} out of {1} test thingys"
+                     "status":"Get yourself some stars! {0}\/{1}",
+                     "statusReturn":"Go back to where you entered this world"
                     },
                  "rotation":0,
                  "type":"collect",
@@ -98,12 +99,12 @@
                 }, 
                 {
                  "height":326,
-                 "name":"A2B Test",
+                 "name":"Explorer",
                  "properties":
                     {
-                     "dependencies":"test",
+                     "dependencies":"Starstruck",
                      "endLayer":"a2bTest",
-                     "status":"Go to the left. Or right. idc."
+                     "status":"Explore to the left. Or the right. You may choose your own path"
                     },
                  "rotation":0,
                  "type":"a2b",
@@ -111,8 +112,27 @@
                  "width":452,
                  "x":6404,
                  "y":8912
+                }, 
+                {
+                 "height":198.537,
+                 "name":"A whole new world",
+                 "properties":
+                    {
+                     "endLayer":"awholenewworld",
+                     "status":"Go to the right and find something to do."
+                    },
+                 "rotation":0,
+                 "type":"a2b",
+                 "visible":true,
+                 "width":229.885,
+                 "x":6504.7,
+                 "y":9017.76
                 }],
          "opacity":1,
+         "properties":
+            {
+             "Name":""
+            },
          "type":"objectgroup",
          "visible":true,
          "width":0,
@@ -182,7 +202,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "width":0,
          "x":0,
          "y":0
@@ -203,11 +223,11 @@
                  "type":"",
                  "visible":true,
                  "width":300,
-                 "x":5468,
+                 "x":4500,
                  "y":8930
                 }, 
                 {
-                 "height":366,
+                 "height":339.81,
                  "name":"endA2B",
                  "properties":
                     {
@@ -216,13 +236,39 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":104,
-                 "x":7878,
+                 "width":387.333,
+                 "x":9000,
                  "y":8854
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
+         "width":0,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "height":0,
+         "name":"awholenewworld",
+         "objects":[
+                {
+                 "height":261.233,
+                 "name":"end",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":161.964,
+                 "x":7925.81,
+                 "y":8970.74
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
          "width":0,
          "x":0,
          "y":0
