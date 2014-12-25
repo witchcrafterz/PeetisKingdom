@@ -49,7 +49,7 @@
                 }
             }
 
-            this.state.start('Game.Level');
+            this.state.start('Game.MainMenu');
         }
     };
 })();
