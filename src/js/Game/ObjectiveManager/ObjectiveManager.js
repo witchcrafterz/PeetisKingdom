@@ -27,7 +27,7 @@
          * @type {Phaser.Text}
          */
         this.titleText = this.game.add.bitmapText(0, 0, 'font', 'Objectives');
-        // this.titleText.setStyle({font: 'bold 20pt serif'});
+        this.titleText.tint = 0x010101;
         this.add(this.titleText);
 
         /**

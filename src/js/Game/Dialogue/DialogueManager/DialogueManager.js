@@ -59,6 +59,7 @@
          * @type {Phaser.Text}
          */
         this.titleText = new Phaser.BitmapText(this.game, 0, 0, 'font', 'title', 50);
+        this.titleText.tint = 0x010101;
         this.titleText.y = -this.titleText.height;
 
         /**
@@ -66,6 +67,7 @@
          * @type {Phaser.Text}
          */
         this.textText = new Phaser.BitmapText(this.game, 0, 0, 'font', 'text', this.titleText.fontSize * 0.8);
+        this.textText.tint = 0x010101;
 
         /**
          * The current dialogue

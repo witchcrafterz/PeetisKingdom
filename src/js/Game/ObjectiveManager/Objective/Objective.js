@@ -101,6 +101,7 @@
          */
         // this._titleText = this.game.add.text(0, 0, this.name, this._titleTextStyle);
         this._titleText = this.game.add.bitmapText(0, 0, 'font', this.name, 28);
+        this._titleText.tint = 0x010101;
         this.add(this._titleText);
 
         this._statusTextStyle = { 
@@ -119,6 +120,7 @@
          */
         // this._statusText = this.game.add.text(0, 0, this._statusTemplate, this._statusTextStyle);
         this._statusText = this.game.add.bitmapText(20, 0, 'font', this._statusTemplate, 23);
+        this._statusText.tint = 0x010101;
         this._statusText.y = this._titleText.height;
         this.add(this._statusText);
     };
