@@ -270,6 +270,12 @@
                         this.game.criterias.push(obj.name);
                     }, this);
 
+                    if (obj.properties.inactivate) {
+                        trigger.onInactive.add(function() {
+                            _.remove(this.game.criterias, obj.name);
+                        }, this);                        
+                    }
+
                     break;
             }
         }, this);
