@@ -35,6 +35,7 @@
   <object name="Starstruck" type="collect" x="7936" y="8879" width="780" height="370">
    <properties>
     <property name="frame" value="27"/>
+    <property name="id" value="starstruck"/>
     <property name="itemLayer" value="testObjective"/>
     <property name="spritesheet" value="UI"/>
     <property name="status" value="Get yourself some stars! {0}/{1}"/>
@@ -43,7 +44,7 @@
   </object>
   <object name="Explorer" type="a2b" x="6404" y="8912" width="452" height="326">
    <properties>
-    <property name="dependencies" value="Starstruck"/>
+    <property name="dependencies" value="starstruck"/>
     <property name="endLayer" value="a2bTest"/>
     <property name="status" value="Explore to the left. Or the right. You may choose your own path"/>
    </properties>

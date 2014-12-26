@@ -85,6 +85,7 @@
                  "properties":
                     {
                      "frame":"27",
+                     "id":"starstruck",
                      "itemLayer":"testObjective",
                      "spritesheet":"UI",
                      "status":"Get yourself some stars! {0}\/{1}",
@@ -102,7 +103,7 @@
                  "name":"Explorer",
                  "properties":
                     {
-                     "dependencies":"Starstruck",
+                     "dependencies":"starstruck",
                      "endLayer":"a2bTest",
                      "status":"Explore to the left. Or the right. You may choose your own path"
                     },
