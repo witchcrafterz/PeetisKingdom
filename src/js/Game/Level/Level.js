@@ -38,6 +38,14 @@
     };
 
     Game.Level = function(game) {
+        this.game = game;
+
+        /**
+         * An array containing criterias fulfilled
+         * @type {Array#String}
+         */
+        this.criterias = this.game.criterias = [];
+
         this.debugMode = false;
 
         this.levelSize = {
@@ -251,6 +259,16 @@
                         }, this);
 
                     }
+
+                    break;
+                case 'criteria':
+                    var trigger = new Game.Trigger.ZoneTrigger(this.game, true, new Phaser.Rectangle(obj.x, obj.y, obj.width, obj.height), this.p1);
+
+                    this.triggerManager.addTrigger(trigger);
+
+                    trigger.onActive.add(function() {
+                        this.game.criterias.push(obj.name);
+                    }, this);
 
                     break;
             }
