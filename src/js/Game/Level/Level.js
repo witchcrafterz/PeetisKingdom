@@ -98,7 +98,6 @@
         this.game.load.atlasXML('UI', 'assets/UI.png', 'assets/UI.xml');
         this.game.load.atlasXML('p1', 'assets/p1_spritesheet.png', 'assets/p1_spritesheet.xml');
 
-        this.game.load.bitmapFont('font', 'assets/bmfont_0.png', 'assets/bmfont.fnt');
 
         this.game.load.audio('solskenspromenad', 'assets/Solskenspromenad.mp3');
 
