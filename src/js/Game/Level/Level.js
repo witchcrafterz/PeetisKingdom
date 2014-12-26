@@ -45,6 +45,8 @@
          * @type {Array#String}
          */
         this.criterias = this.game.criterias = [];
+        this.game.onCriteriaAdd = new Phaser.Signal();
+        this.game.onCriteriaRemove = new Phaser.Signal();
 
         this.debugMode = false;
 
@@ -268,11 +270,13 @@
 
                     trigger.onActive.add(function() {
                         this.game.criterias.push(obj.name);
+                        this.onCriteriaAdd.dispatch(obj.name, this.game.criterias);
                     }, this);
 
                     if (obj.properties.inactivate) {
                         trigger.onInactive.add(function() {
                             _.remove(this.game.criterias, obj.name);
+                            this.onCriteriaRemove.dispatch(obj.name, this.game.criterias);
                         }, this);                        
                     }
 
