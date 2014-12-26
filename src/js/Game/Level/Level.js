@@ -221,6 +221,14 @@
         };
     };
 
+    Game.Level.prototype.generateCriteriaFunctions = function() {
+        this.criteriaFunctions = {
+            'activation': function() {
+                return this.activateKey.downDuration(this.time.msMax);
+            }
+        };
+    };
+
     Game.Level.prototype.generateObjects = function() {
         _.forEach(this.map.objects['objects'], function(obj) {
             switch (obj.type) {
@@ -236,10 +244,7 @@
                 case 'dialogue':
                     var dialogueKey = obj.properties.dialogue;
                     var dialogue = this.dialogues[dialogueKey];
-                    var criteria = 
-                        obj.properties.requireActivation ? function(sender) {
-                            return this.activateKey.isDown;
-                        } : undefined;
+                    var criteria = obj.properties.requireActivation ? this.criteriaFunctions['activation'] : undefined;
 
                     if (dialogue) {
                         var trigger = new Game.Trigger.ZoneTrigger(
@@ -307,6 +312,7 @@
         this.setUtils();
         this.generateLevel();
         this.generateDialogues();
+        this.generateCriteriaFunctions();
 
         this.entitiesGroup = this.game.add.group();
 
