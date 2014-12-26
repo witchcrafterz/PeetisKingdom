@@ -27,6 +27,11 @@
     <property name="dialogue" value="welcome"/>
    </properties>
   </object>
+  <object name="testCriteria" type="criteria" x="6579" y="9000" width="84" height="187">
+   <properties>
+    <property name="function" value="activation"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="objectives">
   <properties>
@@ -46,7 +51,7 @@
    <properties>
     <property name="dependencies" value="starstruck"/>
     <property name="endLayer" value="a2bTest"/>
-    <property name="status" value="Explore to the left. Or the right. You may choose your own path"/>
+    <property name="status" value="Explore to the left. Or the right. \nYou may choose your own path"/>
    </properties>
   </object>
   <object name="A whole new world" type="a2b" x="6504.7" y="9017.76" width="229.885" height="198.537">
