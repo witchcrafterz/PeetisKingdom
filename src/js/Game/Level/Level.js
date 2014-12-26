@@ -269,19 +269,26 @@
 
                     break;
                 case 'criteria':
-                    var trigger = new Game.Trigger.ZoneTrigger(this.game, true, new Phaser.Rectangle(obj.x, obj.y, obj.width, obj.height), this.p1);
+
+                    var criteriaFunction;
+                    if (obj.properties['function'] && this.criteriaFunctions[obj.properties['function']]) {
+                        criteriaFunction = this.criteriaFunctions[obj.properties['function']];
+                    }
+                    var trigger = new Game.Trigger.ZoneTrigger(this.game, true, new Phaser.Rectangle(obj.x, obj.y, obj.width, obj.height), this.p1, criteriaFunction, undefined, this);
 
                     this.triggerManager.addTrigger(trigger);
 
-                    trigger.onActive.add(function() {
+                    trigger.onActive.add(function(trigger) {
+                        trigger.enabled = false;
                         this.game.criterias.push(obj.name);
-                        this.onCriteriaAdd.dispatch(obj.name, this.game.criterias);
+                        this.game.onCriteriaAdd.dispatch(obj.name, this.game.criterias);
                     }, this);
 
                     if (obj.properties.inactivate) {
                         trigger.onInactive.add(function() {
+                            trigger.enabled = true;
                             _.remove(this.game.criterias, obj.name);
-                            this.onCriteriaRemove.dispatch(obj.name, this.game.criterias);
+                            this.game.onCriteriaRemove.dispatch(obj.name, this.game.criterias);
                         }, this);                        
                     }
 
