@@ -231,6 +231,7 @@
 
     Game.Level.prototype.generateObjects = function() {
         _.forEach(this.map.objects['objects'], function(obj) {
+            /* jshint shadow: true */
             switch (obj.type) {
                 case 'spawn':
                     if (this.p1) {
