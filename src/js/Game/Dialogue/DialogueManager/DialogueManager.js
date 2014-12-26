@@ -58,13 +58,14 @@
          * The text object of the title
          * @type {Phaser.Text}
          */
-        this.titleText = new Phaser.Text(this.game, this.padding, this.padding, 'title');
+        this.titleText = new Phaser.BitmapText(this.game, 0, 0, 'font', 'title', 50);
+        this.titleText.y = -this.titleText.height;
 
         /**
          * The text object of the text
          * @type {Phaser.Text}
          */
-        this.textText = new Phaser.Text(this.game, this.padding, this.titleText.height + this.padding, 'text');
+        this.textText = new Phaser.BitmapText(this.game, 0, 0, 'font', 'text', this.titleText.fontSize * 0.8);
 
         /**
          * The current dialogue
@@ -133,11 +134,9 @@
         var currentSlide = this.currentDialogue.conversation[this.currentDialogue.currentSlide];
 
         this.titleText.text = currentSlide.title || this.currentDialogue.defaultTitle || '';
-        this.titleText.setStyle(currentSlide.titleStyle || this.currentDialogue.defaultTitleStyle || this.defaultTitleStyle);
 
         this.textText.text = currentSlide.text || this.currentDialogue.defaultText || '';
-        this.textText.setStyle(currentSlide.textStyle || this.currentDialogue.defaultTextStyle || this.defaultTextStyle);
-        this.textText.y = this.titleText.height + this.padding;
+        this.textText.y = this.textText.height;
 
         var newBG = currentSlide.background || this.currentDialogue.defaultBackground || this.defaultBackground;
         if (this._background.key !== newBG) {
