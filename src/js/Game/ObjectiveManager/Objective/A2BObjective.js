@@ -1,8 +1,8 @@
 (function() {
     'use strict';
 
-    Game.ObjectiveManager.A2BObjective = function(game, objectiveManager, trigger, tilemap, objectiveLayer, player, dependencies, endTrigger) {
-        Game.ObjectiveManager.Objective.call(this, game, objectiveManager, trigger, tilemap, objectiveLayer, player, dependencies);
+    Game.ObjectiveManager.A2BObjective = function(game, objectiveManager, trigger, tilemap, object, player, dependencies, endTrigger) {
+        Game.ObjectiveManager.Objective.call(this, game, objectiveManager, trigger, tilemap, object, player, dependencies);
 
         this.endTrigger = endTrigger;
         this.endTrigger.onActive.add(function() {

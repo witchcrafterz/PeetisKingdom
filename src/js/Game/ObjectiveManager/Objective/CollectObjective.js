@@ -1,8 +1,8 @@
 (function() {
     'use strict';
 
-    Game.ObjectiveManager.CollectObjective = function(game, objectiveManager, trigger, tilemap, objectiveLayer, player, dependencies, toCollectGroup, endTrigger) {
-        Game.ObjectiveManager.Objective.call(this, game, objectiveManager, trigger, tilemap, objectiveLayer, player, dependencies);
+    Game.ObjectiveManager.CollectObjective = function(game, objectiveManager, trigger, tilemap, object, player, dependencies, toCollectGroup, endTrigger) {
+        Game.ObjectiveManager.Objective.call(this, game, objectiveManager, trigger, tilemap, object, player, dependencies);
 
         /**
          * The group containing the items to collect
@@ -14,7 +14,7 @@
          * Whether or not one should return to objective giver position after completion
          * @type {Boolean}
          */
-        this.isReturn = this.objectiveLayer.properties['return'] ? this.objectiveLayer.properties['return'] === 'true' : false;
+        this.isReturn = this.object.properties['return'] ? this.object.properties['return'] === 'true' : false;
 
         /**
          * If is return, this will be where the objective is handed in
@@ -52,7 +52,7 @@
 
     Game.ObjectiveManager.CollectObjective.prototype.updateStatusText = function() {
         if (this.isReturn && this.collected >= this.toCollect) {
-            this.statusText = this.objectiveLayer.properties.statusReturn || this.statusTemplate.format(this.collected, this.toCollect);
+            this.statusText = this.object.properties.statusReturn || this.statusTemplate.format(this.collected, this.toCollect);
         } else {
             this.statusText = this.statusTemplate.format(this.collected, this.toCollect);
         }
