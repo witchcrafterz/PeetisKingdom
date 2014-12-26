@@ -99,7 +99,8 @@
          * The Phaser.Text instance of the title
          * @type {Phaser.Text}
          */
-        this._titleText = this.game.add.text(0, 0, this.name, this._titleTextStyle);
+        // this._titleText = this.game.add.text(0, 0, this.name, this._titleTextStyle);
+        this._titleText = this.game.add.bitmapText(0, 0, 'font', this.name, 28);
         this.add(this._titleText);
 
         this._statusTextStyle = { 
@@ -110,16 +111,16 @@
          * The status template to be used for this objective. Formatting is to be implemented by children inheriting the Game.ObjectiveManager.Objective class
          * @type {String}
          */
-        this._statusTemplate = this.object.properties.status || this.name;
+        this._statusTemplate = (this.object.properties.status || this.name).replace('\\n', '\n');
 
         /**
          * The Phaser.Text instance of the status
          * @type {Phaser.Text}
          */
-        this._statusText = this.game.add.text(0, 0, this._statusTemplate, this._statusTextStyle);
+        // this._statusText = this.game.add.text(0, 0, this._statusTemplate, this._statusTextStyle);
+        this._statusText = this.game.add.bitmapText(20, 0, 'font', this._statusTemplate, 23);
         this._statusText.y = this._titleText.height;
         this.add(this._statusText);
-
     };
 
     Game.ObjectiveManager.Objective.prototype = Object.create(Phaser.Group.prototype);
@@ -182,7 +183,7 @@
         },
 
         set: function(value) {
-            this._statusText.text = value;
+            this._statusText.text = value.replace('\\n', '\n');
         }
 
     });  
