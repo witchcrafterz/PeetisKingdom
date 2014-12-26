@@ -334,12 +334,6 @@
             this.dialogueManager.nextSlide();
         }, this);
 
-
-        this.f6 = this.game.input.keyboard.addKey(117);
-        this.f6.onUp.add(function() {
-            this.dialogueManager.nextSlide();
-        }, this);
-
         this.game.world.bringToTop(this.objectiveManager);
         this.game.world.bringToTop(this.HUD);
     };
