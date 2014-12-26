@@ -230,8 +230,6 @@
                         obj.properties.requireActivation ? function(sender) {
                             return this.activateKey.isDown;
                         } : undefined;
-                                     
-                    console.log(dialogue)  
 
                     if (dialogue) {
                         var trigger = new Game.Trigger.ZoneTrigger(

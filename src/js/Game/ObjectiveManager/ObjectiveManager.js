@@ -156,8 +156,6 @@
                 return _.contains(objectives, objective.properties.id);
             });
 
-        console.log(toCheck)
-
         if (toCheck.length < objectives.length) {
             console.log('Could not find all dependencies. Did you spell all correctly?');
             return false;
