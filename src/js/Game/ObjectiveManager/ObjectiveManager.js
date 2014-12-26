@@ -153,7 +153,7 @@
         if (!objectives) return true;
 
         var toCheck = _.filter(this.allObjectives, function(objective) {
-                return _.contains(objectives, objective.name);
+                return _.contains(objectives, objective.properties.id);
             });
 
         console.log(toCheck)

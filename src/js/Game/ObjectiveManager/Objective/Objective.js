@@ -30,6 +30,12 @@
         this.objectiveLayer = objectiveLayer;
 
         /**
+         * The objects properties from the tilemap
+         * @type {Object}
+         */
+        this.properties = this.objectiveLayer.properties;
+
+        /**
          * The tilemap of which this objectives objective layer belongs to
          * @type {Phaser.Tilemap}
          */
