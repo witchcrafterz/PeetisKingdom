@@ -12,7 +12,7 @@
         this.bg.bmd = bmd;
         this.add(this.bg);
 
-        this.resumeBtn = new Game.GUI.Button(this.game, this.game.width * 0.5, this.game.height * 0.4, 'knapp', 'Resume', 'font', this.resumeBtn, this);
+        this.resumeBtn = new Game.GUI.Button(this.game, this.game.width * 0.5, this.game.height * 0.4, 'knapp', 'Resume', 'font', this.resume, this);
         this.resumeBtn.scale.setTo(0.8);
         this.add(this.resumeBtn);
 
