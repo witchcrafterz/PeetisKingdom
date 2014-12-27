@@ -24,6 +24,10 @@
 
     };
 
+    Game.prototype.GUI = function() {
+
+    };
+
     window.Game = new Game();
 
 })();
