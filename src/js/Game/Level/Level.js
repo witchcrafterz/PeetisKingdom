@@ -349,7 +349,7 @@
             this.dialogueManager.nextSlide();
         }, this);
 
-        this.game.input.keyboard.addKey(Phaser.Keyboard.ESC).onUp.add(this.togglePause, this);
+        this.game.input.keyboard.addKey(Phaser.Keyboard.P).onUp.add(this.togglePause, this);
 
         this.game.world.bringToTop(this.objectiveManager);
         this.game.world.bringToTop(this.HUD);
