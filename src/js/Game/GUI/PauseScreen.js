@@ -28,14 +28,14 @@
         this.add(this.fullscreen);
 
         this.alpha = 0;
-        this.game.add.tween(this).to({alpha: 1}).start();
+        this.game.add.tween(this).to({alpha: 1}, 300).start();
     };
 
     Game.GUI.PauseScreen.prototype = Object.create(Phaser.Group.prototype);
     Game.GUI.PauseScreen.prototype.constructor = Game.GUI.PauseScreen;
 
     Game.GUI.PauseScreen.prototype.resume = function() {
-        this.game.add.tween(this).to({alpha: 0}).start().onComplete.add(function() {
+        this.game.add.tween(this).to({alpha: 0}, 300).start().onComplete.add(function() {
             this.game.state.getCurrentState().resume();
         }, this);
     };
