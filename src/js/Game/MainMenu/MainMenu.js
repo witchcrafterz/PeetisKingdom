@@ -8,7 +8,7 @@
     Game.MainMenu.prototype.constructor = Game.MainMenu;
 
     Game.MainMenu.prototype.preload = function() {
-        this.game.load.image('btnPlay', 'assets/knapp_play.png');
+        this.game.load.image('knapp', 'assets/knapp.png');
         this.game.load.bitmapFont('font', 'assets/bmfont_0.png', 'assets/bmfont.fnt');
     };
 
@@ -22,7 +22,8 @@
         this.welcomeText.position.x -= this.welcomeText.width * 0.5;
         this.welcomeText.position.y -= this.welcomeText.height * 0.5;
 
-        this.btnPlay = this.game.add.button(this.game.width * 0.5, this.game.height * 0.5, 'btnPlay', this.startLevel, this);
+        this.btnPlay = new Game.GUI.Button(this.game, this.game.width * 0.5, this.game.height * 0.5, 'knapp', 'Play', 'font', this.startLevel, this);
+        this.game.world.add(this.btnPlay);
         this.btnPlay.anchor.setTo(0.5);
     };
 
