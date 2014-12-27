@@ -23,7 +23,7 @@
         }
         
         body {
-            background-color: #202020;
+            background: url("http://api.thumbr.it/whitenoise-361x370.png?background=202020&noise=a6a6a6&density=64&opacity=10");
             padding: 0;
             margin: 0;
 
@@ -48,7 +48,7 @@
 
         #topBar {
             width: 100%;
-            background-color: #101010;
+            background: url("http://api.thumbr.it/whitenoise-361x370.png?background=101010&noise=a6a6a6&density=64&opacity=10");
 
             position: absolute;
             left: 0;
