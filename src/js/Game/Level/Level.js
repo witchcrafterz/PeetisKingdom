@@ -350,7 +350,11 @@
         }, this);
 
         this.game.input.keyboard.addKey(Phaser.Keyboard.ESC).onUp.add(function() {
-            this.paused = !this.paused;
+            if (this.paused) {
+                this.resume();
+            } else {
+                this.pause();
+            }
         }, this);
 
         this.game.world.bringToTop(this.objectiveManager);
@@ -368,5 +372,15 @@
                 this.game.debug.body(entity);
             }, this);
         }
+    };
+
+    Game.Level.prototype.pause = function() {
+        this.paused = true;
+        this.pauseScreen = new Game.GUI.PauseScreen(this.game, this.HUD);
+    };
+
+    Game.Level.prototype.resume = function() {
+        this.paused = false;
+        this.pauseScreen.destroy();
     };
 })();
