@@ -9,6 +9,8 @@
         this._bmpText = new Phaser.BitmapText(this.game, 0, 0, fontKey, this._text, 60);
         this.addChild(this._bmpText);
 
+        this.anchor.setTo(0.5);
+
         this.fontTint = 0x010101;
         this._refresh();
     };
