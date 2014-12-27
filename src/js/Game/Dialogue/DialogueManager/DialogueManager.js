@@ -165,8 +165,6 @@
 
                 this.game.add.tween(this.dialoguePanel.position).to({ y: this.game.height + add }, 1000, this.easing).start();
             } else {
-                console.log(this.dialoguePanel.height)
-                console.log(this._background.height)
                 this.game.add.tween(this.dialoguePanel.position).to({ y: this.game.height - this.dialoguePanel.height - this.padding }, 1000, this.easing).start();
             }
         }
