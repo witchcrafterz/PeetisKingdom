@@ -349,6 +349,10 @@
             this.dialogueManager.nextSlide();
         }, this);
 
+        this.game.input.keyboard.addKey(Phaser.Keyboard.ESC).onUp.add(function() {
+            this.paused = !this.paused;
+        }, this);
+
         this.game.world.bringToTop(this.objectiveManager);
         this.game.world.bringToTop(this.HUD);
     };
