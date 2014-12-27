@@ -7,6 +7,7 @@
         this._text = text;
 
         this._bmpText = new Phaser.BitmapText(this.game, 0, 0, fontKey, this._text, 60);
+        this._bmpText.align = 'center';
         this.addChild(this._bmpText);
 
         this.anchor.setTo(0.5);
@@ -30,6 +31,8 @@
 
         set: function(value) {
             this._bmpText.text = value;
+            this._bmpText.updateTransform();
+            this._refresh();
         }
     });
 
@@ -50,6 +53,8 @@
 
         set: function(value) {
             this._bmpText.fontSize = value;
+            this._bmpText.updateTransform();
+            this._refresh();
         }
     });
 
