@@ -12,17 +12,17 @@
         this.bg.bmd = bmd;
         this.add(this.bg);
 
-        this.resume = new Game.GUI.Button(this.game, this.game.width * 0.5, this.game.height * 0.4, 'knapp', 'Resume', 'font', this.resume, this);
-        this.resume.scale.setTo(0.8);
-        this.add(this.resume);
+        this.resumeBtn = new Game.GUI.Button(this.game, this.game.width * 0.5, this.game.height * 0.4, 'knapp', 'Resume', 'font', this.resumeBtn, this);
+        this.resumeBtn.scale.setTo(0.8);
+        this.add(this.resumeBtn);
 
-        this.mute = new Game.GUI.Button(this.game, this.game.width * 0.5, this.resume.position.y + this.resume.height + this.padding, 'knapp', 'mute_btn', 'font', this.toggleMute, this);
+        this.mute = new Game.GUI.Button(this.game, this.game.width * 0.5, this.resumeBtn.position.y + this.resumeBtn.height + this.padding, 'knapp', 'mute_btn', 'font', this.toggleMute, this);
         this.mute.scale.setTo(0.8);
         this.mute.position.x -= (this.mute.width + this.padding) * 0.5;
         this._refreshMute();
         this.add(this.mute);
 
-        this.fullscreen = new Game.GUI.Button(this.game, this.game.width * 0.5, this.resume.position.y + this.resume.height + this.padding, 'knapp', 'Toggle\nFullscreen', 'font', this.toggleFullscreen, this);
+        this.fullscreen = new Game.GUI.Button(this.game, this.game.width * 0.5, this.resumeBtn.position.y + this.resumeBtn.height + this.padding, 'knapp', 'Toggle\nFullscreen', 'font', this.toggleFullscreen, this);
         this.fullscreen.scale.setTo(0.8);
         this.fullscreen.position.x += (this.mute.width + this.padding) * 0.5;
         this.add(this.fullscreen);

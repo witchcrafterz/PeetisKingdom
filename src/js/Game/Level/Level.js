@@ -349,13 +349,7 @@
             this.dialogueManager.nextSlide();
         }, this);
 
-        this.game.input.keyboard.addKey(Phaser.Keyboard.ESC).onUp.add(function() {
-            if (this.paused) {
-                this.resume();
-            } else {
-                this.pause();
-            }
-        }, this);
+        this.game.input.keyboard.addKey(Phaser.Keyboard.ESC).onUp.add(this.togglePause, this);
 
         this.game.world.bringToTop(this.objectiveManager);
         this.game.world.bringToTop(this.HUD);
@@ -382,5 +376,13 @@
     Game.Level.prototype.resume = function() {
         this.paused = false;
         this.pauseScreen.destroy();
+    };
+
+    Game.Level.prototype.togglePause = function() {
+        if (this.paused) {
+            this.pauseScreen.resume();
+        } else {
+            this.pause();
+        }
     };
 })();
