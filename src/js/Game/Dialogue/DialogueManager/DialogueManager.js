@@ -51,7 +51,7 @@
          * @type {Phaser.Sprite}
          */
         this._background = new Phaser.Sprite(this.game, this.game.width * 0.5 - this.dialoguePanel.x, 0, '');
-        this._background.anchor.setTo(0.5);
+        this._background.anchor.setTo(0.5, 0);
         this.dialoguePanel.add(this._background);
 
         /**
@@ -60,7 +60,7 @@
          */
         this.titleText = new Phaser.BitmapText(this.game, 0, 0, 'font', 'title', 50);
         this.titleText.tint = 0x010101;
-        this.titleText.y = -this.titleText.height;
+        this.titleText.y = this.padding;
 
         /**
          * The text object of the text
@@ -138,7 +138,7 @@
         this.titleText.text = currentSlide.title || this.currentDialogue.defaultTitle || '';
 
         this.textText.text = currentSlide.text || this.currentDialogue.defaultText || '';
-        this.textText.y = this.textText.height;
+        this.textText.y = this.height * 0.5;
 
         var newBG = currentSlide.background || this.currentDialogue.defaultBackground || this.defaultBackground;
         if (this._background.key !== newBG) {
@@ -148,8 +148,6 @@
                 this.hidden = false;
             }
         }
-
-        this._background.position.y = (this.titleText.height + this.textText.height + 2 * this.padding) * 0.5;
     };
 
     Object.defineProperty(Game.DialogueManager.prototype, 'hidden', {
@@ -163,14 +161,13 @@
 
             if (this._hidden) {
                 
-                var add = 0;
-                if (this._background) {
-                    add = this._background.height * 0.5;
-                }
+                var add = this.padding;
 
                 this.game.add.tween(this.dialoguePanel.position).to({ y: this.game.height + add }, 1000, this.easing).start();
             } else {
-                this.game.add.tween(this.dialoguePanel.position).to({ y: this.game.height - this.dialoguePanel.height }, 1000, this.easing).start();
+                console.log(this.dialoguePanel.height)
+                console.log(this._background.height)
+                this.game.add.tween(this.dialoguePanel.position).to({ y: this.game.height - this.dialoguePanel.height - this.padding }, 1000, this.easing).start();
             }
         }
 
