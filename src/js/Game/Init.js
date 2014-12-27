@@ -28,6 +28,10 @@
 
             this.scale.refresh();
 
+            this.stage.disableVisibilityChange = true;
+
+            this.stage.smoothed = false;
+
             //Fullscreen mode = maintain aspect radio
             this.game.scale.fullScreenTarget = document.getElementById('game');
             this.game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
