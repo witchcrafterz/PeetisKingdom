@@ -6,27 +6,38 @@
 
         this.padding = 20;
 
-        this.resume = new Game.GUI.Button(this.game, this.game.width * 0.5, this.game.height * 0.5, 'knapp', 'Resume', 'font', this.resume, this);
+        var bmd = this.game.make.bitmapData(this.game.width, this.game.height);
+        bmd.fill(0, 0, 0, 0.75);
+        this.bg = new Phaser.Image(this.game, 0, 0, bmd);
+        this.bg.bmd = bmd;
+        this.add(this.bg);
+
+        this.resume = new Game.GUI.Button(this.game, this.game.width * 0.5, this.game.height * 0.4, 'knapp', 'Resume', 'font', this.resume, this);
         this.resume.scale.setTo(0.8);
         this.add(this.resume);
 
-        this.mute = new Game.GUI.Button(this.game, this.game.width * 0.5, this.game.height * 0.5 + this.resume.height + this.padding, 'knapp', 'mute_btn', 'font', this.toggleMute, this);
+        this.mute = new Game.GUI.Button(this.game, this.game.width * 0.5, this.resume.position.y + this.resume.height + this.padding, 'knapp', 'mute_btn', 'font', this.toggleMute, this);
         this.mute.scale.setTo(0.8);
         this.mute.position.x -= (this.mute.width + this.padding) * 0.5;
         this._refreshMute();
         this.add(this.mute);
 
-        this.fullscreen = new Game.GUI.Button(this.game, this.game.width * 0.5, this.game.height * 0.5 + this.resume.height + this.padding, 'knapp', 'Toggle\nFullscreen', 'font', this.toggleFullscreen, this);
+        this.fullscreen = new Game.GUI.Button(this.game, this.game.width * 0.5, this.resume.position.y + this.resume.height + this.padding, 'knapp', 'Toggle\nFullscreen', 'font', this.toggleFullscreen, this);
         this.fullscreen.scale.setTo(0.8);
         this.fullscreen.position.x += (this.mute.width + this.padding) * 0.5;
         this.add(this.fullscreen);
+
+        this.alpha = 0;
+        this.game.add.tween(this).to({alpha: 1}).start();
     };
 
     Game.GUI.PauseScreen.prototype = Object.create(Phaser.Group.prototype);
     Game.GUI.PauseScreen.prototype.constructor = Game.GUI.PauseScreen;
 
     Game.GUI.PauseScreen.prototype.resume = function() {
-        this.game.state.getCurrentState().resume();
+        this.game.add.tween(this).to({alpha: 0}).start().onComplete.add(function() {
+            this.game.state.getCurrentState().resume();
+        }, this);
     };
 
     Game.GUI.PauseScreen.prototype.pause = function() {
