@@ -91,7 +91,6 @@
         this.game.load.setPreloadSprite(preloadBar);
 
         this.game.load.spritesheet('player1', 'assets/player.png', 68, 84);
-        this.game.load.image('bg', 'assets/background.png');
         this.game.load.spritesheet('spritesheet', 'assets/spritesheet.png', 64, 64);
 
         this.game.load.atlasXML('alienYellow', 'assets/alienYellow.png', 'assets/alienYellow.xml');
