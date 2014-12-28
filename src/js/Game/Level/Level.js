@@ -388,7 +388,7 @@
         }
     };
 
-    var lastUpdate = 0;
+    var lastUpdate = -20000;
     var offset = {
         value: -50
     };
@@ -403,6 +403,8 @@
             this.game.add.tween(offset).to({value: to}, 10000).start();
             lastUpdate = this.game.time.now;
         }
+
+        if (offset.value === -50 || offset.value === 25) return;
 
         var steps = 30;
         var pixelPerStep = this.game.height / steps;
