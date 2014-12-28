@@ -401,7 +401,6 @@
             } else {
                 to = 25;
             }
-            console.log(to);
             this.game.add.tween(offset).to({value: to}, 10000).start();
             lastUpdate = this.game.time.now;
         }
