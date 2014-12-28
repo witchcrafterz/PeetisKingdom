@@ -22,6 +22,15 @@
          */
         this.easing = Phaser.Easing.Quadratic.Out;
 
+        var bmd = this.game.make.bitmapData(1, 1);
+        /**
+         * The objective managers background
+         * @type {Phaser.Image}
+         */
+        this.bg = new Phaser.Image(this.game, 0, 0, bmd);
+        this.bg.bmd = bmd;
+        this.add(this.bg);        
+
         /**
          * The title of the objective manager
          * @type {Phaser.Text}
@@ -211,6 +220,10 @@
         _.forEach(this.objectives, function(objective, index) {
             this.game.add.tween(objective).to({y: this._calculateHeightTo(index - 1) }, this.animationSpeed, this.easing, true);
         }, this);
+
+        this.bg.width = this.width;
+        this.bg.height = this.height;
+        this.bg.bmd.fill(255, 255, 255, 0.75);
     };
 
     Game.ObjectiveManager.prototype._calculateHeightTo = function(index) {
