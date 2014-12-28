@@ -30,8 +30,6 @@
 
             this.stage.disableVisibilityChange = true;
 
-            this.stage.smoothed = false;
-
             //Fullscreen mode = maintain aspect radio
             this.game.scale.fullScreenTarget = document.getElementById('game');
             this.game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
@@ -42,7 +40,6 @@
             this.game.scale.leaveFullScreen.add(function() {
                 this.scale.maxWidth = this.maxWidth;
                 this.scale.maxHeight = this.maxHeight;
-                Phaser.Canvas.setSmoothingEnabled(this.game.context, false);
             }, this);
 
             if (self.localStorage && self.localStorage.hasOwnProperty('muted')) {
