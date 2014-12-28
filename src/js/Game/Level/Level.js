@@ -117,9 +117,10 @@
         this.levelSize.width = this.map.width * this.map.tileWidth;
         this.levelSize.height = this.map.height * this.map.tileHeight;
 
-        this.bg = this.game.add.sprite(0, 0, 'bg');
-        this.bg.width = this.game.width;
-        this.bg.height = this.game.height;
+        var bmd = this.game.make.bitmapData(this.game.width, this.game.height);
+        this.bg = this.game.add.image(0, 0, bmd);
+        this.bg.bmd = bmd;
+        this.paintBG();
         this.bg.fixedToCamera = true;
 
         // The layer that the player does not interact with
@@ -366,6 +367,8 @@
                 this.game.debug.body(entity);
             }, this);
         }
+
+        this.paintBG();
     };
 
     Game.Level.prototype.pause = function() {
@@ -383,6 +386,41 @@
             this.pauseScreen.resume();
         } else {
             this.pause();
+        }
+    };
+
+    var lastUpdate = 0;
+    var offset = {
+        value: -50
+    };
+    Game.Level.prototype.paintBG = function() {
+        if (this.game.time.now - lastUpdate > 20000) {
+            var to = 0;
+            if (offset.value === 25) {
+                to = -50;
+            } else {
+                to = 25;
+            }
+            console.log(to);
+            this.game.add.tween(offset).to({value: to}, 10000).start();
+            lastUpdate = this.game.time.now;
+        }
+
+        var steps = 30;
+        var pixelPerStep = this.game.height / steps;
+        var bluePerStep = 200 / steps;
+        var greenPerStep = 100 / steps;
+        var redPerStep = 50 / steps;
+
+
+        var red, green, blue, color, rnd;
+
+        for (var y = 0; y * pixelPerStep <= this.game.height; y++) {
+            red = Math.floor(redPerStep * y + offset.value);
+            green = Math.floor(greenPerStep * y + offset.value * 1.5);
+            blue = Math.floor(bluePerStep * y + offset.value * 2);
+            color = 'rgb({0},{1},{2})'.format(red, green, blue);
+            this.bg.bmd.rect(0, (steps - y) * pixelPerStep, this.game.width, pixelPerStep, color);
         }
     };
 })();
