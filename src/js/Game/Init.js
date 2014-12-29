@@ -28,6 +28,7 @@
 
             this.scale.refresh();
 
+            // Disabled auto-pause on game focus lost
             this.stage.disableVisibilityChange = true;
 
             //Fullscreen mode = maintain aspect radio

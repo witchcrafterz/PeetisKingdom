@@ -57,7 +57,12 @@
          */
         this.allObjectives = [];
 
+        /**
+         * The sound effect that is played on objective completion
+         * @type {[type]}
+         */
         this.objectiveCompleteSFX = this.game.add.audio('objectComplete');
+
 
         this.fixedToCamera = true;
 

@@ -23,7 +23,10 @@
          */
         this.toTrack = toTrack;
 
-
+        /**
+         * Internal cache
+         * @type {Array}
+         */
         this._wasInZone = [];
 
         if (this.zones && this.zones.constructor !== Array) {
@@ -34,10 +37,22 @@
             this.toTrack = [this.toTrack];
         }
 
+        /**
+         * Criteria to fulfill to make the trigger active
+         * @type {function}
+         */
         this.criteriaActive = criteriaActive;
 
+        /**
+         * Criteria to fulfill to make the trigger inactive
+         * @type {function}
+         */
         this.criteriaInactive = criteriaInactive;
 
+        /**
+         * The context that the criteria functions will be called with
+         * @type {[type]}
+         */
         this.thisArg = thisArg;
 
         this._refreshInZone();
