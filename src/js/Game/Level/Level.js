@@ -219,6 +219,11 @@
             }, {
                 title: 'Controls',
                 text: 'Use arrow keys to walk, up to interact, \nand spacebar to jump'
+            }]),
+
+            'doubleJump': new Game.Dialogue(this.game, [{
+                title: 'A bit too high...',
+                text: 'If I only could jump once more, \nwhile already in the air'
             }])
         };
     };
@@ -227,6 +232,9 @@
         this.criteriaFunctions = {
             'activation': function() {
                 return this.activateKey.downDuration(this.time.msMax);
+            },
+            'jump': function() {
+                return this.p1.controller.jump.isDown;
             }
         };
     };
@@ -248,6 +256,9 @@
                     var dialogueKey = obj.properties.dialogue;
                     var dialogue = this.dialogues[dialogueKey];
                     var criteria = obj.properties.requireActivation ? this.criteriaFunctions['activation'] : undefined;
+                    if (obj.properties['criteriaFunction'] && this.criteriaFunctions[obj.properties['criteriaFunction']]) {
+                        criteria = this.criteriaFunctions[obj.properties['criteriaFunction']];
+                    }
 
                     if (dialogue) {
                         var trigger = new Game.Trigger.ZoneTrigger(
