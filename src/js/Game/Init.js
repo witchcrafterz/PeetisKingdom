@@ -42,11 +42,13 @@
                 this.scale.maxHeight = this.maxHeight;
             }, this);
 
-            if (self.localStorage && self.localStorage.hasOwnProperty('muted')) {
-                if (self.localStorage.muted === 'true') {
-                    this.game.sound.mute = true;
+            if (self.localStorage && self.localStorage.hasOwnProperty('music')) {
+                if (self.localStorage.music === 'true') {
+                    // this.game.sound.mute = true;
+                    this.game.musicMuted = true;
                 } else {
-                    this.game.sound.mute = false;
+                    // this.game.sound.mute = false;
+                    this.game.musicMuted = false;
                 }
             }
 

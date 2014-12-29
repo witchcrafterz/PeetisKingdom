@@ -77,6 +77,20 @@
             this.level.dirty = true;
             this.debugMode = !this.debugMode;
         };
+
+        this.toggleMusic = function() {
+            if (this.music.isPlaying) {
+                this.music.pause();
+            } else {
+                if (this.music.paused) {
+                    this.music.resume();
+                } else {
+                    this.music.play();
+                }
+            }
+
+            return !this.music.isPlaying;
+        };
     };
 
     Game.Level.prototype = Object.create(self.Game.Utils.BaseState.prototype);
@@ -357,8 +371,10 @@
         this.game.add.existing(this.alienYellow);
         this.entitiesGroup.add(this.alienYellow);
 
-        var solskenspromenad = this.game.add.audio('solskenspromenad', 0.6, true, true);
-        solskenspromenad.play();
+        this.music = this.game.add.audio('solskenspromenad', 0.6, true, true);
+        if (!this.game.musicMuted) {
+            this.music.play();
+        }
 
         this.activateKey.onDown.add(function() {
             this.dialogueManager.nextSlide();
