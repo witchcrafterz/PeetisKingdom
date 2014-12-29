@@ -48,6 +48,8 @@
 
         this.godMode = false;
 
+        this.jumpSFX = this.game.add.audio('jump');
+
         return this;
     };
 
@@ -79,6 +81,7 @@
                 this.currentJumps += 1;
 
                 if (this.currentJumps < maxJumps) {
+                    this.jumpSFX.play();
                     this.body.velocity.y = 0;
                 }
             }
