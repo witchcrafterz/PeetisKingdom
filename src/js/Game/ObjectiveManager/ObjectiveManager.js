@@ -57,6 +57,7 @@
          */
         this.allObjectives = [];
 
+        this.objectiveCompleteSFX = this.game.add.audio('objectComplete');
 
         this.fixedToCamera = true;
 
