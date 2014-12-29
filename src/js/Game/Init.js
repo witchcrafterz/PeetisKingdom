@@ -26,6 +26,7 @@
             this.scale.maxWidth = this.maxWidth;
             this.scale.maxHeight = this.maxHeight;
 
+            // Refreshes viewport on start to make it correct size
             this.scale.refresh();
 
             // Disabled auto-pause on game focus lost
