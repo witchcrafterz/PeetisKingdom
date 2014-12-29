@@ -25,6 +25,8 @@
             this.isReturn = true;
         }
 
+        this.collectSFX = this.game.add.audio('pickupCoin');
+
         this.removeOnInactive = false;
         this.updateStatusText();
     };
@@ -37,6 +39,7 @@
 
         this.toCollectGroup.forEachAlive(function(toCollectItem) {
             if (this.game.physics.arcade.intersects(this.player.body, toCollectItem.body)) {
+                this.collectSFX.play();
                 toCollectItem.collected = true;
                 toCollectItem.kill();
                 this.updateStatusText();
