@@ -124,6 +124,7 @@
 
         // The layer that the player does not interact with
         this.behind = this.map.createLayer('behind');
+        this.behind.overlay = 'rgba(0,0,0,0.4)';
 
         this.level = this.map.createLayer('collision');
         // The layer containing platforms
