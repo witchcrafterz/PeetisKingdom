@@ -81,15 +81,17 @@
                 this.currentJumps += 1;
 
                 if (this.currentJumps < maxJumps) {
-                    this.jumpSFX.play();
                     this.body.velocity.y = 0;
                 }
             }
 
             if (Math.floor(this.jumpMeter) > 0 && this.currentJumps < maxJumps) {
+                if (this.body.onFloor() || !this.jumpWasDown) {
+                    this.jumpSFX.play();
+                }
+
                 this.body.acceleration.y -= this.jumpMeter;
                 this.jumpMeter *= jumpFactor;
-
             }
         } else {
             if (this.jumpWasDown) {
