@@ -247,6 +247,11 @@
                 text: 'If I only could jump once more, \nwhile already in the air'
             }]),
 
+            'direction': new Game.Dialogue(this.game, [{
+                title: 'Road sign:',
+                text: 'Right: Grasshopper\'s residential cave\nLeft: Princess Peeti\'s Mountain Castle'
+            }]),
+
             'grasshopperQuest': new Game.Dialogue(this.game, [{
                 text: 'Gosh darn it! I dropped my \npearl in the lake!'
             }, {
