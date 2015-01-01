@@ -224,6 +224,10 @@
 
     Game.Level.prototype.generateDialogues = function() {
         this.dialogues = {
+            'intro': new Game.Dialogue(this.game, [{
+                text: 'Ouch... What happened? Where am I?'
+            }], 'You:'),
+
             'instruction': new Game.Dialogue(this.game, [{
                 text: 'Use arrow keys to walk, and the up key to interact with objects!'
             }, {
@@ -241,7 +245,20 @@
             'doubleJump': new Game.Dialogue(this.game, [{
                 title: 'A bit too high...',
                 text: 'If I only could jump once more, \nwhile already in the air'
-            }])
+            }]),
+
+            'grasshopperQuest': new Game.Dialogue(this.game, [{
+                text: 'Gosh darn it! I dropped my \npearl in the lake!'
+            }, {
+                title: 'You:',
+                text: 'A grasshopper, and you can talk!?'
+            }, {
+                text: 'Of course I can talk you big dumdum!' 
+            }, { 
+                text: 'Anyways... You look like you can swim!\nMind diving in and getting my pearl?'
+            }, {
+                text: 'Pretty please! I\'ll reward you with \nthe power of leaping through the air!'
+            }], 'Grasshopper:')
         };
     };
 
