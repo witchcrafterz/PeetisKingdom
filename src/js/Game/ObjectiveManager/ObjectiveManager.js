@@ -114,6 +114,10 @@
 
                 var sprite = itemsGroup.create(object.x, object.y, key, parseInt(frame));
 
+                if (object.properties['activate']) {
+                    sprite.activate = true;
+                }
+
                 sprite.body.allowGravity = object.properties.allowGravity || false;
             }
         }, this);

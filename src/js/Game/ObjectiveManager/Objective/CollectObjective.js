@@ -44,7 +44,10 @@
                 toCollectItem.kill();
                 this.updateStatusText();
                 this.checkWin();
-                this.activate();
+
+                if (toCollectItem.activate) {
+                    this.activate();
+                }
             }
         }, this);
 
