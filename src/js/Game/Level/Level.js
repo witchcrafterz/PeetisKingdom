@@ -301,9 +301,6 @@
                     var frame = obj.properties['frame'];
                     var sprite = this.game.add.sprite(obj.x, obj.y, key, frame, this.entitiesGroup);
 
-                    console.log(this.p1)
-                    console.log(obj)
-
                     break;
                 default:
                     console.log('Did not recognize sprite type: ', obj.type);
