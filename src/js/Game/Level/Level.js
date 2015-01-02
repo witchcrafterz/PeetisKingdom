@@ -390,23 +390,35 @@
                     var enterCriteria = obj.properties['enterCriteria'] || '';
                     var leaveCriteria = obj.properties['leaveCriteria'] || '';
 
-                    enterCriteria = this.criteriaFunction[enterCriteria];
-                    leaveCriteria = this.criteriaFunction[leaveCriteria];
+                    enterCriteria = this.criteriaFunctions[enterCriteria];
+                    leaveCriteria = this.criteriaFunctions[leaveCriteria];
 
-                    var rectangle = new Phaser.Rectangle(obj.x, obj.y, obj.width, obj.height);
-                    var trigger = new Game.Trigger.ZoneTrigger(this.game, true, rectangle, this.p1, enterCriteria, leaveCriteria, this);
+                    var rectangles = [new Phaser.Rectangle(obj.x, obj.y, obj.width, obj.height)];
+
+
+                    if (obj.properties['part']) {
+                        var part = obj.properties['part'];
+
+                        var parts = _.filter(this.map.objects['objects'], { type: 'part', name: part });
+
+                        _.forEach(parts, function(partObj) {
+                            rectangles.push(new Phaser.Rectangle(partObj.x, partObj.y, partObj.width, partObj.height));
+                        });
+                    }
+
+                    var trigger = new Game.Trigger.ZoneTrigger(this.game, true, rectangles, this.p1, enterCriteria, leaveCriteria, this);
 
                     this.triggerManager.addTrigger(trigger);
 
                     trigger.onActive.add(function() {
                         if (onEnter) {
-                            onEnter();
+                            onEnter.call(this);
                         }
                     }, this);
 
                     trigger.onInactive.add(function() {
                         if (onLeave) {
-                            onLeave();
+                            onLeave.call(this);
                         }
                     }, this);
 
@@ -438,6 +450,7 @@
         this.generateLevel();
         this.generateDialogues();
         this.generateCriteriaFunctions();
+        this.generateTriggerFunctions();
 
         this.entitiesGroup = this.game.add.group();
         this.entitiesGroup.enableBody = true;
