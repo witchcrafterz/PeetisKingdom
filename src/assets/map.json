@@ -35,6 +35,32 @@
         }, 
         {
          "draworder":"topdown",
+         "height":250,
+         "name":"sprites",
+         "objects":[
+                {
+                 "height":24,
+                 "name":"grasshopper",
+                 "properties":
+                    {
+                     "key":"grasshopper"
+                    },
+                 "rotation":0,
+                 "type":"entity",
+                 "visible":true,
+                 "width":134,
+                 "x":26500,
+                 "y":10082
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":500,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "height":0,
          "name":"objects",
          "objects":[
@@ -50,11 +76,11 @@
                  "type":"spawn",
                  "visible":true,
                  "width":140,
-                 "x":15148.42,
+                 "x":15148.4,
                  "y":11533
                 }, 
                 {
-                 "height":344.424000000001,
+                 "height":344.424,
                  "name":"intro dialogue",
                  "properties":
                     {
@@ -63,9 +89,9 @@
                  "rotation":0,
                  "type":"dialogue",
                  "visible":true,
-                 "width":1054.364,
-                 "x":14580.12,
-                 "y":11455.27
+                 "width":1054.36,
+                 "x":14580.1,
+                 "y":11455.3
                 }, 
                 {
                  "height":400,
@@ -79,8 +105,8 @@
                  "type":"dialogue",
                  "visible":true,
                  "width":148,
-                 "x":13474.1212121212,
-                 "y":10946.4242424242
+                 "x":13474.1,
+                 "y":10946.4
                 }, 
                 {
                  "height":376,
@@ -106,9 +132,9 @@
                  "rotation":0,
                  "type":"dialogue",
                  "visible":true,
-                 "width":186.666666666668,
-                 "x":18049.3333333333,
-                 "y":10057.3333333333
+                 "width":186.667,
+                 "x":18049.3,
+                 "y":10057.3
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -171,11 +197,11 @@
         }, 
         {
          "draworder":"topdown",
-         "height":250,
+         "height":0,
          "name":"grasshopperCollect",
          "objects":[
                 {
-                 "height":69.69696969697,
+                 "height":69.697,
                  "name":"",
                  "properties":
                     {
@@ -184,24 +210,24 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":72.7272727272721,
-                 "x":28790.9090909091,
-                 "y":15166.6666666667
+                 "width":72.7273,
+                 "x":28790.9,
+                 "y":15166.7
                 }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
-         "width":500,
+         "width":0,
          "x":0,
          "y":0
         }, 
         {
          "draworder":"topdown",
-         "height":250,
+         "height":0,
          "name":"leaveCrater",
          "objects":[
                 {
-                 "height":306.787878787878,
+                 "height":306.788,
                  "name":"Leave creater",
                  "properties":
                     {
@@ -210,14 +236,14 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":426.060606060608,
+                 "width":426.061,
                  "x":17400,
-                 "y":9918.18181818182
+                 "y":9918.18
                 }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
-         "width":500,
+         "width":0,
          "x":0,
          "y":0
         }],

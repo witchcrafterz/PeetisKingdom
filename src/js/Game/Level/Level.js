@@ -118,6 +118,7 @@
         this.game.load.audio('solskenspromenad', 'assets/Solskenspromenad.mp3');
 
         this.game.load.image('dialoguePanel', 'assets/dialoguePanel.png');
+        this.game.load.image('grasshopper', 'assets/characters/grasshopper256.png');
 
         this.game.load.tilemap('map', 'assets/map.json', null, Phaser.Tilemap.TILED_JSON);
     };
@@ -278,6 +279,25 @@
         };
     };
 
+    Game.Level.prototype.generateSprites = function() {
+        _.forEach(this.map.objects['sprites'], function(obj) {
+            switch (obj.type) {
+                case 'entity':
+
+                    var key = obj.properties['key'];
+                    var frame = obj.properties['frame'];
+                    var sprite = this.game.add.sprite(obj.x, obj.y, key, frame, this.entitiesGroup);
+
+                    console.log(this.p1)
+                    console.log(obj)
+
+                    break;
+                default:
+                    console.log('Did not recognize sprite type: ', obj.type);
+            }
+        }, this);
+    };
+
     Game.Level.prototype.generateObjects = function() {
         _.forEach(this.map.objects['objects'], function(obj) {
             /* jshint shadow: true */
@@ -375,6 +395,7 @@
         this.generateCriteriaFunctions();
 
         this.entitiesGroup = this.game.add.group();
+        this.entitiesGroup.enableBody = true;
 
         this.spawnPlayer();
 
@@ -385,6 +406,7 @@
         this.triggerManager = this.game.triggerManager = new Game.Trigger.TriggerManager(this.game);
 
         this.generateObjects();
+        this.generateSprites();
 
         this.objectiveManager.createObjectives(this.map, this.map.objects['objectives'], this.p1);
 
