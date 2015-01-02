@@ -35,7 +35,7 @@
         }, 
         {
          "draworder":"topdown",
-         "height":250,
+         "height":0,
          "name":"sprites",
          "objects":[
                 {
@@ -55,7 +55,7 @@
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
-         "width":500,
+         "width":0,
          "x":0,
          "y":0
         }, 
@@ -135,6 +135,36 @@
                  "width":186.667,
                  "x":18049.3,
                  "y":10057.3
+                }, 
+                {
+                 "height":1600,
+                 "name":"water",
+                 "properties":
+                    {
+                     "enter":"enterWater",
+                     "leave":"leaveWater",
+                     "part":"waterPart"
+                    },
+                 "rotation":0,
+                 "type":"trigger",
+                 "visible":true,
+                 "width":3624,
+                 "x":26760,
+                 "y":10208
+                }, 
+                {
+                 "height":4104,
+                 "name":"waterPart",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"part",
+                 "visible":true,
+                 "width":7616,
+                 "x":23800,
+                 "y":11408
                 }],
          "opacity":1,
          "type":"objectgroup",

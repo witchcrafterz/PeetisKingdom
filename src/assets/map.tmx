@@ -50,6 +50,14 @@
     <property name="dialogue" value="direction"/>
    </properties>
   </object>
+  <object name="water" type="trigger" x="26760" y="10208" width="3624" height="1600">
+   <properties>
+    <property name="enter" value="enterWater"/>
+    <property name="leave" value="leaveWater"/>
+    <property name="part" value="waterPart"/>
+   </properties>
+  </object>
+  <object name="waterPart" type="part" x="23800" y="11408" width="7616" height="4104"/>
  </objectgroup>
  <objectgroup name="objectives">
   <properties>
