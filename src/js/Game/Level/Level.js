@@ -279,6 +279,19 @@
         };
     };
 
+    Game.Level.prototype.generateTriggerFunctions = function() {
+        this.triggerFunctions = {
+            'enterWater': function() {
+                this.p1.body.gravity.y = 200;
+                this.p1.submerged = true;
+            },
+
+            'leaveWater': function() {
+                this.p1.body.gravity.y = Game.gravity.y;
+            }
+        };
+    };
+
     Game.Level.prototype.generateSprites = function() {
         _.forEach(this.map.objects['sprites'], function(obj) {
             switch (obj.type) {
@@ -364,6 +377,41 @@
                             this.game.onCriteriaRemove.dispatch(obj.name, this.game.criterias);
                         }, this);                        
                     }
+
+                    break;
+
+                case 'trigger':
+
+                    var onEnter = obj.properties['enter'] || '';
+                    var onLeave = obj.properties['leave'] || '';
+
+                    onEnter = this.triggerFunctions[onEnter];
+                    onLeave = this.triggerFunctions[onEnter];
+
+                    if (typeof onEnter === 'undefined' && typeof onLeave === 'undefined') return;
+
+                    var enterCriteria = obj.properties['enterCriteria'] || '';
+                    var leaveCriteria = obj.properties['leaveCriteria'] || '';
+
+                    enterCriteria = this.criteriaFunction[enterCriteria];
+                    leaveCriteria = this.criteriaFunction[leaveCriteria];
+
+                    var rectangle = new Phaser.Rectangle(obj.x, obj.y, obj.width, obj.height);
+                    var trigger = new Game.Trigger.ZoneTrigger(this.game, true, rectangle, this.p1, enterCriteria, leaveCriteria, this);
+
+                    this.triggerManager.addTrigger(trigger);
+
+                    trigger.onActive.add(function() {
+                        if (onEnter) {
+                            onEnter();
+                        }
+                    }, this);
+
+                    trigger.onInactive.add(function() {
+                        if (onLeave) {
+                            onLeave();
+                        }
+                    }, this);
 
                     break;
             }
