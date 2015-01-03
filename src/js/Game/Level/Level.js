@@ -285,6 +285,10 @@
                 this.p1.submerged = false;
                 // Boost to help player up
                 this.p1.body.velocity.y = -1000;
+            },
+
+            'leaveLadder': function() {
+                this.p1.submerged = false;
             }
         };
     };

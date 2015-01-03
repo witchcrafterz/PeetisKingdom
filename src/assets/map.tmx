@@ -63,6 +63,12 @@
     <property name="dialogue" value="castleDialogue"/>
    </properties>
   </object>
+  <object name="water" type="trigger" x="236" y="504" width="84" height="2696">
+   <properties>
+    <property name="enter" value="enterWater"/>
+    <property name="leave" value="leaveLadder"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="objectives">
   <properties>

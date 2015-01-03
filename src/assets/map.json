@@ -180,6 +180,21 @@
                  "width":257.576,
                  "x":1021.21,
                  "y":3003.03
+                }, 
+                {
+                 "height":2696,
+                 "name":"water",
+                 "properties":
+                    {
+                     "enter":"enterWater",
+                     "leave":"leaveLadder"
+                    },
+                 "rotation":0,
+                 "type":"trigger",
+                 "visible":true,
+                 "width":84,
+                 "x":236,
+                 "y":504
                 }],
          "opacity":1,
          "type":"objectgroup",
