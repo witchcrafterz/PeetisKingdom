@@ -69,7 +69,7 @@
 </head>
 <body>
     <div id="topBar">
-        <p>Press 'f11' to enter fullscreen</p>
+        <p>Press 'f11' to enter fullscreen. Up-arrrow for next page in dialogue (always try to press up because there is no indiciator as of yet that you should!)</p>
     </div>
 
     <div id="game"></div>
