@@ -382,7 +382,7 @@
                     var onLeave = obj.properties['leave'] || '';
 
                     onEnter = this.triggerFunctions[onEnter];
-                    onLeave = this.triggerFunctions[onEnter];
+                    onLeave = this.triggerFunctions[onLeave];
 
                     if (typeof onEnter === 'undefined' && typeof onLeave === 'undefined') return;
 
