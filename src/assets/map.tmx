@@ -34,7 +34,7 @@
     <property name="dialogue" value="intro"/>
    </properties>
   </object>
-  <object name="double jump dialogue" type="dialogue" x="8156.1" y="5702.4" width="161" height="326">
+  <object name="double jump dialogue" type="dialogue" x="8230.1" y="5630.4" width="108" height="451">
    <properties>
     <property name="criteriaFunction" value="jump"/>
     <property name="dialogue" value="doubleJump"/>

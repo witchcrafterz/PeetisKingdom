@@ -95,7 +95,7 @@
                  "y":6099.3
                 }, 
                 {
-                 "height":326,
+                 "height":451,
                  "name":"double jump dialogue",
                  "properties":
                     {
@@ -105,9 +105,9 @@
                  "rotation":0,
                  "type":"dialogue",
                  "visible":true,
-                 "width":161,
-                 "x":8156.1,
-                 "y":5702.4
+                 "width":108,
+                 "x":8230.1,
+                 "y":5630.4
                 }, 
                 {
                  "height":376,
