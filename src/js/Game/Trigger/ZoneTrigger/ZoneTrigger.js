@@ -96,10 +96,18 @@
 
             if (!this.isActive && insideAny) {
                 // Entered one of the zones
-                this.onActive.dispatch(this, toTrack, zones);
+                if (!this.criteriaActive) {
+                    this.onActive.dispatch(this, toTrack, zones);
+                } else if (this.criteriaActive.call(this.thisArg)) {
+                    this.onActive.dispatch(this, toTrack, zones);
+                }
             } else if (this.isActive && !insideAny) {
                 // Left all zones
-                this.onInactive.dispatch(this, toTrack, zones);
+                if (!this.criteriaInactive) {
+                    this.onInactive.dispatch(this, toTrack, zones);
+                } else if (this.criteriaInactive.call(this.thisArg)) {
+                    this.onInactive.dispatch(this, toTrack, zones);
+                }
             }
         }, this);
 
