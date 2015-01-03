@@ -29,7 +29,9 @@
          */
         this.bg = new Phaser.Image(this.game, 0, 0, bmd);
         this.bg.bmd = bmd;
-        this.add(this.bg);        
+        this.bg.position.x = -this.padding * 0.5;
+        this.bg.position.y = -this.padding * 0.5;
+        this.add(this.bg);
 
         /**
          * The title of the objective manager
@@ -231,7 +233,7 @@
             this.game.add.tween(this).to({alpha: 1}, this.animationSpeed, this.easing, true);
         }
 
-        this.pivot.x = this.width;
+        this.pivot.x = this.width * 0.5;
 
         this.game.add.tween(this.pivot).to({y: this._calculateHeightTo(this.objectives.length) * 0.5 }, this.animationSpeed, this.easing, true);
 
@@ -241,8 +243,8 @@
             this.game.add.tween(objective).to({y: this._calculateHeightTo(index - 1) }, this.animationSpeed, this.easing, true);
         }, this);
 
-        this.bg.width = this.width;
-        this.bg.height = this.height;
+        this.bg.width = this.width + this.padding;
+        this.bg.height = this.height + this.padding;
         this.bg.bmd.fill(255, 255, 255, 0.75);
     };
 
