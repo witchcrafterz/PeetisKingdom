@@ -471,6 +471,8 @@
         this.game.world.bringToTop(this.front);
         this.game.world.bringToTop(this.objectiveManager);
         this.game.world.bringToTop(this.HUD);
+
+        this.paintBG();
     };
 
     Game.Level.prototype.update = function() {
@@ -484,8 +486,6 @@
                 this.game.debug.body(entity);
             }, this);
         }
-
-        this.paintBG();
     };
 
     Game.Level.prototype.pause = function() {
@@ -506,23 +506,10 @@
         }
     };
 
-    var lastUpdate = -20000;
     var offset = {
-        value: -50
+        value: 50
     };
     Game.Level.prototype.paintBG = function() {
-        if (this.game.time.now - lastUpdate > 20000) {
-            var to = 0;
-            if (offset.value === 25) {
-                to = -50;
-            } else {
-                to = 25;
-            }
-            this.game.add.tween(offset).to({value: to}, 10000).start();
-            lastUpdate = this.game.time.now;
-        }
-
-        if (offset.value === -50 || offset.value === 25) return;
 
         var steps = 30;
         var pixelPerStep = this.game.height / steps;
