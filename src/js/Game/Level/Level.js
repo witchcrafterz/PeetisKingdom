@@ -3,23 +3,10 @@
 
     var specialCollision = {
         bottomRight: [
-            129,
-            136,
-            132,
-            67,
-            45,
-            15
         ],
         bottomLeft: [
-            30,
-            33,
-            37,
-            40,
-            95,
-            117
         ],
         bottomThird: [
-            102
         ],
         topThird: [
         ],
@@ -28,12 +15,8 @@
         bottomHalf: [
         ],
         exclude: [
-            93,
-            118,
-            143,
-            65,
-            90,
-            155
+            // Water
+            68
         ]
     };
 
@@ -485,6 +468,7 @@
 
         this.game.input.keyboard.addKey(Phaser.Keyboard.P).onUp.add(this.togglePause, this);
 
+        this.game.world.bringToTop(this.front);
         this.game.world.bringToTop(this.objectiveManager);
         this.game.world.bringToTop(this.HUD);
     };
