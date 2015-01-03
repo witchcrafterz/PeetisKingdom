@@ -270,6 +270,7 @@
                 return this.activateKey.downDuration(this.time.msMax);
             },
             'jump': function() {
+                console.log('jump')
                 return this.p1.controller.jump.isDown;
             }
         };
@@ -325,10 +326,8 @@
                 case 'dialogue':
                     var dialogueKey = obj.properties.dialogue;
                     var dialogue = this.dialogues[dialogueKey];
-                    var criteria = obj.properties.requireActivation ? this.criteriaFunctions['activation'] : undefined;
-                    if (obj.properties['criteriaFunction'] && this.criteriaFunctions[obj.properties['criteriaFunction']]) {
-                        criteria = this.criteriaFunctions[obj.properties['criteriaFunction']];
-                    }
+                    var criteria = obj.properties['criteriaFunction'] || '';
+                    criteria = this.criteriaFunctions[criteria];
 
                     if (dialogue) {
                         var trigger = new Game.Trigger.ZoneTrigger(
