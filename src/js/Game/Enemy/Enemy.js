@@ -12,7 +12,7 @@
     var maxVelocity = new Phaser.Point(3000, 2000);
     var maxWalkingVelocity = new Phaser.Point(500, 0);
 
-    Game.Enemy = function(game, x, y, textureKey) {
+    Game.Enemy = function(game, x, y, textureKey, controller) {
 
         Phaser.Sprite.call(this, game, x, y, _textureKey || textureKey);
 
@@ -23,7 +23,8 @@
         this.body.drag.setTo(1000, 0);
         this.body.maxVelocity = maxVelocity;
 
-        this.controller = new Game.Controller.AI(this.game, this);
+        this.controller = controller;
+        this.controller.controlled = this;
 
         this.animations.add('running', [9, 10], 10, true);
         this.animations.add('jump', [5], 20, true);

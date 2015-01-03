@@ -452,7 +452,7 @@
 
         this.objectiveManager.createObjectives(this.map, this.map.objects['objectives'], this.p1);
 
-        this.alienYellow = new Game.Enemy(this.game, this.p1.position.x - this.game.width, this.p1.position.y);
+        this.alienYellow = new Game.Enemy(this.game, this.p1.position.x - this.game.width, this.p1.position.y, undefined, new Game.Controller.AI(this.game));
         this.alienYellow.controller.hostile = false;
         this.game.add.existing(this.alienYellow);
         this.entitiesGroup.add(this.alienYellow);
