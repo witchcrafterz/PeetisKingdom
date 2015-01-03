@@ -16,7 +16,15 @@
         ],
         exclude: [
             // Water
-            68
+            68,
+            // Ladder
+            102,
+            // Sign
+            103,
+            // Rope
+            104,
+            // Thick rope
+            105
         ]
     };
 
