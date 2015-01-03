@@ -63,24 +63,6 @@
             this.toTrack.body.position.y -= 10;
             this.toTrack.body.velocity.setTo(this.flickVector.x, this.flickVector.y);
         }
-
-        // if (this.toTrack.position.x > this.controlled.position.x) {
-        //     this.right.setDown.call(this);
-        // } else {
-        //     this.right.setUp.call(this);
-        // }
-
-        // if (this.toTrack.position.x < this.controlled.position.x) {
-        //     this.left.setDown.call(this);
-        // } else {
-        //     this.left.setUp.call(this);
-        // }
-
-        // if (this.toTrack.position.y - this.controlled.position.y < -300) {
-        //     this.jump.setDown.call(this);
-        // } else {
-        //     this.jump.setUp.call(this);
-        // }
     };
 
 })();
