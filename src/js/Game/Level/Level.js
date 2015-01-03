@@ -247,7 +247,12 @@
                 text: 'Anyways... You look like you can swim!\nMind diving in and getting my pearl?'
             }, {
                 text: 'Pretty please! I\'ll reward you with \nthe power of leaping through the air!'
-            }], 'Grasshopper:')
+            }], 'Grasshopper:'),
+
+            'castleDialogue': new Game.Dialogue(this.game, [{
+                title: 'Directions',
+                text: 'Right: Princess Peeti\'s Throne Room\nLeft: Astronomer\'s Tower'
+            }])
         };
     };
 
