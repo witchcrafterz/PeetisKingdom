@@ -202,7 +202,8 @@
                  "properties":
                     {
                      "enter":"setSlippery",
-                     "leave":"resetSlippery"
+                     "leave":"resetSlippery",
+                     "part":"icePart"
                     },
                  "rotation":0,
                  "type":"trigger",
@@ -212,7 +213,7 @@
                  "y":656
                 }, 
                 {
-                 "height":244,
+                 "height":316.5,
                  "name":"icePart",
                  "properties":
                     {
@@ -221,9 +222,9 @@
                  "rotation":0,
                  "type":"part",
                  "visible":true,
-                 "width":376,
-                 "x":4264,
-                 "y":96
+                 "width":405,
+                 "x":4246,
+                 "y":15.5
                 }],
          "opacity":1,
          "type":"objectgroup",

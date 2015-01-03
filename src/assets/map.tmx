@@ -73,9 +73,10 @@
    <properties>
     <property name="enter" value="setSlippery"/>
     <property name="leave" value="resetSlippery"/>
+    <property name="part" value="icePart"/>
    </properties>
   </object>
-  <object name="icePart" type="part" x="4264" y="96" width="376" height="244"/>
+  <object name="icePart" type="part" x="4246" y="15.5" width="405" height="316.5"/>
  </objectgroup>
  <objectgroup name="objectives">
   <properties>
