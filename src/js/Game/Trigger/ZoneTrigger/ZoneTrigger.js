@@ -77,37 +77,33 @@
         if (!this.enabled) return;
 
         _.forEach(this.toTrack, function(toTrack, iToTrack) {
+
+            var insideAny = false;
+            var zones = [];
+
             _.forEach(this.zones, function(zone, iZone) {
 
                 var intersects = zone.contains(toTrack.position.x, toTrack.position.y);
-                var entered = intersects && !this._wasInZone[iToTrack][iZone];
-                var left = !intersects && this._wasInZone[iToTrack][iZone];
 
-                var updateInZone = false;
-
-                if (entered) {
-                    if (this.criteriaActive && this.criteriaActive.call(this.thisArg || this, this, toTrack, zone)) {
-                        this.onActive.dispatch(this, toTrack, zone);
-                        updateInZone = true;
-                    } else if (!this.criteriaActive) {
-                        this.onActive.dispatch(this, toTrack, zone);
-                        updateInZone = true;
-                    }
-                } else if (left) {
-                    if (this.criteriaInactive && this.criteriaInactive.call(this.thisArg || this, this, toTrack, zone)) {
-                        this.onInactive.dispatch(this, toTrack, zone);
-                        updateInZone = true;
-                    } else if (!this.criteriaInactive) {
-                        this.onInactive.dispatch(this, toTrack, zone);
-                        updateInZone = true;
-                    }
+                if (intersects) {
+                    zones.push(zone);
+                    insideAny = true;
                 }
 
-                if (updateInZone) {
-                    this._wasInZone[iToTrack][iZone] = intersects;
-                }
+                this._wasInZone[iToTrack][iZone] = intersects;
+
             }, this);
+
+            if (!this.isActive && insideAny) {
+                // Entered one of the zones
+                this.onActive.dispatch(this, toTrack, zones);
+            } else if (this.isActive && !insideAny) {
+                // Left all zones
+                this.onInactive.dispatch(this, toTrack, zones);
+            }
         }, this);
+
+
     };
 
     Game.Trigger.ZoneTrigger.prototype.debug = function() {
