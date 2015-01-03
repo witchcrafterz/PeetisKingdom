@@ -164,7 +164,7 @@
         this.completed = true;
         this._statusTextStyle.fill = '#01C611';
         this._statusText.setStyle(this._statusTextStyle);
-        this.objectiveManager.objectiveCompleteSFX.play();
+        this.objectiveManager.onObjectiveComplete.dispatch(this);
     };
 
     Game.ObjectiveManager.Objective.prototype._onFailureHandler = function() {

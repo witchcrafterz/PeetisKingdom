@@ -63,18 +63,28 @@
          */
         this.objectiveCompleteSFX = this.game.add.audio('objectComplete');
 
+        /**
+         * Triggers when any objective has been completed
+         * @type {Phaser.Signal}
+         */
+        this.onObjectiveComplete = new Phaser.Signal();
 
         this.fixedToCamera = true;
 
         this.cameraOffset.setTo(x, y);
 
         this._updatePositioning();
+        this.onObjectiveComplete.add(this.onObjectiveCompleteHandler, this);
 
         this.alpha = 0;
     };
 
     Game.ObjectiveManager.prototype = Object.create(Phaser.Group.prototype);
     Game.ObjectiveManager.prototype.constructor = Game.ObjectiveManager;
+
+    Game.ObjectiveManager.prototype.onObjectiveCompleteHandler = function() {
+        this.objectiveCompleteSFX.play();
+    };
 
     Game.ObjectiveManager.prototype.createObjectives = function(map, objectivesLayer, player) {
         _.forEach(objectivesLayer, function(objective) {
