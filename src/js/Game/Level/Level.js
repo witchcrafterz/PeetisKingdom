@@ -282,12 +282,11 @@
     Game.Level.prototype.generateTriggerFunctions = function() {
         this.triggerFunctions = {
             'enterWater': function() {
-                this.p1.body.gravity.y = 200;
                 this.p1.submerged = true;
             },
 
             'leaveWater': function() {
-                this.p1.body.gravity.y = Game.gravity.y;
+                this.p1.submerged = false;
             }
         };
     };

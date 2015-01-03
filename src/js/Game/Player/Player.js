@@ -76,6 +76,13 @@
     };
 
     Game.Player.prototype.jump = function() {
+        if (this.submerged) {
+            if (this.controller.jump.isDown) {
+                this.body.velocity.y = -400;
+            }
+            return;
+        }
+
         if (this.controller.jump.isDown) {
             if (!this.jumpWasDown) {
                 this.currentJumps += 1;
@@ -187,11 +194,16 @@
             }
         }
 
-        if (this.body.onFloor() || this.body.touching.down) {
-            this.resetJump();
-            this.body.drag.setTo(drag.x, drag.y);
+        if (!this.submerged) {
+            if (this.body.onFloor() || this.body.touching.down) {
+                this.resetJump();
+                this.body.drag.setTo(drag.x, drag.y);
+            } else {
+                this.body.drag.setTo(0);
+            }
         } else {
-            this.body.drag.setTo(0);
+            this.body.velocity.y *= 0.85;
+            this.body.velocity.x *= 0.95;
         }
 
         this.animate();
