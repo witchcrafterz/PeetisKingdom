@@ -290,6 +290,14 @@
 
             'leaveLadder': function() {
                 this.p1.submerged = false;
+            },
+
+            'setSlippery': function() {
+                this.p1.groundDrag.x = 100;
+            },
+
+            'resetSlippery': function() {
+                this.p1.groundDrag.x = 1000;
             }
         };
     };

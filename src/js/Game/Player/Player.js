@@ -31,6 +31,8 @@
         this.body.collideWorldBounds = true;
         this.body.maxVelocity = maxVelocity;
 
+        this.groundDrag = drag;
+
         this.controller = new Game.Controller(this.game);
 
         // this.animations.add('running', [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 10, true);
@@ -197,7 +199,7 @@
         if (!this.submerged) {
             if (this.body.onFloor() || this.body.touching.down) {
                 this.resetJump();
-                this.body.drag.setTo(drag.x, drag.y);
+                this.body.drag.setTo(this.groundDrag.x, this.groundDrag.y);
             } else {
                 this.body.drag.setTo(0);
             }
