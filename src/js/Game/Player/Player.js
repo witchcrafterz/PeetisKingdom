@@ -10,20 +10,12 @@
     var fullJumpMeter = 20000;
     var jumpFactor = 0.7;
     var acc = 2000;
-    var maxJumps = 2;
     var maxVelocity = new Phaser.Point(3000, 2000);
     var maxWalkingVelocity = new Phaser.Point(500, 0);
     var drag = {x: 1000, y: 0};
 
     Game.Player = function(game, x, y) {
-
         Phaser.Sprite.call(this, game, x, y, textureKey);
-
-        // var desiredHeight = 20;
-        // var scaleFactor = desiredHeight / this.height;
-        // this.scale.setTo(scaleFactor)
-
-        this.inventory = [];
 
         this.anchor.set(0.5);
         this.game.physics.enable(this, Phaser.Physics.ARCADE);
@@ -31,15 +23,13 @@
         this.body.collideWorldBounds = true;
         this.body.maxVelocity = maxVelocity;
 
+        this.maxJumps = 1;
+
         this.groundDrag = drag;
 
         this.controller = new Game.Controller(this.game);
 
-        // this.animations.add('running', [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 10, true);
-        // this.animations.add('jump', [3], 20, true);
-        // this.animations.add('falling', [2], 20, true);
         this.animations.add('still', [0], 20, true);
-        // this.animations.add('duck', [0], 20, true);
 
         this.currAnim = '';
 
@@ -55,22 +45,8 @@
         return this;
     };
 
-    // Clone the Phaser.Sprite prototype, and use it as our own. 
-    // This is how inheritance works in JavaScript btw
     Game.Player.prototype = Object.create(Phaser.Sprite.prototype);
     Game.Player.prototype.constructor = Game.Player;
-
-    Game.Player.prototype.updateBodySize = function() {
-        // var currentFrame = this.animations.currentAnim.currentFrame;
-        // if (!currentFrame) return;
-
-        // if (this.body.height !== currentFrame.height) {
-        //     this.body.height = currentFrame.height;
-        // }
-        // if (this.body.width !== currentFrame.width) {
-        //     this.body.width = currentFrame.width;
-        // }
-    };
 
     Game.Player.prototype.resetJump = function() {
         this.currentJumps = 0;
@@ -89,12 +65,12 @@
             if (!this.jumpWasDown) {
                 this.currentJumps += 1;
 
-                if (this.currentJumps < maxJumps) {
+                if (this.currentJumps < this.maxJumps) {
                     this.body.velocity.y = 0;
                 }
             }
 
-            if (Math.floor(this.jumpMeter) > 0 && this.currentJumps < maxJumps) {
+            if (Math.floor(this.jumpMeter) > 0 && this.currentJumps < this.maxJumps) {
                 if (this.body.onFloor() || !this.jumpWasDown) {
                     this.jumpSFX.play();
                 }
@@ -104,7 +80,7 @@
             }
         } else {
             if (this.jumpWasDown) {
-                if (maxJumps >= this.currentJumps) {
+                if (this.maxJumps >= this.currentJumps) {
                     this.jumpMeter = fullJumpMeter;
                 } else {
                     this.jumpMeter = 0;
@@ -150,7 +126,6 @@
     };
 
     Game.Player.prototype.update = function() {
-        this.updateBodySize();
         this.body.acceleration.y = 0;
 
         if (this.controller.right.isDown) {
@@ -159,8 +134,6 @@
             if (!this.ctrlKey.isDown && !this.godMode) {
                 this.body.velocity.x = Math.clamp(this.body.velocity.x, -maxWalkingVelocity.x, maxWalkingVelocity.x);
             }
-
-            this.animations.play('running');
 
             if (this.scale.x < 0) {
                 this.scale.x *= -1;
@@ -171,8 +144,6 @@
             if (!this.ctrlKey.isDown && !this.godMode) {
                 this.body.velocity.x = Math.clamp(this.body.velocity.x, -maxWalkingVelocity.x, maxWalkingVelocity.x);
             }
-
-            this.animations.play('running');
 
             if (this.scale.x > 0) {
                 this.scale.x *= -1;
