@@ -3,13 +3,14 @@
 
     /**
      * An AI that guards a position or entrance
-     * @param {Phaser.Game}     game       The game instance
-     * @param {Phaser.Sprite}   controlled The sprite which the AI controls
-     * @param {Phaser.Sprite}   toTrack    The sprite which the AI tracks
-     * @param {Phaser.Point}    direction  The direction to flick the tracked if trespassing
-     * @param {Number}          magnitude  The magnitude to flick the tracked if trespassing
+     * @param {Phaser.Game}     game                    The game instance
+     * @param {Phaser.Sprite}   controlled              The sprite which the AI controls
+     * @param {Phaser.Sprite}   toTrack                 The sprite which the AI tracks
+     * @param {Phaser.Point}    direction               The direction to flick the tracked if trespassing
+     * @param {String}          friendlyCriterias       A string of criterias separated by commas, which will have to be fulfilled for AI to turn friendly
+     * @param {String}          friendlyDependencies    A string of dependencies separated by commas, which will have to be fulfilled for AI to turn friendly
      */
-    Game.Controller.AI.Guard = function(game, controlled, toTrack, direction, magnitude, friendlyCriterias, friendlyDependencies) {
+    Game.Controller.AI.Guard = function(game, controlled, toTrack, direction, friendlyCriterias, friendlyDependencies) {
         this.game = game;
 
         this.initialize();
@@ -20,7 +21,7 @@
 
         this.hostile = true;
 
-        this.flickVector = Phaser.Point.multiply(direction, {x: magnitude, y: magnitude});
+        this.flickVector = direction;
 
         this.friendlyDependencies = friendlyDependencies ? friendlyDependencies.split(',') : undefined;
 
