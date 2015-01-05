@@ -270,7 +270,6 @@
                 return this.activateKey.downDuration(this.time.msMax);
             },
             'jump': function() {
-                console.log('jump')
                 return this.p1.controller.jump.isDown;
             }
         };
