@@ -109,6 +109,12 @@
         };
 
         /**
+         * An internal list of trigger functions to call on completion
+         * @type {Array#String}
+         */
+        this._onComplete = (this.properties['onComplete'] || '').split(',');
+
+        /**
          * The status template to be used for this objective. Formatting is to be implemented by children inheriting the Game.ObjectiveManager.Objective class
          * @type {String}
          */
@@ -165,6 +171,21 @@
         this._statusTextStyle.fill = '#01C611';
         this._statusText.setStyle(this._statusTextStyle);
         this.objectiveManager.onObjectiveComplete.dispatch(this);
+        this._callOnCompletionTriggers();
+    };
+
+    Game.ObjectiveManager.Objective.prototype._callOnCompletionTriggers = function() {
+        var state = this.game.state.getCurrentState();
+        var triggerFunctions = state.triggerFunctions;
+        var key;
+
+        for (var i = 0; i < this._onComplete.length; i++) {
+            key = this._onComplete[i];
+            if (triggerFunctions[key]) {
+                triggerFunctions[key].call(state);
+            }
+        }
+
     };
 
     Game.ObjectiveManager.Objective.prototype._onFailureHandler = function() {
