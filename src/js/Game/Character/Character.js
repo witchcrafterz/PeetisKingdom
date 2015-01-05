@@ -1,10 +1,6 @@
 (function() {
     'use strict';
 
-    /**
-     * Reference file: https://github.com/photonstorm/phaser-examples/blob/master/projects/rox/src/Player.js
-     */
-
      /**
       * A generic character
       * @param {Phaser.Game} game   The phaser game instance
