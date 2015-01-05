@@ -297,6 +297,10 @@
 
             'resetSlippery': function() {
                 this.p1.groundDrag.x = 1000;
+            },
+
+            'enableDblJump': function() {
+                this.p1.maxJumps = 2;
             }
         };
     };
