@@ -311,12 +311,41 @@
 
     Game.Level.prototype.generateSprites = function() {
         _.forEach(this.map.objects['sprites'], function(obj) {
+            var key, frame, sprite, AI;
+
             switch (obj.type) {
                 case 'entity':
 
-                    var key = obj.properties['key'];
-                    var frame = obj.properties['frame'];
-                    var sprite = this.game.add.sprite(obj.x, obj.y, key, frame, this.entitiesGroup);
+                    key = obj.properties['key'];
+                    frame = obj.properties['frame'];
+                    sprite = this.game.add.sprite(obj.x, obj.y, key, frame, this.entitiesGroup);
+
+                    break;
+                case 'character':
+
+                    key = obj.properties['key'];
+                    var character = new Game.Character(this.game, obj.x, obj.y, key);
+                    this.entitiesGroup.add(character);
+
+                    AI = obj.properties['AI'];
+                    switch (AI) {
+                        case 'guard':
+                            // Dir of flick in radians (angle)
+                            var angle = parseFloat(obj.properties['angle'], 10) || Math.PI / 4;
+                            // Magnitude of push (hypotenuse)
+                            var magnitude = parseInt(obj.properties['magnitude'], 10) || 1500;
+                            // -Math.sin(angle) because game world up/down is inverted
+                            var dir = new Phaser.Point(Math.cos(angle) * magnitude, -Math.sin(angle) * magnitude);
+
+                            var criterias = obj.properties['criterias'];
+                            var dependencies = obj.properties['dependencies'];
+
+                            character.controller = new Game.Controller.AI.Guard(this.game, character, this.p1, dir, criterias, dependencies);
+
+                            break;
+                        default:
+                            console.log('AI type', AI, 'is not in use');
+                    }
 
                     break;
                 default:
