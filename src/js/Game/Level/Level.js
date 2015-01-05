@@ -48,6 +48,10 @@
             height: 3720
         };
 
+        this.AIs = {
+            'guard': Game.Controller.AI.Guard
+        };
+
         this.toggleFullScreen = function() {
             if (this.game.scale.isFullScreen) {
                 this.game.scale.stopFullScreen();
