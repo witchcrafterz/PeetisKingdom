@@ -335,23 +335,22 @@
 
     Game.Level.prototype.generateSprites = function() {
         _.forEach(this.map.objects['sprites'], function(obj) {
-            var key, frame, sprite, AI;
+            /* jshint shadow: true */
 
             switch (obj.type) {
                 case 'entity':
 
-                    key = obj.properties['key'];
-                    frame = obj.properties['frame'];
-                    sprite = this.game.add.sprite(obj.x, obj.y, key, frame, this.entitiesGroup);
+                    var key = obj.properties['key'];
+                    var frame = obj.properties['frame'];
+                    var sprite = this.game.add.sprite(obj.x, obj.y, key, frame, this.entitiesGroup);
 
                     break;
                 case 'character':
 
-                    key = obj.properties['key'];
+                    var key = obj.properties['key'];
                     var character = new Game.Character(this.game, obj.x, obj.y, key);
-                    this.entitiesGroup.add(character);
 
-                    AI = obj.properties['AI'];
+                    var AI = obj.properties['AI'];
                     switch (AI) {
                         case 'guard':
                             // Dir of flick in radians (angle)
@@ -370,6 +369,8 @@
                         default:
                             console.log('AI type', AI, 'is not in use');
                     }
+                    
+                    this.entitiesGroup.add(character);
 
                     break;
                 default:
