@@ -271,11 +271,11 @@
                 text: 'Tell me bird, what has happened to you?',
                 title: 'You:'
             }, {
-                text: 'Nothing but the most terrible thing in \nthis world! My baby, my egg, it has been taken away from me!'
+                text: 'Nothing but the most terrible thing in \nthis world! My baby, my egg, \nit has been taken away from me!'
             }, {
-                text: 'A very mean ornithologist climbed into my \nnest, and stole it! The nerve on that one!'
+                text: 'A very mean ornithologist climbed \ninto my nest, and stole it! \nThe nerve on that one!'
             }, {
-                text: 'You\'ll bring it back, you will? I\'ll \nreward you with a feather that has touched the sky!'
+                text: 'You\'ll bring it back, you will? I\'ll \nreward you with a feather that has \ntouched the sky!'
             }], 'Giant Bird:'),
 
             'grasshopperQuest': new Game.Dialogue(this.game, [{
