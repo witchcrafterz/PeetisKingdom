@@ -10,7 +10,14 @@
          */
         this.criterias = criterias;
 
+        /**
+         * Whether or not it also has to return to start area
+         * @type {Boolean}
+         */
+        this.isReturn = this.properties['return'] === 'true';
+
         this.game.onCriteriaAdd.add(this.checkWin, this);
+        this.trigger.onActive.add(this.checkWin, this);
     };
 
     Game.ObjectiveManager.CriteriaObjective.prototype = Object.create(Game.ObjectiveManager.Objective.prototype);
@@ -19,15 +26,15 @@
     Game.ObjectiveManager.CriteriaObjective.prototype.checkWin = function() {
         var contained = 0;
 
-        for (var i = 0; i < this.game.criterias; i++) {
-            for (var u = 0; u < this.criterias; u++) {
+        for (var i = 0; i < this.game.criterias.length; i++) {
+            for (var u = 0; u < this.criterias.length; u++) {
                 if (this.criterias[u] === this.criterias[i]) {
                     contained++;
                 }
             }
         }
 
-        if (contained === this.criterias.length) {
+        if (contained === this.criterias.length && (!this.isReturn || this.trigger.isActive)) {
             this.onCompletion.dispatch(this);
         }
     };
