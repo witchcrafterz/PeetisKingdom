@@ -329,6 +329,32 @@
             'acquireFeather': function() {
                 this.game.criterias.push('feather');
                 this.game.onCriteriaAdd.dispatch('feather', this.game.criterias);
+            },
+
+            'setCheckpoint': function(obj) {
+                this.p1.checkpoint = new Phaser.Point(obj.x + obj.width * 0.5, obj.y + obj.height * 0.5);
+            },
+
+            'resetPlayer': function() {
+                if (this.p1.checkpoint) {
+                    this.p1.body.checkCollision.up = false;
+                    this.p1.body.checkCollision.down = false;
+                    this.p1.body.checkCollision.left = false;
+                    this.p1.body.checkCollision.right = false;
+                    // this.p1.position.setTo();
+                    this.game.add.tween(this.p1.position).to({x: this.p1.checkpoint.x, y: this.p1.checkpoint.y})
+                        .start()
+                        .onComplete.add(function() {
+                            this.p1.body.velocity.setTo(0);
+
+                    this.p1.body.checkCollision.up = true;
+                    this.p1.body.checkCollision.down = true;
+                    this.p1.body.checkCollision.left = true;
+                    this.p1.body.checkCollision.right = true;
+
+                        }, this);
+
+                }
             }
         };
     };
@@ -498,13 +524,13 @@
 
                     trigger.onActive.add(function() {
                         if (onEnter) {
-                            onEnter.call(this);
+                            onEnter.call(this, obj);
                         }
                     }, this);
 
                     trigger.onInactive.add(function() {
                         if (onLeave) {
-                            onLeave.call(this);
+                            onLeave.call(this, obj);
                         }
                     }, this);
 
