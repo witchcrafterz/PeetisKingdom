@@ -324,6 +324,11 @@
 
             'enableDblJump': function() {
                 this.p1.maxJumps = 2;
+            },
+
+            'acquireFeather': function() {
+                this.game.criterias.push('feather');
+                this.game.onCriteriaAdd.dispatch('feather', this.game.criterias);
             }
         };
     };
