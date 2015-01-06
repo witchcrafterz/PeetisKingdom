@@ -43,7 +43,9 @@
             
             position: relative;
             top: 50%;
-            transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+                    transform: translateY(-50%);
+            
         }
 
         #topBar {
