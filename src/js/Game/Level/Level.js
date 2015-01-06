@@ -366,10 +366,27 @@
                             character.controller = new Game.Controller.AI.Guard(this.game, character, this.p1, dir, criterias, dependencies);
 
                             break;
+                        case 'ornithologist':
+                            // Dir of flick in radians (angle)
+                            var angle = parseFloat(obj.properties['angle'], 10) || Math.PI / 4;
+                            // Magnitude of push (hypotenuse)
+                            var magnitude = parseInt(obj.properties['magnitude'], 10) || 1500;
+                            // -Math.sin(angle) because game world up/down is inverted
+                            var dir = new Phaser.Point(Math.cos(angle) * magnitude, -Math.sin(angle) * magnitude);
+
+                            var criterias = obj.properties['criterias'];
+                            var dependencies = obj.properties['dependencies'];
+
+                            var range = parseInt(obj.properties['range'], 10) || 1000;
+                            var defaultPosition = new Phaser.Point(obj.x, obj.y);
+
+                            character.controller = new Game.Controller.AI.Ornithologist(this.game, character, this.p1, dir, criterias, dependencies, range, defaultPosition);
+
+                            break;
                         default:
                             console.log('AI type', AI, 'is not in use');
                     }
-                    
+
                     this.entitiesGroup.add(character);
 
                     break;
@@ -526,7 +543,7 @@
 
         this.spawnPlayer();
 
-        this.objectiveManager = new Game.ObjectiveManager(this.game, this.game.width * 0.5, 100);
+        this.objectiveManager = this.game.objectiveManager = new Game.ObjectiveManager(this.game, this.game.width * 0.5, 100);
         this.game.add.existing(this.objectiveManager);
         this.HUD = new Game.HUD(this.game);
         this.dialogueManager = this.game.dialogueManager = new Game.DialogueManager(this.game, this.HUD);
