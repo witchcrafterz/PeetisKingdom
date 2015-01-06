@@ -54,7 +54,7 @@
   </object>
  </objectgroup>
  <objectgroup name="objects">
-  <object name="spawn point" type="spawn" x="8860.4" y="6113" width="140" height="213.5">
+  <object name="spawn point" type="spawn" x="6652.4" y="8361" width="140" height="213.5">
    <ellipse/>
   </object>
   <object name="intro dialogue" type="dialogue" x="8641.1" y="6099.3" width="572.36" height="248.424">
@@ -113,6 +113,16 @@
   <object name="bird dialogue" type="dialogue" x="1305.33" y="2442.5" width="631.333" height="383">
    <properties>
     <property name="dialogue" value="birdQuest"/>
+   </properties>
+  </object>
+  <object name="checkpoint" type="trigger" x="6330.67" y="8321.33" width="209.333" height="324">
+   <properties>
+    <property name="enter" value="setCheckpoint"/>
+   </properties>
+  </object>
+  <object name="lava" type="trigger" x="2287.88" y="8930.3" width="3890.91" height="442.424">
+   <properties>
+    <property name="enter" value="resetPlayer"/>
    </properties>
   </object>
  </objectgroup>

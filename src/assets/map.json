@@ -141,8 +141,8 @@
                  "type":"spawn",
                  "visible":true,
                  "width":140,
-                 "x":8860.4,
-                 "y":6113
+                 "x":6652.4,
+                 "y":8361
                 }, 
                 {
                  "height":248.424,
@@ -317,6 +317,34 @@
                  "width":631.333,
                  "x":1305.3335,
                  "y":2442.5
+                }, 
+                {
+                 "height":324,
+                 "name":"checkpoint",
+                 "properties":
+                    {
+                     "enter":"setCheckpoint"
+                    },
+                 "rotation":0,
+                 "type":"trigger",
+                 "visible":true,
+                 "width":209.333333333334,
+                 "x":6330.66666666667,
+                 "y":8321.33333333333
+                }, 
+                {
+                 "height":442.424242424242,
+                 "name":"lava",
+                 "properties":
+                    {
+                     "enter":"resetPlayer"
+                    },
+                 "rotation":0,
+                 "type":"trigger",
+                 "visible":true,
+                 "width":3890.90909090909,
+                 "x":2287.87878787879,
+                 "y":8930.30303030303
                 }],
          "opacity":1,
          "type":"objectgroup",
