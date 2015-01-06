@@ -315,11 +315,11 @@
             },
 
             'setSlippery': function() {
-                this.p1.groundDrag.x = 100;
+                this.p1.desiredDrag.x = 100;
             },
 
             'resetSlippery': function() {
-                this.p1.groundDrag.x = 1000;
+                this.p1.desiredDrag.x = 1000;
             },
 
             'enableDblJump': function() {
