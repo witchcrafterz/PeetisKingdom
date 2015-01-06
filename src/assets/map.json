@@ -52,6 +52,70 @@
                  "width":134,
                  "x":14956,
                  "y":5562
+                }, 
+                {
+                 "height":24,
+                 "name":"Guard",
+                 "properties":
+                    {
+                     "AI":"guard",
+                     "angle":"0.78",
+                     "dependencies":"royalVisit",
+                     "key":"grasshopper",
+                     "magnitude":"2000"
+                    },
+                 "rotation":0,
+                 "type":"character",
+                 "visible":true,
+                 "width":134,
+                 "x":3798.5,
+                 "y":5597
+                }, 
+                {
+                 "height":24,
+                 "name":"Princess Peeti",
+                 "properties":
+                    {
+                     "key":"grasshopper"
+                    },
+                 "rotation":0,
+                 "type":"entity",
+                 "visible":true,
+                 "width":134,
+                 "x":589,
+                 "y":5568
+                }, 
+                {
+                 "height":24,
+                 "name":"Giant Bird",
+                 "properties":
+                    {
+                     "key":"grasshopper"
+                    },
+                 "rotation":0,
+                 "type":"entity",
+                 "visible":true,
+                 "width":134,
+                 "x":1519.66666666667,
+                 "y":2636
+                }, 
+                {
+                 "height":46,
+                 "name":"Ornithologist",
+                 "properties":
+                    {
+                     "AI":"ornithologist",
+                     "angle":"2.35",
+                     "key":"grasshopper",
+                     "magnitude":"2000",
+                     "range":"1000"
+                    },
+                 "rotation":0,
+                 "type":"character",
+                 "visible":true,
+                 "width":178,
+                 "x":8885,
+                 "y":926
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -225,6 +289,34 @@
                  "width":405,
                  "x":4246,
                  "y":15.5
+                }, 
+                {
+                 "height":395,
+                 "name":"gift dialog",
+                 "properties":
+                    {
+                     "dialogue":"royalQuest"
+                    },
+                 "rotation":0,
+                 "type":"dialogue",
+                 "visible":true,
+                 "width":325.333333333333,
+                 "x":4087.33333333333,
+                 "y":5350.5
+                }, 
+                {
+                 "height":383,
+                 "name":"bird dialogue",
+                 "properties":
+                    {
+                     "dialogue":"birdQuest"
+                    },
+                 "rotation":0,
+                 "type":"dialogue",
+                 "visible":true,
+                 "width":631.333,
+                 "x":1305.3335,
+                 "y":2442.5
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -273,6 +365,47 @@
                  "width":381,
                  "x":9226,
                  "y":5964
+                }, 
+                {
+                 "height":371,
+                 "name":"A royal visit",
+                 "properties":
+                    {
+                     "frame":"27",
+                     "id":"royalvisit",
+                     "itemLayer":"royalVisit",
+                     "return":"true",
+                     "spritesheet":"UI",
+                     "status":"Find an appropiate gift to give to Princess Peeti",
+                     "statusReturn":"Return to Princess Peeti's castle with the gift"
+                    },
+                 "rotation":0,
+                 "type":"collect",
+                 "visible":true,
+                 "width":637,
+                 "x":3773.5,
+                 "y":5368.5
+                }, 
+                {
+                 "height":371,
+                 "name":"A very mean ornithologist",
+                 "properties":
+                    {
+                     "frame":"27",
+                     "id":"meanOrnithologist",
+                     "itemLayer":"meanOrnithologist",
+                     "onComplete":"acquireFeather",
+                     "return":"true",
+                     "spritesheet":"UI",
+                     "status":"Find and bring back the giant bird's egg that a very mean ornithologist has taken",
+                     "statusReturn":"Bring back the egg to the giant bird"
+                    },
+                 "rotation":0,
+                 "type":"collect",
+                 "visible":true,
+                 "width":637,
+                 "x":1305.5,
+                 "y":2458.5
                 }],
          "opacity":1,
          "properties":
@@ -334,6 +467,58 @@
          "type":"objectgroup",
          "visible":true,
          "width":0,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "height":150,
+         "name":"royalVisit",
+         "objects":[
+                {
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":2938.66666666667,
+                 "y":8372
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":300,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "height":150,
+         "name":"meanOrnithologist",
+         "objects":[
+                {
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":8636,
+                 "y":776
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":300,
          "x":0,
          "y":0
         }],

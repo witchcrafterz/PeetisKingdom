@@ -24,6 +24,34 @@
     <property name="key" value="grasshopper"/>
    </properties>
   </object>
+  <object name="Guard" type="character" x="3798.5" y="5597" width="134" height="24">
+   <properties>
+    <property name="AI" value="guard"/>
+    <property name="angle" value="0.78"/>
+    <property name="dependencies" value="royalVisit"/>
+    <property name="key" value="grasshopper"/>
+    <property name="magnitude" value="2000"/>
+   </properties>
+  </object>
+  <object name="Princess Peeti" type="entity" x="589" y="5568" width="134" height="24">
+   <properties>
+    <property name="key" value="grasshopper"/>
+   </properties>
+  </object>
+  <object name="Giant Bird" type="entity" x="1519.67" y="2636" width="134" height="24">
+   <properties>
+    <property name="key" value="grasshopper"/>
+   </properties>
+  </object>
+  <object name="Ornithologist" type="character" x="8885" y="926" width="178" height="46">
+   <properties>
+    <property name="AI" value="ornithologist"/>
+    <property name="angle" value="2.35"/>
+    <property name="key" value="grasshopper"/>
+    <property name="magnitude" value="2000"/>
+    <property name="range" value="1000"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="objects">
   <object name="spawn point" type="spawn" x="8860.4" y="6113" width="140" height="213.5">
@@ -77,6 +105,16 @@
    </properties>
   </object>
   <object name="icePart" type="part" x="4246" y="15.5" width="405" height="316.5"/>
+  <object name="gift dialog" type="dialogue" x="4087.33" y="5350.5" width="325.333" height="395">
+   <properties>
+    <property name="dialogue" value="royalQuest"/>
+   </properties>
+  </object>
+  <object name="bird dialogue" type="dialogue" x="1305.33" y="2442.5" width="631.333" height="383">
+   <properties>
+    <property name="dialogue" value="birdQuest"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="objectives">
   <properties>
@@ -100,11 +138,40 @@
     <property name="status" value="You should probably find a way \nout of this crater..."/>
    </properties>
   </object>
+  <object name="A royal visit" type="collect" x="3773.5" y="5368.5" width="637" height="371">
+   <properties>
+    <property name="frame" value="27"/>
+    <property name="id" value="royalvisit"/>
+    <property name="itemLayer" value="royalVisit"/>
+    <property name="return" value="true"/>
+    <property name="spritesheet" value="UI"/>
+    <property name="status" value="Find an appropiate gift to give to Princess Peeti"/>
+    <property name="statusReturn" value="Return to Princess Peeti's castle with the gift"/>
+   </properties>
+  </object>
+  <object name="A very mean ornithologist" type="collect" x="1305.5" y="2458.5" width="637" height="371">
+   <properties>
+    <property name="frame" value="27"/>
+    <property name="id" value="meanOrnithologist"/>
+    <property name="itemLayer" value="meanOrnithologist"/>
+    <property name="onComplete" value="acquireFeather"/>
+    <property name="return" value="true"/>
+    <property name="spritesheet" value="UI"/>
+    <property name="status" value="Find and bring back the giant bird's egg that a very mean ornithologist has taken"/>
+    <property name="statusReturn" value="Bring back the egg to the giant bird"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="grasshopperCollect">
   <object x="16950.5" y="8616" width="72.7273" height="69.697"/>
  </objectgroup>
  <objectgroup name="leaveCrater">
   <object name="Leave creater" x="9784" y="5491.51" width="398.061" height="202.788"/>
+ </objectgroup>
+ <objectgroup name="royalVisit">
+  <object x="2938.67" y="8372"/>
+ </objectgroup>
+ <objectgroup name="meanOrnithologist">
+  <object x="8636" y="776"/>
  </objectgroup>
 </map>
