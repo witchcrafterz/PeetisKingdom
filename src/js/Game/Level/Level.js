@@ -368,13 +368,13 @@
 
                     var key = obj.properties['key'];
                     var frame = obj.properties['frame'];
-                    var sprite = this.game.add.sprite(obj.x, obj.y, key, frame, this.entitiesGroup);
+                    var sprite = this.game.add.sprite(obj.x + obj.width * 0.5, obj.y + obj.height * 0.5, key, frame, this.entitiesGroup);
 
                     break;
                 case 'character':
 
                     var key = obj.properties['key'];
-                    var character = new Game.Character(this.game, obj.x, obj.y, key);
+                    var character = new Game.Character(this.game, obj.x + obj.width * 0.5, obj.y + obj.height * 0.5, key);
 
                     var AI = obj.properties['AI'];
                     switch (AI) {
@@ -411,6 +411,15 @@
                             break;
                         default:
                             console.log('AI type', AI, 'is not in use');
+                    }
+
+                    if (obj.properties['allowGravity']) {
+                        character.body.allowGravity = obj.properties['allowGravity'] === 'true';
+                    }
+
+                    if (obj.properties['floaty']) {
+                        var floaty = parseInt(obj.properties['floaty'], 10);
+                        this.game.add.tween(character.position).to({y: obj.y - floaty}, 1000, undefined, true, undefined, -1, true);
                     }
 
                     this.entitiesGroup.add(character);
