@@ -19,8 +19,9 @@
   </data>
  </layer>
  <objectgroup name="sprites">
-  <object name="grasshopper" type="entity" x="14956" y="5562" width="134" height="24">
+  <object name="Grasshopper" type="entity" x="14956" y="5562" width="134" height="24">
    <properties>
+    <property name="floaty" value="100"/>
     <property name="key" value="grasshopper"/>
    </properties>
   </object>
@@ -50,6 +51,15 @@
     <property name="key" value="grasshopper"/>
     <property name="magnitude" value="2000"/>
     <property name="range" value="1000"/>
+   </properties>
+  </object>
+  <object name="Octopus" type="character" x="12405.3" y="8421.33" width="214.667" height="188">
+   <properties>
+    <property name="AI" value="guard"/>
+    <property name="allowGravity" value="false"/>
+    <property name="criterias" value="feather"/>
+    <property name="floaty" value="80"/>
+    <property name="key" value="grasshopper"/>
    </properties>
   </object>
  </objectgroup>
@@ -125,6 +135,11 @@
     <property name="enter" value="resetPlayer"/>
    </properties>
   </object>
+  <object name="octopus dialogue" type="dialogue" x="12290" y="8334" width="442" height="404">
+   <properties>
+    <property name="dialogue" value="octopusQuest"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="objectives">
   <properties>
@@ -167,8 +182,15 @@
     <property name="onComplete" value="acquireFeather"/>
     <property name="return" value="true"/>
     <property name="spritesheet" value="UI"/>
-    <property name="status" value="Find and bring back the giant bird's egg that a very mean ornithologist has taken"/>
+    <property name="status" value="Find and bring back the giant bird's egg \nthat a very mean ornithologist has taken"/>
     <property name="statusReturn" value="Bring back the egg to the giant bird"/>
+   </properties>
+  </object>
+  <object name="The sky up above" type="criteria" x="12292" y="8317.33" width="440" height="390.667">
+   <properties>
+    <property name="criterias" value="feather"/>
+    <property name="id" value="octopusQuest"/>
+    <property name="status" value="Find something that has touched \nthe sky and give it to the octopus"/>
    </properties>
   </object>
  </objectgroup>
