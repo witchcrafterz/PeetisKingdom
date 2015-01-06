@@ -18,6 +18,8 @@
         // this.body.collideWorldBounds = true;
         this.body.maxVelocity = new Phaser.Point(3000, 2000);
 
+        this.desiredDrag = this.body.drag;
+
         /**
          * The texture key used in the making of this character
          * @type {String}
@@ -125,6 +127,7 @@
     Game.Character.prototype.resetJump = function() {
         this.currentJumps = 0;
         this.jumpMeter = this.fullJumpMeter;
+        this.flicked = false;
     };
 
     /**
@@ -252,7 +255,7 @@
         // Other restrictions etc.
 
         // Restrict walking speed
-        if (this.states.tryWalking && !this.godMode) {
+        if (this.states.tryWalking && !this.godMode && !this.flicked) {
             this.body.velocity.x = Math.clamp(this.body.velocity.x, -this.walkingVelocity, this.walkingVelocity);
         }
     };

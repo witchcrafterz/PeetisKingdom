@@ -63,6 +63,7 @@
             // Have to manually lift the guy up some pixel bc of bug where he stays on ground
             this.toTrack.body.position.y -= 10;
             this.toTrack.body.velocity.setTo(this.flickVector.x, this.flickVector.y);
+            this.toTrack.flicked = true;
         }
     };
 
