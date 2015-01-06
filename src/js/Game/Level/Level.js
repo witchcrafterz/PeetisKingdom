@@ -248,6 +248,25 @@
                 text: 'Right: Grasshopper\'s residential cave\nLeft: Princess Peeti\'s Mountain Castle'
             }]),
 
+            'royalQuest': new Game.Dialogue(this.game, [{
+                text: 'Hold on! I can\'t let you see \nPrincess Peeti without bringing a gift.'
+            }, {
+                text: 'Tell you what; you bring a \ngift, I\'ll let you in...'
+            }], 'Guard:'),
+
+            'birdQuest': new Game.Dialogue(this.game, [{
+                text: 'Oh the horror... The agony, the dismay and one bird\'s broken heart...'
+            }, {
+                text: 'Tell me bird, what has happened to you?',
+                title: 'You:'
+            }, {
+                text: 'Nothing but the most terrible thing in this world! \nMy baby, my egg, it has been taken away from me!'
+            }, {
+                text: 'A very mean ornithologist climbed into my nest, and stole it! \nThe nerve on that one!'
+            }, {
+                text: 'You\'ll bring it back, you will? \nI\'ll reward you with a feather that has touched the sky!'
+            }], 'Giant Bird:'),
+
             'grasshopperQuest': new Game.Dialogue(this.game, [{
                 text: 'Gosh darn it! I dropped my \npearl in the lake!'
             }, {
