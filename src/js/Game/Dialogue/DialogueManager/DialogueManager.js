@@ -26,6 +26,8 @@
          */
         this.height = 200;
 
+        this.width = 975;
+
         /**
          * The padding between the title and text
          * @type {Number}
@@ -70,6 +72,13 @@
         this.textText.tint = 0x010101;
 
         /**
+         * The text object that shows page number
+         * @type {Phaser.Text}
+         */
+        this.pageText = new Phaser.BitmapText(this.game, 0, 0, 'font', '0/0', this.titleText.fontSize * 0.6);
+        this.pageText.tint = 0x010101;
+
+        /**
          * The current dialogue
          * @type {Game.Dialogue}
          */
@@ -95,6 +104,7 @@
 
         this.dialoguePanel.add(this.titleText);
         this.dialoguePanel.add(this.textText);
+        this.dialoguePanel.add(this.pageText);
 
         return this;
     };
@@ -148,6 +158,10 @@
                 this.hidden = false;
             }
         }
+
+        this.pageText.text = '{0}/{1}'.format(this.currentDialogue.currentSlide + 1, this.currentDialogue.conversation.length);
+        this.pageText.y = this.height;
+        this.pageText.x = this.width - this.pageText.width;
     };
 
     Object.defineProperty(Game.DialogueManager.prototype, 'hidden', {
