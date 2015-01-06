@@ -71,7 +71,7 @@
          * Whether or not to remove objective on inactive
          * @type {Boolean}
          */
-        this.removeOnInactive = true;
+        this.removeOnInactive = false;
 
         /**
          * Signal that fires upon completion of objective
