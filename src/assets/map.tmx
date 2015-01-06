@@ -54,7 +54,7 @@
   </object>
  </objectgroup>
  <objectgroup name="objects">
-  <object name="spawn point" type="spawn" x="6652.4" y="8361" width="140" height="213.5">
+  <object name="spawn point" type="spawn" x="8896" y="6144" width="128" height="192">
    <ellipse/>
   </object>
   <object name="intro dialogue" type="dialogue" x="8641.1" y="6099.3" width="572.36" height="248.424">

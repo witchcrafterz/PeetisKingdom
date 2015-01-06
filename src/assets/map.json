@@ -131,7 +131,7 @@
          "objects":[
                 {
                  "ellipse":true,
-                 "height":213.5,
+                 "height":192,
                  "name":"spawn point",
                  "properties":
                     {
@@ -140,9 +140,9 @@
                  "rotation":0,
                  "type":"spawn",
                  "visible":true,
-                 "width":140,
-                 "x":6652.4,
-                 "y":8361
+                 "width":128,
+                 "x":8896,
+                 "y":6144
                 }, 
                 {
                  "height":248.424,
