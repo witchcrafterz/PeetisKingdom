@@ -59,10 +59,10 @@
                  "properties":
                     {
                      "AI":"guard",
-                     "angle":"0.78",
+                     "angle":"0.75",
                      "dependencies":"royalVisit",
                      "key":"grasshopper",
-                     "magnitude":"2000"
+                     "magnitude":"1500"
                     },
                  "rotation":0,
                  "type":"character",
@@ -291,7 +291,7 @@
                  "y":15.5
                 }, 
                 {
-                 "height":395,
+                 "height":363,
                  "name":"gift dialog",
                  "properties":
                     {
@@ -300,9 +300,9 @@
                  "rotation":0,
                  "type":"dialogue",
                  "visible":true,
-                 "width":325.333333333333,
-                 "x":4087.33333333333,
-                 "y":5350.5
+                 "width":700.333333333333,
+                 "x":3785.33333333333,
+                 "y":5393.5
                 }, 
                 {
                  "height":383,
@@ -367,7 +367,7 @@
                  "y":5964
                 }, 
                 {
-                 "height":371,
+                 "height":369,
                  "name":"A royal visit",
                  "properties":
                     {
@@ -382,7 +382,7 @@
                  "rotation":0,
                  "type":"collect",
                  "visible":true,
-                 "width":637,
+                 "width":695,
                  "x":3773.5,
                  "y":5368.5
                 }, 

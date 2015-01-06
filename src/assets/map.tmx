@@ -27,10 +27,10 @@
   <object name="Guard" type="character" x="3798.5" y="5597" width="134" height="24">
    <properties>
     <property name="AI" value="guard"/>
-    <property name="angle" value="0.78"/>
+    <property name="angle" value="0.75"/>
     <property name="dependencies" value="royalVisit"/>
     <property name="key" value="grasshopper"/>
-    <property name="magnitude" value="2000"/>
+    <property name="magnitude" value="1500"/>
    </properties>
   </object>
   <object name="Princess Peeti" type="entity" x="589" y="5568" width="134" height="24">
@@ -105,7 +105,7 @@
    </properties>
   </object>
   <object name="icePart" type="part" x="4246" y="15.5" width="405" height="316.5"/>
-  <object name="gift dialog" type="dialogue" x="4087.33" y="5350.5" width="325.333" height="395">
+  <object name="gift dialog" type="dialogue" x="3785.33" y="5393.5" width="700.333" height="363">
    <properties>
     <property name="dialogue" value="royalQuest"/>
    </properties>
@@ -138,7 +138,7 @@
     <property name="status" value="You should probably find a way \nout of this crater..."/>
    </properties>
   </object>
-  <object name="A royal visit" type="collect" x="3773.5" y="5368.5" width="637" height="371">
+  <object name="A royal visit" type="collect" x="3773.5" y="5368.5" width="695" height="369">
    <properties>
     <property name="frame" value="27"/>
     <property name="id" value="royalvisit"/>
