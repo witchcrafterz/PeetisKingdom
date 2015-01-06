@@ -170,13 +170,11 @@
         var activeRect = new Phaser.Rectangle(objective.x, objective.y, objective.width, objective.height);
         var trigger = new Game.Trigger.ZoneTrigger(this.game, true, activeRect, player);
 
-
         var dependencies = objective.properties.dependencies ? objective.properties.dependencies.split(',') : undefined;
         var criterias = objective.properties.criterias ? objective.properties.criterias.split(',') : [];
 
         var criteriaObjective = new Game.ObjectiveManager.CriteriaObjective(this.game, this, trigger, map, objective, player, dependencies, criterias);
         this.game.triggerManager.addTrigger(trigger);
-        this.game.triggerManager.addTrigger(endTrigger);
 
         return criteriaObjective;
     };
