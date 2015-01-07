@@ -433,7 +433,7 @@
                  "properties":
                     {
                      "frame":"27",
-                     "id":"royalvisit",
+                     "id":"royalVisit",
                      "itemLayer":"royalVisit",
                      "return":"true",
                      "spritesheet":"UI",

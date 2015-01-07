@@ -166,7 +166,7 @@
   <object name="A royal visit" type="collect" x="3773.5" y="5368.5" width="695" height="369">
    <properties>
     <property name="frame" value="27"/>
-    <property name="id" value="royalvisit"/>
+    <property name="id" value="royalVisit"/>
     <property name="itemLayer" value="royalVisit"/>
     <property name="return" value="true"/>
     <property name="spritesheet" value="UI"/>
