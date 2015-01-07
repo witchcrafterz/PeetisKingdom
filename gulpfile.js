@@ -37,7 +37,8 @@ function getJsOrder() {
 
 function getJS() {
     return [
-        './src/js/**'
+        './src/js/**',
+        '!./src/js/modernizr.js'
     ];
 }
 
