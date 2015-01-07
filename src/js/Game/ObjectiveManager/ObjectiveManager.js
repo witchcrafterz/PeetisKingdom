@@ -242,7 +242,7 @@
         }, this);
 
         this.bg.width = this.width + this.padding;
-        this.bg.height = this.height + this.padding;
+        this.bg.height = this._calculateHeightTo(this.objectives.length - 1) + this.padding;
         this.bg.bmd.fill(255, 255, 255, 0.75);
     };
 
