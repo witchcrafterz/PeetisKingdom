@@ -18,7 +18,7 @@
         /**
          * Initialization logic here
          */
-        create: function() {            
+        create: function() {
             this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 
             this.scale.minWidth = 256;

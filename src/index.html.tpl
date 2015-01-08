@@ -80,6 +80,10 @@
 
     <script>
     window.onload = function() {
+        if (typeof require !== 'undefined') {
+            self._ = require('lodash');
+        }
+
         var game = new Phaser.Game(1600, 900, Phaser.CANVAS, 'game');
 
         game.state.add('Game.Init', Game.Init);

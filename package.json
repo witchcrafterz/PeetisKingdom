@@ -2,7 +2,12 @@
   "name": "spel",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.html",
+  "window": {
+    "toolbar": false,
+    "width": 1280,
+    "height": 720
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -31,6 +36,7 @@
     "run-sequence": "^1.0.1"
   },
   "dependencies": {
-    "gulp-modernizr": "0.0.0"
+    "gulp-modernizr": "0.0.0",
+    "lodash": "^2.4.1"
   }
 }
