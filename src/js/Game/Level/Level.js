@@ -107,8 +107,11 @@
         this.game.load.atlasXML('p1', 'assets/p1_spritesheet.png', 'assets/p1_spritesheet.xml');
 
         this.game.load.audio('jump', 'assets/sfx/jump.ogg');
-        this.game.load.audio('objectComplete', 'assets/sfx/object_complete.wav');
-        this.game.load.audio('pickupCoin', 'assets/sfx/pickup_coin.wav');
+        this.game.load.audio('jump', 'assets/sfx/jump.mp3');
+        this.game.load.audio('objectComplete', 'assets/sfx/object_complete.ogg');
+        this.game.load.audio('objectComplete', 'assets/sfx/object_complete.mp3');
+        this.game.load.audio('pickupCoin', 'assets/sfx/pickup_coin.ogg');
+        this.game.load.audio('pickupCoin', 'assets/sfx/pickup_coin.mp3');
 
         this.game.load.audio('solskenspromenad', 'assets/Solskenspromenad.mp3');
 
