@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="minimal-ui">
+    
     <title>Spel</title>
 
 
