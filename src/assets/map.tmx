@@ -53,7 +53,7 @@
     <property name="range" value="1000"/>
    </properties>
   </object>
-  <object name="Octopus" type="character" x="12405.3" y="9061.33" width="214.667" height="188">
+  <object name="Octopus" type="character" x="12405.3" y="9100" width="214.667" height="188">
    <properties>
     <property name="AI" value="guard"/>
     <property name="allowGravity" value="false"/>
