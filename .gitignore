@@ -34,3 +34,6 @@ src/vendors/
 dist
 src/index.html
 src/js/modernizr.js
+
+package.nw
+launch.*
