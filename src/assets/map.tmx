@@ -81,6 +81,8 @@
   <object name="grasshopper dialogue" type="dialogue" x="14664" y="6080" width="728" height="376">
    <properties>
     <property name="dialogue" value="grasshopperQuest"/>
+    <property name="listen" value="grasshopper"/>
+    <property name="onListenDialogue" value="grasshopperQuestComplete"/>
    </properties>
   </object>
   <object name="direction dialogue" type="dialogue" x="10232" y="6158.63" width="186.667" height="180">

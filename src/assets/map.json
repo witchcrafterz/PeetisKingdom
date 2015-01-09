@@ -197,7 +197,9 @@
                  "name":"grasshopper dialogue",
                  "properties":
                     {
-                     "dialogue":"grasshopperQuest"
+                     "dialogue":"grasshopperQuest",
+                     "listen":"grasshopper",
+                     "onListenDialogue":"grasshopperQuestComplete"
                     },
                  "rotation":0,
                  "type":"dialogue",
