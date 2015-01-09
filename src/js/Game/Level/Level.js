@@ -267,6 +267,11 @@
             }, {
                 text: 'Bring me something that has \ntouched the sky, then I\' let you in!'
             }], 'Octopus:'),
+            'octopusQuestComplete': new Game.Dialogue(this.game, [{
+                text: 'YIKES! That is one mighty \nfine feather'
+            }, {
+                text: 'Very well... You may enter \nmy tunnell!'
+            }], 'Octopus:'),
 
             'birdQuest': new Game.Dialogue(this.game, [{
                 text: 'Oh the horror... The agony, the \ndismay and one bird\'s broken heart...'
@@ -279,6 +284,11 @@
                 text: 'A very mean ornithologist climbed \ninto my nest, and stole it! \nThe nerve on that one!'
             }, {
                 text: 'You\'ll bring it back, you will? I\'ll \nreward you with a feather that has \ntouched the sky!'
+            }], 'Giant Bird:'),
+            'birdQuestComplete': new Game.Dialogue(this.game, [{
+                text: 'Oh, you are a true hero, one this world \nhas sorely needed for such a long time!'
+            }, {
+                text: 'For bringing my egg back, I\'ll \nreward you with my finest feather!'
             }], 'Giant Bird:'),
 
             'grasshopperQuest': new Game.Dialogue(this.game, [{
