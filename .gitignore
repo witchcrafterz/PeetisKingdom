@@ -37,3 +37,4 @@ src/js/modernizr.js
 
 package.nw
 launch.*
+build/
