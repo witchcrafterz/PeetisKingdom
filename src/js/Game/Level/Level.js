@@ -293,6 +293,9 @@
             }, {
                 text: 'Pretty please! I\'ll reward you with \nthe power of leaping through the air!'
             }], 'Grasshopper:'),
+            'grasshopperQuestComplete': new Game.Dialogue(this.game, [{
+                text: 'Oh wowsies! Thanks for bringing me my\n pearl! \nYou can now jump twice!'
+            }], 'Grasshopper:'),
 
             'castleDialogue': new Game.Dialogue(this.game, [{
                 title: 'Directions',
@@ -461,6 +464,8 @@
                 case 'dialogue':
                     var dialogueKey = obj.properties.dialogue;
                     var dialogue = this.dialogues[dialogueKey];
+                    var listen = obj.properties['listen'] ? obj.properties['listen'].split(',') : undefined;
+                    var onListenDialogue = obj.properties['onListenDialogue'] ? this.dialogues[obj.properties['onListenDialogue']] : undefined;
                     var criteria = obj.properties['criteriaFunction'] || '';
                     criteria = this.criteriaFunctions[criteria];
 
@@ -482,6 +487,19 @@
                         trigger.onInactive.add(function() {
                             this.dialogueManager.hidden = true;
                         }, this);
+
+                        if (listen && onListenDialogue) {
+                            this.game.objectiveManager.onObjectiveComplete.add(function(objective) {
+                                if (objective.properties.id && _.contains(listen, objective.properties.id)) {
+                                    var oldDialogue = dialogue;
+                                    dialogue = onListenDialogue;
+
+                                    if (oldDialogue.isOpen) {
+                                        this.dialogueManager.setDialogue(dialogue);
+                                    }
+                                }
+                            }, this);
+                        }
 
                     }
 
