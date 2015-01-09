@@ -253,6 +253,11 @@
             }, {
                 text: 'Tell you what; you bring a \ngift, I\'ll let you in...'
             }], 'Guard:'),
+            'royalQuestComplete': new Game.Dialogue(this.game, [{
+                text: 'I can\'t think of a better \ngift myself to give to the princess.'
+            }, {
+                text: 'You may enter...'
+            }], 'Guard:'),
 
             'octopusQuest': new Game.Dialogue(this.game, [{
                 text: 'STAY AWAY FROM MY TUNNEL! \nAhem... It\'s MY tunnel.'
