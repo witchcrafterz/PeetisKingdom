@@ -573,17 +573,32 @@
 
                     var trigger = new Game.Trigger.ZoneTrigger(this.game, true, rectangles, this.p1, enterCriteria, leaveCriteria, this);
 
+                    var enterArgs = obj.properties['enterArgs'] ? obj.properties['enterArgs'].split(',') : [];
+                    var leaveArgs = obj.properties['leaveArgs'] ? obj.properties['leaveArgs'].split(',') : [];
+                    enterArgs.splice(0, 0, obj);
+                    leaveArgs.splice(0, 0, obj);
+
+                    // Convert numerical values to numbers
+                    for (var i = 0; i < enterArgs.length; i++) {
+                        var parsed = parseFloat(enterArgs[i]);
+                        enterArgs[i] = isNaN(parsed) ? enterArgs[i] : parsed;
+                    }
+                    for (var i = 0; i < leaveArgs.length; i++) {
+                        var parsed = parseFloat(leaveArgs[i]);
+                        leaveArgs[i] = isNaN(parsed) ? leaveArgs[i] : parsed;
+                    }
+
                     this.triggerManager.addTrigger(trigger);
 
                     trigger.onActive.add(function() {
                         if (onEnter) {
-                            onEnter.call(this, obj);
+                            onEnter.apply(this, enterArgs);
                         }
                     }, this);
 
                     trigger.onInactive.add(function() {
                         if (onLeave) {
-                            onLeave.call(this, obj);
+                            onLeave.apply(this, leaveArgs);
                         }
                     }, this);
 
