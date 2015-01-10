@@ -13,6 +13,7 @@
          */
         preload: function() {
             this.game.load.image('preloadBar', 'assets/loadingbar.png');
+            this.game.load.image('preloadBarFrame', 'assets/loadingbar_frame.png');
         },
 
         /**

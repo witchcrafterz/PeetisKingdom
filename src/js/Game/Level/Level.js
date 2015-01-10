@@ -103,8 +103,13 @@
      * Load content here, e.g. this.load.image('myDude', '/assets/images/myDude.png')
      */
     Game.Level.prototype.preload = function() {
-        var preloadBar = this.game.add.sprite(this.game.width / 2, this.game.height / 2, 'preloadBar');
-        preloadBar.fixedToCamera = true;
+        var preloadBarFrame = this.game.add.image(this.game.width * 0.5, this.game.height * 0.5, 'preloadBarFrame');
+        preloadBarFrame.anchor.set(0.5);
+
+        var loadingText = this.game.add.bitmapText(this.game.width * 0.5, this.game.height * 0.3, 'font', 'Loading...', 72);
+        loadingText.x -= loadingText.width * 0.5;
+
+        var preloadBar = this.game.add.image(this.game.width * 0.5, this.game.height * 0.5, 'preloadBar');
         preloadBar.anchor.set(0.5);
         this.game.load.setPreloadSprite(preloadBar);
 
