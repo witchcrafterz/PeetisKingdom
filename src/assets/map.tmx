@@ -148,6 +148,13 @@
     <property name="onListenDialogue" value="octopusQuestComplete"/>
    </properties>
   </object>
+  <object name="boss music" type="trigger" x="7293.94" y="1133.33" width="1890.91" height="769.697">
+   <properties>
+    <property name="enter" value="playMusic"/>
+    <property name="enterArgs" value="boss"/>
+    <property name="leave" value="stopMusic"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="objectives">
   <properties>

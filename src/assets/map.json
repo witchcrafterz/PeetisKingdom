@@ -386,6 +386,22 @@
                  "width":442,
                  "x":12290,
                  "y":8974
+                }, 
+                {
+                 "height":769.69696969697,
+                 "name":"boss music",
+                 "properties":
+                    {
+                     "enter":"playMusic",
+                     "enterArgs":"boss",
+                     "leave":"stopMusic"
+                    },
+                 "rotation":0,
+                 "type":"trigger",
+                 "visible":true,
+                 "width":1890.90909090909,
+                 "x":7293.93939393939,
+                 "y":1133.33333333333
                 }],
          "opacity":1,
          "type":"objectgroup",
