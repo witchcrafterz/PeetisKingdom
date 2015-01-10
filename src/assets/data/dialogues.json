@@ -1,0 +1,135 @@
+{
+    "intro": {
+        "title": "You:",
+        "conversation": [{
+            "text": "Ouch... What happened? Where am I?"
+        }]
+    },
+
+    "instruction": {
+        "title": "Instructions",
+        "conversation": [{
+            "text": "Use arrow keys to walk, and the up key to interact with objects!"
+        }, {
+            "text": "To jump, press spacebar. Press it twice to double jump!"
+        }]
+    },
+
+    "welcome": {
+        "conversation": [{
+            "title": "Welcome!",
+            "text": "Pro tip -- try the 'up' arrow key!"
+        }, {
+            "title": "Controls",
+            "text": "Use arrow keys to walk, up to interact, \nand spacebar to jump"
+        }]
+    },
+
+    "doubleJump": {
+        "conversation": [{
+            "title": "A bit too high...",
+            "text": "If I only could jump once more, \nwhile already in the air"
+        }]
+    },
+
+    "direction": {
+        "conversation": [{
+            "title": "Road sign:",
+            "text": "Right: Grasshopper's residential cave\nLeft: Princess Peeti's Mountain Castle"
+        }]
+    },
+
+    "royalQuest": {
+        "conversation": [{
+            "text": "Hold on! I can't let you see \nPrincess Peeti without bringing a gift."
+        }, {
+            "text": "Tell you what; you bring a \ngift, I'll let you in..."
+        }],
+        "title": "Guard:"
+    },
+    "royalQuestComplete": {
+        "conversation": [{
+            "text": "I can't think of a better \ngift myself to give to the princess."
+        }, {
+            "text": "You may enter..."
+        }],
+        "title": "Guard:"
+    },
+
+    "octopusQuest": {
+        "conversation": [{
+            "text": "STAY AWAY FROM MY TUNNEL! \nAhem... It's MY tunnel."
+        }, {
+            "text": "Tell you what; you bring a \ngift, I'll let you in...",
+            "title": "Is there anything I can do to make you let me in?"
+        }, {
+            "text": "Well... Living under water \nbecomes quite a drag after a while..."
+        }, {
+            "text": "Bring me something that has \ntouched the sky, then I' let you in!"
+        }],
+        "title": "Octopus:"
+    },
+    "octopusQuestComplete": {
+        "conversation": [{
+            "text": "YIKES! That is one mighty \nfine feather"
+        }, {
+            "text": "Very well... You may enter \nmy tunnell!"
+        }],
+        "title": "Octopus:"
+    },
+
+    "birdQuest": {
+        "conversation": [{
+            "text": "Oh the horror... The agony, the \ndismay and one bird's broken heart..."
+        }, {
+            "text": "Tell me bird, what has happened to you?",
+            "title": "You:"
+        }, {
+            "text": "Nothing but the most terrible thing in \nthis world! My baby, my egg, \nit has been taken away from me!"
+        }, {
+            "text": "A very mean ornithologist climbed \ninto my nest, and stole it! \nThe nerve on that one!"
+        }, {
+            "text": "You'll bring it back, you will? I'll \nreward you with a feather that has \ntouched the sky!"
+        }],
+        "title": "Giant Bird:"
+    },
+
+    "birdQuestComplete": {
+        "conversation": [{
+            "text": "Oh, you are a true hero, one this world \nhas sorely needed for such a long time!"
+        }, {
+            "text": "For bringing my egg back, I'll \nreward you with my finest feather!"
+        }],
+        "title": "Giant Bird:"
+    },
+
+    "grasshopperQuest": {
+        "conversation": [{
+            "text": "Gosh darn it! I dropped my \npearl in the lake!"
+        }, {
+            "title": "You:",
+            "text": "A grasshopper, and you can talk!?"
+        }, {
+            "text": "Of course I can talk you big dumdum!"
+        }, {
+            "text": "Anyways... You look like you can swim!\nMind diving in and getting my pearl?"
+        }, {
+            "text": "Pretty please! I'll reward you with \nthe power of leaping through the air!"
+        }],
+        "title": "Grasshopper:"
+    },
+    
+    "grasshopperQuestComplete": {
+        "conversation": [{
+            "text": "Oh wowsies! Thanks for bringing me my\n pearl! \nYou can now jump twice!"
+        }],
+        "title": "Grasshopper:"
+    },
+
+    "castleDialogue": {
+        "conversation": [{
+            "title": "Directions",
+            "text": "Right: Princess Peeti's Throne Room\nLeft: Astronomer's Tower"
+        }]
+    }
+}

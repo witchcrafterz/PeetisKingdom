@@ -127,6 +127,8 @@
         this.game.load.image('dialoguePanel', 'assets/dialoguePanel.png');
         this.game.load.image('grasshopper', 'assets/characters/grasshopper256.png');
 
+        this.game.load.json('dialogues', 'assets/data/dialogues.json');
+
         this.game.load.tilemap('map', 'assets/map.json', null, Phaser.Tilemap.TILED_JSON);
     };
 
@@ -231,101 +233,12 @@
     };
 
     Game.Level.prototype.generateDialogues = function() {
-        this.dialogues = {
-            'intro': new Game.Dialogue(this.game, [{
-                text: 'Ouch... What happened? Where am I?'
-            }], 'You:'),
+        this.dialogues = {};
+        var dialogues = this.game.cache.getJSON('dialogues');
 
-            'instruction': new Game.Dialogue(this.game, [{
-                text: 'Use arrow keys to walk, and the up key to interact with objects!'
-            }, {
-                text: 'To jump, press spacebar. Press it twice to double jump!'
-            }], 'Instructions'),
-
-            'welcome': new Game.Dialogue(this.game, [{
-                title: 'Welcome!',
-                text: 'Pro tip -- try the \'up\' arrow key!'
-            }, {
-                title: 'Controls',
-                text: 'Use arrow keys to walk, up to interact, \nand spacebar to jump'
-            }]),
-
-            'doubleJump': new Game.Dialogue(this.game, [{
-                title: 'A bit too high...',
-                text: 'If I only could jump once more, \nwhile already in the air'
-            }]),
-
-            'direction': new Game.Dialogue(this.game, [{
-                title: 'Road sign:',
-                text: 'Right: Grasshopper\'s residential cave\nLeft: Princess Peeti\'s Mountain Castle'
-            }]),
-
-            'royalQuest': new Game.Dialogue(this.game, [{
-                text: 'Hold on! I can\'t let you see \nPrincess Peeti without bringing a gift.'
-            }, {
-                text: 'Tell you what; you bring a \ngift, I\'ll let you in...'
-            }], 'Guard:'),
-            'royalQuestComplete': new Game.Dialogue(this.game, [{
-                text: 'I can\'t think of a better \ngift myself to give to the princess.'
-            }, {
-                text: 'You may enter...'
-            }], 'Guard:'),
-
-            'octopusQuest': new Game.Dialogue(this.game, [{
-                text: 'STAY AWAY FROM MY TUNNEL! \nAhem... It\'s MY tunnel.'
-            }, {
-                text: 'Tell you what; you bring a \ngift, I\'ll let you in...',
-                title: 'Is there anything I can do to make you let me in?'
-            }, {
-                text: 'Well... Living under water \nbecomes quite a drag after a while...'
-            }, {
-                text: 'Bring me something that has \ntouched the sky, then I\' let you in!'
-            }], 'Octopus:'),
-            'octopusQuestComplete': new Game.Dialogue(this.game, [{
-                text: 'YIKES! That is one mighty \nfine feather'
-            }, {
-                text: 'Very well... You may enter \nmy tunnell!'
-            }], 'Octopus:'),
-
-            'birdQuest': new Game.Dialogue(this.game, [{
-                text: 'Oh the horror... The agony, the \ndismay and one bird\'s broken heart...'
-            }, {
-                text: 'Tell me bird, what has happened to you?',
-                title: 'You:'
-            }, {
-                text: 'Nothing but the most terrible thing in \nthis world! My baby, my egg, \nit has been taken away from me!'
-            }, {
-                text: 'A very mean ornithologist climbed \ninto my nest, and stole it! \nThe nerve on that one!'
-            }, {
-                text: 'You\'ll bring it back, you will? I\'ll \nreward you with a feather that has \ntouched the sky!'
-            }], 'Giant Bird:'),
-            'birdQuestComplete': new Game.Dialogue(this.game, [{
-                text: 'Oh, you are a true hero, one this world \nhas sorely needed for such a long time!'
-            }, {
-                text: 'For bringing my egg back, I\'ll \nreward you with my finest feather!'
-            }], 'Giant Bird:'),
-
-            'grasshopperQuest': new Game.Dialogue(this.game, [{
-                text: 'Gosh darn it! I dropped my \npearl in the lake!'
-            }, {
-                title: 'You:',
-                text: 'A grasshopper, and you can talk!?'
-            }, {
-                text: 'Of course I can talk you big dumdum!' 
-            }, { 
-                text: 'Anyways... You look like you can swim!\nMind diving in and getting my pearl?'
-            }, {
-                text: 'Pretty please! I\'ll reward you with \nthe power of leaping through the air!'
-            }], 'Grasshopper:'),
-            'grasshopperQuestComplete': new Game.Dialogue(this.game, [{
-                text: 'Oh wowsies! Thanks for bringing me my\n pearl! \nYou can now jump twice!'
-            }], 'Grasshopper:'),
-
-            'castleDialogue': new Game.Dialogue(this.game, [{
-                title: 'Directions',
-                text: 'Right: Princess Peeti\'s Throne Room\nLeft: Astronomer\'s Tower'
-            }])
-        };
+        _.forEach(dialogues, function(data, key) {
+            this.dialogues[key] = new Game.Dialogue(this.game, data.conversation, data.title);
+        }, this);
     };
 
     Game.Level.prototype.generateCriteriaFunctions = function() {
