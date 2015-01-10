@@ -113,6 +113,13 @@
         preloadBar.anchor.set(0.5);
         this.game.load.setPreloadSprite(preloadBar);
 
+        var assetLoadingText = this.game.add.bitmapText(this.game.width * 0.5, this.game.height * 0.6, 'font', 'Loading Asset', 24);
+
+        this.game.load.onFileStart.add(function(progress, key, url) {
+            assetLoadingText.text = 'Loading {0} from {1}'.format(key, url);
+            assetLoadingText.pivot.set(assetLoadingText.width * 0.5, 0);
+        }, this);
+
         this.game.load.spritesheet('player1', 'assets/player.png', 68, 84);
         this.game.load.spritesheet('spritesheet', 'assets/spritesheet.png', 64, 64);
 
