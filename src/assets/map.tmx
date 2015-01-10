@@ -155,6 +155,12 @@
     <property name="leave" value="stopMusic"/>
    </properties>
   </object>
+  <object name="boss music" type="trigger" x="10461.2" y="6039.15" width="489.577" height="337.697">
+   <properties>
+    <property name="enter" value="playMusic"/>
+    <property name="enterArgs" value="solskenspromenad"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="objectives">
   <properties>

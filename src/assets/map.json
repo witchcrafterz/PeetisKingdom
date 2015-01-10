@@ -402,6 +402,21 @@
                  "width":1890.90909090909,
                  "x":7293.93939393939,
                  "y":1133.33333333333
+                }, 
+                {
+                 "height":337.697,
+                 "name":"boss music",
+                 "properties":
+                    {
+                     "enter":"playMusic",
+                     "enterArgs":"solskenspromenad"
+                    },
+                 "rotation":0,
+                 "type":"trigger",
+                 "visible":true,
+                 "width":489.576666666666,
+                 "x":10461.2116666667,
+                 "y":6039.1515
                 }],
          "opacity":1,
          "type":"objectgroup",
