@@ -116,8 +116,9 @@
         var assetLoadingText = this.game.add.bitmapText(this.game.width * 0.5, this.game.height * 0.6, 'font', 'Loading Asset', 24);
 
         this.game.load.onFileStart.add(function(progress, key, url) {
-            assetLoadingText.text = 'Loading {0} from {1}'.format(key, url);
-            assetLoadingText.pivot.set(assetLoadingText.width * 0.5, 0);
+            assetLoadingText.text = 'Loading file "{0}" from "{1}"'.format(key, url);
+            assetLoadingText.updateTransform();
+            assetLoadingText.x = this.game.width * 0.5 - assetLoadingText.width * 0.5;
         }, this);
 
         this.game.load.spritesheet('player1', 'assets/player.png', 68, 84);
