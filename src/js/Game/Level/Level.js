@@ -74,6 +74,8 @@
         };
 
         this.toggleMusic = function() {
+            if (!this.music) return;
+
             if (this.music.isPlaying) {
                 this.music.pause();
             } else {
@@ -110,6 +112,9 @@
         this.game.load.audio('jump', ['assets/sfx/jump.ogg', 'assets/sfx/jump.mp3']);
         this.game.load.audio('objectComplete', ['assets/sfx/object_complete.ogg', 'assets/sfx/object_complete.mp3']);
         this.game.load.audio('pickupCoin', ['assets/sfx/pickup_coin.ogg', 'assets/sfx/pickup_coin.mp3']);
+
+        // Credits of boss music due to 13NHarri @ http://freesound.org/people/13NHarri/sounds/251334/
+        this.game.load.audio('boss', ['assets/music/boss.mp3']);
 
         this.game.load.audio('solskenspromenad', 'assets/Solskenspromenad.mp3');
 
@@ -393,9 +398,19 @@
                 duration = duration || 1000;
 
                 if (!this.game.musicMuted) {
-                    this.music.fadeOut(duration);
+                    if (this.music) {
+                        this.music.fadeOut(duration);
+                    }
+
                     this.music = this.game.sound.add(key);
                     this.music.fadeIn(duration);
+                }
+            },
+
+            'stopMusic': function(obj, duration) {
+                if (this.music && this.music.isPlaying) {
+                    duration = duration || 1000;
+                    this.music.fadeOut(duration);
                 }
             }
         };
@@ -666,11 +681,6 @@
         this.alienYellow.controller.hostile = false;
         this.game.add.existing(this.alienYellow);
         this.entitiesGroup.add(this.alienYellow);
-
-        this.music = this.game.add.audio('solskenspromenad', 0.6, true, true);
-        if (!this.game.musicMuted) {
-            this.music.play();
-        }
 
         this.activateKey.onDown.add(function() {
             this.dialogueManager.nextSlide();
