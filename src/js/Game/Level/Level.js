@@ -74,20 +74,26 @@
         };
 
         this.toggleMusic = function() {
-            if (!this.music) return;
+            this.game.musicMuted = !this.game.musicMuted;
 
-            if (this.music.isPlaying) {
-                this.music.pause();
+            if (this.game.musicMuted) {
+                if (this.music && this.music.isPlaying) {
+                    this.music.fadeOut();
+                }
             } else {
-                if (this.music.paused) {
-                    this.music.resume();
-                } else {
-                    this.music.play();
+                if (this.music && !this.music.isPlaying) {
+                    if (this.music.paused) {
+                        this.music.resume();
+                    } else {
+                        this.music.fadeIn();
+                    }    
                 }
             }
 
-            this.game.musicMuted = !this.music.isPlaying;
-            return !this.music.isPlaying;
+            if (self.localStorage) {
+                self.localStorage.music = this.game.musicMuted.toString();
+            }
+            return this.game.musicMuted;
         };
     };
 
@@ -397,12 +403,10 @@
 
                 duration = duration || 1000;
 
-                if (!this.game.musicMuted) {
-                    if (this.music) {
-                        this.music.fadeOut(duration);
-                    }
+                this.triggerFunctions.stopMusic.call(this, obj, duration);
+                this.music = this.game.sound.add(key);
 
-                    this.music = this.game.sound.add(key);
+                if (!this.game.musicMuted) {
                     this.music.fadeIn(duration);
                 }
             },
