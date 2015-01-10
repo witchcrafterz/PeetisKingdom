@@ -84,6 +84,7 @@
                 }
             }
 
+            this.game.musicMuted = !this.music.isPlaying;
             return !this.music.isPlaying;
         };
     };
@@ -383,6 +384,18 @@
 
                         }, this);
 
+                }
+            },
+
+            'playMusic': function(obj, key, duration) {
+                if (!key) return;
+
+                duration = duration || 1000;
+
+                if (!this.game.musicMuted) {
+                    this.music.fadeOut(duration);
+                    this.music = this.game.sound.add(key);
+                    this.music.fadeIn(duration);
                 }
             }
         };
