@@ -143,8 +143,6 @@
         this.game.load.json('dialogues', 'assets/data/dialogues.json');
 
         this.game.load.tilemap('map', 'assets/map.json', null, Phaser.Tilemap.TILED_JSON);
-        this.game.load.image('mapFront', 'assets/world/map_front.png');
-        this.game.load.image('mapBehind', 'assets/world/map_behind.png');
     };
 
     /**
@@ -165,11 +163,8 @@
         this.bg.fixedToCamera = true;
 
         // The layer that the player does not interact with
-        // this.behind = this.map.createLayer('behind');
-        // this.behind.overlay = 'rgba(0,0,0,0.4)';
-        this.behind = this.game.add.image(0, 0, 'mapBehind');
-        this.behind.smoothed = false;
-        this.behind.scale.setTo(4);
+        this.behind = this.map.createLayer('behind');
+        this.behind.overlay = 'rgba(0,0,0,0.4)';
 
         this.level = this.map.createLayer('collision');
         // The layer containing platforms
@@ -208,11 +203,7 @@
                 }
             });
         });
-
-        // this.front = this.map.createLayer('front');
-        this.front = this.game.add.image(0, 0, 'mapFront');
-        this.front.smoothed = false;
-        this.front.scale.setTo(4);
+        this.front = this.map.createLayer('front');
 
         this.level.resizeWorld();
 
@@ -220,8 +211,8 @@
             enableScrollDelta: false
         };
         this.level.renderSettings = renderSettings;
-        // this.behind.renderSettings = renderSettings;
-        // this.front.renderSettings = renderSettings;
+        this.behind.renderSettings = renderSettings;
+        this.front.renderSettings = renderSettings;
 
         this.map.setLayer(this.level);
         this.map.setCollision(collisionTiles);
