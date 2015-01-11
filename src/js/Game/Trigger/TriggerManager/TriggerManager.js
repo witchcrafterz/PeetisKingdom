@@ -17,9 +17,9 @@
     Game.Trigger.TriggerManager.prototype.update = function() {
         Phaser.Group.prototype.update.call(this);
 
-        _.forEach(this.triggers, function(trigger) {
-            trigger.update();
-        }, this);
+        for (var i = 0; i < this.triggers.length; i++) {
+            this.triggers[i].update();
+        }
     };
 
 })();
