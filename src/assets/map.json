@@ -197,7 +197,9 @@
                  "name":"grasshopper dialogue",
                  "properties":
                     {
-                     "dialogue":"grasshopperQuest"
+                     "dialogue":"grasshopperQuest",
+                     "listen":"grasshopper",
+                     "onListenDialogue":"grasshopperQuestComplete"
                     },
                  "rotation":0,
                  "type":"dialogue",
@@ -314,7 +316,9 @@
                  "name":"gift dialog",
                  "properties":
                     {
-                     "dialogue":"royalQuest"
+                     "dialogue":"royalQuest",
+                     "listen":"royalVisit",
+                     "onListenDialogue":"royalQuestComplete"
                     },
                  "rotation":0,
                  "type":"dialogue",
@@ -328,7 +332,9 @@
                  "name":"bird dialogue",
                  "properties":
                     {
-                     "dialogue":"birdQuest"
+                     "dialogue":"birdQuest",
+                     "listen":"meanOrnothologist",
+                     "onDialogueListen":"birdQuestComplete"
                     },
                  "rotation":0,
                  "type":"dialogue",
@@ -370,7 +376,9 @@
                  "name":"octopus dialogue",
                  "properties":
                     {
-                     "dialogue":"octopusQuest"
+                     "dialogue":"octopusQuest",
+                     "listen":"octopusQuest",
+                     "onListenDialogue":"octopusQuestComplete"
                     },
                  "rotation":0,
                  "type":"dialogue",
@@ -378,6 +386,37 @@
                  "width":442,
                  "x":12290,
                  "y":8974
+                }, 
+                {
+                 "height":769.69696969697,
+                 "name":"boss music",
+                 "properties":
+                    {
+                     "enter":"playMusic",
+                     "enterArgs":"boss",
+                     "leave":"stopMusic"
+                    },
+                 "rotation":0,
+                 "type":"trigger",
+                 "visible":true,
+                 "width":1890.90909090909,
+                 "x":7293.93939393939,
+                 "y":1133.33333333333
+                }, 
+                {
+                 "height":337.697,
+                 "name":"boss music",
+                 "properties":
+                    {
+                     "enter":"playMusic",
+                     "enterArgs":"solskenspromenad"
+                    },
+                 "rotation":0,
+                 "type":"trigger",
+                 "visible":true,
+                 "width":489.576666666666,
+                 "x":10461.2116666667,
+                 "y":6039.1515
                 }],
          "opacity":1,
          "type":"objectgroup",

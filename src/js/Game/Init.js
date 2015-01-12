@@ -13,12 +13,13 @@
          */
         preload: function() {
             this.game.load.image('preloadBar', 'assets/loadingbar.png');
+            this.game.load.image('preloadBarFrame', 'assets/loadingbar_frame.png');
         },
 
         /**
          * Initialization logic here
          */
-        create: function() {            
+        create: function() {
             this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 
             this.scale.minWidth = 256;

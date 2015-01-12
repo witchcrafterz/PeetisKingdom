@@ -76,41 +76,35 @@
     Game.Trigger.ZoneTrigger.prototype.update = function() {
         if (!this.enabled) return;
 
-        _.forEach(this.toTrack, function(toTrack, iToTrack) {
+        var iToTrack, iZone, insideAny;
 
-            var insideAny = false;
-            var zones = [];
+        for (iToTrack = 0; iToTrack < this.toTrack.length; iToTrack++) {
+            for (iZone = 0; iZone < this.zones.length; iZone++) {
+                this._wasInZone[iToTrack][iZone] = this.zones[iZone].contains(this.toTrack[iToTrack].position.x, this.toTrack[iToTrack].position.y);
 
-            _.forEach(this.zones, function(zone, iZone) {
-
-                var intersects = zone.contains(toTrack.position.x, toTrack.position.y);
-
-                if (intersects) {
-                    zones.push(zone);
+                if (this._wasInZone[iToTrack][iZone]) {
                     insideAny = true;
-                }
-
-                this._wasInZone[iToTrack][iZone] = intersects;
-
-            }, this);
-
-            if (!this.isActive && insideAny) {
-                // Entered one of the zones
-                if (!this.criteriaActive) {
-                    this.onActive.dispatch(this, toTrack, zones);
-                } else if (this.criteriaActive.call(this.thisArg)) {
-                    this.onActive.dispatch(this, toTrack, zones);
-                }
-            } else if (this.isActive && !insideAny) {
-                // Left all zones
-                if (!this.criteriaInactive) {
-                    this.onInactive.dispatch(this, toTrack, zones);
-                } else if (this.criteriaInactive.call(this.thisArg)) {
-                    this.onInactive.dispatch(this, toTrack, zones);
+                    break;
                 }
             }
-        }, this);
+            if (insideAny) break;
+        }
 
+        if (!this.isActive && insideAny) {
+            // Entered one of the zones
+            if (!this.criteriaActive) {
+                this.onActive.dispatch(this, this.toTrack[iToTrack]);
+            } else if (this.criteriaActive.call(this.thisArg)) {
+                this.onActive.dispatch(this, this.toTrack[iToTrack]);
+            }
+        } else if (this.isActive && !insideAny) {
+            // Left all zones
+            if (!this.criteriaInactive) {
+                this.onInactive.dispatch(this, this.toTrack[iToTrack]);
+            } else if (this.criteriaInactive.call(this.thisArg)) {
+                this.onInactive.dispatch(this, this.toTrack[iToTrack]);
+            }
+        }
 
     };
 

@@ -112,6 +112,10 @@
     Game.DialogueManager.prototype.constructor = Game.DialogueManager;
 
     Game.DialogueManager.prototype.setDialogue = function(dialogue, autoShow, reset) {
+        if (this.currentDialogue) {
+            this.currentDialogue.isOpen = false;
+        }
+
         this.currentDialogue = dialogue;
 
         autoShow = typeof autoShow !== 'undefined' ? autoShow : true;
@@ -122,11 +126,11 @@
             this.currentDialogue.currentSlide = -1;
         }
 
-        this.nextSlide();
-
         if (autoShow) {
             this.hidden = false;
         }
+
+        this.nextSlide();
     };
 
     Game.DialogueManager.prototype.nextSlide = function() {
@@ -140,6 +144,8 @@
         } else {
             this.refreshDialogue();
         }
+
+        this.currentDialogue.isOpen = !this.hidden;
     };
 
     Game.DialogueManager.prototype.refreshDialogue = function() {

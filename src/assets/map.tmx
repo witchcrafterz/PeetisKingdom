@@ -81,6 +81,8 @@
   <object name="grasshopper dialogue" type="dialogue" x="14664" y="6080" width="728" height="376">
    <properties>
     <property name="dialogue" value="grasshopperQuest"/>
+    <property name="listen" value="grasshopper"/>
+    <property name="onListenDialogue" value="grasshopperQuestComplete"/>
    </properties>
   </object>
   <object name="direction dialogue" type="dialogue" x="10232" y="6158.63" width="186.667" height="180">
@@ -118,11 +120,15 @@
   <object name="gift dialog" type="dialogue" x="3785.33" y="6033.5" width="700.333" height="363">
    <properties>
     <property name="dialogue" value="royalQuest"/>
+    <property name="listen" value="royalVisit"/>
+    <property name="onListenDialogue" value="royalQuestComplete"/>
    </properties>
   </object>
   <object name="bird dialogue" type="dialogue" x="1305.33" y="3082.5" width="631.333" height="383">
    <properties>
     <property name="dialogue" value="birdQuest"/>
+    <property name="listen" value="meanOrnothologist"/>
+    <property name="onDialogueListen" value="birdQuestComplete"/>
    </properties>
   </object>
   <object name="checkpoint" type="trigger" x="6330.67" y="8961.33" width="209.333" height="324">
@@ -138,6 +144,21 @@
   <object name="octopus dialogue" type="dialogue" x="12290" y="8974" width="442" height="404">
    <properties>
     <property name="dialogue" value="octopusQuest"/>
+    <property name="listen" value="octopusQuest"/>
+    <property name="onListenDialogue" value="octopusQuestComplete"/>
+   </properties>
+  </object>
+  <object name="boss music" type="trigger" x="7293.94" y="1133.33" width="1890.91" height="769.697">
+   <properties>
+    <property name="enter" value="playMusic"/>
+    <property name="enterArgs" value="boss"/>
+    <property name="leave" value="stopMusic"/>
+   </properties>
+  </object>
+  <object name="boss music" type="trigger" x="10461.2" y="6039.15" width="489.577" height="337.697">
+   <properties>
+    <property name="enter" value="playMusic"/>
+    <property name="enterArgs" value="solskenspromenad"/>
    </properties>
   </object>
  </objectgroup>

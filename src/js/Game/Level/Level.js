@@ -74,17 +74,26 @@
         };
 
         this.toggleMusic = function() {
-            if (this.music.isPlaying) {
-                this.music.pause();
+            this.game.musicMuted = !this.game.musicMuted;
+
+            if (this.game.musicMuted) {
+                if (this.music && this.music.isPlaying) {
+                    this.music.fadeOut();
+                }
             } else {
-                if (this.music.paused) {
-                    this.music.resume();
-                } else {
-                    this.music.play();
+                if (this.music && !this.music.isPlaying) {
+                    if (this.music.paused) {
+                        this.music.resume();
+                    } else {
+                        this.music.fadeIn();
+                    }    
                 }
             }
 
-            return !this.music.isPlaying;
+            if (self.localStorage) {
+                self.localStorage.music = this.game.musicMuted.toString();
+            }
+            return this.game.musicMuted;
         };
     };
 
@@ -94,10 +103,23 @@
      * Load content here, e.g. this.load.image('myDude', '/assets/images/myDude.png')
      */
     Game.Level.prototype.preload = function() {
-        var preloadBar = this.game.add.sprite(this.game.width / 2, this.game.height / 2, 'preloadBar');
-        preloadBar.fixedToCamera = true;
+        var preloadBarFrame = this.game.add.image(this.game.width * 0.5, this.game.height * 0.5, 'preloadBarFrame');
+        preloadBarFrame.anchor.set(0.5);
+
+        var loadingText = this.game.add.bitmapText(this.game.width * 0.5, this.game.height * 0.3, 'font', 'Loading...', 72);
+        loadingText.x -= loadingText.width * 0.5;
+
+        var preloadBar = this.game.add.image(this.game.width * 0.5, this.game.height * 0.5, 'preloadBar');
         preloadBar.anchor.set(0.5);
         this.game.load.setPreloadSprite(preloadBar);
+
+        var assetLoadingText = this.game.add.bitmapText(this.game.width * 0.5, this.game.height * 0.6, 'font', 'Loading Asset', 24);
+
+        this.game.load.onFileStart.add(function(progress, key, url) {
+            assetLoadingText.text = 'Loading file "{0}" from "{1}"'.format(key, url);
+            assetLoadingText.updateTransform();
+            assetLoadingText.x = this.game.width * 0.5 - assetLoadingText.width * 0.5;
+        }, this);
 
         this.game.load.spritesheet('player1', 'assets/player.png', 68, 84);
         this.game.load.spritesheet('spritesheet', 'assets/spritesheet.png', 64, 64);
@@ -106,17 +128,19 @@
         this.game.load.atlasXML('UI', 'assets/UI.png', 'assets/UI.xml');
         this.game.load.atlasXML('p1', 'assets/p1_spritesheet.png', 'assets/p1_spritesheet.xml');
 
-        this.game.load.audio('jump', 'assets/sfx/jump.ogg');
-        this.game.load.audio('jump', 'assets/sfx/jump.mp3');
-        this.game.load.audio('objectComplete', 'assets/sfx/object_complete.ogg');
-        this.game.load.audio('objectComplete', 'assets/sfx/object_complete.mp3');
-        this.game.load.audio('pickupCoin', 'assets/sfx/pickup_coin.ogg');
-        this.game.load.audio('pickupCoin', 'assets/sfx/pickup_coin.mp3');
+        this.game.load.audio('jump', ['assets/sfx/jump.ogg', 'assets/sfx/jump.mp3']);
+        this.game.load.audio('objectComplete', ['assets/sfx/object_complete.ogg', 'assets/sfx/object_complete.mp3']);
+        this.game.load.audio('pickupCoin', ['assets/sfx/pickup_coin.ogg', 'assets/sfx/pickup_coin.mp3']);
+
+        // Credits of boss music due to 13NHarri @ http://freesound.org/people/13NHarri/sounds/251334/
+        this.game.load.audio('boss', ['assets/music/boss.mp3']);
 
         this.game.load.audio('solskenspromenad', 'assets/Solskenspromenad.mp3');
 
         this.game.load.image('dialoguePanel', 'assets/dialoguePanel.png');
         this.game.load.image('grasshopper', 'assets/characters/grasshopper256.png');
+
+        this.game.load.json('dialogues', 'assets/data/dialogues.json');
 
         this.game.load.tilemap('map', 'assets/map.json', null, Phaser.Tilemap.TILED_JSON);
     };
@@ -222,83 +246,12 @@
     };
 
     Game.Level.prototype.generateDialogues = function() {
-        this.dialogues = {
-            'intro': new Game.Dialogue(this.game, [{
-                text: 'Ouch... What happened? Where am I?'
-            }], 'You:'),
+        this.dialogues = {};
+        var dialogues = this.game.cache.getJSON('dialogues');
 
-            'instruction': new Game.Dialogue(this.game, [{
-                text: 'Use arrow keys to walk, and the up key to interact with objects!'
-            }, {
-                text: 'To jump, press spacebar. Press it twice to double jump!'
-            }], 'Instructions'),
-
-            'welcome': new Game.Dialogue(this.game, [{
-                title: 'Welcome!',
-                text: 'Pro tip -- try the \'up\' arrow key!'
-            }, {
-                title: 'Controls',
-                text: 'Use arrow keys to walk, up to interact, \nand spacebar to jump'
-            }]),
-
-            'doubleJump': new Game.Dialogue(this.game, [{
-                title: 'A bit too high...',
-                text: 'If I only could jump once more, \nwhile already in the air'
-            }]),
-
-            'direction': new Game.Dialogue(this.game, [{
-                title: 'Road sign:',
-                text: 'Right: Grasshopper\'s residential cave\nLeft: Princess Peeti\'s Mountain Castle'
-            }]),
-
-            'royalQuest': new Game.Dialogue(this.game, [{
-                text: 'Hold on! I can\'t let you see \nPrincess Peeti without bringing a gift.'
-            }, {
-                text: 'Tell you what; you bring a \ngift, I\'ll let you in...'
-            }], 'Guard:'),
-
-            'octopusQuest': new Game.Dialogue(this.game, [{
-                text: 'STAY AWAY FROM MY TUNNEL! \nAhem... It\'s MY tunnel.'
-            }, {
-                text: 'Tell you what; you bring a \ngift, I\'ll let you in...',
-                title: 'Is there anything I can do to make you let me in?'
-            }, {
-                text: 'Well... Living under water \nbecomes quite a drag after a while...'
-            }, {
-                text: 'Bring me something that has \ntouched the sky, then I\' let you in!'
-            }], 'Octopus:'),
-
-            'birdQuest': new Game.Dialogue(this.game, [{
-                text: 'Oh the horror... The agony, the \ndismay and one bird\'s broken heart...'
-            }, {
-                text: 'Tell me bird, what has happened to you?',
-                title: 'You:'
-            }, {
-                text: 'Nothing but the most terrible thing in \nthis world! My baby, my egg, \nit has been taken away from me!'
-            }, {
-                text: 'A very mean ornithologist climbed \ninto my nest, and stole it! \nThe nerve on that one!'
-            }, {
-                text: 'You\'ll bring it back, you will? I\'ll \nreward you with a feather that has \ntouched the sky!'
-            }], 'Giant Bird:'),
-
-            'grasshopperQuest': new Game.Dialogue(this.game, [{
-                text: 'Gosh darn it! I dropped my \npearl in the lake!'
-            }, {
-                title: 'You:',
-                text: 'A grasshopper, and you can talk!?'
-            }, {
-                text: 'Of course I can talk you big dumdum!' 
-            }, { 
-                text: 'Anyways... You look like you can swim!\nMind diving in and getting my pearl?'
-            }, {
-                text: 'Pretty please! I\'ll reward you with \nthe power of leaping through the air!'
-            }], 'Grasshopper:'),
-
-            'castleDialogue': new Game.Dialogue(this.game, [{
-                title: 'Directions',
-                text: 'Right: Princess Peeti\'s Throne Room\nLeft: Astronomer\'s Tower'
-            }])
-        };
+        _.forEach(dialogues, function(data, key) {
+            this.dialogues[key] = new Game.Dialogue(this.game, data.conversation, data.title);
+        }, this);
     };
 
     Game.Level.prototype.generateCriteriaFunctions = function() {
@@ -368,6 +321,26 @@
 
                         }, this);
 
+                }
+            },
+
+            'playMusic': function(obj, key, duration) {
+                if (!key) return;
+
+                duration = duration || 1000;
+
+                this.triggerFunctions.stopMusic.call(this, obj, duration);
+                this.music = this.game.sound.add(key);
+
+                if (!this.game.musicMuted) {
+                    this.music.fadeIn(duration);
+                }
+            },
+
+            'stopMusic': function(obj, duration) {
+                if (this.music && this.music.isPlaying) {
+                    duration = duration || 1000;
+                    this.music.fadeOut(duration);
                 }
             }
         };
@@ -461,6 +434,8 @@
                 case 'dialogue':
                     var dialogueKey = obj.properties.dialogue;
                     var dialogue = this.dialogues[dialogueKey];
+                    var listen = obj.properties['listen'] ? obj.properties['listen'].split(',') : undefined;
+                    var onListenDialogue = obj.properties['onListenDialogue'] ? this.dialogues[obj.properties['onListenDialogue']] : undefined;
                     var criteria = obj.properties['criteriaFunction'] || '';
                     criteria = this.criteriaFunctions[criteria];
 
@@ -482,6 +457,19 @@
                         trigger.onInactive.add(function() {
                             this.dialogueManager.hidden = true;
                         }, this);
+
+                        if (listen && onListenDialogue) {
+                            this.game.objectiveManager.onObjectiveComplete.add(function(objective) {
+                                if (objective.properties.id && _.contains(listen, objective.properties.id)) {
+                                    var oldDialogue = dialogue;
+                                    dialogue = onListenDialogue;
+
+                                    if (oldDialogue.isOpen) {
+                                        this.dialogueManager.setDialogue(dialogue);
+                                    }
+                                }
+                            }, this);
+                        }
 
                     }
 
@@ -543,17 +531,32 @@
 
                     var trigger = new Game.Trigger.ZoneTrigger(this.game, true, rectangles, this.p1, enterCriteria, leaveCriteria, this);
 
+                    var enterArgs = obj.properties['enterArgs'] ? obj.properties['enterArgs'].split(',') : [];
+                    var leaveArgs = obj.properties['leaveArgs'] ? obj.properties['leaveArgs'].split(',') : [];
+                    enterArgs.splice(0, 0, obj);
+                    leaveArgs.splice(0, 0, obj);
+
+                    // Convert numerical values to numbers
+                    for (var i = 0; i < enterArgs.length; i++) {
+                        var parsed = parseFloat(enterArgs[i]);
+                        enterArgs[i] = isNaN(parsed) ? enterArgs[i] : parsed;
+                    }
+                    for (var i = 0; i < leaveArgs.length; i++) {
+                        var parsed = parseFloat(leaveArgs[i]);
+                        leaveArgs[i] = isNaN(parsed) ? leaveArgs[i] : parsed;
+                    }
+
                     this.triggerManager.addTrigger(trigger);
 
                     trigger.onActive.add(function() {
                         if (onEnter) {
-                            onEnter.call(this, obj);
+                            onEnter.apply(this, enterArgs);
                         }
                     }, this);
 
                     trigger.onInactive.add(function() {
                         if (onLeave) {
-                            onLeave.call(this, obj);
+                            onLeave.apply(this, leaveArgs);
                         }
                     }, this);
 
@@ -608,11 +611,6 @@
         this.alienYellow.controller.hostile = false;
         this.game.add.existing(this.alienYellow);
         this.entitiesGroup.add(this.alienYellow);
-
-        this.music = this.game.add.audio('solskenspromenad', 0.6, true, true);
-        if (!this.game.musicMuted) {
-            this.music.play();
-        }
 
         this.activateKey.onDown.add(function() {
             this.dialogueManager.nextSlide();

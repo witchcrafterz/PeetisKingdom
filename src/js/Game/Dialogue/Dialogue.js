@@ -71,6 +71,12 @@
          */
         this.defaultBackground = background;
 
+        /**
+         * Whether or not this dialogue is currently displayed in the dialogue manager
+         * @type {Boolean}
+         */
+        this.isOpen = false;
+
         return this;
     };
 

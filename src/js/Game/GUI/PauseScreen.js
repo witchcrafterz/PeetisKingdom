@@ -65,17 +65,12 @@
     };
 
     Game.GUI.PauseScreen.prototype.toggleMute = function() {
-        var muted = this.game.state.getCurrentState().toggleMusic();
-
-        if (self.localStorage) {
-            self.localStorage.music = muted.toString();
-        }
-
+        this.game.state.getCurrentState().toggleMusic();
         this._refreshMute();
     };
 
-    Game.GUI.PauseScreen.prototype._refreshMute = function(muted) {
-        this.mute.text = this.game.state.getCurrentState().music.isPlaying ? 'Mute' : 'Unmute';
+    Game.GUI.PauseScreen.prototype._refreshMute = function() {
+        this.mute.text = !this.game.musicMuted ? 'Mute' : 'Unmute';
     };
 
     Game.GUI.PauseScreen.prototype.toggleFullscreen = function() {
