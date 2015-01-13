@@ -6,7 +6,7 @@
     Game.Player = function(game, x, y) {
         Game.Character.call(this, game, x, y, textureKey);
 
-        this.controller = new Game.Controller(this.game);
+        this.controller = new Game.Controller.KeyboardController(this.game, this);
 
         return this;
     };
