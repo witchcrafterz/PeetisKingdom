@@ -6,28 +6,6 @@
 
         this.initialize();
 
-        this.cursors = this.game.input.keyboard.createCursorKeys();
-
-        this.cursors.right.onDown.add(this.right.setDown, this);
-        this.cursors.right.onUp.add(this.right.setUp, this);
-
-        this.cursors.left.onDown.add(this.left.setDown, this);
-        this.cursors.left.onUp.add(this.left.setUp, this);
-
-        this.spaceBar = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-        this.spaceBar.onDown.add(this.jump.setDown, this);
-        this.spaceBar.onUp.add(this.jump.setUp, this);
-
-        this.cursors.down.onDown.add(this.down.setDown, this);
-        this.cursors.down.onUp.add(this.down.setUp, this);
-
-        this.cursors.up.onDown.add(this.up.setDown, this);
-        this.cursors.up.onUp.add(this.up.setUp, this);
-
-        if (Modernizr.touchevents) {
-            this.generateTouchControls();
-        }
-
         return this;
     };
 
