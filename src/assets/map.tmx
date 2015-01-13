@@ -64,7 +64,7 @@
   </object>
  </objectgroup>
  <objectgroup name="objects">
-  <object name="spawn point" type="spawn" x="8896" y="6784" width="128" height="192">
+  <object name="spawn point" type="spawn" x="8892" y="6784" width="128" height="192">
    <ellipse/>
   </object>
   <object name="intro dialogue" type="dialogue" x="8641.1" y="6739.3" width="572.36" height="248.424">
@@ -161,7 +161,7 @@
     <property name="enterArgs" value="solskenspromenad"/>
    </properties>
   </object>
-  <object name="checkpoint" type="trigger" x="2835.33" y="8814" width="209.333" height="324">
+  <object name="checkpointsdasd" type="trigger" x="2835.33" y="8814" width="209.333" height="324">
    <properties>
     <property name="enter" value="setCheckpoint"/>
    </properties>

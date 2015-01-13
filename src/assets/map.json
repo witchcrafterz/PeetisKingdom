@@ -160,7 +160,7 @@
                  "type":"spawn",
                  "visible":true,
                  "width":128,
-                 "x":8896,
+                 "x":8892,
                  "y":6784
                 }, 
                 {
@@ -420,7 +420,7 @@
                 }, 
                 {
                  "height":324,
-                 "name":"checkpoint",
+                 "name":"checkpointsdasd",
                  "properties":
                     {
                      "enter":"setCheckpoint"
@@ -429,7 +429,7 @@
                  "type":"trigger",
                  "visible":true,
                  "width":209.333,
-                 "x":2835.3335,
+                 "x":2835.33,
                  "y":8814
                 }],
          "opacity":1,
