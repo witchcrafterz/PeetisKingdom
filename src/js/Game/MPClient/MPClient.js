@@ -47,10 +47,24 @@
         this.socket = io(this.url);
     };
 
+    Game.MPClient.prototype.sendPosition = function() {
+        var p1 = this.game.state.getCurrentState().p1;
+
+        var pos = {
+            x: p1.position.x,
+            y: p1.position.y
+        };
+
+        this.socket.emit('position', { position: pos });
+
+        setTimeout(bind(this, this.sendPosition), 50);
+    };
+
     Game.MPClient.prototype.setEvents = function() {
         this.socket.on('id', bind(this, this.onID));
         this.socket.on('new', bind(this, this.onNew));
         this.socket.on('delete', bind(this, this.onDelete));
+        this.socket.on('position', bind(this, this.onPosition));
     };
 
     Game.MPClient.prototype.onID = function(data) {
@@ -65,6 +79,7 @@
         var key = p1.key;
 
         this.socket.emit('new', { position: pos, texture: key });
+        this.sendPosition();
     };
 
     Game.MPClient.prototype.onNew = function(data) {
@@ -85,6 +100,16 @@
         this.game.entitiesGroup.remove(character, true);
 
         this.characters[data.id] = null;
+    };
+
+    Game.MPClient.prototype.onPosition = function(data) {
+        if (data.id === this.id) return;
+
+        var character = this.characters[data.id];
+
+        if (!character) return;
+
+        character.position.setTo(data.position.x, data.position.y);
     };
 
 })();
