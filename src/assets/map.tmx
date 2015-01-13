@@ -136,7 +136,7 @@
     <property name="enter" value="setCheckpoint"/>
    </properties>
   </object>
-  <object name="lava" type="trigger" x="2287.88" y="9570.3" width="3890.91" height="442.424">
+  <object name="lava" type="trigger" x="2307" y="9600" width="3890.91" height="442.424">
    <properties>
     <property name="enter" value="resetPlayer"/>
    </properties>
@@ -159,6 +159,11 @@
    <properties>
     <property name="enter" value="playMusic"/>
     <property name="enterArgs" value="solskenspromenad"/>
+   </properties>
+  </object>
+  <object name="checkpoint" type="trigger" x="2835.33" y="8814" width="209.333" height="324">
+   <properties>
+    <property name="enter" value="setCheckpoint"/>
    </properties>
   </object>
  </objectgroup>
