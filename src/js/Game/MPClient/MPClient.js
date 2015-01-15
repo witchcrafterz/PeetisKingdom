@@ -56,7 +56,7 @@
             y: this.p1.position.y
         };
 
-        this.socket.emit('position', { position: pos });
+        this.socket.emit('action', { position: pos });
 
         setTimeout(bind(this, this.sendPosition), 500);
     };
@@ -169,6 +169,9 @@
                             character.controller[type].setUp.call(character.controller);
                         }
                         break;
+                    case 'position':
+                        character.position.setTo(value.x, value.y);
+
                 }
             });
         }, this);
