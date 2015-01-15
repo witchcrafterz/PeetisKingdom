@@ -170,10 +170,11 @@
                         }
                         break;
                     case 'position':
-                        character.position.setTo(value.x, value.y);
-
+                        if (character.position.distance(value) > 100) {
+                            this.game.add.tween(character.position).to(value, 100).start();
+                        }
                 }
-            });
+            }, this);
         }, this);
 
     };
