@@ -622,8 +622,6 @@
         this.game.world.bringToTop(this.objectiveManager);
         this.game.world.bringToTop(this.HUD);
 
-        this.client = new Game.MPClient(this.game, 'http://localhost:3001');
-
         this.paintBG();
     };
 

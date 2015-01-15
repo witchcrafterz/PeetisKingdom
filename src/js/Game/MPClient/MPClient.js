@@ -44,7 +44,7 @@
     Game.MPClient.prototype.constructor = Game.MPClient;
 
     Game.MPClient.prototype.connect = function() {
-        this.socket = io(this.url);
+        this.socket = new io(this.url, {'force new connection': true});
     };
 
     Game.MPClient.prototype.sendPosition = function() {
@@ -110,6 +110,17 @@
         if (!character) return;
 
         character.position.setTo(data.position.x, data.position.y);
+    };
+
+    Game.MPClient.prototype.disconnect = function() {
+        _.forEach(this.characters, function(character) {
+            this.game.entitiesGroup.remove(character, true);
+        }, this);
+
+        this.characters = null;
+
+        this.socket.disconnect();
+        this.socket = null;
     };
 
 })();
