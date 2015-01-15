@@ -9,7 +9,7 @@
 
     <!-- bower:js -->
     <!-- endinject -->
-    <script src="http://localhost:3001/socket.io/socket.io.js"></script>
+    <script src="http://spel.michaelrehn.se:3001/socket.io/socket.io.js"></script>
 
     <!-- vendors:js -->
     <!-- endinject -->
