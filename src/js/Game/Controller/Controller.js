@@ -76,11 +76,11 @@
             isDown: false,
             setDown: function() {
                 this.left.isDown = true;
-                this.left.onDown.dispatch();
+                this.left.onDown.dispatch('left', true);
             },
             setUp: function() {
                 this.left.isDown = false;
-                this.left.onUp.dispatch();
+                this.left.onUp.dispatch('left', false);
             }
         };
         this.right = {
@@ -89,11 +89,11 @@
             isDown: false,
             setDown: function() {
                 this.right.isDown = true;
-                this.right.onDown.dispatch();
+                this.right.onDown.dispatch('right', true);
             },
             setUp: function() {
                 this.right.isDown = false;
-                this.right.onUp.dispatch();
+                this.right.onUp.dispatch('right', false);
             }
         };
         this.jump = {
@@ -102,11 +102,11 @@
             isDown: false,
             setDown: function() {
                 this.jump.isDown = true;
-                this.jump.onDown.dispatch();
+                this.jump.onDown.dispatch('jump', true);
             },
             setUp: function() {
                 this.jump.isDown = false;
-                this.jump.onUp.dispatch();
+                this.jump.onUp.dispatch('jump', false);
             }
         };
         this.down = {
@@ -115,11 +115,11 @@
             isDown: false,
             setDown: function() {
                 this.down.isDown = true;
-                this.down.onDown.dispatch();
+                this.down.onDown.dispatch('down', true);
             },
             setUp: function() {
                 this.down.isDown = false;
-                this.down.onUp.dispatch();
+                this.down.onUp.dispatch('down', false);
             }
         };
         this.up = {
@@ -128,11 +128,11 @@
             isDown: false,
             setDown: function() {
                 this.up.isDown = true;
-                this.up.onDown.dispatch();
+                this.up.onDown.dispatch('up', true);
             },
             setUp: function() {
                 this.up.isDown = false;
-                this.up.onUp.dispatch();
+                this.up.onUp.dispatch('up', false);
             }
         };
     };
