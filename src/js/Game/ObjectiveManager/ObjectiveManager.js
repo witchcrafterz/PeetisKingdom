@@ -1,8 +1,10 @@
 (function() {
     'use strict';
 
-    Game.ObjectiveManager = function(game, x, y) {
-        Phaser.Group.call(this, game, null, 'ObjectiveManager');
+    Game.ObjectiveManager = function(game, parent, x, y) {
+        Phaser.Group.call(this, game, parent, 'ObjectiveManager');
+
+        this.position.setTo(x, y);
 
         /**
          * The vertical padding in pixel of every objective
@@ -70,10 +72,6 @@
          * @type {Phaser.Signal}
          */
         this.onObjectiveComplete = new Phaser.Signal();
-
-        this.fixedToCamera = true;
-
-        this.cameraOffset.setTo(x, y);
 
         this._updatePositioning();
         this.onObjectiveComplete.add(this.onObjectiveCompleteHandler, this);
@@ -232,8 +230,6 @@
         }
 
         this.pivot.x = this.width * 0.5;
-
-        this.game.add.tween(this.pivot).to({y: this._calculateHeightTo(this.objectives.length) * 0.5 }, this.animationSpeed, this.easing, true);
 
         this.game.add.tween(this.titleText.position).to({x: this.width * 0.5 - this.titleText.width * 0.5 }, this.animationSpeed, this.easing, true);
 
