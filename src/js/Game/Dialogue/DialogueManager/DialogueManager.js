@@ -165,7 +165,8 @@
             }
         }
 
-        this.pageText.text = '{0}/{1}'.format(this.currentDialogue.currentSlide + 1, this.currentDialogue.conversation.length);
+        this.pageText.text = 'Page {0}/{1}'.format(this.currentDialogue.currentSlide + 1, this.currentDialogue.conversation.length);
+        this.pageText.updateTransform();
         this.pageText.y = this.height;
         this.pageText.x = this.width - this.pageText.width;
     };
