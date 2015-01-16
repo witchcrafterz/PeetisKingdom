@@ -598,7 +598,6 @@
 
         this.HUD = new Game.HUD(this.game);
         this.objectiveManager = this.game.objectiveManager = new Game.ObjectiveManager(this.game, this.HUD, this.game.width * 0.5, 20);
-        // this.game.add.existing(this.objectiveManager);
         this.dialogueManager = this.game.dialogueManager = new Game.DialogueManager(this.game, this.HUD);
         this.triggerManager = this.game.triggerManager = new Game.Trigger.TriggerManager(this.game);
 
