@@ -207,12 +207,9 @@
 
         this.level.resizeWorld();
 
-        var renderSettings = {
-            enableScrollDelta: false
-        };
-        this.level.renderSettings = renderSettings;
-        this.behind.renderSettings = renderSettings;
-        this.front.renderSettings = renderSettings;
+        this.level.renderSettings.enableScrollDelta = false;
+        this.behind.renderSettings.enableScrollDelta = false;
+        this.front.renderSettings.enableScrollDelta = false;
 
         this.map.setLayer(this.level);
         this.map.setCollision(collisionTiles);
