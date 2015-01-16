@@ -642,6 +642,7 @@
                     {
                      "criterias":"feather",
                      "id":"octopusQuest",
+                     "return":"true",
                      "status":"Find something that has touched \\nthe sky and give it to the octopus"
                     },
                  "rotation":0,

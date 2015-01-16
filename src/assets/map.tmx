@@ -250,6 +250,7 @@
    <properties>
     <property name="criterias" value="feather"/>
     <property name="id" value="octopusQuest"/>
+    <property name="return" value="true"/>
     <property name="status" value="Find something that has touched \nthe sky and give it to the octopus"/>
    </properties>
   </object>
