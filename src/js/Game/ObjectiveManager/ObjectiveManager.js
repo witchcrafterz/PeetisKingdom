@@ -73,6 +73,14 @@
          */
         this.onObjectiveComplete = new Phaser.Signal();
 
+        this._expandButton = new Game.GUI.Button(this.game, 0, 10, undefined, 'Hide', 'font');
+        this._expandButton.anchor.setTo(0, 0);
+        this._expandButton.fontSize = 26;
+        this._expandButton.onInputDown.add(this.toggleExpand, this);
+        this.add(this._expandButton);
+
+        this._isExpanded = true;
+
         this._updatePositioning();
         this.onObjectiveComplete.add(this.onObjectiveCompleteHandler, this);
 
@@ -85,7 +93,27 @@
     Game.ObjectiveManager.prototype.onObjectiveCompleteHandler = function() {
         this.objectiveCompleteSFX.play();
     };
+    
+    Game.ObjectiveManager.prototype.toggleExpand = function() {
+        this._isExpanded = !this._isExpanded;
 
+        if (!this._isExpanded) {
+            _.forEach(this.objectives, function(objective, index) {
+                objective.alpha = 0;
+            }, this);
+
+            this._expandButton.text = 'Show';
+        } else {
+            _.forEach(this.objectives, function(objective, index) {
+                objective.alpha = 1;
+            }, this);
+         
+            this._expandButton.text = 'Hide';
+        }
+
+        this._updatePositioning();
+    };
+    
     Game.ObjectiveManager.prototype.createObjectives = function(map, objectivesLayer, player) {
         _.forEach(objectivesLayer, function(objective) {
             switch (objective.type) {
@@ -222,6 +250,8 @@
     };
 
     Game.ObjectiveManager.prototype._updatePositioning = function() {
+        // this.width = this._getVisibleWidth();
+
         if (this.objectives.length === 0) {
             this.game.add.tween(this).to({alpha: 0}, this.animationSpeed, this.easing, true);
             return;
@@ -229,16 +259,18 @@
             this.game.add.tween(this).to({alpha: 1}, this.animationSpeed, this.easing, true);
         }
 
-        this.pivot.x = this.width * 0.5;
+        this.pivot.x = this._getVisibleWidth() * 0.5;
 
-        this.game.add.tween(this.titleText.position).to({x: this.width * 0.5 - this.titleText.width * 0.5 }, this.animationSpeed, this.easing, true);
+        this.game.add.tween(this.titleText.position).to({x: this._getVisibleWidth() * 0.5 - this.titleText.width * 0.5 }, this.animationSpeed, this.easing, true);
+        this._expandButton.position.x = this._getVisibleWidth() - this._expandButton.width;
 
         _.forEach(this.objectives, function(objective, index) {
             this.game.add.tween(objective).to({y: this._calculateHeightTo(index - 1) }, this.animationSpeed, this.easing, true);
         }, this);
 
-        this.bg.width = this.width + this.padding;
-        this.bg.height = this._calculateHeightTo(this.objectives.length - 1) + this.padding;
+        this.bg.width = this._getVisibleWidth() + this.padding;
+        this.bg.height = this._calculateHeightTo(this._isExpanded ? this.objectives.length - 1 : -1) + this.padding;
+        this.bg.bmd.clear();
         this.bg.bmd.fill(255, 255, 255, 0.75);
     };
 
@@ -253,6 +285,16 @@
 
         return _height;
 
+    };
+
+    Game.ObjectiveManager.prototype._getVisibleWidth = function() {
+        var width = 0;
+
+        for (var i = 0; i < this.objectives.length; i++) {
+            width = Math.max(width, this.objectives[i].width);
+        }
+
+        return width;
     };
 
 })();
