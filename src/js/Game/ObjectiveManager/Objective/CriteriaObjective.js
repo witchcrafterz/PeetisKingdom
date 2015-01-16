@@ -36,6 +36,9 @@
 
         if (contained === this.criterias.length && (!this.isReturn || this.trigger.isActive)) {
             this.onCompletion.dispatch(this);
+
+            this.game.onCriteriaAdd.remove(this.checkWin, this);
+            this.trigger.onActive.remove(this.checkWin, this);
         }
     };
 
