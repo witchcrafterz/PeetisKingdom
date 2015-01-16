@@ -207,13 +207,6 @@
 
         this.level.resizeWorld();
 
-        var renderSettings = {
-            enableScrollDelta: false
-        };
-        this.level.renderSettings = renderSettings;
-        this.behind.renderSettings = renderSettings;
-        this.front.renderSettings = renderSettings;
-
         this.map.setLayer(this.level);
         this.map.setCollision(collisionTiles);
     };
