@@ -26,7 +26,7 @@
         }
         
         body {
-            background: url("http://api.thumbr.it/whitenoise-361x370.png?background=202020&noise=a6a6a6&density=64&opacity=10");
+            background: url("img/whitenoise.png");
             padding: 0;
             margin: 0;
 
@@ -53,7 +53,7 @@
 
         #topBar {
             width: 100%;
-            background: url("http://api.thumbr.it/whitenoise-361x370.png?background=101010&noise=a6a6a6&density=64&opacity=10");
+            background: url("img/whitenoise-dark.png");
 
             position: absolute;
             left: 0;
