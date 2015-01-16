@@ -643,7 +643,8 @@
                      "criterias":"feather",
                      "id":"octopusQuest",
                      "return":"true",
-                     "status":"Find something that has touched \\nthe sky and give it to the octopus"
+                     "status":"Find something that has touched \\nthe sky and give it to the octopus",
+                     "statusReturn":"Bring the feather to the octopus"
                     },
                  "rotation":0,
                  "type":"criteria",
