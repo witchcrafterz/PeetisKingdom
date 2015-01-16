@@ -39,6 +39,8 @@
 
             this.game.onCriteriaAdd.remove(this.checkWin, this);
             this.trigger.onActive.remove(this.checkWin, this);
+        } else if (contained === this.criterias.length && this.isReturn) {
+            this.statusText = this.object.properties.statusReturn;
         }
     };
 
