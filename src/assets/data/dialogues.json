@@ -60,8 +60,10 @@
         "conversation": [{
             "text": "STAY AWAY FROM MY TUNNEL! \nAhem... It's MY tunnel."
         }, {
-            "text": "Tell you what; you bring a \ngift, I'll let you in...",
-            "title": "Is there anything I can do to make you let me in?"
+            "text": "Is there anything I can do \nto make you let me in?",
+            "title": "You:"
+        }, {
+            "text": "Tell you what; you bring a \ngift, I'll let you in..."
         }, {
             "text": "Well... Living under water \nbecomes quite a drag after a while..."
         }, {
