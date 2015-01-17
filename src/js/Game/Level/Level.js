@@ -210,10 +210,15 @@
         this.front = this.map.createLayer('front');
 
         this.level.resizeWorld();
-
-        this.level.renderSettings.enableScrollDelta = false;
-        this.behind.renderSettings.enableScrollDelta = false;
-        this.front.renderSettings.enableScrollDelta = false;
+        
+        //http://stackoverflow.com/questions/9847580/how-to-detect-safari-chrome-ie-firefox-and-opera-browser
+        var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
+        // Bug in safari requires scroll delta to be false
+        if (isSafari) {
+            this.level.renderSettings.enableScrollDelta = false;
+            this.behind.renderSettings.enableScrollDelta = false;
+            this.front.renderSettings.enableScrollDelta = false;
+        }
 
         this.secrets = [];
         _.forEach(this.front.layer.data, function(row) {
