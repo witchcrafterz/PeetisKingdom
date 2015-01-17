@@ -631,6 +631,7 @@
 
         this.generateObjects();
         this.generateSprites();
+        this.entitiesGroup.bringToTop(this.p1);
 
         this.objectiveManager.createObjectives(this.map, this.map.objects['objectives'], this.p1);
 
