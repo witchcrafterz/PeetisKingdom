@@ -294,6 +294,7 @@
 
             'leaveLadder': function() {
                 this.p1.submerged = false;
+                this.p1.resetJump();
             },
 
             'setSlippery': function() {
@@ -318,13 +319,13 @@
             },
 
             'enterSecret': function() {
-                for (var i = 0; i < this.secret.length; i++) {
+                for (var i = 0; i < this.secrets.length; i++) {
                     this.secrets[i].alpha = 0.5;
                 }
             },
 
             'leaveSecret': function() {
-                for (var i = 0; i < this.secret.length; i++) {
+                for (var i = 0; i < this.secrets.length; i++) {
                     this.secrets[i].alpha = 1;
                 }
             },
