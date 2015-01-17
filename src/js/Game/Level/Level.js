@@ -424,6 +424,13 @@
                             character.controller = new Game.Controller.AI.Ornithologist(this.game, character, this.p1, dir, criterias, dependencies, range, defaultPosition);
 
                             break;
+                        case 'pacing':
+                            // Dir of flick in radians (angle)
+                            var range = parseInt(obj.properties['range'], 10) || 100;
+
+                            character.controller = new Game.Controller.AI.Pacing(this.game, character, range);
+
+                            break;
                         default:
                             console.log('AI type', AI, 'is not in use');
                     }
