@@ -85,7 +85,7 @@
             self._ = require('lodash');
         }
 
-        var game = new Phaser.Game(1600, 900, Phaser.CANVAS, 'game');
+        var game = new Phaser.Game(1600, 900, Phaser.AUTO, 'game');
 
         game.state.add('Game.Init', Game.Init);
         game.state.add('Game.MainMenu', Game.MainMenu);
