@@ -24,7 +24,11 @@
             // Rope
             104,
             // Thick rope
-            105
+            105,
+            // Water
+            68,
+            // Water top
+            51
         ]
     };
 
@@ -211,6 +215,15 @@
         this.behind.renderSettings.enableScrollDelta = false;
         this.front.renderSettings.enableScrollDelta = false;
 
+        this.secrets = [];
+        _.forEach(this.front.layer.data, function(row) {
+            _.forEach(row, function(tile) {
+                if (tile.index > 0 && !_.contains(specialCollision.exclude, tile.index - firstID)) {
+                    this.secrets.push(tile);
+                }
+            }, this);
+        }, this);
+
         this.map.setLayer(this.level);
         this.map.setCollision(collisionTiles);
     };
@@ -297,6 +310,18 @@
 
             'setCheckpoint': function(obj) {
                 this.p1.checkpoint = new Phaser.Point(obj.x + obj.width * 0.5, obj.y + obj.height * 0.5);
+            },
+
+            'enterSecret': function() {
+                for (var i = 0; i < this.secret.length; i++) {
+                    this.secrets[i].alpha = 0.5;
+                }
+            },
+
+            'leaveSecret': function() {
+                for (var i = 0; i < this.secret.length; i++) {
+                    this.secrets[i].alpha = 1;
+                }
             },
 
             'resetPlayer': function() {
