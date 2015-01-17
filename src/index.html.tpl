@@ -85,7 +85,9 @@
             self._ = require('lodash');
         }
 
-        var game = new Phaser.Game(1600, 900, Phaser.AUTO, 'game');
+        var isFirefox = typeof InstallTrigger !== 'undefined';   // http://stackoverflow.com/questions/9847580/how-to-detect-safari-chrome-ie-firefox-and-opera-browser
+
+        var game = new Phaser.Game(1600, 900, isFirefox ? Phaser.CANVAS : Phaser.AUTO, 'game');
 
         game.state.add('Game.Init', Game.Init);
         game.state.add('Game.MainMenu', Game.MainMenu);
