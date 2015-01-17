@@ -436,6 +436,21 @@
                  "width":94,
                  "x":1841,
                  "y":3784
+                }, 
+                {
+                 "height":315.151515151515,
+                 "name":"secret",
+                 "properties":
+                    {
+                     "enter":"enterSecret",
+                     "leave":"leaveSecret"
+                    },
+                 "rotation":0,
+                 "type":"trigger",
+                 "visible":true,
+                 "width":666.666666666664,
+                 "x":17430.303030303,
+                 "y":6866.66666666667
                 }],
          "opacity":1,
          "type":"objectgroup",

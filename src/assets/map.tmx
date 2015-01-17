@@ -155,6 +155,12 @@
     <property name="leave" value="leaveLadder"/>
    </properties>
   </object>
+  <object name="secret" type="trigger" x="17430.3" y="6866.67" width="666.667" height="315.152">
+   <properties>
+    <property name="enter" value="enterSecret"/>
+    <property name="leave" value="leaveSecret"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="sprites">
   <object name="Grasshopper" type="entity" x="14956" y="6202" width="134" height="24">
