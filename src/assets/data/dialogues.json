@@ -133,5 +133,42 @@
             "title": "Directions",
             "text": "Right: Princess Peeti's Throne Room\nLeft: Astronomer's Tower"
         }]
+    },
+
+    "ornithologistHome": {
+        "conversation": [{
+            "title": "Sign:",
+            "text": "Home Sweet Home"
+        }]
+    },
+
+    "ornithologistDirection": {
+        "conversation": [{
+            "title": "Sign:",
+            "text": "Right: Home of the most famous \nOrnithologist in the world!"
+        }]
+    },
+
+    "ornithologistDoor": {
+        "conversation": [{
+            "text": "This must be where the ornothologist \nlives but the door is locked..."
+        }, {
+            "text": "Maybe there is another way in?"
+        }],
+        "title": "You:"
+    },
+
+    "ornithologist": {
+        "conversation": [{
+            "text": "GET OUT OF MY HOUSE!"
+        }],
+        "title": "Ornithologist:"
+    },
+
+    "slipperyWarning": {
+        "conversation": [{
+            "title": "WARNING!",
+            "text": "Slippery ice!"
+        }]
     }
 }
