@@ -8,14 +8,8 @@
      * @param {Object}          Properties              Custom properties this AI can use
      * @param {Phaser.Sprite}   toTrack                 The sprite which the AI tracks
      */
-    Game.Controller.AI.Guard = function(game, controlled, properties, toTrack) {
-        Game.Controller.AI.call(this, game, controlled, properties);
-
-        /**
-         * The character this AI is tracking
-         * @type {Game.Character}
-         */
-        this.toTrack = toTrack;
+    Game.Controller.AI.Guard = function(game, controlled, player, properties) {
+        Game.Controller.AI.call(this, game, controlled, player, properties);
 
         /**
          * Whether or not this AI is hostile
@@ -40,6 +34,8 @@
     Game.Controller.AI.Guard.prototype.constructor = Game.Controller.AI.Guard;
 
     Game.Controller.AI.Guard.prototype.update = function() {
+        Game.Controller.AI.prototype.update.call(this);
+
         if ((this.criteriasComplete && this.friendlyCriterias) && (this.dependenciesComplete && this.friendlyDependencies)) {
             this.right.setUp();
             this.left.setUp();
@@ -47,11 +43,11 @@
             return;
         }
 
-        if (this.game.physics.arcade.intersects(this.toTrack.body, this.controlled.body)) {
+        if (this.game.physics.arcade.intersects(this.player.body, this.controlled.body)) {
             // Have to manually lift the guy up some pixel bc of bug where he stays on ground
-            this.toTrack.body.position.y -= 10;
-            this.toTrack.body.velocity.setTo(this.flickVector.x, this.flickVector.y);
-            this.toTrack.flicked = true;
+            this.player.body.position.y -= 10;
+            this.player.body.velocity.setTo(this.flickVector.x, this.flickVector.y);
+            this.player.flicked = true;
         }
     };
 

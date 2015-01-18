@@ -7,8 +7,8 @@
      * @param {Phaser.Sprite}   controlled  The sprite which the AI controls
      * @param {Object}          Properties  Custom properties this AI can use
      */
-    Game.Controller.AI.Pacing = function(game, controlled, properties) {
-        Game.Controller.AI.call(this, game, controlled, properties);
+    Game.Controller.AI.Pacing = function(game, controlled, player, properties) {
+        Game.Controller.AI.call(this, game, controlled, player, properties);
 
         /**
          * The max amounts of pixels this character will walk back and forth.
@@ -47,6 +47,8 @@
     Game.Controller.AI.Pacing.prototype.constructor = Game.Controller.AI.Pacing;
 
     Game.Controller.AI.Pacing.prototype.update = function() {
+        Game.Controller.AI.prototype.update.call(this);
+
         // 0 < rnd.frac() < 1
         if (this.rnd.frac() < this.threshold) {
 

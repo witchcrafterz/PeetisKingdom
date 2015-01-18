@@ -268,6 +268,8 @@
         _.forEach(dialogues, function(data, key) {
             this.dialogues[key] = new Game.Dialogue(this.game, data.conversation, data.title);
         }, this);
+
+        this.game.dialogues = this.dialogues;
     };
 
     Game.Level.prototype.generateCriteriaFunctions = function() {
@@ -395,13 +397,13 @@
                     var AI = obj.properties['AI'];
                     switch (AI) {
                         case 'guard':
-                            character.controller = new Game.Controller.AI.Guard(this.game, character, obj.properties, this.p1);
+                            character.controller = new Game.Controller.AI.Guard(this.game, character, this.p1, obj.properties);
                             break;
                         case 'ornithologist':
-                            character.controller = new Game.Controller.AI.Ornithologist(this.game, character, obj.properties, this.p1);
+                            character.controller = new Game.Controller.AI.Ornithologist(this.game, character, this.p1, obj.properties);
                             break;
                         case 'pacing':
-                            character.controller = new Game.Controller.AI.Pacing(this.game, character, obj.properties);
+                            character.controller = new Game.Controller.AI.Pacing(this.game, character, this.p1, obj.properties);
                             break;
                         default:
                             console.log('AI type', AI, 'is not in use');

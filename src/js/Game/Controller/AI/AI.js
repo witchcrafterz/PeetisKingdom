@@ -7,7 +7,7 @@
      * @param {Game.Character}  controlled The character this AI will control
      * @param {Object}          Properties Custom properties this AI can use
      */
-    Game.Controller.AI = function(game, controlled, properties) {
+    Game.Controller.AI = function(game, controlled, player, properties) {
         Game.Controller.call(this, game);
 
         /**
@@ -15,6 +15,12 @@
          * @type {Game.Character}
          */
         this.controlled = controlled;
+
+        /**
+         * A reference to currently playing player
+         * @type {Game.Player}
+         */
+        this.player = player;
 
         /**
          * Custom properties this AI can use
@@ -46,6 +52,18 @@
          */
         this.criteriasComplete = typeof this.friendlyCriterias === 'undefined';
 
+        /**
+         * A dialogue that pops up
+         * @type {String}
+         */
+        this.dialogue = this.game.dialogues[this.properties['dialogue']];
+
+        /**
+         * Whether or not the player is close to the AI
+         * @type {Boolean}
+         */
+        this.isPlayerClose = false;
+
         this._dependenciesMonitor();
         this._criteriasMonitor();
 
@@ -54,6 +72,23 @@
 
     Game.Controller.AI.prototype = Object.create(Game.Controller.prototype);
     Game.Controller.AI.prototype.constructor = Game.Controller.AI;
+
+    Game.Controller.AI.prototype.update = function() {
+        if (!this.dialogue) return;
+
+        if (this.game.physics.arcade.intersects(this.controlled.body, this.player.body)) {
+            if (!this.isPlayerClose) {
+                this.game.dialogueManager.setDialogue(this.dialogue);
+            }
+            this.isPlayerClose = true;
+        } else {
+            this.isPlayerClose = false;
+            if (this.dialogue.isOpen) {
+                this.game.dialogueManager.hidden = true;
+                this.dialogue.isOpen = false;
+            }
+        }
+    };
 
     /**
      * Monitors depencencies and checks if all is completed. If they are, Game.Controller.AI.prototype._dependenciesCompleteHandler is called

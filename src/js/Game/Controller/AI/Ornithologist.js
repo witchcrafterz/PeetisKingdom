@@ -8,7 +8,7 @@
      * @param {Object}          Properties              Custom properties this AI can use
      * @param {Phaser.Sprite}   toTrack                 The sprite which the AI tracks
      */
-    Game.Controller.AI.Ornithologist = function(game, controlled, properties, toTrack) {
+    Game.Controller.AI.Ornithologist = function(game, controlled, player, properties) {
         Game.Controller.AI.Guard.apply(this, arguments);
 
         /**
@@ -35,15 +35,15 @@
         if (!this.hostile) return;
 
         var left, right, jump;    
-        if (this.range && Math.abs(this.defaultPosition.x - this.toTrack.body.position.x) < this.range && Math.abs(this.defaultPosition.y - this.toTrack.body.position.y) < this.range) {
-            left = this.controlled.body.position.x - this.toTrack.body.position.x > 0;
-            right = this.controlled.body.position.x - this.toTrack.body.position.x < 0;
+        if (this.range && Math.abs(this.defaultPosition.x - this.player.body.position.x) < this.range && Math.abs(this.defaultPosition.y - this.player.body.position.y) < this.range) {
+            left = this.controlled.body.position.x - this.player.body.position.x > 0;
+            right = this.controlled.body.position.x - this.player.body.position.x < 0;
         } else {
             left = this.controlled.body.position.x - this.defaultPosition.x > 100;
             right = this.controlled.body.position.x - this.defaultPosition.x < -100;
         }
 
-        jump = (left || right) && (this.controlled.position.y - this.toTrack.position.y > 200);
+        jump = (left || right) && (this.controlled.position.y - this.player.position.y > 200);
 
         if (left) {
             this.left.setDown();
