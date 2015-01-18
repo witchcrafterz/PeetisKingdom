@@ -170,5 +170,25 @@
             "title": "WARNING!",
             "text": "Slippery ice!"
         }]
+    },
+
+
+
+    "villager1": {
+        "conversation": [{
+            "text": "Hey, you, where am I?"
+        }, {
+            "text": "Why you are here, of course!",
+            "title": "Villager:"
+        }, {
+            "text": "Yes, but... Where is here?"
+        }, {
+            "text": "Oh, you're serious? Well we are in \nPrincess Peeti's kingdom",
+            "title": "Villager:"                
+        }, {
+            "text": "*People now a days, doesn't even \nknow where they are*",
+            "title": "(Villager in a monologue):"
+        }],
+        "title": "You:"
     }
 }
