@@ -654,20 +654,6 @@
                  "width":1000,
                  "x":8053.03018181818,
                  "y":1306.06081818182
-                }, 
-                {
-                 "height":230.242,
-                 "name":"villager1",
-                 "properties":
-                    {
-                     "dialogue":"villager1"
-                    },
-                 "rotation":0,
-                 "type":"dialogue",
-                 "visible":true,
-                 "width":453.576000000001,
-                 "x":11637.212,
-                 "y":6115.879
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -814,6 +800,7 @@
                  "properties":
                     {
                      "AI":"pacing",
+                     "dialogue":"villager1",
                      "key":"grasshopper"
                     },
                  "rotation":0,
