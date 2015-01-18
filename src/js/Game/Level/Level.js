@@ -137,7 +137,7 @@
         this.game.load.audio('pickupCoin', ['assets/sfx/pickup_coin.ogg', 'assets/sfx/pickup_coin.mp3']);
 
         // Credits of boss music due to 13NHarri @ http://freesound.org/people/13NHarri/sounds/251334/
-        this.game.load.audio('boss', ['assets/music/boss.mp3']);
+        this.game.load.audio('boss', ['assets/music/boss.mp3', 'assets/music/boss.ogg']);
 
         this.game.load.audio('solskenspromenad', 'assets/Solskenspromenad.mp3');
 
