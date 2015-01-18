@@ -64,6 +64,12 @@
          */
         this.isPlayerClose = false;
 
+        /**
+         * If the player was close the previous tick
+         * @type {Boolean}
+         */
+        this.wasPlayerClose = false;
+
         this._dependenciesMonitor();
         this._criteriasMonitor();
 
@@ -77,12 +83,24 @@
         if (!this.dialogue) return;
 
         if (this.game.physics.arcade.intersects(this.controlled.body, this.player.body)) {
-            if (!this.isPlayerClose) {
-                this.game.dialogueManager.setDialogue(this.dialogue);
-            }
             this.isPlayerClose = true;
+            this._onCloseHandler();
         } else {
             this.isPlayerClose = false;
+            this._onNotCloseHandler();
+        }
+
+        this.wasPlayerClose = this.isPlayerClose;
+    };
+
+    Game.Controller.AI.prototype._onCloseHandler = function() {
+        if (!this.wasPlayerClose) {
+            this.game.dialogueManager.setDialogue(this.dialogue);
+        }
+    };
+
+    Game.Controller.AI.prototype._onNotCloseHandler = function() {
+        if (this.wasPlayerClose) {
             if (this.dialogue.isOpen) {
                 this.game.dialogueManager.hidden = true;
                 this.dialogue.isOpen = false;
