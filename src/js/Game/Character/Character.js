@@ -153,7 +153,7 @@
 
             if (Math.floor(this.jumpMeter) > 0 && this.currentJumps < this.maxJumps) {
                 if (this.body.onFloor() || !this.jumpWasDown) {
-                    this.jumpSFX.play();
+                    this.jumpSFX.playFrom(this.position);
                 }
 
                 this.body.acceleration.y -= this.jumpMeter;
