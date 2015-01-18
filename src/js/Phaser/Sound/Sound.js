@@ -6,6 +6,8 @@
         var realVolume = Math.max(0, this.game.camera.width - distance) / this.game.camera.width;
         volume = (volume || 1) * realVolume;
 
+        if (volume === 0) return;
+
         this.play(marker, position, volume, loop, forceRestart);
     };
 
