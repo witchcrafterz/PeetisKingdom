@@ -30,7 +30,7 @@
 
         if (!this.hostile) return;
 
-        var left, right;        
+        var left, right, jump;    
         if (this.range && Math.abs(this.defaultPosition.x - this.toTrack.body.position.x) < this.range && Math.abs(this.defaultPosition.y - this.toTrack.body.position.y) < this.range) {
             left = this.controlled.body.position.x - this.toTrack.body.position.x > 0;
             right = this.controlled.body.position.x - this.toTrack.body.position.x < 0;
@@ -38,6 +38,8 @@
             left = this.controlled.body.position.x - this.defaultPosition.x > 100;
             right = this.controlled.body.position.x - this.defaultPosition.x < -100;
         }
+
+        jump = (left || right) && (this.controlled.position.y - this.toTrack.position.y > 200);
 
         if (left) {
             this.left.setDown.call(this);
@@ -50,7 +52,7 @@
             this.left.setUp.call(this);
         }
 
-        if (this.controlled.body.blocked.left || this.controlled.body.blocked.right) {
+        if (this.controlled.body.blocked.left || this.controlled.body.blocked.right || jump) {
             this.jump.setDown.call(this);
         } else {
             this.jump.setUp.call(this);
