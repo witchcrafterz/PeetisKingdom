@@ -31,10 +31,14 @@
          */
         this.spaceBar = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
+
         // Generate touch controls if touch is enabled on device
         if (Modernizr.touchevents) {
             this.generateTouchControls();
         }
+
+        // Bind the controller keys
+        this.bindKeys();
 
         return this;
     };
