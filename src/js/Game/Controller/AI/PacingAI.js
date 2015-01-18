@@ -49,6 +49,9 @@
     Game.Controller.AI.Pacing.prototype.update = function() {
         Game.Controller.AI.prototype.update.call(this);
 
+        // Stay still if player is close
+        if (this.isPlayerClose) return;
+
         // 0 < rnd.frac() < 1
         if (this.rnd.frac() < this.threshold) {
 
