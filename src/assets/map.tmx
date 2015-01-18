@@ -202,6 +202,11 @@
     <property name="enter" value="setCheckpoint"/>
    </properties>
   </object>
+  <object name="checkpoint" type="trigger" x="4099.33" y="1402.67" width="185.333" height="252.667">
+   <properties>
+    <property name="enter" value="setCheckpoint"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="sprites">
   <object name="Grasshopper" type="entity" x="14956" y="6202" width="134" height="24">

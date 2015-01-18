@@ -555,6 +555,20 @@
                  "width":140.969,
                  "x":11763.5155,
                  "y":8089.5455
+                }, 
+                {
+                 "height":252.667,
+                 "name":"checkpoint",
+                 "properties":
+                    {
+                     "enter":"setCheckpoint"
+                    },
+                 "rotation":0,
+                 "type":"trigger",
+                 "visible":true,
+                 "width":185.333,
+                 "x":4099.3335,
+                 "y":1402.6665
                 }],
          "opacity":1,
          "type":"objectgroup",
