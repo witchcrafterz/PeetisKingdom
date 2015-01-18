@@ -224,8 +224,8 @@
                  "properties":
                     {
                      "dialogue":"birdQuest",
-                     "listen":"meanOrnothologist",
-                     "onDialogueListen":"birdQuestComplete"
+                     "listen":"meanOrnithologist",
+                     "onListenDialogue":"birdQuestComplete"
                     },
                  "rotation":0,
                  "type":"dialogue",

@@ -82,8 +82,8 @@
   <object name="bird dialogue" type="dialogue" x="1305.33" y="3082.5" width="631.333" height="383">
    <properties>
     <property name="dialogue" value="birdQuest"/>
-    <property name="listen" value="meanOrnothologist"/>
-    <property name="onDialogueListen" value="birdQuestComplete"/>
+    <property name="listen" value="meanOrnithologist"/>
+    <property name="onListenDialogue" value="birdQuestComplete"/>
    </properties>
   </object>
   <object name="checkpoint" type="trigger" x="12677.3" y="8513.33" width="277.333" height="250.667">
