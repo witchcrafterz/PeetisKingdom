@@ -5,28 +5,45 @@
      * An AI that guards a position or entrance
      * @param {Phaser.Game}     game        The game instance
      * @param {Phaser.Sprite}   controlled  The sprite which the AI controls
-     * @param {Number}          range       How long from default position the pacing AI will walk as furthest
+     * @param {Object}          Properties  Custom properties this AI can use
      */
-    Game.Controller.AI.Pacing = function(game, controlled, range) {
-        this.game = game;
+    Game.Controller.AI.Pacing = function(game, controlled, properties) {
+        Game.Controller.AI.call(this, game, controlled, properties);
 
-        this.initialize();
+        /**
+         * The max amounts of pixels this character will walk back and forth.
+         * @type {Number}
+         */
+        this.range = parseInt(properties.range, 10) || 100;
 
-        this.controlled = controlled;
-
-        this.range = range || 100;
-
+        /**
+         * The default position of this character. The character will walk around this point and defaults to the position the character haves when this AI is created.
+         * @type {Phaser.Point}
+         */
         this.defaultPosition = controlled.position.clone();
 
+        /**
+         * A pointer to the states RNG
+         * @type {Phaser.RandomDataGenerator}
+         */
         this.rnd = this.game.state.getCurrentState().rnd;
 
+        /**
+         * The current threshold for moving
+         * @type {Number}
+         */
         this.threshold = 0;
+
+        /**
+         * The amount to increase the threshold with on each unsuccessfull move
+         * @type {Number}
+         */
         this.thresholdInc = 0.00005;
 
         return this;
     };
 
-    Game.Controller.AI.Pacing.prototype = Object.create(Game.Controller.prototype);
+    Game.Controller.AI.Pacing.prototype = Object.create(Game.Controller.AI.prototype);
     Game.Controller.AI.Pacing.prototype.constructor = Game.Controller.AI.Pacing;
 
     Game.Controller.AI.Pacing.prototype.update = function() {
@@ -41,11 +58,11 @@
             var dir  = dirValue < dirThreshold;
 
             if (dir) {
-                this.right.setUp.call(this);
-                this.left.setDown.call(this);
+                this.right.setUp();
+                this.left.setDown();
             } else {
-                this.left.setUp.call(this);
-                this.right.setDown.call(this);
+                this.left.setUp();
+                this.right.setDown();
             }
 
             setTimeout(this.stopWalk.bind(this), 150);
@@ -57,15 +74,15 @@
         }
 
         if (this.controlled.body.blocked.left || this.controlled.body.blocked.right) {
-            this.jump.setDown.call(this);
+            this.jump.setDown();
         } else {
-            this.jump.setUp.call(this);
+            this.jump.setUp();
         }  
     };
 
     Game.Controller.AI.Pacing.prototype.stopWalk = function() {
-        this.right.setUp.call(this);
-        this.left.setUp.call(this);
+        this.right.setUp();
+        this.left.setUp();
     };
 
 })();

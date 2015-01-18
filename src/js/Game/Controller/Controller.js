@@ -1,10 +1,102 @@
 (function() {
     'use strict';
 
+    /**
+     * A controller that is supposed to be inherited by many other classes, such as keyboard controller/AIs
+     * @param {Phaser.Game} game The phaser game instance
+     */
     Game.Controller = function(game) {
         this.game = game;
 
-        this.initialize();
+        /**
+         * A virtual key that represents the controller to go left
+         * @type {Object}
+         */
+        var left = this.left = {
+            onDown: new Phaser.Signal(),
+            onUp: new Phaser.Signal(),
+            isDown: false,
+            setDown: function() {
+                left.isDown = true;
+                left.onDown.dispatch('left', true);
+            },
+            setUp: function() {
+                left.isDown = false;
+                left.onUp.dispatch('left', false);
+            }
+        };
+
+        /**
+         * A virtual key that represents the controller to go right
+         * @type {Object}
+         */
+        var right = this.right = {
+            onDown: new Phaser.Signal(),
+            onUp: new Phaser.Signal(),
+            isDown: false,
+            setDown: function() {
+                right.isDown = true;
+                right.onDown.dispatch('right', true);
+            },
+            setUp: function() {
+                right.isDown = false;
+                right.onUp.dispatch('right', false);
+            }
+        };
+
+        /**
+         * A virtual key that represents the controller to jump
+         * @type {Object}
+         */
+        var jump = this.jump = {
+            onDown: new Phaser.Signal(),
+            onUp: new Phaser.Signal(),
+            isDown: false,
+            setDown: function() {
+                jump.isDown = true;
+                jump.onDown.dispatch('jump', true);
+            },
+            setUp: function() {
+                jump.isDown = false;
+                jump.onUp.dispatch('jump', false);
+            }
+        };
+
+        /**
+         * A virtual key that represents the controller to duck
+         * @type {Object}
+         */
+        var down = this.down = {
+            onDown: new Phaser.Signal(),
+            onUp: new Phaser.Signal(),
+            isDown: false,
+            setDown: function() {
+                down.isDown = true;
+                down.onDown.dispatch('down', true);
+            },
+            setUp: function() {
+                down.isDown = false;
+                down.onUp.dispatch('down', false);
+            }
+        };
+
+        /**
+         * A virtual key that represents the controller to interact with things
+         * @type {Object}
+         */
+        var up = this.up = {
+            onDown: new Phaser.Signal(),
+            onUp: new Phaser.Signal(),
+            isDown: false,
+            setDown: function() {
+                up.isDown = true;
+                up.onDown.dispatch('up', true);
+            },
+            setUp: function() {
+                up.isDown = false;
+                up.onUp.dispatch('up', false);
+            }
+        };
 
         return this;
     };
@@ -67,74 +159,6 @@
 
         jump.onInputDown.add(this.jump.setDown, this);
         jump.onInputUp.add(this.jump.setUp, this);
-    };
-
-    Game.Controller.prototype.initialize = function() {
-        this.left = {
-            onDown: new Phaser.Signal(),
-            onUp: new Phaser.Signal(),
-            isDown: false,
-            setDown: function() {
-                this.left.isDown = true;
-                this.left.onDown.dispatch('left', true);
-            },
-            setUp: function() {
-                this.left.isDown = false;
-                this.left.onUp.dispatch('left', false);
-            }
-        };
-        this.right = {
-            onDown: new Phaser.Signal(),
-            onUp: new Phaser.Signal(),
-            isDown: false,
-            setDown: function() {
-                this.right.isDown = true;
-                this.right.onDown.dispatch('right', true);
-            },
-            setUp: function() {
-                this.right.isDown = false;
-                this.right.onUp.dispatch('right', false);
-            }
-        };
-        this.jump = {
-            onDown: new Phaser.Signal(),
-            onUp: new Phaser.Signal(),
-            isDown: false,
-            setDown: function() {
-                this.jump.isDown = true;
-                this.jump.onDown.dispatch('jump', true);
-            },
-            setUp: function() {
-                this.jump.isDown = false;
-                this.jump.onUp.dispatch('jump', false);
-            }
-        };
-        this.down = {
-            onDown: new Phaser.Signal(),
-            onUp: new Phaser.Signal(),
-            isDown: false,
-            setDown: function() {
-                this.down.isDown = true;
-                this.down.onDown.dispatch('down', true);
-            },
-            setUp: function() {
-                this.down.isDown = false;
-                this.down.onUp.dispatch('down', false);
-            }
-        };
-        this.up = {
-            onDown: new Phaser.Signal(),
-            onUp: new Phaser.Signal(),
-            isDown: false,
-            setDown: function() {
-                this.up.isDown = true;
-                this.up.onDown.dispatch('up', true);
-            },
-            setUp: function() {
-                this.up.isDown = false;
-                this.up.onUp.dispatch('up', false);
-            }
-        };
     };
 
 })();

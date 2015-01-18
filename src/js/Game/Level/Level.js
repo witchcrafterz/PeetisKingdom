@@ -395,42 +395,13 @@
                     var AI = obj.properties['AI'];
                     switch (AI) {
                         case 'guard':
-                            // Dir of flick in radians (angle)
-                            var angle = parseFloat(obj.properties['angle'], 10) || Math.PI / 4;
-                            // Magnitude of push (hypotenuse)
-                            var magnitude = parseInt(obj.properties['magnitude'], 10) || 1500;
-                            // -Math.sin(angle) because game world up/down is inverted
-                            var dir = new Phaser.Point(Math.cos(angle) * magnitude, -Math.sin(angle) * magnitude);
-
-                            var criterias = obj.properties['criterias'];
-                            var dependencies = obj.properties['dependencies'];
-
-                            character.controller = new Game.Controller.AI.Guard(this.game, character, this.p1, dir, criterias, dependencies);
-
+                            character.controller = new Game.Controller.AI.Guard(this.game, character, obj.properties, this.p1);
                             break;
                         case 'ornithologist':
-                            // Dir of flick in radians (angle)
-                            var angle = parseFloat(obj.properties['angle'], 10) || Math.PI / 4;
-                            // Magnitude of push (hypotenuse)
-                            var magnitude = parseInt(obj.properties['magnitude'], 10) || 1500;
-                            // -Math.sin(angle) because game world up/down is inverted
-                            var dir = new Phaser.Point(Math.cos(angle) * magnitude, -Math.sin(angle) * magnitude);
-
-                            var criterias = obj.properties['criterias'];
-                            var dependencies = obj.properties['dependencies'];
-
-                            var range = parseInt(obj.properties['range'], 10) || 1000;
-                            var defaultPosition = new Phaser.Point(obj.x, obj.y);
-
-                            character.controller = new Game.Controller.AI.Ornithologist(this.game, character, this.p1, dir, criterias, dependencies, range, defaultPosition);
-
+                            character.controller = new Game.Controller.AI.Ornithologist(this.game, character, obj.properties, this.p1);
                             break;
                         case 'pacing':
-                            // Dir of flick in radians (angle)
-                            var range = parseInt(obj.properties['range'], 10) || 100;
-
-                            character.controller = new Game.Controller.AI.Pacing(this.game, character, range);
-
+                            character.controller = new Game.Controller.AI.Pacing(this.game, character, obj.properties);
                             break;
                         default:
                             console.log('AI type', AI, 'is not in use');

@@ -2,22 +2,26 @@
     'use strict';
 
     /**
-     * An AI that guards a position or entrance
+     * An AI that guards an area
      * @param {Phaser.Game}     game                    The game instance
      * @param {Phaser.Sprite}   controlled              The sprite which the AI controls
+     * @param {Object}          Properties              Custom properties this AI can use
      * @param {Phaser.Sprite}   toTrack                 The sprite which the AI tracks
-     * @param {Phaser.Point}    direction               The direction to flick the tracked if trespassing
-     * @param {String}          friendlyCriterias       A string of criterias separated by commas, which will have to be fulfilled for AI to turn friendly
-     * @param {String}          friendlyDependencies    A string of dependencies separated by commas, which will have to be fulfilled for AI to turn friendly
-     * @param {Number}          range                   The range in pixels that the AI will run to catch the Guard.toTrack
-     * @param {Phaser.Point}    defaultPosition         The preferred position for the AI to be in
      */
-    Game.Controller.AI.Ornithologist = function(game, controlled, toTrack, direction, friendlyCriterias, friendlyDependencies, range, defaultPosition) {
+    Game.Controller.AI.Ornithologist = function(game, controlled, properties, toTrack) {
         Game.Controller.AI.Guard.apply(this, arguments);
 
-        this.range = range;
+        /**
+         * The amounts of pixels this character will run to get the tracked character
+         * @type {Number}
+         */
+        this.range = parseInt(properties.range, 10) || 100;
 
-        this.defaultPosition = defaultPosition;
+        /**
+         * The default position of this character. The character will walk around this point and defaults to the position the character haves when this AI is created.
+         * @type {Phaser.Point}
+         */
+        this.defaultPosition = controlled.position.clone();
 
         return this;
     };
@@ -42,20 +46,20 @@
         jump = (left || right) && (this.controlled.position.y - this.toTrack.position.y > 200);
 
         if (left) {
-            this.left.setDown.call(this);
-            this.right.setUp.call(this);
+            this.left.setDown();
+            this.right.setUp();
         } else if (right) {
-            this.left.setUp.call(this);
-            this.right.setDown.call(this);
+            this.left.setUp();
+            this.right.setDown();
         } else {
-            this.right.setUp.call(this);
-            this.left.setUp.call(this);
+            this.right.setUp();
+            this.left.setUp();
         }
 
         if (this.controlled.body.blocked.left || this.controlled.body.blocked.right || jump) {
-            this.jump.setDown.call(this);
+            this.jump.setDown();
         } else {
-            this.jump.setUp.call(this);
+            this.jump.setUp();
 
         }
     };

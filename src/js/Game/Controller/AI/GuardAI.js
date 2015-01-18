@@ -5,57 +5,45 @@
      * An AI that guards a position or entrance
      * @param {Phaser.Game}     game                    The game instance
      * @param {Phaser.Sprite}   controlled              The sprite which the AI controls
+     * @param {Object}          Properties              Custom properties this AI can use
      * @param {Phaser.Sprite}   toTrack                 The sprite which the AI tracks
-     * @param {Phaser.Point}    direction               The direction to flick the tracked if trespassing
-     * @param {String}          friendlyCriterias       A string of criterias separated by commas, which will have to be fulfilled for AI to turn friendly
-     * @param {String}          friendlyDependencies    A string of dependencies separated by commas, which will have to be fulfilled for AI to turn friendly
      */
-    Game.Controller.AI.Guard = function(game, controlled, toTrack, direction, friendlyCriterias, friendlyDependencies) {
-        this.game = game;
+    Game.Controller.AI.Guard = function(game, controlled, properties, toTrack) {
+        Game.Controller.AI.call(this, game, controlled, properties);
 
-        this.initialize();
-
-        this.controlled = controlled;
-
+        /**
+         * The character this AI is tracking
+         * @type {Game.Character}
+         */
         this.toTrack = toTrack;
 
+        /**
+         * Whether or not this AI is hostile
+         * @type {Boolean}
+         */
         this.hostile = true;
 
-        this.flickVector = direction;
-
-        this.friendlyDependencies = friendlyDependencies ? friendlyDependencies.split(',') : undefined;
-
-        this.friendlyCriterias = friendlyCriterias ? friendlyCriterias.split(',') : undefined;
-
-        if (this.friendlyDependencies) {
-            this.game.objectiveManager.onObjectiveComplete.add(function() {
-                this.hostile = !this.game.objectiveManager.isCompleted(this.friendlyDependencies);
-            }, this);
-        }
-
-        if (this.friendlyCriterias) {
-            this.game.onCriteriaAdd.add(function() {
-                // length===0 implies all completed
-                this.hostile = _.difference(this.friendlyCriterias, this.game.criterias).length !== 0;
-            }, this);
-        }
-
-        this.f1 = this.game.input.keyboard.addKey(112);
-        this.f1.onUp.add(function() {
-            this.hostile = !this.hostile;
-        }, this);
+        var angle = parseFloat(this.properties['angle'], 10) || Math.PI / 4;
+        // Magnitude of push (hypotenuse)
+        var magnitude = parseInt(this.properties['magnitude'], 10) || 1500;
+        // -Math.sin(angle) because game world up/down is inverted
+        /**
+         * In what direction this AI will flick a trespassing character
+         * @type {Phaser.Point}
+         */
+        this.flickVector = new Phaser.Point(Math.cos(angle) * magnitude, -Math.sin(angle) * magnitude);
 
         return this;
     };
 
-    Game.Controller.AI.Guard.prototype = Object.create(Game.Controller.prototype);
+    Game.Controller.AI.Guard.prototype = Object.create(Game.Controller.AI.prototype);
     Game.Controller.AI.Guard.prototype.constructor = Game.Controller.AI.Guard;
 
     Game.Controller.AI.Guard.prototype.update = function() {
-        if (!this.hostile) {
-            this.right.setUp.call(this);
-            this.left.setUp.call(this);
-            this.jump.setUp.call(this);
+        if ((this.criteriasComplete && this.friendlyCriterias) && (this.dependenciesComplete && this.friendlyDependencies)) {
+            this.right.setUp();
+            this.left.setUp();
+            this.jump.setUp();
             return;
         }
 

@@ -164,9 +164,9 @@
                     case 'right':
                     case 'jump':
                         if (value) {
-                            character.controller[type].setDown.call(character.controller);
+                            character.controller[type].setDown();
                         } else {
-                            character.controller[type].setUp.call(character.controller);
+                            character.controller[type].setUp();
                         }
                         break;
                     case 'position':
