@@ -197,6 +197,11 @@
     <property name="leave" value="leaveLadder"/>
    </properties>
   </object>
+  <object name="checkpoint" type="trigger" x="11763.5" y="8089.55" width="140.969" height="174.909">
+   <properties>
+    <property name="enter" value="setCheckpoint"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="sprites">
   <object name="Grasshopper" type="entity" x="14956" y="6202" width="134" height="24">
@@ -337,11 +342,6 @@
     <property name="return" value="true"/>
     <property name="status" value="Find something that has touched \nthe sky and give it to the octopus"/>
     <property name="statusReturn" value="Bring the feather to the octopus"/>
-   </properties>
-  </object>
-  <object name="checkpoint" type="trigger" x="11767.4" y="8098.91" width="140.969" height="174.909">
-   <properties>
-    <property name="enter" value="setCheckpoint"/>
    </properties>
   </object>
  </objectgroup>
