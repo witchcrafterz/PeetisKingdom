@@ -189,7 +189,7 @@
                  "y":1296
                 }, 
                 {
-                 "height":1459.894,
+                 "height":1459.89,
                  "name":"icePart",
                  "properties":
                     {
@@ -198,7 +198,7 @@
                  "rotation":0,
                  "type":"part",
                  "visible":true,
-                 "width":1162.51272727273,
+                 "width":1162.51,
                  "x":4405.03,
                  "y":399.439
                 }, 
@@ -419,8 +419,8 @@
                  "type":"trigger",
                  "visible":true,
                  "width":277.333,
-                 "x":5640.11787878788,
-                 "y":299.760909090909
+                 "x":5640.12,
+                 "y":299.761
                 }, 
                 {
                  "height":382,
@@ -553,8 +553,8 @@
                  "type":"trigger",
                  "visible":true,
                  "width":140.969,
-                 "x":11763.5155,
-                 "y":8089.5455
+                 "x":11763.5,
+                 "y":8089.55
                 }, 
                 {
                  "height":252.667,
@@ -567,11 +567,11 @@
                  "type":"trigger",
                  "visible":true,
                  "width":185.333,
-                 "x":4099.3335,
-                 "y":1402.6665
+                 "x":4099.33,
+                 "y":1402.67
                 }, 
                 {
-                 "height":1312.30303030303,
+                 "height":1312.3,
                  "name":"ladder",
                  "properties":
                     {
@@ -581,9 +581,9 @@
                  "rotation":0,
                  "type":"trigger",
                  "visible":true,
-                 "width":87.939393939394,
-                 "x":6513.60606060606,
-                 "y":299.909090909091
+                 "width":87.9394,
+                 "x":6513.61,
+                 "y":299.909
                 }, 
                 {
                  "height":224.242,
@@ -596,8 +596,8 @@
                  "type":"dialogue",
                  "visible":true,
                  "width":257.576,
-                 "x":6055.212,
-                 "y":1523.879
+                 "x":6055.21,
+                 "y":1523.88
                 }, 
                 {
                  "height":224.242,
@@ -610,11 +610,11 @@
                  "type":"dialogue",
                  "visible":true,
                  "width":257.576,
-                 "x":5929.212,
+                 "x":5929.21,
                  "y":309.879
                 }, 
                 {
-                 "height":218.908666666667,
+                 "height":218.909,
                  "name":"slippery warning",
                  "properties":
                     {
@@ -624,8 +624,8 @@
                  "type":"dialogue",
                  "visible":true,
                  "width":253.576,
-                 "x":407.212000000001,
-                 "y":1029.21233333333
+                 "x":407.212,
+                 "y":1029.21
                 }, 
                 {
                  "height":224.242,
@@ -638,11 +638,11 @@
                  "type":"dialogue",
                  "visible":true,
                  "width":257.576,
-                 "x":5661.87866666667,
-                 "y":1526.54566666667
+                 "x":5661.88,
+                 "y":1526.55
                 }, 
                 {
-                 "height":406.060181818182,
+                 "height":406.06,
                  "name":"ornithologists",
                  "properties":
                     {
@@ -652,11 +652,11 @@
                  "type":"dialogue",
                  "visible":true,
                  "width":1000,
-                 "x":8053.03018181818,
-                 "y":1306.06081818182
+                 "x":8053.03,
+                 "y":1306.06
                 }, 
                 {
-                 "height":371.75393939394,
+                 "height":371.754,
                  "name":"rope",
                  "properties":
                     {
@@ -667,9 +667,9 @@
                  "rotation":0,
                  "type":"trigger",
                  "visible":true,
-                 "width":74.9090787878795,
-                 "x":11261.0303090909,
-                 "y":7642.91090909091
+                 "width":74.9091,
+                 "x":11261,
+                 "y":7642.91
                 }, 
                 {
                  "height":159.754,
@@ -681,9 +681,9 @@
                  "rotation":0,
                  "type":"part",
                  "visible":true,
-                 "width":65.5757666666668,
-                 "x":10877.2121166667,
-                 "y":7591.45633333333
+                 "width":65.5758,
+                 "x":10877.2,
+                 "y":7591.46
                 }, 
                 {
                  "height":339.754,
@@ -695,9 +695,9 @@
                  "rotation":0,
                  "type":"part",
                  "visible":true,
-                 "width":65.5758000000005,
-                 "x":10368.5454333333,
-                 "y":7601.45633333333
+                 "width":65.5758,
+                 "x":10368.5,
+                 "y":7601.46
                 }, 
                 {
                  "height":267.754,
@@ -709,9 +709,9 @@
                  "rotation":0,
                  "type":"part",
                  "visible":true,
-                 "width":66.9091333333345,
-                 "x":9852.54543333333,
-                 "y":7605.45633333333
+                 "width":66.9091,
+                 "x":9852.55,
+                 "y":7605.46
                 }, 
                 {
                  "height":399.754,
@@ -723,9 +723,9 @@
                  "rotation":0,
                  "type":"part",
                  "visible":true,
-                 "width":68.2424666666666,
-                 "x":9468.54543333333,
-                 "y":7666.78966666667
+                 "width":68.2425,
+                 "x":9468.55,
+                 "y":7666.79
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -838,10 +838,11 @@
                 }, 
                 {
                  "height":24,
-                 "name":"Bybo",
+                 "name":"villager3",
                  "properties":
                     {
                      "AI":"pacing",
+                     "dialogue":"villager3",
                      "key":"grasshopper"
                     },
                  "rotation":0,
@@ -853,10 +854,11 @@
                 }, 
                 {
                  "height":24,
-                 "name":"Bybo",
+                 "name":"villager2",
                  "properties":
                     {
                      "AI":"pacing",
+                     "dialogue":"villager2",
                      "key":"grasshopper"
                     },
                  "rotation":0,

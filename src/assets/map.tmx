@@ -294,15 +294,17 @@
     <property name="key" value="grasshopper"/>
    </properties>
   </object>
-  <object name="Bybo" type="character" x="13461.2" y="5464.09" width="134" height="24">
+  <object name="villager3" type="character" x="13461.2" y="5464.09" width="134" height="24">
    <properties>
     <property name="AI" value="pacing"/>
+    <property name="dialogue" value="villager3"/>
     <property name="key" value="grasshopper"/>
    </properties>
   </object>
-  <object name="Bybo" type="character" x="13454.3" y="5860" width="134" height="24">
+  <object name="villager2" type="character" x="13454.3" y="5860" width="134" height="24">
    <properties>
     <property name="AI" value="pacing"/>
+    <property name="dialogue" value="villager2"/>
     <property name="key" value="grasshopper"/>
    </properties>
   </object>
