@@ -210,7 +210,9 @@
         this.objectives.push(objective);
         this.objectiveLog.push(objective);
 
-        objective.game.add.tween(objective).to({alpha: 1}, this.animationSpeed, this.easing, true);
+        if (this._isExpanded) {
+            objective.game.add.tween(objective).to({alpha: 1}, this.animationSpeed, this.easing, true);
+        }
 
         objective.onCompletion.add(this._removeObjective, this);
         objective.onFailure.add(this._removeObjective, this);
