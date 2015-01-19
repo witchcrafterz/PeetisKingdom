@@ -280,7 +280,7 @@
    <properties>
     <property name="AI" value="ornithologist"/>
     <property name="angle" value="2.35"/>
-    <property name="key" value="grasshopper"/>
+    <property name="key" value="ornithologist"/>
     <property name="magnitude" value="2000"/>
     <property name="range" value="1000"/>
    </properties>
