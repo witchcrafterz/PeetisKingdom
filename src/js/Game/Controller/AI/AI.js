@@ -115,7 +115,7 @@
     Game.Controller.AI.prototype._dependenciesMonitor = function() {
         if (this.friendlyDependencies) {
             this.game.objectiveManager.onObjectiveComplete.add(function() {
-                this.dependenciesComplete = !this.game.objectiveManager.isCompleted(this.friendlyDependencies);
+                this.dependenciesComplete = this.game.objectiveManager.isCompleted(this.friendlyDependencies);
                 this._dependenciesCompleteHandler();
             }, this);
         }

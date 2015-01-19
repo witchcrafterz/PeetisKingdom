@@ -36,7 +36,7 @@
     Game.Controller.AI.Guard.prototype.update = function() {
         Game.Controller.AI.prototype.update.call(this);
 
-        if ((this.criteriasComplete && this.friendlyCriterias) && (this.dependenciesComplete && this.friendlyDependencies)) {
+        if ((this.criteriasComplete && this.dependenciesComplete) && (this.friendlyCriterias || this.friendlyDependencies)) {
             this.right.setUp();
             this.left.setUp();
             this.jump.setUp();
