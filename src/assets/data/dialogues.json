@@ -190,5 +190,29 @@
             "title": "(Villager in a monologue):"
         }],
         "title": "You:"
+    },
+
+    "villager2": {
+        "conversation": [{
+            "text": "Hey there, you don't seem to be \nfrom around these parts, are you?"
+        }, {
+            "text": "No... Can't say that I am.",
+            "title": "You:"
+        }, {
+            "text": "Well then, why are you looking so \nsad? Princess Peeti is the best monarch \none could wish for!"
+        }, {
+            "text": "The thing is, I don't even know how I got \nhere, I just... woke up in this land. You \ndon't know how I can get back, do you?",
+            "title": "You:",
+            "fontScale": 0.8
+        }, {
+            "text": "Me? No... But I am sure Princess Peeti do. \nJust head to the west and you'll see Peeti's \ncastle, no doubt. You can't miss it!",
+            "fontScale": 0.8
+        }, {
+            "text": "Thanks, ermh...",
+            "title": "You:"
+        }, {
+            "text": "The name's Bob, and I'm just glad \nto help!"
+        }],
+        "title": "Bob:"
     }
 }
