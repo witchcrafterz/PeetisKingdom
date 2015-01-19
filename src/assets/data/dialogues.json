@@ -211,8 +211,25 @@
             "text": "Thanks, ermh...",
             "title": "You:"
         }, {
-            "text": "The name's Bob, and I'm just glad \nto help!"
+            "text": "The name's Bob, and I'm just glad \nto help!",
+            "title": "Bob:"
         }],
-        "title": "Bob:"
+        "title": "Villager:"
+    },
+
+    "villager3": {
+        "conversation": [{
+            "text": "Did you hear about the crater? Just appeared during \nnight they say. You have to be one good jumper to \nget to the other side I'm afraid",
+            "fontScale": 0.8
+        }, {
+            "text": "Yeah about that. Do you know \nanyone who can lend me a \nladder to get across?",
+            "title": "You:"
+        }, {
+            "text": "Not this side of the crater I'm afraid. But \nGrassy Grasshopper can teach you a few tips and \ntricks about jumping, I'm sure",
+            "fontScale": 0.8    
+        }, {
+            "text": "You can find Grassy in the \ncave just next to this house"
+        }],
+        "title": "Villager:"
     }
 }
