@@ -65,10 +65,16 @@
         this.titleText.y = this.padding;
 
         /**
+         * The default font size of the text body
+         * @type {Number}
+         */
+        this.defaultTextFontSize = this.titleText.fontSize * 0.8;
+
+        /**
          * The text object of the text
          * @type {Phaser.Text}
          */
-        this.textText = new Phaser.BitmapText(this.game, 0, 0, 'font', 'text', this.titleText.fontSize * 0.8);
+        this.textText = new Phaser.BitmapText(this.game, 0, 0, 'font', 'text', this.defaultTextFontSize);
         this.textText.tint = 0x010101;
 
         /**
@@ -154,6 +160,7 @@
         this.titleText.text = currentSlide.title || this.currentDialogue.defaultTitle || '';
 
         this.textText.text = currentSlide.text || this.currentDialogue.defaultText || '';
+        this.textText.fontSize = currentSlide.fontSize || currentSlide.fontScale * this.defaultTextFontSize || this.defaultTextFontSize;
         this.textText.y = this.height * 0.5;
 
         var newBG = currentSlide.background || this.currentDialogue.defaultBackground || this.defaultBackground;
