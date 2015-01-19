@@ -76,6 +76,12 @@
          */
         this.vision = parseInt(this.properties.vision, 10) || 200;
 
+        /**
+         * Whether or not to automatically turn to the player if it is within the characters vision
+         * @type {Boolean}
+         */
+        this.watchPlayer = true;
+
         this._dependenciesMonitor();
         this._criteriasMonitor();
 
@@ -99,7 +105,7 @@
             this._onNotCloseHandler();
         }
 
-        if (this.isPlayerClose && this.controlled.autoFlip) {
+        if (this.isPlayerClose && this.watchPlayer && this.controlled.autoFlip) {
             var dir = this.controlled.position.x > this.player.position.x ? -1 : 1;
             this.controlled.scale.x = dir;
         }
