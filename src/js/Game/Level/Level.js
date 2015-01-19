@@ -144,6 +144,7 @@
 
         this.game.load.image('dialoguePanel', 'assets/dialoguePanel.png');
         this.game.load.image('grasshopper', 'assets/characters/grasshopper256.png');
+        this.game.load.image('bob', 'assets/characters/bob.png');
 
         this.game.load.json('dialogues', 'assets/data/dialogues.json');
 
