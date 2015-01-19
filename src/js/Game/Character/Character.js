@@ -14,7 +14,7 @@
         this.anchor.set(0.5);
         this.game.physics.enable(this, Phaser.Physics.ARCADE);
 
-        this.body.drag = new Phaser.Point(1000, 0);
+        this.body.drag = new Phaser.Point(1500, 0);
         // this.body.collideWorldBounds = true;
         this.body.maxVelocity = new Phaser.Point(3000, 2000);
 
