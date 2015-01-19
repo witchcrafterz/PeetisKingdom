@@ -86,8 +86,6 @@
     Game.Controller.AI.prototype.constructor = Game.Controller.AI;
 
     Game.Controller.AI.prototype.update = function() {
-        if (!this.dialogue) return;
-
         // Reasoning behind custom code instead of built in function is that built in only has distance and not distanceSquared. 
         // This saves performance as sqrt is an expensive operation. Also saves the need to open up a new scope in the called function.
         var deltaX = this.controlled.position.x - this.player.position.x;
@@ -101,21 +99,24 @@
             this._onNotCloseHandler();
         }
 
+        if (this.isPlayerClose && this.controlled.autoFlip) {
+            var dir = this.controlled.position.x > this.player.position.x ? -1 : 1;
+            this.controlled.scale.x = dir;
+        }
+
         this.wasPlayerClose = this.isPlayerClose;
     };
 
     Game.Controller.AI.prototype._onCloseHandler = function() {
-        if (!this.wasPlayerClose) {
+        if (!this.wasPlayerClose && this.dialogue) {
             this.game.dialogueManager.setDialogue(this.dialogue);
         }
     };
 
     Game.Controller.AI.prototype._onNotCloseHandler = function() {
-        if (this.wasPlayerClose) {
-            if (this.dialogue.isOpen) {
-                this.game.dialogueManager.hidden = true;
-                this.dialogue.isOpen = false;
-            }
+        if (this.wasPlayerClose && this.dialogue && this.dialogue.isOpen) {
+            this.game.dialogueManager.hidden = true;
+            this.dialogue.isOpen = false;
         }
     };
 
