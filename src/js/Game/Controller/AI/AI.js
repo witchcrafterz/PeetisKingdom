@@ -70,6 +70,12 @@
          */
         this.wasPlayerClose = false;
 
+        /**
+         * The vision of the character in pixels. This is used by isPlayerClose/wasPlayerClose
+         * @type {Number}
+         */
+        this.vision = parseInt(this.properties.vision, 10) || 200;
+
         this._dependenciesMonitor();
         this._criteriasMonitor();
 
@@ -82,7 +88,12 @@
     Game.Controller.AI.prototype.update = function() {
         if (!this.dialogue) return;
 
-        if (this.game.physics.arcade.intersects(this.controlled.body, this.player.body)) {
+        // Reasoning behind custom code instead of built in function is that built in only has distance and not distanceSquared. 
+        // This saves performance as sqrt is an expensive operation. Also saves the need to open up a new scope in the called function.
+        var deltaX = this.controlled.position.x - this.player.position.x;
+        var deltaY = this.controlled.position.y - this.player.position.y;
+        var distanceSq = deltaX * deltaX + deltaY * deltaY;
+        if (distanceSq < this.vision * this.vision) {
             this.isPlayerClose = true;
             this._onCloseHandler();
         } else {
