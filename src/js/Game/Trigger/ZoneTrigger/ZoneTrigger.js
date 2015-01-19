@@ -55,6 +55,27 @@
          */
         this.thisArg = thisArg;
 
+        /**
+         * A broadphase trigger that is generated if there are more than one rectangles to track. This is to save performance
+         * @type {Game.Trigger.ZoneTrigger}
+         */
+        this._broadTrigger = undefined;
+
+        if (this.zones.length > 1) {
+            var padding = 20;
+            var top = Number.MAX_VALUE, left = Number.MAX_VALUE, right = Number.MIN_VALUE, bottom = Number.MIN_VALUE;
+            _.forEach(this.zones, function(zone) {
+                top = Math.min(top, zone.top);
+                left = Math.min(left, zone.left);
+                right = Math.max(right, zone.right);
+                bottom = Math.max(bottom, zone.bottom);
+            });
+            // Padding is to make sure the narrow phase register that the player has exited before broadphase make it not able to check
+            var rect = new Phaser.Rectangle(left - padding, top - padding, right - left + padding, bottom - top + padding);
+            this._broadTrigger = new Game.Trigger.ZoneTrigger(this.game, true, rect, this.toTrack);
+            this.game.triggerManager.addTrigger(this._broadTrigger);
+        }
+
         this._refreshInZone();
 
         return this;
@@ -75,6 +96,8 @@
 
     Game.Trigger.ZoneTrigger.prototype.update = function() {
         if (!this.enabled) return;
+
+        if (this._broadTrigger && !this._broadTrigger.isActive) return;
 
         var iToTrack, iZone, insideAny;
 
