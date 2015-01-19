@@ -384,6 +384,18 @@
             /* jshint shadow: true */
 
             switch (obj.type) {
+                case 'torch':
+
+                    var radius = parseInt(obj.properties['radius'], 10);
+                    var fade = parseFloat(obj.properties['fade'], 10);
+                    var r = parseInt(obj.properties['r'], 10);
+                    var g = parseInt(obj.properties['g'], 10);
+                    var b = parseInt(obj.properties['b'], 10);
+
+                    var torch = new Game.Torch(this.game, obj.x, obj.y, radius, fade, r, g, b);
+                    this.game.add.existing(torch);
+
+                    break;
                 case 'entity':
 
                     var key = obj.properties['key'];
