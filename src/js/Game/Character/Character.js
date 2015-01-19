@@ -18,7 +18,17 @@
         // this.body.collideWorldBounds = true;
         this.body.maxVelocity = new Phaser.Point(3000, 2000);
 
-        this.desiredDrag = this.body.drag;
+        /**
+         * The desired drag for the character while walking on the ground
+         * @type {Phaser.Point}
+         */
+        this.desiredDrag = this.body.drag.clone();
+
+        /**
+         * The desired drag for the character while in the air
+         * @type {Phaser.Point}
+         */
+        this.desiredAirDrag = new Phaser.Point(300, 0);
 
         /**
          * The texture key used in the making of this character
@@ -239,6 +249,16 @@
         // If there is a controller, handle it
         if (this.controller) {
             this._controllerHandler();
+        }
+
+        if (this.states.airborn) {
+            if (!this.body.drag.equals(this.desiredAirDrag)) {
+                this.body.drag.setTo(this.desiredAirDrag.x, this.desiredAirDrag.y);
+            }
+        } else {
+            if (!this.body.drag.equals(this.desiredDrag)) {
+                this.body.drag.setTo(this.desiredDrag.x, this.desiredDrag.y);
+            }
         }
 
         //If submerged, reduce speed        
