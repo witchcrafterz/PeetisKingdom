@@ -284,6 +284,7 @@
     };
 
     Game.Level.prototype.generateTriggerFunctions = function() {
+        var oldDrag;
         this.triggerFunctions = {
             'enterWater': function() {
                 this.p1.submerged = true;
@@ -301,11 +302,12 @@
             },
 
             'setSlippery': function() {
+                oldDrag = this.p1.desiredDrag.x;
                 this.p1.desiredDrag.x = 100;
             },
 
             'resetSlippery': function() {
-                this.p1.desiredDrag.x = 1000;
+                this.p1.desiredDrag.x = oldDrag;
             },
 
             'enableDblJump': function() {
