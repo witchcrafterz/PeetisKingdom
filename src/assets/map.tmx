@@ -305,7 +305,7 @@
    <properties>
     <property name="AI" value="pacing"/>
     <property name="dialogue" value="villager2"/>
-    <property name="key" value="grasshopper"/>
+    <property name="key" value="bob"/>
    </properties>
   </object>
   <object name="Bybo" type="character" x="11784.5" y="6230.42" width="134" height="24">
