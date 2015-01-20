@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="300" height="160" tilewidth="64" tileheight="64" backgroundcolor="#393939">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="300" height="160" tilewidth="64" tileheight="64" backgroundcolor="#393939" nextobjectid="75">
  <tileset firstgid="1" name="spritesheet" tilewidth="64" tileheight="64">
   <image source="spritesheet.png" width="1088" height="448"/>
  </tileset>
@@ -19,245 +19,245 @@
   </data>
  </layer>
  <objectgroup name="objects">
-  <object name="spawn point" type="spawn" x="8892" y="6784" width="128" height="192">
+  <object id="1" name="spawn point" type="spawn" x="8892" y="6784" width="128" height="192">
    <ellipse/>
   </object>
-  <object name="intro dialogue" type="dialogue" x="8641.1" y="6739.3" width="572.36" height="248.424">
+  <object id="2" name="intro dialogue" type="dialogue" x="8641.1" y="6739.3" width="572.36" height="248.424">
    <properties>
     <property name="dialogue" value="intro"/>
    </properties>
   </object>
-  <object name="double jump dialogue" type="dialogue" x="8230.1" y="6270.4" width="108" height="451">
+  <object id="3" name="double jump dialogue" type="dialogue" x="8230.1" y="6270.4" width="108" height="451">
    <properties>
     <property name="criteriaFunction" value="jump"/>
     <property name="dialogue" value="doubleJump"/>
    </properties>
   </object>
-  <object name="grasshopper dialogue" type="dialogue" x="14664" y="6080" width="728" height="376">
+  <object id="4" name="grasshopper dialogue" type="dialogue" x="14664" y="6080" width="728" height="376">
    <properties>
     <property name="dialogue" value="grasshopperQuest"/>
     <property name="listen" value="grasshopper"/>
     <property name="onListenDialogue" value="grasshopperQuestComplete"/>
    </properties>
   </object>
-  <object name="direction dialogue" type="dialogue" x="10232" y="6158.63" width="186.667" height="180">
+  <object id="5" name="direction dialogue" type="dialogue" x="10232" y="6158.63" width="186.667" height="180">
    <properties>
     <property name="dialogue" value="direction"/>
    </properties>
   </object>
-  <object name="water" type="trigger" x="15230" y="6344" width="2536" height="1280">
+  <object id="6" name="water" type="trigger" x="15230" y="6344" width="2536" height="1280">
    <properties>
     <property name="enter" value="enterWater"/>
     <property name="leave" value="leaveWater"/>
     <property name="part" value="waterPart"/>
    </properties>
   </object>
-  <object name="waterPart" type="part" x="15220.2" y="7588.97" width="2011.52" height="797.818"/>
-  <object name="castle dialogue" type="dialogue" x="1021.21" y="3643.03" width="257.576" height="224.242">
+  <object id="7" name="waterPart" type="part" x="15220.2" y="7588.97" width="2011.52" height="797.818"/>
+  <object id="8" name="castle dialogue" type="dialogue" x="1021.21" y="3643.03" width="257.576" height="224.242">
    <properties>
     <property name="dialogue" value="castleDialogue"/>
    </properties>
   </object>
-  <object name="ladder" type="trigger" x="236" y="1144" width="84" height="2696">
+  <object id="9" name="ladder" type="trigger" x="236" y="1144" width="84" height="2696">
    <properties>
     <property name="enter" value="enterWater"/>
     <property name="leave" value="leaveLadder"/>
    </properties>
   </object>
-  <object name="ice" type="trigger" x="2280" y="1296" width="876" height="392">
+  <object id="10" name="ice" type="trigger" x="2280" y="1296" width="876" height="392">
    <properties>
     <property name="enter" value="setSlippery"/>
     <property name="leave" value="resetSlippery"/>
     <property name="part" value="icePart"/>
    </properties>
   </object>
-  <object name="icePart" type="part" x="4405.03" y="399.439" width="1162.51" height="1459.89"/>
-  <object name="gift dialog" type="dialogue" x="3785.33" y="6033.5" width="700.333" height="363">
+  <object id="11" name="icePart" type="part" x="4405.03" y="399.439" width="1162.51" height="1459.89"/>
+  <object id="12" name="gift dialog" type="dialogue" x="3785.33" y="6033.5" width="700.333" height="363">
    <properties>
     <property name="dialogue" value="royalQuest"/>
     <property name="listen" value="royalVisit"/>
     <property name="onListenDialogue" value="royalQuestComplete"/>
    </properties>
   </object>
-  <object name="bird dialogue" type="dialogue" x="1305.33" y="3082.5" width="631.333" height="383">
+  <object id="13" name="bird dialogue" type="dialogue" x="1305.33" y="3082.5" width="631.333" height="383">
    <properties>
     <property name="dialogue" value="birdQuest"/>
     <property name="listen" value="meanOrnithologist"/>
     <property name="onListenDialogue" value="birdQuestComplete"/>
    </properties>
   </object>
-  <object name="checkpoint" type="trigger" x="12677.3" y="8513.33" width="277.333" height="250.667">
+  <object id="14" name="checkpoint" type="trigger" x="12677.3" y="8513.33" width="277.333" height="250.667">
    <properties>
     <property name="enter" value="setCheckpoint"/>
    </properties>
   </object>
-  <object name="lava" type="trigger" x="8719" y="9088" width="3890.91" height="442.424">
+  <object id="15" name="lava" type="trigger" x="8719" y="9088" width="3890.91" height="442.424">
    <properties>
     <property name="enter" value="resetPlayer"/>
    </properties>
   </object>
-  <object name="octopus dialogue" type="dialogue" x="15245.1" y="7888.91" width="442" height="404">
+  <object id="16" name="octopus dialogue" type="dialogue" x="15245.1" y="7888.91" width="442" height="404">
    <properties>
     <property name="dialogue" value="octopusQuest"/>
     <property name="listen" value="octopusQuest"/>
     <property name="onListenDialogue" value="octopusQuestComplete"/>
    </properties>
   </object>
-  <object name="boss music" type="trigger" x="7293.94" y="1133.33" width="1890.91" height="769.697">
+  <object id="17" name="boss music" type="trigger" x="7293.94" y="1133.33" width="1890.91" height="769.697">
    <properties>
     <property name="enter" value="playMusic"/>
     <property name="enterArgs" value="boss"/>
     <property name="leave" value="stopMusic"/>
    </properties>
   </object>
-  <object name="boss music" type="trigger" x="10461.2" y="6039.15" width="489.577" height="337.697">
+  <object id="18" name="boss music" type="trigger" x="10461.2" y="6039.15" width="489.577" height="337.697">
    <properties>
     <property name="enter" value="playMusic"/>
     <property name="enterArgs" value="solskenspromenad"/>
    </properties>
   </object>
-  <object name="checkpointsdasd" type="trigger" x="9247.33" y="8302" width="209.333" height="324">
+  <object id="19" name="checkpointsdasd" type="trigger" x="9247.33" y="8302" width="209.333" height="324">
    <properties>
     <property name="enter" value="setCheckpoint"/>
    </properties>
   </object>
-  <object name="ladder" type="trigger" x="7091.33" y="7076.24" width="96.1212" height="1532.36">
+  <object id="20" name="ladder" type="trigger" x="7091.33" y="7076.24" width="96.1212" height="1532.36">
    <properties>
     <property name="enter" value="enterWater"/>
     <property name="leave" value="leaveLadder"/>
    </properties>
   </object>
-  <object name="icePart" type="part" x="375.5" y="1139.75" width="401" height="150.5"/>
-  <object name="icePart" type="part" x="3705.08" y="1526.02" width="582.333" height="171.167"/>
-  <object name="lava" type="trigger" x="450.545" y="1862.79" width="6542.91" height="170.424">
+  <object id="21" name="icePart" type="part" x="375.5" y="1139.75" width="401" height="150.5"/>
+  <object id="22" name="icePart" type="part" x="3705.08" y="1526.02" width="582.333" height="171.167"/>
+  <object id="23" name="lava" type="trigger" x="450.545" y="1862.79" width="6542.91" height="170.424">
    <properties>
     <property name="enter" value="resetPlayer"/>
    </properties>
   </object>
-  <object name="checkpoint" type="trigger" x="430.667" y="997.333" width="277.333" height="250.667">
+  <object id="24" name="checkpoint" type="trigger" x="430.667" y="997.333" width="277.333" height="250.667">
    <properties>
     <property name="enter" value="setCheckpoint"/>
    </properties>
   </object>
-  <object name="checkpoint" type="trigger" x="3345.33" y="930.666" width="277.333" height="250.667">
+  <object id="25" name="checkpoint" type="trigger" x="3345.33" y="930.666" width="277.333" height="250.667">
    <properties>
     <property name="enter" value="setCheckpoint"/>
    </properties>
   </object>
-  <object name="checkpoint" type="trigger" x="5640.12" y="299.761" width="277.333" height="250.667">
+  <object id="26" name="checkpoint" type="trigger" x="5640.12" y="299.761" width="277.333" height="250.667">
    <properties>
     <property name="enter" value="setCheckpoint"/>
    </properties>
   </object>
-  <object name="ladder" type="trigger" x="1841" y="3784" width="94" height="382">
+  <object id="27" name="ladder" type="trigger" x="1841" y="3784" width="94" height="382">
    <properties>
     <property name="enter" value="enterWater"/>
     <property name="leave" value="leaveLadder"/>
    </properties>
   </object>
-  <object name="secret" type="trigger" x="17430.3" y="6866.67" width="666.667" height="315.152">
+  <object id="28" name="secret" type="trigger" x="17430.3" y="6866.67" width="666.667" height="315.152">
    <properties>
     <property name="enter" value="enterSecret"/>
     <property name="leave" value="leaveSecret"/>
    </properties>
   </object>
-  <object name="ladder" type="trigger" x="4219.67" y="5967" width="70.6667" height="376.667">
+  <object id="29" name="ladder" type="trigger" x="4219.67" y="5967" width="70.6667" height="376.667">
    <properties>
     <property name="enter" value="enterWater"/>
     <property name="leave" value="leaveLadder"/>
    </properties>
   </object>
-  <object name="ladder" type="trigger" x="3834.36" y="3417.73" width="73.697" height="2122.12">
+  <object id="30" name="ladder" type="trigger" x="3834.36" y="3417.73" width="73.697" height="2122.12">
    <properties>
     <property name="enter" value="enterWater"/>
     <property name="leave" value="leaveLadder"/>
    </properties>
   </object>
-  <object name="ladder" type="trigger" x="13110.1" y="5526.82" width="79.7576" height="810">
+  <object id="31" name="ladder" type="trigger" x="13110.1" y="5526.82" width="79.7576" height="810">
    <properties>
     <property name="enter" value="enterWater"/>
     <property name="leave" value="leaveLadder"/>
    </properties>
   </object>
-  <object name="ladder" type="trigger" x="12723.8" y="5185.91" width="82.7879" height="210">
+  <object id="32" name="ladder" type="trigger" x="12723.8" y="5185.91" width="82.7879" height="210">
    <properties>
     <property name="enter" value="enterWater"/>
     <property name="leave" value="leaveLadder"/>
    </properties>
   </object>
-  <object name="ladder" type="trigger" x="12538.4" y="4788.21" width="78.7879" height="272.97">
+  <object id="33" name="ladder" type="trigger" x="12538.4" y="4788.21" width="78.7879" height="272.97">
    <properties>
     <property name="enter" value="enterWater"/>
     <property name="leave" value="leaveLadder"/>
    </properties>
   </object>
-  <object name="ladder" type="trigger" x="13622.2" y="4784.39" width="76.7273" height="270.606">
+  <object id="34" name="ladder" type="trigger" x="13622.2" y="4784.39" width="76.7273" height="270.606">
    <properties>
     <property name="enter" value="enterWater"/>
     <property name="leave" value="leaveLadder"/>
    </properties>
   </object>
-  <object name="checkpoint" type="trigger" x="11763.5" y="8089.55" width="140.969" height="174.909">
+  <object id="35" name="checkpoint" type="trigger" x="11763.5" y="8089.55" width="140.969" height="174.909">
    <properties>
     <property name="enter" value="setCheckpoint"/>
    </properties>
   </object>
-  <object name="checkpoint" type="trigger" x="4099.33" y="1402.67" width="185.333" height="252.667">
+  <object id="36" name="checkpoint" type="trigger" x="4099.33" y="1402.67" width="185.333" height="252.667">
    <properties>
     <property name="enter" value="setCheckpoint"/>
    </properties>
   </object>
-  <object name="ladder" type="trigger" x="6513.61" y="299.909" width="87.9394" height="1312.3">
+  <object id="37" name="ladder" type="trigger" x="6513.61" y="299.909" width="87.9394" height="1312.3">
    <properties>
     <property name="enter" value="enterWater"/>
     <property name="leave" value="leaveLadder"/>
    </properties>
   </object>
-  <object name="ornithologists home" type="dialogue" x="6055.21" y="1523.88" width="257.576" height="224.242">
+  <object id="38" name="ornithologists home" type="dialogue" x="6055.21" y="1523.88" width="257.576" height="224.242">
    <properties>
     <property name="dialogue" value="ornithologistHome"/>
    </properties>
   </object>
-  <object name="ornithologists direction" type="dialogue" x="5929.21" y="309.879" width="257.576" height="224.242">
+  <object id="39" name="ornithologists direction" type="dialogue" x="5929.21" y="309.879" width="257.576" height="224.242">
    <properties>
     <property name="dialogue" value="ornithologistDirection"/>
    </properties>
   </object>
-  <object name="slippery warning" type="dialogue" x="407.212" y="1029.21" width="253.576" height="218.909">
+  <object id="40" name="slippery warning" type="dialogue" x="407.212" y="1029.21" width="253.576" height="218.909">
    <properties>
     <property name="dialogue" value="slipperyWarning"/>
    </properties>
   </object>
-  <object name="ornithologists door" type="dialogue" x="5661.88" y="1526.55" width="257.576" height="224.242">
+  <object id="41" name="ornithologists door" type="dialogue" x="5661.88" y="1526.55" width="257.576" height="224.242">
    <properties>
     <property name="dialogue" value="ornithologistDoor"/>
    </properties>
   </object>
-  <object name="ornithologists" type="dialogue" x="8053.03" y="1306.06" width="1000" height="406.06">
+  <object id="42" name="ornithologists" type="dialogue" x="8053.03" y="1306.06" width="1000" height="406.06">
    <properties>
     <property name="dialogue" value="ornithologist"/>
    </properties>
   </object>
-  <object name="rope" type="trigger" x="11261" y="7642.91" width="74.9091" height="371.754">
+  <object id="43" name="rope" type="trigger" x="11261" y="7642.91" width="74.9091" height="371.754">
    <properties>
     <property name="enter" value="enterWater"/>
     <property name="leave" value="leaveLadder"/>
     <property name="part" value="ropePart"/>
    </properties>
   </object>
-  <object name="ropePart" type="part" x="10877.2" y="7591.46" width="65.5758" height="159.754"/>
-  <object name="ropePart" type="part" x="10368.5" y="7601.46" width="65.5758" height="339.754"/>
-  <object name="ropePart" type="part" x="9852.55" y="7605.46" width="66.9091" height="267.754"/>
-  <object name="ropePart" type="part" x="9468.55" y="7666.79" width="68.2425" height="399.754"/>
+  <object id="44" name="ropePart" type="part" x="10877.2" y="7591.46" width="65.5758" height="159.754"/>
+  <object id="45" name="ropePart" type="part" x="10368.5" y="7601.46" width="65.5758" height="339.754"/>
+  <object id="46" name="ropePart" type="part" x="9852.55" y="7605.46" width="66.9091" height="267.754"/>
+  <object id="47" name="ropePart" type="part" x="9468.55" y="7666.79" width="68.2425" height="399.754"/>
  </objectgroup>
  <objectgroup name="sprites">
-  <object name="Grasshopper" type="entity" x="14956" y="6202" width="134" height="24">
+  <object id="48" name="Grasshopper" type="entity" x="14956" y="6202" width="134" height="24">
    <properties>
     <property name="floaty" value="100"/>
     <property name="key" value="grasshopper"/>
    </properties>
   </object>
-  <object name="Guard" type="character" x="3798.5" y="6237" width="134" height="24">
+  <object id="49" name="Guard" type="character" x="3798.5" y="6237" width="134" height="24">
    <properties>
     <property name="AI" value="guard"/>
     <property name="angle" value="0.75"/>
@@ -266,17 +266,17 @@
     <property name="magnitude" value="1500"/>
    </properties>
   </object>
-  <object name="Princess Peeti" type="entity" x="589" y="6208" width="134" height="24">
+  <object id="50" name="Princess Peeti" type="entity" x="589" y="6208" width="134" height="24">
    <properties>
     <property name="key" value="grasshopper"/>
    </properties>
   </object>
-  <object name="Giant Bird" type="entity" x="1519.67" y="3276" width="134" height="24">
+  <object id="51" name="Giant Bird" type="entity" x="1519.67" y="3276" width="134" height="24">
    <properties>
     <property name="key" value="grasshopper"/>
    </properties>
   </object>
-  <object name="Ornithologist" type="character" x="8885" y="1566" width="178" height="46">
+  <object id="52" name="Ornithologist" type="character" x="8885" y="1566" width="178" height="46">
    <properties>
     <property name="AI" value="ornithologist"/>
     <property name="angle" value="2.35"/>
@@ -285,7 +285,7 @@
     <property name="range" value="1000"/>
    </properties>
   </object>
-  <object name="Octopus" type="character" x="15249.4" y="8023" width="214.667" height="188">
+  <object id="53" name="Octopus" type="character" x="15249.4" y="8023" width="214.667" height="188">
    <properties>
     <property name="AI" value="guard"/>
     <property name="allowGravity" value="false"/>
@@ -294,49 +294,65 @@
     <property name="key" value="grasshopper"/>
    </properties>
   </object>
-  <object name="villager3" type="character" x="13461.2" y="5464.09" width="134" height="24">
+  <object id="54" name="villager3" type="character" x="13461.2" y="5464.09" width="134" height="24">
    <properties>
     <property name="AI" value="pacing"/>
     <property name="dialogue" value="villager3"/>
     <property name="key" value="grasshopper"/>
    </properties>
   </object>
-  <object name="villager2" type="character" x="13454.3" y="5860" width="134" height="24">
+  <object id="55" name="villager2" type="character" x="13454.3" y="5860" width="134" height="24">
    <properties>
     <property name="AI" value="pacing"/>
     <property name="dialogue" value="villager2"/>
     <property name="key" value="bob"/>
    </properties>
   </object>
-  <object name="Bybo" type="character" x="11784.5" y="6230.42" width="134" height="24">
+  <object id="56" name="Bybo" type="character" x="11784.5" y="6230.42" width="134" height="24">
    <properties>
     <property name="AI" value="pacing"/>
     <property name="dialogue" value="villager1"/>
     <property name="key" value="grasshopper"/>
    </properties>
   </object>
-  <object name="Bybo" type="character" x="5589" y="6240" width="134" height="24">
+  <object id="57" name="Bybo" type="character" x="5589" y="6240" width="134" height="24">
    <properties>
     <property name="AI" value="pacing"/>
     <property name="key" value="grasshopper"/>
    </properties>
   </object>
-  <object name="Bybo" type="character" x="6621" y="6248" width="134" height="24">
+  <object id="58" name="Bybo" type="character" x="6621" y="6248" width="134" height="24">
    <properties>
     <property name="AI" value="pacing"/>
     <property name="key" value="grasshopper"/>
    </properties>
   </object>
-  <object name="Bybo" type="character" x="3469" y="5068" width="134" height="24">
+  <object id="59" name="Bybo" type="character" x="3469" y="5068" width="134" height="24">
    <properties>
     <property name="AI" value="pacing"/>
     <property name="key" value="grasshopper"/>
    </properties>
   </object>
-  <object name="Bybo" type="character" x="3461" y="4304" width="134" height="24">
+  <object id="60" name="Bybo" type="character" x="3461" y="4304" width="134" height="24">
    <properties>
     <property name="AI" value="pacing"/>
     <property name="key" value="grasshopper"/>
+   </properties>
+  </object>
+  <object id="71" type="torch" x="18400" y="4896.97"/>
+  <object id="72" type="torch" x="15048.2" y="8108.16" width="63.9967" height="41.2882">
+   <properties>
+    <property name="radius" value="100"/>
+   </properties>
+  </object>
+  <object id="73" type="torch" x="14431.3" y="8104.87" width="63.9967" height="41.2882">
+   <properties>
+    <property name="radius" value="100"/>
+   </properties>
+  </object>
+  <object id="74" type="torch" x="13853.2" y="8104.87" width="63.9967" height="41.2882">
+   <properties>
+    <property name="radius" value="100"/>
    </properties>
   </object>
  </objectgroup>
@@ -344,7 +360,7 @@
   <properties>
    <property name="Name" value=""/>
   </properties>
-  <object name="An unexpected encounter" type="collect" x="14664" y="6056" width="725" height="375">
+  <object id="61" name="An unexpected encounter" type="collect" x="14664" y="6056" width="725" height="375">
    <properties>
     <property name="frame" value="27"/>
     <property name="id" value="grasshopper"/>
@@ -356,13 +372,13 @@
     <property name="statusReturn" value="Return the pearl to the grasshopper"/>
    </properties>
   </object>
-  <object name="Urge to explore" type="a2b" x="9226" y="6604" width="381" height="308">
+  <object id="62" name="Urge to explore" type="a2b" x="9226" y="6604" width="381" height="308">
    <properties>
     <property name="endLayer" value="leaveCrater"/>
     <property name="status" value="You should probably find a way \nout of this crater..."/>
    </properties>
   </object>
-  <object name="A royal visit" type="collect" x="3773.5" y="6008.5" width="695" height="369">
+  <object id="63" name="A royal visit" type="collect" x="3773.5" y="6008.5" width="695" height="369">
    <properties>
     <property name="frame" value="27"/>
     <property name="id" value="royalVisit"/>
@@ -373,7 +389,7 @@
     <property name="statusReturn" value="Return to Princess Peeti's castle with the gift"/>
    </properties>
   </object>
-  <object name="A very mean ornithologist" type="collect" x="1305.5" y="3098.5" width="637" height="371">
+  <object id="64" name="A very mean ornithologist" type="collect" x="1305.5" y="3098.5" width="637" height="371">
    <properties>
     <property name="frame" value="27"/>
     <property name="id" value="meanOrnithologist"/>
@@ -385,7 +401,7 @@
     <property name="statusReturn" value="Bring back the egg to the giant bird"/>
    </properties>
   </object>
-  <object name="The sky up above" type="criteria" x="15244" y="7874.33" width="440" height="390.667">
+  <object id="65" name="The sky up above" type="criteria" x="15244" y="7874.33" width="440" height="390.667">
    <properties>
     <property name="criterias" value="feather"/>
     <property name="id" value="octopusQuest"/>
@@ -396,15 +412,15 @@
   </object>
  </objectgroup>
  <objectgroup name="grasshopperCollect">
-  <object x="15878.9" y="8168.73" width="72.7273" height="69.697"/>
+  <object id="66" x="15878.9" y="8168.73" width="72.7273" height="69.697"/>
  </objectgroup>
  <objectgroup name="leaveCrater">
-  <object name="Leave creater" x="9784" y="6131.51" width="398.061" height="202.788"/>
+  <object id="67" name="Leave creater" x="9784" y="6131.51" width="398.061" height="202.788"/>
  </objectgroup>
  <objectgroup name="royalVisit">
-  <object x="9350.67" y="8500"/>
+  <object id="68" x="9350.67" y="8500"/>
  </objectgroup>
  <objectgroup name="meanOrnithologist">
-  <object x="8636" y="1416"/>
+  <object id="69" x="8636" y="1416"/>
  </objectgroup>
 </map>
