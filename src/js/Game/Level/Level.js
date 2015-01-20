@@ -146,6 +146,7 @@
         this.game.load.image('grasshopper', 'assets/characters/grasshopper256.png');
         this.game.load.image('bob', 'assets/characters/bob.png');
         this.game.load.image('ornithologist', 'assets/characters/ornithologist.png');
+        this.game.load.image('ladydog', 'assets/characters/ladydog.png');
 
         this.game.load.json('dialogues', 'assets/data/dialogues.json');
 
@@ -390,8 +391,14 @@
                     var b = parseInt(obj.properties['b'], 10);
                     var pixelateValue = parseFloat(obj.properties['pixelateValue'], 10);
 
+                    var pulsate = obj.properties['pulsate'] ? obj.properties['pulsate'] !== 'false' : true;
+
                     var torch = new Game.Torch(this.game, obj.x, obj.y, radius, fade, pixelateValue, r, g, b);
                     this.game.add.existing(torch);
+
+                    if (pulsate) {
+                        this.game.add.tween(torch.scale).to({x: 1.1, y: 1.1}, 1000, undefined, undefined, undefined, -1, true).start();
+                    }
 
                     break;
                 case 'entity':
