@@ -959,11 +959,11 @@
                 {
                  "height":24,
                  "id":58,
-                 "name":"Bybo",
+                 "name":"Ladydog",
                  "properties":
                     {
                      "AI":"pacing",
-                     "key":"grasshopper"
+                     "key":"ladydog"
                     },
                  "rotation":0,
                  "type":"character",
