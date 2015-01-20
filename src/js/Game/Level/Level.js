@@ -125,7 +125,7 @@
             assetLoadingText.x = this.game.width * 0.5 - assetLoadingText.width * 0.5;
         }, this);
 
-        this.game.load.spritesheet('player1', 'assets/player.png', 68, 84);
+        this.game.load.spritesheet('player1', 'assets/characters/player.png', 40, 76);
         this.game.load.spritesheet('spritesheet', 'assets/spritesheet.png', 64, 64);
 
         this.game.load.atlasXML('alienYellow', 'assets/alienYellow.png', 'assets/alienYellow.xml');
@@ -388,8 +388,9 @@
                     var r = parseInt(obj.properties['r'], 10);
                     var g = parseInt(obj.properties['g'], 10);
                     var b = parseInt(obj.properties['b'], 10);
+                    var pixelateValue = parseFloat(obj.properties['pixelateValue'], 10);
 
-                    var torch = new Game.Torch(this.game, obj.x, obj.y, radius, fade, r, g, b);
+                    var torch = new Game.Torch(this.game, obj.x, obj.y, radius, fade, pixelateValue, r, g, b);
                     this.game.add.existing(torch);
 
                     break;
@@ -601,7 +602,7 @@
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
         this.game.physics.arcade.gravity = Game.gravity;
         this.game.physics.arcade.TILE_BIAS = 70;
-        this.game.physics.arcade.skipQuadTree = false;
+        // this.game.physics.arcade.skipQuadTree = false;
 
         this.activateKey = this.game.input.keyboard.addKey(Phaser.Keyboard.UP);
 
