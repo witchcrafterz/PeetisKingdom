@@ -38,7 +38,7 @@
         this.add(this.multiplayerBtn);
 
         /**
-         * The toggle mute button
+         * The toggle music button
          * @type {Game.GUI.Button}
          */
         this.musicBtn = new Game.GUI.Button(this.game, this.game.width * 0.5, this.multiplayerBtn.position.y + this.multiplayerBtn.height + this.padding, 'knapp', 'music_btn', 'font', this.toggleMusic, this);
@@ -46,6 +46,16 @@
         this.musicBtn.position.x -= (this.musicBtn.width + this.padding) * 0.5;
         this._refreshMusicBtn();
         this.add(this.musicBtn);
+
+        /**
+         * The toggle mute button
+         * @type {Game}
+         */
+        this.toggleMuteBtn = new Game.GUI.Button(this.game, this.game.width * 0.5, this.musicBtn.position.y, 'knapp', 'mute_btn', 'font', this.toggleMute, this);
+        this.toggleMuteBtn.scale.setTo(0.8);
+        this.toggleMuteBtn.position.x += (this.toggleMuteBtn.width + this.padding) * 0.5;
+        this._refreshMuteBtn();
+        this.add(this.toggleMuteBtn);
 
         /**
          * The toggle fullscreen button
@@ -81,8 +91,18 @@
         this._refreshMusicBtn();
     };
 
+    Game.GUI.PauseScreen.prototype.toggleMute = function() {
+        this.game.sound.mute = !this.game.sound.mute;
+        this._refreshMuteBtn();
+    };
+
+
     Game.GUI.PauseScreen.prototype._refreshMusicBtn = function() {
         this.musicBtn.text = !this.game.musicMuted ? 'Music: on' : 'Music: off';
+    };
+
+    Game.GUI.PauseScreen.prototype._refreshMuteBtn = function() {
+        this.toggleMuteBtn.text = this.game.sound.mute ? 'Sound: off' : 'Sound: on';
     };
 
     Game.GUI.PauseScreen.prototype.toggleFullscreen = function() {
