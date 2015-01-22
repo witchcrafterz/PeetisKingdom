@@ -135,6 +135,7 @@
         this.game.load.audio('jump', ['assets/sfx/jump.ogg', 'assets/sfx/jump.mp3']);
         this.game.load.audio('objectComplete', ['assets/sfx/object_complete.ogg', 'assets/sfx/object_complete.mp3']);
         this.game.load.audio('pickupCoin', ['assets/sfx/pickup_coin.ogg', 'assets/sfx/pickup_coin.mp3']);
+        this.game.load.audio('thud', ['assets/sfx/thud.ogg', 'assets/sfx/thud.mp3']);
 
         // Credits of boss music due to 13NHarri @ http://freesound.org/people/13NHarri/sounds/251334/
         this.game.load.audio('boss', ['assets/music/boss.mp3', 'assets/music/boss.ogg']);

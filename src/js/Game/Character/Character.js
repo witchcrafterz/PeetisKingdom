@@ -119,6 +119,12 @@
         this.jumpSFX = this.game.add.audio('jump');
 
         /**
+         * The thud or landing jump effect
+         * @type {Phaser.Audio}
+         */
+        this.thudSFX = this.game.add.audio('thud');
+
+        /**
          * If the character is in god mode or not. God mode allows for flying
          * @type {Boolean}
          */
@@ -169,6 +175,7 @@
             // Max deltaVel is 2000. 20 is the lowest amount of particles. Max amount of particles will amount to ~70
             var particles = 20 + (deltaVel - 1500) / 10;
             this.groundEmitter.explode(1000, particles);
+            this.thudSFX.playFrom(this.position);
         }
 
         this.currentJumps = 0;
