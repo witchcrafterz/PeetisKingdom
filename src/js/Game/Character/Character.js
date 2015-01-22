@@ -124,6 +124,31 @@
          */
         this.godMode = false;
 
+        /**
+         * Internal cache
+         * @type {Object}
+         */
+        this._cache = {
+            prevY: -1
+        };
+
+        /**
+         * An emitter that emits particles when submerged
+         * @type {Phaser.Particles.Arcade}
+         */
+        this.bubbleEmitter = this.game.add.emitter(0, 0);
+        this.bubbleEmitter.makeParticles('UI', [14,15,16], 20);
+        this.bubbleEmitter.gravity = -3750;
+
+        /**
+         * An emitter that emits particles when hitting and/or running ont he ground
+         * @type {Phaser.Particles.Arcade}
+         */
+        this.groundEmitter = this.game.add.emitter(this.width * 0.5, this.height);
+        this.groundEmitter.makeParticles('UI', [20,22,23], 100);
+        this.groundEmitter.setXSpeed(-500, 500);
+        this.groundEmitter.setYSpeed(-1000, -500);
+
         return this;
     };
 
@@ -135,6 +160,13 @@
      * @return {Undefined}
      */
     Game.Character.prototype.resetJump = function() {
+        var deltaVel = this._cache.prevY - this.body.velocity.y;
+        if (deltaVel > 1500) {
+            // Max deltaVel is 2000. 20 is the lowest amount of particles. Max amount of particles will amount to ~70
+            var particles = 20 + (deltaVel - 1500) / 10;
+            this.groundEmitter.explode(1000, particles);
+        }
+
         this.currentJumps = 0;
         this.jumpMeter = this.fullJumpMeter;
         this.flicked = false;
@@ -239,6 +271,10 @@
         }
     };
 
+    Game.Character.prototype._setCache = function() {
+        this._cache.prevY = this.body.velocity.y;
+    };
+
     Game.Character.prototype.update = function() {
         // Calculate states
         this._calculateStates();
@@ -278,6 +314,8 @@
         if (this.states.tryWalking && !this.godMode && !this.flicked) {
             this.body.velocity.x = Math.clamp(this.body.velocity.x, -this.walkingVelocity, this.walkingVelocity);
         }
+
+        this._setCache();
     };
 
 })();
