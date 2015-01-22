@@ -149,6 +149,7 @@
         this.game.load.image('ladydog', 'assets/characters/ladydog.png');
 
         this.game.load.spritesheet('bubbles', 'assets/particles/bubbles.png', 64, 64);
+        this.game.load.image('dirtParticle', 'assets/particles/dirt_particle.png');
 
         this.game.load.json('dialogues', 'assets/data/dialogues.json');
 

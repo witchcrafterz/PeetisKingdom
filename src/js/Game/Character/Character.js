@@ -149,7 +149,7 @@
          * @type {Phaser.Particles.Arcade}
          */
         this.groundEmitter = this.game.add.emitter(this.width * 0.5, this.height);
-        this.groundEmitter.makeParticles('UI', [20,22,23], 100);
+        this.groundEmitter.makeParticles('dirtParticle', 0, 100);
         this.groundEmitter.setXSpeed(-500, 500);
         this.groundEmitter.setYSpeed(-1000, -500);
 
@@ -283,7 +283,7 @@
         this.bubbleEmitter.emitX = this.position.x;
         this.bubbleEmitter.emitY = this.position.y;
         this.groundEmitter.emitX = this.position.x;
-        this.groundEmitter.emitY = this.position.y;
+        this.groundEmitter.emitY = this.position.y + this.body.height;
     };
 
     Game.Character.prototype.update = function() {
