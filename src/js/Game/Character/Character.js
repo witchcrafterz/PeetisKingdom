@@ -125,6 +125,18 @@
         this.thudSFX = this.game.add.audio('thud');
 
         /**
+         * The footstep sound effect
+         * @type {Phaser.Audio}
+         */
+        this.footstepSFX = this.game.add.audio('footstep');
+
+        /**
+         * How many steps the player takes every second
+         * @type {Number}
+         */
+        this.stepsPerSecond = 3;
+
+        /**
          * If the character is in god mode or not. God mode allows for flying
          * @type {Boolean}
          */
@@ -135,7 +147,8 @@
          * @type {Object}
          */
         this._data = {
-            prevY: -1
+            prevY: -1,
+            lastStep: -1
         };
 
         /**
@@ -316,6 +329,11 @@
             if (!this.body.drag.equals(this.desiredDrag)) {
                 this.body.drag.setTo(this.desiredDrag.x, this.desiredDrag.y);
             }
+        }
+
+        if (this.states.walking && this.game.time.now - this._data.lastStep > 1000 / this.stepsPerSecond) {
+            this.footstepSFX.playFrom(this.position);
+            this._data.lastStep = this.game.time.now;
         }
 
         //If submerged, reduce speed        
