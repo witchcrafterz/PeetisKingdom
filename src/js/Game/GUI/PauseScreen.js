@@ -29,10 +29,19 @@
         this.add(this.resumeBtn);
 
         /**
+         * The toggle multiplayer button
+         * @type {Game.GUI.Button}
+         */
+        this.multiplayerBtn = new Game.GUI.Button(this.game, this.game.width * 0.5, this.resumeBtn.position.y + this.resumeBtn.height + this.padding, 'knapp', 'Multiplayer:\noff', 'font', this.toggleMultiplayer, this);
+        this.multiplayerBtn.scale.setTo(0.8);
+        this.multiplayerBtn.position.x -= (this.multiplayerBtn.width + this.padding) * 0.5;
+        this.add(this.multiplayerBtn);
+
+        /**
          * The toggle mute button
          * @type {Game.GUI.Button}
          */
-        this.musicBtn = new Game.GUI.Button(this.game, this.game.width * 0.5, this.resumeBtn.position.y + this.resumeBtn.height + this.padding, 'knapp', 'music_btn', 'font', this.toggleMusic, this);
+        this.musicBtn = new Game.GUI.Button(this.game, this.game.width * 0.5, this.multiplayerBtn.position.y + this.multiplayerBtn.height + this.padding, 'knapp', 'music_btn', 'font', this.toggleMusic, this);
         this.musicBtn.scale.setTo(0.8);
         this.musicBtn.position.x -= (this.musicBtn.width + this.padding) * 0.5;
         this._refreshMusicBtn();
@@ -47,10 +56,8 @@
         this.fullscreen.position.x += (this.musicBtn.width + this.padding) * 0.5;
         this.add(this.fullscreen);
 
-        this.multiplayerBtn = new Game.GUI.Button(this.game, this.game.width * 0.5, this.musicBtn.position.y + this.musicBtn.height + this.padding, 'knapp', 'Multiplayer:\noff', 'font', this.toggleMultiplayer, this);
-        this.multiplayerBtn.scale.setTo(0.8);
-        this.multiplayerBtn.position.x -= (this.multiplayerBtn.width + this.padding) * 0.5;
-        this.add(this.multiplayerBtn);
+
+
 
         this.alpha = 0;
         this.game.add.tween(this).to({alpha: 1}, 300).start();
