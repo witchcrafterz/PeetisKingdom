@@ -128,7 +128,7 @@
          * Internal cache
          * @type {Object}
          */
-        this._cache = {
+        this._data = {
             prevY: -1
         };
 
@@ -164,7 +164,7 @@
      * @return {Undefined}
      */
     Game.Character.prototype.resetJump = function() {
-        var deltaVel = this._cache.prevY - this.body.velocity.y;
+        var deltaVel = this._data.prevY - this.body.velocity.y;
         if (deltaVel > 1500) {
             // Max deltaVel is 2000. 20 is the lowest amount of particles. Max amount of particles will amount to ~70
             var particles = 20 + (deltaVel - 1500) / 10;
@@ -275,8 +275,8 @@
         }
     };
 
-    Game.Character.prototype._setCache = function() {
-        this._cache.prevY = this.body.velocity.y;
+    Game.Character.prototype._setData = function() {
+        this._data.prevY = this.body.velocity.y;
     };
 
     Game.Character.prototype.updateEmitters = function() {
@@ -332,7 +332,7 @@
         // Set state on bubble emitter
         this.bubbleEmitter.on = this.submerged;
 
-        this._setCache();
+        this._setData();
     };
 
 })();
