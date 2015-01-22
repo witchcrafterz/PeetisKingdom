@@ -110,10 +110,10 @@
     <property name="leave" value="stopMusic"/>
    </properties>
   </object>
-  <object name="boss music" type="trigger" x="10461.2" y="6039.15" width="489.577" height="337.697">
+  <object name="music" type="trigger" x="10461.2" y="6039.15" width="489.577" height="337.697">
    <properties>
     <property name="enter" value="playMusic"/>
-    <property name="enterArgs" value="solskenspromenad"/>
+    <property name="enterArgs" value="lugnofin"/>
    </properties>
   </object>
   <object name="checkpointsdasd" type="trigger" x="9247.33" y="8302" width="209.333" height="324">
@@ -249,6 +249,12 @@
   <object name="ropePart" type="part" x="10368.5" y="7601.46" width="65.5758" height="339.754"/>
   <object name="ropePart" type="part" x="9852.55" y="7605.46" width="66.9091" height="267.754"/>
   <object name="ropePart" type="part" x="9468.55" y="7666.79" width="68.2425" height="399.754"/>
+  <object name="music" type="trigger" x="7543.09" y="6031.15" width="489.577" height="337.697">
+   <properties>
+    <property name="enter" value="playMusic"/>
+    <property name="enterArgs" value="truddelutt"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="sprites">
   <object name="Grasshopper" type="entity" x="14956" y="6202" width="134" height="24">

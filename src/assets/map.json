@@ -296,11 +296,11 @@
                 }, 
                 {
                  "height":337.697,
-                 "name":"boss music",
+                 "name":"music",
                  "properties":
                     {
                      "enter":"playMusic",
-                     "enterArgs":"solskenspromenad"
+                     "enterArgs":"lugnofin"
                     },
                  "rotation":0,
                  "type":"trigger",
@@ -726,6 +726,21 @@
                  "width":68.2425,
                  "x":9468.55,
                  "y":7666.79
+                }, 
+                {
+                 "height":337.697,
+                 "name":"music",
+                 "properties":
+                    {
+                     "enter":"playMusic",
+                     "enterArgs":"truddelutt"
+                    },
+                 "rotation":0,
+                 "type":"trigger",
+                 "visible":true,
+                 "width":489.577,
+                 "x":7543.09028787879,
+                 "y":6031.1515
                 }],
          "opacity":1,
          "type":"objectgroup",

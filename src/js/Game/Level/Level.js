@@ -141,6 +141,7 @@
         // Credits of boss music due to 13NHarri @ http://freesound.org/people/13NHarri/sounds/251334/
         this.game.load.audio('boss', ['assets/music/boss.mp3', 'assets/music/boss.ogg']);
         this.game.load.audio('truddelutt', ['assets/music/truddelutt.mp3', 'assets/music/truddelutt.ogg']);
+        this.game.load.audio('lugnofin', ['assets/music/Lugn_och_Fin_Symaskin.mp3', 'assets/music/Lugn_och_Fin_Symaskin.ogg']);
 
         this.game.load.audio('solskenspromenad', 'assets/Solskenspromenad.mp3');
 
