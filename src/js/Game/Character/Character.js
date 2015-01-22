@@ -137,8 +137,12 @@
          * @type {Phaser.Particles.Arcade}
          */
         this.bubbleEmitter = this.game.add.emitter(0, 0);
-        this.bubbleEmitter.makeParticles('UI', [14,15,16], 20);
+        this.bubbleEmitter.makeParticles('bubbles', [0,1,2,3,4,5,6], 20);
         this.bubbleEmitter.gravity = -3750;
+        this.bubbleEmitter.maxRotation = 0;
+        this.bubbleEmitter.minRotation = 0;
+        this.bubbleEmitter.start(false, 5000);
+        this.bubbleEmitter.on = false;
 
         /**
          * An emitter that emits particles when hitting and/or running ont he ground
@@ -275,12 +279,22 @@
         this._cache.prevY = this.body.velocity.y;
     };
 
+    Game.Character.prototype.updateEmitters = function() {
+        this.bubbleEmitter.emitX = this.position.x;
+        this.bubbleEmitter.emitY = this.position.y;
+        this.groundEmitter.emitX = this.position.x;
+        this.groundEmitter.emitY = this.position.y;
+    };
+
     Game.Character.prototype.update = function() {
         // Calculate states
         this._calculateStates();
 
         // Zero accleration every tick, for easier adding of acceleration and so that body.drag have an affect
         this.body.acceleration.setTo(0);
+
+        // Update all emitters to follow player position
+        this.updateEmitters();
 
         // If there is a controller, handle it
         if (this.controller) {
@@ -314,6 +328,9 @@
         if (this.states.tryWalking && !this.godMode && !this.flicked) {
             this.body.velocity.x = Math.clamp(this.body.velocity.x, -this.walkingVelocity, this.walkingVelocity);
         }
+
+        // Set state on bubble emitter
+        this.bubbleEmitter.on = this.submerged;
 
         this._setCache();
     };

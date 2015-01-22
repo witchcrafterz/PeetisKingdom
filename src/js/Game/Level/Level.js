@@ -148,6 +148,8 @@
         this.game.load.image('ornithologist', 'assets/characters/ornithologist.png');
         this.game.load.image('ladydog', 'assets/characters/ladydog.png');
 
+        this.game.load.spritesheet('bubbles', 'assets/particles/bubbles.png', 64, 64);
+
         this.game.load.json('dialogues', 'assets/data/dialogues.json');
 
         this.game.load.tilemap('map', 'assets/map.json', null, Phaser.Tilemap.TILED_JSON);
