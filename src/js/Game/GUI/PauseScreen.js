@@ -32,11 +32,11 @@
          * The toggle mute button
          * @type {Game.GUI.Button}
          */
-        this.mute = new Game.GUI.Button(this.game, this.game.width * 0.5, this.resumeBtn.position.y + this.resumeBtn.height + this.padding, 'knapp', 'mute_btn', 'font', this.toggleMute, this);
-        this.mute.scale.setTo(0.8);
-        this.mute.position.x -= (this.mute.width + this.padding) * 0.5;
-        this._refreshMute();
-        this.add(this.mute);
+        this.musicBtn = new Game.GUI.Button(this.game, this.game.width * 0.5, this.resumeBtn.position.y + this.resumeBtn.height + this.padding, 'knapp', 'music_btn', 'font', this.toggleMusic, this);
+        this.musicBtn.scale.setTo(0.8);
+        this.musicBtn.position.x -= (this.musicBtn.width + this.padding) * 0.5;
+        this._refreshMusicBtn();
+        this.add(this.musicBtn);
 
         /**
          * The toggle fullscreen button
@@ -44,10 +44,10 @@
          */
         this.fullscreen = new Game.GUI.Button(this.game, this.game.width * 0.5, this.resumeBtn.position.y + this.resumeBtn.height + this.padding, 'knapp', 'Toggle\nFullscreen', 'font', this.toggleFullscreen, this);
         this.fullscreen.scale.setTo(0.8);
-        this.fullscreen.position.x += (this.mute.width + this.padding) * 0.5;
+        this.fullscreen.position.x += (this.musicBtn.width + this.padding) * 0.5;
         this.add(this.fullscreen);
 
-        this.multiplayerBtn = new Game.GUI.Button(this.game, this.game.width * 0.5, this.mute.position.y + this.mute.height + this.padding, 'knapp', 'Toggle\nMultiplayer', 'font', this.toggleMultiplayer, this);
+        this.multiplayerBtn = new Game.GUI.Button(this.game, this.game.width * 0.5, this.musicBtn.position.y + this.musicBtn.height + this.padding, 'knapp', 'Multiplayer:\noff', 'font', this.toggleMultiplayer, this);
         this.multiplayerBtn.scale.setTo(0.8);
         this.multiplayerBtn.position.x -= (this.multiplayerBtn.width + this.padding) * 0.5;
         this.add(this.multiplayerBtn);
@@ -69,13 +69,13 @@
         this.game.state.getCurrentState().resume();
     };
 
-    Game.GUI.PauseScreen.prototype.toggleMute = function() {
+    Game.GUI.PauseScreen.prototype.toggleMusic = function() {
         this.game.state.getCurrentState().toggleMusic();
-        this._refreshMute();
+        this._refreshMusicBtn();
     };
 
-    Game.GUI.PauseScreen.prototype._refreshMute = function() {
-        this.mute.text = !this.game.musicMuted ? 'Mute' : 'Unmute';
+    Game.GUI.PauseScreen.prototype._refreshMusicBtn = function() {
+        this.musicBtn.text = !this.game.musicMuted ? 'Music: on' : 'Music: off';
     };
 
     Game.GUI.PauseScreen.prototype.toggleFullscreen = function() {
@@ -86,10 +86,12 @@
         if (this.game.mpClient) {
             this.game.mpClient.disconnect();
             this.game.mpClient = null;
+            this.multiplayerBtn.text = 'Multiplayer:\noff';
         } else {
             if (io) {
                 var serverUrl = 'http://{0}:{1}'.format(window.location.hostname, 3001);
                 this._createMPClient(serverUrl);
+                this.multiplayerBtn.text = 'Multiplayer:\non';
             }
         }
     };
