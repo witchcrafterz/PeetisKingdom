@@ -150,6 +150,8 @@
         this.game.load.image('bob', 'assets/characters/bob.png');
         this.game.load.image('ornithologist', 'assets/characters/ornithologist.png');
         this.game.load.image('ladydog', 'assets/characters/ladydog.png');
+        this.game.load.image('sidecut', 'assets/characters/sidecut.png');
+        this.game.load.image('florence', 'assets/characters/florence.png');
 
         this.game.load.spritesheet('bubbles', 'assets/particles/bubbles.png', 64, 64);
         this.game.load.image('dirtParticle', 'assets/particles/dirt_particle.png');
