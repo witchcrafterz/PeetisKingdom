@@ -42,7 +42,6 @@
                 {
                  "ellipse":true,
                  "height":192,
-                 "id":1,
                  "name":"spawn point",
                  "properties":
                     {
@@ -57,7 +56,6 @@
                 }, 
                 {
                  "height":248.424,
-                 "id":2,
                  "name":"intro dialogue",
                  "properties":
                     {
@@ -72,7 +70,6 @@
                 }, 
                 {
                  "height":451,
-                 "id":3,
                  "name":"double jump dialogue",
                  "properties":
                     {
@@ -88,7 +85,6 @@
                 }, 
                 {
                  "height":376,
-                 "id":4,
                  "name":"grasshopper dialogue",
                  "properties":
                     {
@@ -105,7 +101,6 @@
                 }, 
                 {
                  "height":180,
-                 "id":5,
                  "name":"direction dialogue",
                  "properties":
                     {
@@ -120,7 +115,6 @@
                 }, 
                 {
                  "height":1280,
-                 "id":6,
                  "name":"water",
                  "properties":
                     {
@@ -137,7 +131,6 @@
                 }, 
                 {
                  "height":797.818,
-                 "id":7,
                  "name":"waterPart",
                  "properties":
                     {
@@ -152,7 +145,6 @@
                 }, 
                 {
                  "height":224.242,
-                 "id":8,
                  "name":"castle dialogue",
                  "properties":
                     {
@@ -167,11 +159,10 @@
                 }, 
                 {
                  "height":2696,
-                 "id":9,
                  "name":"ladder",
                  "properties":
                     {
-                     "enter":"enterWater",
+                     "enter":"enterLadder",
                      "leave":"leaveLadder"
                     },
                  "rotation":0,
@@ -183,7 +174,6 @@
                 }, 
                 {
                  "height":392,
-                 "id":10,
                  "name":"ice",
                  "properties":
                     {
@@ -200,7 +190,6 @@
                 }, 
                 {
                  "height":1459.89,
-                 "id":11,
                  "name":"icePart",
                  "properties":
                     {
@@ -215,7 +204,6 @@
                 }, 
                 {
                  "height":363,
-                 "id":12,
                  "name":"gift dialog",
                  "properties":
                     {
@@ -232,7 +220,6 @@
                 }, 
                 {
                  "height":383,
-                 "id":13,
                  "name":"bird dialogue",
                  "properties":
                     {
@@ -249,7 +236,6 @@
                 }, 
                 {
                  "height":250.667,
-                 "id":14,
                  "name":"checkpoint",
                  "properties":
                     {
@@ -264,7 +250,6 @@
                 }, 
                 {
                  "height":442.424,
-                 "id":15,
                  "name":"lava",
                  "properties":
                     {
@@ -279,7 +264,6 @@
                 }, 
                 {
                  "height":404,
-                 "id":16,
                  "name":"octopus dialogue",
                  "properties":
                     {
@@ -296,7 +280,6 @@
                 }, 
                 {
                  "height":769.697,
-                 "id":17,
                  "name":"boss music",
                  "properties":
                     {
@@ -313,7 +296,6 @@
                 }, 
                 {
                  "height":337.697,
-                 "id":18,
                  "name":"boss music",
                  "properties":
                     {
@@ -329,7 +311,6 @@
                 }, 
                 {
                  "height":324,
-                 "id":19,
                  "name":"checkpointsdasd",
                  "properties":
                     {
@@ -344,11 +325,10 @@
                 }, 
                 {
                  "height":1532.36,
-                 "id":20,
                  "name":"ladder",
                  "properties":
                     {
-                     "enter":"enterWater",
+                     "enter":"enterLadder",
                      "leave":"leaveLadder"
                     },
                  "rotation":0,
@@ -360,7 +340,6 @@
                 }, 
                 {
                  "height":150.5,
-                 "id":21,
                  "name":"icePart",
                  "properties":
                     {
@@ -375,7 +354,6 @@
                 }, 
                 {
                  "height":171.167,
-                 "id":22,
                  "name":"icePart",
                  "properties":
                     {
@@ -390,7 +368,6 @@
                 }, 
                 {
                  "height":170.424,
-                 "id":23,
                  "name":"lava",
                  "properties":
                     {
@@ -405,7 +382,6 @@
                 }, 
                 {
                  "height":250.667,
-                 "id":24,
                  "name":"checkpoint",
                  "properties":
                     {
@@ -420,7 +396,6 @@
                 }, 
                 {
                  "height":250.667,
-                 "id":25,
                  "name":"checkpoint",
                  "properties":
                     {
@@ -435,7 +410,6 @@
                 }, 
                 {
                  "height":250.667,
-                 "id":26,
                  "name":"checkpoint",
                  "properties":
                     {
@@ -450,11 +424,10 @@
                 }, 
                 {
                  "height":382,
-                 "id":27,
                  "name":"ladder",
                  "properties":
                     {
-                     "enter":"enterWater",
+                     "enter":"enterLadder",
                      "leave":"leaveLadder"
                     },
                  "rotation":0,
@@ -466,7 +439,6 @@
                 }, 
                 {
                  "height":315.152,
-                 "id":28,
                  "name":"secret",
                  "properties":
                     {
@@ -482,11 +454,10 @@
                 }, 
                 {
                  "height":376.667,
-                 "id":29,
                  "name":"ladder",
                  "properties":
                     {
-                     "enter":"enterWater",
+                     "enter":"enterLadder",
                      "leave":"leaveLadder"
                     },
                  "rotation":0,
@@ -498,11 +469,10 @@
                 }, 
                 {
                  "height":2122.12,
-                 "id":30,
                  "name":"ladder",
                  "properties":
                     {
-                     "enter":"enterWater",
+                     "enter":"enterLadder",
                      "leave":"leaveLadder"
                     },
                  "rotation":0,
@@ -514,11 +484,10 @@
                 }, 
                 {
                  "height":810,
-                 "id":31,
                  "name":"ladder",
                  "properties":
                     {
-                     "enter":"enterWater",
+                     "enter":"enterLadder",
                      "leave":"leaveLadder"
                     },
                  "rotation":0,
@@ -530,11 +499,10 @@
                 }, 
                 {
                  "height":210,
-                 "id":32,
                  "name":"ladder",
                  "properties":
                     {
-                     "enter":"enterWater",
+                     "enter":"enterLadder",
                      "leave":"leaveLadder"
                     },
                  "rotation":0,
@@ -546,11 +514,10 @@
                 }, 
                 {
                  "height":272.97,
-                 "id":33,
                  "name":"ladder",
                  "properties":
                     {
-                     "enter":"enterWater",
+                     "enter":"enterLadder",
                      "leave":"leaveLadder"
                     },
                  "rotation":0,
@@ -562,11 +529,10 @@
                 }, 
                 {
                  "height":270.606,
-                 "id":34,
                  "name":"ladder",
                  "properties":
                     {
-                     "enter":"enterWater",
+                     "enter":"enterLadder",
                      "leave":"leaveLadder"
                     },
                  "rotation":0,
@@ -578,7 +544,6 @@
                 }, 
                 {
                  "height":174.909,
-                 "id":35,
                  "name":"checkpoint",
                  "properties":
                     {
@@ -593,7 +558,6 @@
                 }, 
                 {
                  "height":252.667,
-                 "id":36,
                  "name":"checkpoint",
                  "properties":
                     {
@@ -608,11 +572,10 @@
                 }, 
                 {
                  "height":1312.3,
-                 "id":37,
                  "name":"ladder",
                  "properties":
                     {
-                     "enter":"enterWater",
+                     "enter":"enterLadder",
                      "leave":"leaveLadder"
                     },
                  "rotation":0,
@@ -624,7 +587,6 @@
                 }, 
                 {
                  "height":224.242,
-                 "id":38,
                  "name":"ornithologists home",
                  "properties":
                     {
@@ -639,7 +601,6 @@
                 }, 
                 {
                  "height":224.242,
-                 "id":39,
                  "name":"ornithologists direction",
                  "properties":
                     {
@@ -654,7 +615,6 @@
                 }, 
                 {
                  "height":218.909,
-                 "id":40,
                  "name":"slippery warning",
                  "properties":
                     {
@@ -669,7 +629,6 @@
                 }, 
                 {
                  "height":224.242,
-                 "id":41,
                  "name":"ornithologists door",
                  "properties":
                     {
@@ -684,7 +643,6 @@
                 }, 
                 {
                  "height":406.06,
-                 "id":42,
                  "name":"ornithologists",
                  "properties":
                     {
@@ -699,11 +657,10 @@
                 }, 
                 {
                  "height":371.754,
-                 "id":43,
                  "name":"rope",
                  "properties":
                     {
-                     "enter":"enterWater",
+                     "enter":"enterLadder",
                      "leave":"leaveLadder",
                      "part":"ropePart"
                     },
@@ -716,7 +673,6 @@
                 }, 
                 {
                  "height":159.754,
-                 "id":44,
                  "name":"ropePart",
                  "properties":
                     {
@@ -731,7 +687,6 @@
                 }, 
                 {
                  "height":339.754,
-                 "id":45,
                  "name":"ropePart",
                  "properties":
                     {
@@ -746,7 +701,6 @@
                 }, 
                 {
                  "height":267.754,
-                 "id":46,
                  "name":"ropePart",
                  "properties":
                     {
@@ -761,7 +715,6 @@
                 }, 
                 {
                  "height":399.754,
-                 "id":47,
                  "name":"ropePart",
                  "properties":
                     {
@@ -788,7 +741,6 @@
          "objects":[
                 {
                  "height":24,
-                 "id":48,
                  "name":"Grasshopper",
                  "properties":
                     {
@@ -804,7 +756,6 @@
                 }, 
                 {
                  "height":24,
-                 "id":49,
                  "name":"Guard",
                  "properties":
                     {
@@ -823,7 +774,6 @@
                 }, 
                 {
                  "height":24,
-                 "id":50,
                  "name":"Princess Peeti",
                  "properties":
                     {
@@ -838,7 +788,6 @@
                 }, 
                 {
                  "height":24,
-                 "id":51,
                  "name":"Giant Bird",
                  "properties":
                     {
@@ -853,7 +802,6 @@
                 }, 
                 {
                  "height":46,
-                 "id":52,
                  "name":"Ornithologist",
                  "properties":
                     {
@@ -872,7 +820,6 @@
                 }, 
                 {
                  "height":188,
-                 "id":53,
                  "name":"Octopus",
                  "properties":
                     {
@@ -891,7 +838,6 @@
                 }, 
                 {
                  "height":24,
-                 "id":54,
                  "name":"villager3",
                  "properties":
                     {
@@ -908,7 +854,6 @@
                 }, 
                 {
                  "height":24,
-                 "id":55,
                  "name":"villager2",
                  "properties":
                     {
@@ -925,7 +870,6 @@
                 }, 
                 {
                  "height":24,
-                 "id":56,
                  "name":"Bybo",
                  "properties":
                     {
@@ -942,7 +886,6 @@
                 }, 
                 {
                  "height":24,
-                 "id":57,
                  "name":"Bybo",
                  "properties":
                     {
@@ -958,7 +901,6 @@
                 }, 
                 {
                  "height":24,
-                 "id":58,
                  "name":"Ladydog",
                  "properties":
                     {
@@ -974,7 +916,6 @@
                 }, 
                 {
                  "height":24,
-                 "id":59,
                  "name":"Bybo",
                  "properties":
                     {
@@ -990,7 +931,6 @@
                 }, 
                 {
                  "height":24,
-                 "id":60,
                  "name":"Bybo",
                  "properties":
                     {
@@ -1006,7 +946,6 @@
                 }, 
                 {
                  "height":0,
-                 "id":71,
                  "name":"",
                  "properties":
                     {
@@ -1021,7 +960,6 @@
                 }, 
                 {
                  "height":41.2882,
-                 "id":72,
                  "name":"",
                  "properties":
                     {
@@ -1036,7 +974,6 @@
                 }, 
                 {
                  "height":41.2882,
-                 "id":73,
                  "name":"",
                  "properties":
                     {
@@ -1051,7 +988,6 @@
                 }, 
                 {
                  "height":41.2882,
-                 "id":74,
                  "name":"",
                  "properties":
                     {
@@ -1078,7 +1014,6 @@
          "objects":[
                 {
                  "height":375,
-                 "id":61,
                  "name":"An unexpected encounter",
                  "properties":
                     {
@@ -1100,7 +1035,6 @@
                 }, 
                 {
                  "height":308,
-                 "id":62,
                  "name":"Urge to explore",
                  "properties":
                     {
@@ -1116,7 +1050,6 @@
                 }, 
                 {
                  "height":369,
-                 "id":63,
                  "name":"A royal visit",
                  "properties":
                     {
@@ -1137,7 +1070,6 @@
                 }, 
                 {
                  "height":371,
-                 "id":64,
                  "name":"A very mean ornithologist",
                  "properties":
                     {
@@ -1159,7 +1091,6 @@
                 }, 
                 {
                  "height":390.667,
-                 "id":65,
                  "name":"The sky up above",
                  "properties":
                     {
@@ -1194,7 +1125,6 @@
          "objects":[
                 {
                  "height":69.697,
-                 "id":66,
                  "name":"",
                  "properties":
                     {
@@ -1221,7 +1151,6 @@
          "objects":[
                 {
                  "height":202.788,
-                 "id":67,
                  "name":"Leave creater",
                  "properties":
                     {
@@ -1248,7 +1177,6 @@
          "objects":[
                 {
                  "height":0,
-                 "id":68,
                  "name":"",
                  "properties":
                     {
@@ -1275,7 +1203,6 @@
          "objects":[
                 {
                  "height":0,
-                 "id":69,
                  "name":"",
                  "properties":
                     {
@@ -1295,7 +1222,6 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":75,
  "orientation":"orthogonal",
  "properties":
     {

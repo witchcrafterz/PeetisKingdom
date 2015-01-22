@@ -290,14 +290,17 @@
                 this.p1.submerged = true;
             },
 
+            'enterLadder': function() {
+                this.p1.climbing = true;
+            },
+
             'leaveWater': function() {
                 this.p1.submerged = false;
-                // Boost to help player up
-                this.p1.body.velocity.y = -1000;
+                this.p1.resetJump();
             },
 
             'leaveLadder': function() {
-                this.p1.submerged = false;
+                this.p1.climbing = false;
                 this.p1.resetJump();
             },
 

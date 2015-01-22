@@ -181,7 +181,7 @@
      * @return {undefined}
      */
     Game.Character.prototype._jump = function() {
-        if (this.submerged) {
+        if (this.submerged || this.climbing) {
             if (this.controller.jump.isDown) {
                 this.body.velocity.y = -400;
             }
@@ -312,7 +312,7 @@
         }
 
         //If submerged, reduce speed        
-        if (this.submerged) {
+        if (this.submerged || this.climbing) {
             this.body.velocity.y *= 0.85;
             this.body.velocity.x *= 0.95;
         }
