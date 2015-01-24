@@ -227,6 +227,8 @@
     Game.ObjectiveManager.prototype.isCompleted = function(objectives) {
         if (!objectives) return true;
 
+        if (objectives.constructor === String) objectives = objectives.split(',');
+
         var toCheck = _.filter(this.allObjectives, function(objective) {
                 return _.contains(objectives, objective.properties.id);
             });
