@@ -384,6 +384,40 @@
                     duration = duration || 1000;
                     this.music.fadeOut(duration);
                 }
+            },
+
+            'startEnding': function() {
+                this.p1.body.enable = false;
+
+                this.game.add.tween(this.p1).to({rotation: Math.PI * 2}, 1000, undefined, false, 500, -1, false).start();
+                var scaleTween = this.game.add.tween(this.p1.scale)
+                    .to({x: 3, y: 3}, undefined, undefined, false, 500)
+                    .start();
+
+                scaleTween.onComplete.add(function() {
+                    scaleTween.to({x: 6, y: 6}, 1000, undefined, false, undefined, -1, true).start();
+                });
+
+                this.game.add.tween(this.p1)
+                    .to({alpha: 0}, 5000, Phaser.Easing.Bounce.In, false, 500)
+                    .start()
+                    .onComplete.add(function() {
+                        console.log('sup');
+                        var bg = this.game.add.bitmapData(this.game.width, this.game.height);
+                        var bgImg = this.game.add.image(0, 0, bg);
+                        bgImg.fixedToCamera = true;
+                        bg.fill(0, 0, 0);
+
+                        var endText = this.game.add.bitmapText(this.game.width * 0.5, this.game.height * 0.5, 'font', 'The End!');
+                        endText.x -= endText.width * 0.5;
+
+                        bgImg.addChild(endText);
+
+                        bgImg.alpha = 0;
+                        this.game.add.tween(bgImg).to({alpha: 1}).start();
+
+                    }, this);
+
             }
         };
     };
