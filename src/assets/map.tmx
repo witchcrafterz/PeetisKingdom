@@ -260,6 +260,12 @@
     <property name="dialogue" value="peetiQuest"/>
    </properties>
   </object>
+  <object name="portal trigger" type="trigger" x="280" y="6000" width="264" height="404">
+   <properties>
+    <property name="enter" value="startEnding"/>
+    <property name="enterCriteria" value="portalOperational"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="sprites">
   <object name="Grasshopper" type="entity" x="14956" y="6202" width="134" height="24">
@@ -426,7 +432,6 @@
     <property name="frame" value="27"/>
     <property name="id" value="needPower"/>
     <property name="itemLayer" value="needPower"/>
-    <property name="onComplete" value="startEnding"/>
     <property name="return" value="true"/>
     <property name="spritesheet" value="UI"/>
     <property name="status" value="Find enough batteries to power \nPrincess Peeti's world-jumping-machine. \nYou have found {0} out of {1} batteries"/>

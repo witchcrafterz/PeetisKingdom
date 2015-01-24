@@ -753,8 +753,23 @@
                  "type":"dialogue",
                  "visible":true,
                  "width":626.333,
-                 "x":509.3335,
+                 "x":509.333,
                  "y":6075.5
+                }, 
+                {
+                 "height":404,
+                 "name":"portal trigger",
+                 "properties":
+                    {
+                     "enter":"startEnding",
+                     "enterCriteria":"portalOperational"
+                    },
+                 "rotation":0,
+                 "type":"trigger",
+                 "visible":true,
+                 "width":264,
+                 "x":280,
+                 "y":6000
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1137,14 +1152,13 @@
                  "y":7874.33
                 }, 
                 {
-                 "height":275.757575757576,
+                 "height":275.758,
                  "name":"Needs more power!",
                  "properties":
                     {
                      "frame":"27",
                      "id":"needPower",
                      "itemLayer":"needPower",
-                     "onComplete":"startEnding",
                      "return":"true",
                      "spritesheet":"UI",
                      "status":"Find enough batteries to power \\nPrincess Peeti's world-jumping-machine. \\nYou have found {0} out of {1} batteries",
@@ -1153,9 +1167,9 @@
                  "rotation":0,
                  "type":"collect",
                  "visible":true,
-                 "width":621.212121212121,
-                 "x":527.242424242424,
-                 "y":6097.27272727273
+                 "width":621.212,
+                 "x":527.242,
+                 "y":6097.27
                 }],
          "opacity":1,
          "properties":
@@ -1274,7 +1288,7 @@
         }, 
         {
          "draworder":"topdown",
-         "height":160,
+         "height":0,
          "name":"needPower",
          "objects":[
                 {
@@ -1302,8 +1316,8 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":13272.7272727273,
-                 "y":5142.42424242424
+                 "x":13272.7,
+                 "y":5142.42
                 }, 
                 {
                  "height":0,
@@ -1359,12 +1373,12 @@
                  "visible":true,
                  "width":0,
                  "x":2008,
-                 "y":4105.33333333333
+                 "y":4105.33
                 }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
-         "width":300,
+         "width":0,
          "x":0,
          "y":0
         }],
