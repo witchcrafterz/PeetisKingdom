@@ -188,11 +188,16 @@
             this._hidden = value;
 
             if (this._hidden) {
-                
                 var add = this.padding;
 
-                this.game.add.tween(this.dialoguePanel.position).to({ y: this.game.height + add }, 1000, this.easing).start();
+                this.game.add.tween(this.dialoguePanel.position)
+                    .to({ y: this.game.height + add }, 1000, this.easing)
+                    .start()
+                    .onComplete.add(function() {
+                        this.dialoguePanel.visible = false;
+                    }, this);
             } else {
+                this.dialoguePanel.visible = true;
                 this.game.add.tween(this.dialoguePanel.position).to({ y: this.game.height - this.dialoguePanel.height - this.padding }, 1000, this.easing).start();
             }
         }
