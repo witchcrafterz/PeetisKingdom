@@ -2,8 +2,8 @@
     'use strict';
 
     Phaser.Sound.prototype.playFrom = function(point, marker, position, volume, loop, forceRestart) {
-        var distance = point.distance(this.game.camera.position);
-        var realVolume = Math.max(0, this.game.camera.width - distance) / this.game.camera.width;
+        var distance = point.distance(this.game.state.getCurrentState().p1.position);
+        var realVolume = Math.max(0, this.game.width * 0.5 - distance) / (this.game.width * 0.5);
         volume = (volume || 1) * realVolume;
 
         if (volume === 0) return;
