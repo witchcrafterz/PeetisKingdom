@@ -285,6 +285,9 @@
             },
             'jump': function() {
                 return this.p1.controller.jump.isDown;
+            },
+            'portalOperational': function() {
+                return this.objectiveManager.isCompleted('needPower');
             }
         };
     };
