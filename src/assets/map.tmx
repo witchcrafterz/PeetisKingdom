@@ -255,6 +255,11 @@
     <property name="enterArgs" value="truddelutt"/>
    </properties>
   </object>
+  <object name="peetis dialogue" type="dialogue" x="509.333" y="6075.5" width="626.333" height="306">
+   <properties>
+    <property name="dialogue" value="peetiQuest"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="sprites">
   <object name="Grasshopper" type="entity" x="14956" y="6202" width="134" height="24">
@@ -272,7 +277,7 @@
     <property name="magnitude" value="1500"/>
    </properties>
   </object>
-  <object name="Princess Peeti" type="entity" x="589" y="6208" width="134" height="24">
+  <object name="Princess Peeti" type="character" x="589" y="6208" width="134" height="24">
    <properties>
     <property name="key" value="grasshopper"/>
    </properties>
@@ -416,6 +421,18 @@
     <property name="statusReturn" value="Bring the feather to the octopus"/>
    </properties>
   </object>
+  <object name="Needs more power!" type="collect" x="527.242" y="6097.27" width="621.212" height="275.758">
+   <properties>
+    <property name="frame" value="27"/>
+    <property name="id" value="needPower"/>
+    <property name="itemLayer" value="needPower"/>
+    <property name="onComplete" value="startEnding"/>
+    <property name="return" value="true"/>
+    <property name="spritesheet" value="UI"/>
+    <property name="status" value="Find enough batteries to power \nPrincess Peeti's world-jumping-machine. \nYou have found {0} out of {1} batteries"/>
+    <property name="statusReturn" value="Return to Peeti with the batteries"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="grasshopperCollect">
   <object x="15878.9" y="8168.73" width="72.7273" height="69.697"/>
@@ -428,5 +445,13 @@
  </objectgroup>
  <objectgroup name="meanOrnithologist">
   <object x="8636" y="1416"/>
+ </objectgroup>
+ <objectgroup name="needPower">
+  <object x="2143" y="2444"/>
+  <object x="13272.7" y="5142.42"/>
+  <object x="18401" y="5077"/>
+  <object x="14232" y="5842"/>
+  <object x="4070" y="266"/>
+  <object x="2008" y="4105.33"/>
  </objectgroup>
 </map>

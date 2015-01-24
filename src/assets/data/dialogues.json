@@ -128,6 +128,29 @@
         "title": "Grasshopper:"
     },
 
+    "peetiQuest": {
+        "conversation": [{
+            "text": "Oh, and who might you be, dear?"
+        }, {
+            "text": "I'm a person who's lost! \nThe villagers I've talked to told me \nyou can help me get home?",
+            "title": "You:"
+        }, {
+            "text": "Oh my goodness, I see! Tell me, \nwhere are you from?"
+        }, {
+            "text": "From a whole other world, I think. \nWhere grasshoppers are small and only \nhumans can talk",
+            "title": "You:"
+        }, {
+            "text": "Oh, okay, I see. Seems rather a bit dull! \nBut if you wish, I will help you! I have heard of \nall the good you have done, helping the citizens \nof my land",
+            "fontScale": 0.8
+        }, {
+            "text": "There is however one slight problem... I have lost \nall the batteries to my world-jumping-machine while \nwalking around my land.",
+            "fontScale": 0.8
+        }, {
+            "text": "If you can find the batteries, you \nare more than welcome to use my machine."
+        }],
+        "title": "Princess Peeti:"
+    },
+
     "castleDialogue": {
         "conversation": [{
             "title": "Directions",
