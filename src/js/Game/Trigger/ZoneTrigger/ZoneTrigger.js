@@ -71,7 +71,7 @@
                 bottom = Math.max(bottom, zone.bottom);
             });
             // Padding is to make sure the narrow phase register that the player has exited before broadphase make it not able to check
-            var rect = new Phaser.Rectangle(left - padding, top - padding, right - left + padding, bottom - top + padding);
+            var rect = new Phaser.Rectangle(left - padding, top - padding, right - left + padding * 2, bottom - top + padding * 2);
             this._broadTrigger = new Game.Trigger.ZoneTrigger(this.game, true, rect, this.toTrack);
             this.game.triggerManager.addTrigger(this._broadTrigger);
         }
