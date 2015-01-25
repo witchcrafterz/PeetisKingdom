@@ -405,7 +405,6 @@
                     .to({alpha: 0}, 5000, Phaser.Easing.Bounce.In, false, 500)
                     .start()
                     .onComplete.add(function() {
-                        console.log('sup');
                         var bg = this.game.add.bitmapData(this.game.width, this.game.height);
                         var bgImg = this.game.add.image(0, 0, bg);
                         bgImg.fixedToCamera = true;
