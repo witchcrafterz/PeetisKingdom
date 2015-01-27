@@ -153,8 +153,14 @@
         this.game.load.image('ladydog', 'assets/characters/ladydog.png');
         this.game.load.image('sidecut', 'assets/characters/sidecut.png');
         this.game.load.image('florence', 'assets/characters/florence.png');
+        this.game.load.image('mamabirdie', 'assets/characters/mamabirdie.png');
 
         this.game.load.spritesheet('torch', 'assets/items/torch.png', 16, 52);
+        this.game.load.image('batteria', 'assets/items/batteria.png');
+        this.game.load.image('pearl', 'assets/items/pearl.png');
+        this.game.load.image('torch', 'assets/items/torch.png');
+        this.game.load.image('manick', 'assets/items/manick.png');
+        this.game.load.image('egg', 'assets/items/egg.png');
 
         this.game.load.spritesheet('bubbles', 'assets/particles/bubbles.png', 64, 64);
         this.game.load.image('dirtParticle', 'assets/particles/dirt_particle.png');
