@@ -149,8 +149,15 @@
             } else {
                 var key = object.properties.spritesheet || objective.properties.spritesheet;
                 var frame = object.properties.frame || objective.properties.frame;
+                var glow = object.properties.glow || objective.properties.glow;
+
 
                 var sprite = itemsGroup.create(object.x, object.y, key, parseInt(frame));
+                if (glow === 'true') {
+                    var torchLight = new Game.Torch(this.game, sprite.width * 0.5, sprite.height * 0.5);
+                    this.game.add.existing(torchLight);
+                    sprite.addChild(torchLight);
+                }
 
                 if (object.properties['activate']) {
                     sprite.activate = true;
