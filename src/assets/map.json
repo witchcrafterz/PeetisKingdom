@@ -944,7 +944,7 @@
                     {
                      "AI":"pacing",
                      "dialogue":"villager3",
-                     "key":"grasshopper"
+                     "key":"florence"
                     },
                  "rotation":0,
                  "type":"character",
@@ -978,7 +978,7 @@
                     {
                      "AI":"pacing",
                      "dialogue":"villager1",
-                     "key":"grasshopper"
+                     "key":"ladydog"
                     },
                  "rotation":0,
                  "type":"character",
@@ -1010,7 +1010,7 @@
                  "properties":
                     {
                      "AI":"pacing",
-                     "key":"ladydog"
+                     "key":"grasshopper"
                     },
                  "rotation":0,
                  "type":"character",
@@ -1026,7 +1026,7 @@
                  "properties":
                     {
                      "AI":"pacing",
-                     "key":"grasshopper"
+                     "key":"sidecut"
                     },
                  "rotation":0,
                  "type":"character",

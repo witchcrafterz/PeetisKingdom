@@ -315,7 +315,7 @@
    <properties>
     <property name="AI" value="pacing"/>
     <property name="dialogue" value="villager3"/>
-    <property name="key" value="grasshopper"/>
+    <property name="key" value="florence"/>
    </properties>
   </object>
   <object id="58" name="villager2" type="character" x="13454.3" y="5860" width="134" height="24">
@@ -329,7 +329,7 @@
    <properties>
     <property name="AI" value="pacing"/>
     <property name="dialogue" value="villager1"/>
-    <property name="key" value="grasshopper"/>
+    <property name="key" value="ladydog"/>
    </properties>
   </object>
   <object id="60" name="Bybo" type="character" x="5589" y="6240" width="134" height="24">
@@ -341,13 +341,13 @@
   <object id="61" name="Ladydog" type="character" x="6621" y="6248" width="134" height="24">
    <properties>
     <property name="AI" value="pacing"/>
-    <property name="key" value="ladydog"/>
+    <property name="key" value="grasshopper"/>
    </properties>
   </object>
   <object id="62" name="Bybo" type="character" x="3469" y="5068" width="134" height="24">
    <properties>
     <property name="AI" value="pacing"/>
-    <property name="key" value="grasshopper"/>
+    <property name="key" value="sidecut"/>
    </properties>
   </object>
   <object id="63" name="Bybo" type="character" x="3461" y="4304" width="134" height="24">
