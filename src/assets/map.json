@@ -1043,6 +1043,24 @@
                  "width":63.9967,
                  "x":13853.2,
                  "y":8104.87
+                }, 
+                {
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+                     "b":"50",
+                     "g":"75",
+                     "r":"250",
+                     "radius":"100",
+                     "torch":"false"
+                    },
+                 "rotation":0,
+                 "type":"torch",
+                 "visible":true,
+                 "width":0,
+                 "x":6559,
+                 "y":1695.5
                 }],
          "opacity":1,
          "type":"objectgroup",

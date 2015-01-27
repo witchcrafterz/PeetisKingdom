@@ -372,6 +372,15 @@
     <property name="radius" value="100"/>
    </properties>
   </object>
+  <object type="torch" x="6559" y="1695.5">
+   <properties>
+    <property name="b" value="50"/>
+    <property name="g" value="75"/>
+    <property name="r" value="250"/>
+    <property name="radius" value="100"/>
+    <property name="torch" value="false"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="objectives">
   <properties>
