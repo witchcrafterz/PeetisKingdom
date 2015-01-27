@@ -43,6 +43,11 @@
         this.titleText.tint = 0x010101;
         this.add(this.titleText);
 
+        this.countText = this.game.add.bitmapText(0, 0, 'font', '-1');
+        this.countText.tint = 0x010101;
+        this.countText.visible = false;
+        this.add(this.countText);
+
         /**
          * An array of all current objectives
          * @type {Array#Game.ObjectiveManager.Objective}
@@ -103,12 +108,14 @@
             }, this);
 
             this._expandButton.text = 'Show';
+            this.countText.visible = true;
         } else {
             _.forEach(this.objectives, function(objective, index) {
                 objective.alpha = 1;
             }, this);
          
             this._expandButton.text = 'Hide';
+            this.countText.visible = false;
         }
 
         this._updatePositioning();
@@ -223,6 +230,8 @@
         objective.onCompletion.add(this._removeObjective, this);
         objective.onFailure.add(this._removeObjective, this);
 
+        this.countText.text = String(this.objectives.length);
+
         this._updatePositioning();
     };
 
@@ -257,6 +266,7 @@
         this.objectives.splice(index, 1);
 
         this._updatePositioning();
+        this.countText.text = String(this.objectives.length);
     };
 
     Game.ObjectiveManager.prototype._updatePositioning = function() {
