@@ -23,6 +23,10 @@
          */
         this.defaultPosition = controlled.position.clone();
 
+        // The ornithologists are known for their high speed!
+        this.controlled.walkingVelocity = 750;
+        this.controlled.walkingAcc = 3000;
+
         return this;
     };
 
@@ -43,7 +47,7 @@
             right = this.controlled.body.position.x - this.defaultPosition.x < -100;
         }
 
-        jump = (left || right) && (this.controlled.position.y - this.player.position.y > 200);
+        jump = (left || right) && (this.controlled.position.y - this.player.position.y > 100);
 
         if (left) {
             this.left.setDown();
