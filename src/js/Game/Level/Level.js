@@ -696,6 +696,7 @@
         this.generateSprites();
         this.entitiesGroup.bringToTop(this.p1);
         
+        this.game.world.bringToTop(this.entitiesGroup);
         this.game.world.bringToTop(this.front);
 
         this.objectiveManager.createObjectives(this.map, this.map.objects['objectives'], this.p1);
