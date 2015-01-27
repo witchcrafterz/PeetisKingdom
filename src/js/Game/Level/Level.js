@@ -153,6 +153,8 @@
         this.game.load.image('sidecut', 'assets/characters/sidecut.png');
         this.game.load.image('florence', 'assets/characters/florence.png');
 
+        this.game.load.spritesheet('torch', 'assets/items/torch.png', 16, 52);
+
         this.game.load.spritesheet('bubbles', 'assets/particles/bubbles.png', 64, 64);
         this.game.load.image('dirtParticle', 'assets/particles/dirt_particle.png');
 
@@ -440,11 +442,17 @@
 
                     var pulsate = obj.properties['pulsate'] ? obj.properties['pulsate'] !== 'false' : true;
 
-                    var torch = new Game.Torch(this.game, obj.x, obj.y, radius, fade, pixelateValue, r, g, b);
+                    var torch = new Phaser.Sprite(this.game, obj.x, obj.y, 'torch', 0);
+                    torch.animations.add('burn', null, 2, true);
+                    torch.animations.play('burn');
+
                     this.game.add.existing(torch);
 
+                    var torchLight = new Game.Torch(this.game, obj.x, obj.y, radius, fade, pixelateValue, r, g, b);
+                    this.game.add.existing(torchLight);
+
                     if (pulsate) {
-                        this.game.add.tween(torch.scale).to({x: 1.1, y: 1.1}, 1000, undefined, undefined, undefined, -1, true).start();
+                        this.game.add.tween(torchLight.scale).to({x: 1.1, y: 1.1}, 1000, undefined, undefined, undefined, -1, true).start();
                     }
 
                     break;
