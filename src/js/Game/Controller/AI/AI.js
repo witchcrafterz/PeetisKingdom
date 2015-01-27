@@ -154,7 +154,7 @@
         if (this.friendlyCriterias) {
             this.game.onCriteriaAdd.add(function() {
                 // length===0 implies all completed
-                this.criteriasComplete = _.difference(this.friendlyCriterias, this.game.criterias).length !== 0;
+                this.criteriasComplete = _.difference(this.friendlyCriterias, this.game.criterias).length === 0;
                 this._criteriasCompleteHandler();
             }, this);
         }
