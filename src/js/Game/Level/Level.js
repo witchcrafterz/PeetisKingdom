@@ -742,6 +742,18 @@
         }
     };
 
+    Game.Level.prototype.closeHelp = function() {
+        if (this.helpScreen.exists) {
+            this.helpScreen.destroy();
+            this.helpScreen = null;
+        }
+    };
+
+    Game.Level.prototype.openHelp = function() {
+        if (this.helpScreen) return;
+        this.helpScreen = new Game.GUI.HelpScreen(this.game, this.HUD);
+    };
+
     var offset = {
         value: 50
     };

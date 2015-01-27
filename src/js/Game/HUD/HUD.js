@@ -8,6 +8,8 @@
 
         this.createMenu();
 
+        this.createHelpBtn();
+
         return this;
     };
 
@@ -25,5 +27,20 @@
 
         this.add(menuButton);
     };
+
+    Game.HUD.prototype.createHelpBtn = function() {
+        var helpBtn = this.helpBtn = new Game.GUI.Button(this.game, this.game.width, 20, 'knapp', 'Help', 'font');
+        helpBtn.scale.setTo(0.4);
+        helpBtn.position.x -= (helpBtn.width * 0.5 + 20);
+        // Weird Y-origin on Game.GUI.Button. TODO: fix this
+        helpBtn.position.y += 40;
+
+        helpBtn.onInputDown.add(function() {
+            this.game.state.getCurrentState().openHelp();
+        }, this);
+
+        this.add(helpBtn);
+    };
+
 
 })();
