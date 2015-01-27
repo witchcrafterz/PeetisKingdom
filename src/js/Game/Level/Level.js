@@ -449,11 +449,12 @@
 
                     var pulsate = obj.properties['pulsate'] ? obj.properties['pulsate'] !== 'false' : true;
 
-                    var torch = new Phaser.Sprite(this.game, obj.x, obj.y, 'torch', 0);
-                    torch.animations.add('burn', null, 2, true);
-                    torch.animations.play('burn');
-
-                    this.game.add.existing(torch);
+                    if (obj.properties['torch'] !== 'false') {
+                        var torch = new Phaser.Sprite(this.game, obj.x, obj.y, 'torch', 0);
+                        torch.animations.add('burn', null, 2, true);
+                        torch.animations.play('burn');
+                        this.game.add.existing(torch);
+                    }
 
                     var torchLight = new Game.Torch(this.game, obj.x, obj.y, radius, fade, pixelateValue, r, g, b);
                     this.game.add.existing(torchLight);
