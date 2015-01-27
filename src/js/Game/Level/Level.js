@@ -706,6 +706,7 @@
         }, this);
 
         this.game.input.keyboard.addKey(Phaser.Keyboard.P).onUp.add(this.togglePause, this);
+        this.game.input.keyboard.addKey(Phaser.Keyboard.H).onUp.add(this.openHelp, this);
 
         this.game.world.bringToTop(this.HUD);
 
