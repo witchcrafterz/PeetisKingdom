@@ -706,7 +706,7 @@
         }, this);
 
         this.game.input.keyboard.addKey(Phaser.Keyboard.P).onUp.add(this.togglePause, this);
-        this.game.input.keyboard.addKey(Phaser.Keyboard.H).onUp.add(this.openHelp, this);
+        this.game.input.keyboard.addKey(Phaser.Keyboard.H).onUp.add(this.toggleHelp, this);
 
         this.game.world.bringToTop(this.HUD);
 
@@ -753,6 +753,14 @@
     Game.Level.prototype.openHelp = function() {
         if (this.helpScreen) return;
         this.helpScreen = new Game.GUI.HelpScreen(this.game, this.HUD);
+    };
+
+    Game.Level.prototype.toggleHelp = function() {
+        if (this.helpScreen) {
+            this.helpScreen.closeHelp();
+        } else {
+            this.openHelp();
+        }
     };
 
     var offset = {
