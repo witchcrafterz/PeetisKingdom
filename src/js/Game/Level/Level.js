@@ -158,7 +158,6 @@
         this.game.load.spritesheet('torch', 'assets/items/torch.png', 16, 52);
         this.game.load.image('batteria', 'assets/items/batteria.png');
         this.game.load.image('pearl', 'assets/items/pearl.png');
-        this.game.load.image('torch', 'assets/items/torch.png');
         this.game.load.image('manick', 'assets/items/manick.png');
         this.game.load.image('egg', 'assets/items/egg.png');
 
@@ -451,6 +450,8 @@
 
                     if (obj.properties['torch'] !== 'false') {
                         var torch = new Phaser.Sprite(this.game, obj.x, obj.y, 'torch', 0);
+                        torch.position.x -= torch.width * 0.5;
+                        torch.position.y -= torch.height * 0.5;
                         torch.animations.add('burn', null, 2, true);
                         torch.animations.play('burn');
                         this.game.add.existing(torch);
