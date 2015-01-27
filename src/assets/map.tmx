@@ -380,6 +380,7 @@
   <object name="An unexpected encounter" type="collect" x="14664" y="6056" width="725" height="375">
    <properties>
     <property name="frame" value="0"/>
+    <property name="glow" value="true"/>
     <property name="id" value="grasshopper"/>
     <property name="itemLayer" value="grasshopperCollect"/>
     <property name="onComplete" value="enableDblJump"/>
@@ -440,7 +441,7 @@
   </object>
  </objectgroup>
  <objectgroup name="grasshopperCollect">
-  <object x="15878.9" y="8168.73" width="72.7273" height="69.697"/>
+  <object x="15868.2" y="8189.73" width="72.7273" height="69.697"/>
  </objectgroup>
  <objectgroup name="leaveCrater">
   <object name="Leave creater" x="9784" y="6131.51" width="398.061" height="202.788"/>

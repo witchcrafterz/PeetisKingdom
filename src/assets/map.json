@@ -1062,6 +1062,7 @@
                  "properties":
                     {
                      "frame":"0",
+                     "glow":"true",
                      "id":"grasshopper",
                      "itemLayer":"grasshopperCollect",
                      "onComplete":"enableDblJump",
@@ -1198,8 +1199,8 @@
                  "type":"",
                  "visible":true,
                  "width":72.7273,
-                 "x":15878.9,
-                 "y":8168.73
+                 "x":15868.2333333333,
+                 "y":8189.73
                 }],
          "opacity":1,
          "type":"objectgroup",
