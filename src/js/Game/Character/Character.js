@@ -186,7 +186,7 @@
         var deltaVel = this._data.prevY - this.body.velocity.y;
         if (deltaVel > 1200) {
             // Max deltaVel is 2000. A single full jump results in a bit more than 1200
-            var particles = (deltaVel - 1200) * 0.1;
+            var particles = (deltaVel - 1200) * 0.05;
             this.groundEmitter.explode(1000, particles);
             this.thudSFX.playFrom(this.position);
         }
