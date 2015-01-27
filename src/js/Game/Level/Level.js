@@ -147,6 +147,7 @@
 
         this.game.load.image('dialoguePanel', 'assets/dialoguePanel.png');
         this.game.load.image('grasshopper', 'assets/characters/grasshopper256.png');
+        this.game.load.image('octopus', 'assets/characters/octopus.png');
         this.game.load.image('bob', 'assets/characters/bob.png');
         this.game.load.image('ornithologist', 'assets/characters/ornithologist.png');
         this.game.load.image('ladydog', 'assets/characters/ladydog.png');
@@ -489,7 +490,7 @@
 
                     if (obj.properties['floaty']) {
                         var floaty = parseInt(obj.properties['floaty'], 10);
-                        this.game.add.tween(character.position).to({y: obj.y - floaty}, 1000, undefined, true, undefined, -1, true);
+                        this.game.add.tween(character.position).from({y:obj.y + floaty * 0.5}).to({y: obj.y - floaty * 0.5}, 1000, undefined, true, undefined, -1, true);
                     }
 
                     this.entitiesGroup.add(character);
