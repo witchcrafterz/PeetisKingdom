@@ -153,7 +153,7 @@
 
                 var sprite = itemsGroup.create(object.x + object.width * 0.5, object.y + object.height * 0.5, key, parseInt(frame));
                 if (glow === 'true') {
-                    var torchLight = new Game.Torch(this.game, sprite.width * 0.5, sprite.height * 0.5);
+                    var torchLight = new Game.Torch(this.game, sprite.width * 0.5, sprite.height * 0.5, 100);
                     this.game.add.existing(torchLight);
                     sprite.addChild(torchLight);
                 }
