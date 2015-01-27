@@ -17,23 +17,21 @@
     Game.HUD.prototype.constructor = Game.HUD;
 
     Game.HUD.prototype.createMenu = function() {
-        var menuButton = this.menuButton = new Phaser.Button(this.game, 10, 10, 'UI');
+        var menuButton = this.menuButton = new Game.GUI.Button(this.game, 0, 60, 'knapp', 'Menu', 'font');
+        menuButton.scale.setTo(0.4);
+        menuButton.position.x = menuButton.width * 0.5 + 20;
 
         menuButton.onInputDown.add(function() {
             this.game.state.getCurrentState().togglePause();
         }, this);
 
-        menuButton.frame = 32;
-
         this.add(menuButton);
     };
 
     Game.HUD.prototype.createHelpBtn = function() {
-        var helpBtn = this.helpBtn = new Game.GUI.Button(this.game, this.game.width, 20, 'knapp', 'Help', 'font');
+        var helpBtn = this.helpBtn = new Game.GUI.Button(this.game, this.game.width, 60, 'knapp', 'Help', 'font');
         helpBtn.scale.setTo(0.4);
         helpBtn.position.x -= (helpBtn.width * 0.5 + 20);
-        // Weird Y-origin on Game.GUI.Button. TODO: fix this
-        helpBtn.position.y += 40;
 
         helpBtn.onInputDown.add(function() {
             this.game.state.getCurrentState().openHelp();
