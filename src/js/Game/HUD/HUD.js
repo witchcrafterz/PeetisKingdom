@@ -17,7 +17,7 @@
     Game.HUD.prototype.constructor = Game.HUD;
 
     Game.HUD.prototype.createMenu = function() {
-        var menuButton = this.menuButton = new Game.GUI.Button(this.game, 0, 60, 'knapp', 'Menu', 'font');
+        var menuButton = this.menuButton = new Game.GUI.Button(this.game, 0, 60, 'knapp', 'Menu (P)', 'font');
         menuButton.scale.setTo(0.4);
         menuButton.position.x = menuButton.width * 0.5 + 20;
 
@@ -29,7 +29,7 @@
     };
 
     Game.HUD.prototype.createHelpBtn = function() {
-        var helpBtn = this.helpBtn = new Game.GUI.Button(this.game, this.game.width, 60, 'knapp', 'Help', 'font');
+        var helpBtn = this.helpBtn = new Game.GUI.Button(this.game, this.game.width, 60, 'knapp', 'Help (H)', 'font');
         helpBtn.scale.setTo(0.4);
         helpBtn.position.x -= (helpBtn.width * 0.5 + 20);
 
