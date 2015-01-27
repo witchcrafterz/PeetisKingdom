@@ -18,7 +18,11 @@
 
 
     Game.Torch = function(game, x, y, radius, fade, value, r, g, b) {
-        this.torchTexture = torchCache[radius + '' + fade] ? torchCache[radius] : Game.Torch.createRadial(game, radius, fade, value, r, g, b);
+        this.torchTexture = 
+            torchCache[getCacheString(radius, fade, r, g, b, value)] ? 
+            torchCache[getCacheString(radius, fade, r, g, b, value)] : 
+            Game.Torch.createRadial(game, radius, fade, value, r, g, b);
+
         Phaser.Image.call(this, game, x, y, this.torchTexture);
 
         this.anchor.setTo(0.5);
@@ -59,9 +63,14 @@
 
         bitmapData.context.drawImage(bmd.canvas, 0, 0, bitmapData.width, bitmapData.height);
 
-        torchCache[radius.toString() + fade.toString() + r.toString() + g.toString() + b.toString() + value.toString()] = bitmapData;
+        torchCache[getCacheString(radius, fade, r, g, b, value)] = bitmapData;
 
         return bitmapData;
     };
+
+    function getCacheString(radius, fade, r, g, b, value) {
+        return String(radius) + String(fade) + String(r) + String(g) + String(b) + String(value);
+    }
+
 
 })();
