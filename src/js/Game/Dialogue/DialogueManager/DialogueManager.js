@@ -194,7 +194,10 @@
                     .to({ y: this.game.height + add }, 1000, this.easing)
                     .start()
                     .onComplete.add(function() {
-                        this.dialoguePanel.visible = false;
+
+                        if (this._hidden) {
+                            this.dialoguePanel.visible = false;
+                        }
                     }, this);
             } else {
                 this.dialoguePanel.visible = true;
