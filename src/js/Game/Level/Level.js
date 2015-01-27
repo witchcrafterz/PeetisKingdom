@@ -695,6 +695,8 @@
         this.generateObjects();
         this.generateSprites();
         this.entitiesGroup.bringToTop(this.p1);
+        
+        this.game.world.bringToTop(this.front);
 
         this.objectiveManager.createObjectives(this.map, this.map.objects['objectives'], this.p1);
 
@@ -704,7 +706,6 @@
 
         this.game.input.keyboard.addKey(Phaser.Keyboard.P).onUp.add(this.togglePause, this);
 
-        this.game.world.bringToTop(this.front);
         this.game.world.bringToTop(this.HUD);
 
         this.paintBG();
