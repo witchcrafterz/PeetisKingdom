@@ -365,12 +365,14 @@
                     this.game.add.tween(this.p1.position).to({x: this.p1.checkpoint.x, y: this.p1.checkpoint.y})
                         .start()
                         .onComplete.add(function() {
+                            // Reset Y-velocity so ground particles doesnt go craycray
+                            this.p1._data.prevY = 0;
                             this.p1.body.velocity.setTo(0);
 
-                    this.p1.body.checkCollision.up = true;
-                    this.p1.body.checkCollision.down = true;
-                    this.p1.body.checkCollision.left = true;
-                    this.p1.body.checkCollision.right = true;
+                            this.p1.body.checkCollision.up = true;
+                            this.p1.body.checkCollision.down = true;
+                            this.p1.body.checkCollision.left = true;
+                            this.p1.body.checkCollision.right = true;
 
                         }, this);
 
