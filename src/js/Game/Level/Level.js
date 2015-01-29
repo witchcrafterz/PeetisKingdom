@@ -154,6 +154,8 @@
         this.game.load.image('sidecut', 'assets/characters/sidecut.png');
         this.game.load.image('florence', 'assets/characters/florence.png');
         this.game.load.image('mamabirdie', 'assets/characters/mamabirdie.png');
+        this.game.load.image('peeti', 'assets/characters/peeti.png');
+        this.game.load.image('guard', 'assets/characters/guard.png');
 
         this.game.load.spritesheet('torch', 'assets/items/torch.png', 16, 52);
         this.game.load.image('batteria', 'assets/items/batteria.png');
