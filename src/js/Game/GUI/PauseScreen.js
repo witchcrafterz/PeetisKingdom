@@ -78,7 +78,7 @@
 
     Game.GUI.PauseScreen.prototype.resume = function() {
         this.game.add.tween(this).to({alpha: 0}, 300).start().onComplete.add(function() {
-            this.game.state.getCurrentState().resume();
+            if (this.game) this.game.state.getCurrentState().resume();
         }, this);
     };
 
