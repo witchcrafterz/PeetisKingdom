@@ -1006,11 +1006,11 @@
                 {
                  "height":24,
                  "id":61,
-                 "name":"Ladydog",
+                 "name":"svin",
                  "properties":
                     {
                      "AI":"pacing",
-                     "key":"grasshopper"
+                     "key":"gris"
                     },
                  "rotation":0,
                  "type":"character",

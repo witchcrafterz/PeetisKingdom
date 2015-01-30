@@ -338,10 +338,10 @@
     <property name="key" value="grasshopper"/>
    </properties>
   </object>
-  <object id="61" name="Ladydog" type="character" x="6621" y="6248" width="134" height="24">
+  <object id="61" name="svin" type="character" x="6621" y="6248" width="134" height="24">
    <properties>
     <property name="AI" value="pacing"/>
-    <property name="key" value="grasshopper"/>
+    <property name="key" value="gris"/>
    </properties>
   </object>
   <object id="62" name="Bybo" type="character" x="3469" y="5068" width="134" height="24">
