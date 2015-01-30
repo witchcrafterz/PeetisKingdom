@@ -677,7 +677,7 @@
     Game.Level.prototype.create = function() {
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
         this.game.physics.arcade.gravity = Game.gravity;
-        this.game.physics.arcade.TILE_BIAS = 32;
+        this.game.physics.arcade.TILE_BIAS = 64;
 
         this.activateKey = this.game.input.keyboard.addKey(Phaser.Keyboard.UP);
 
