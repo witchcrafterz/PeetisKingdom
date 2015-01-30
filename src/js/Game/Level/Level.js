@@ -163,6 +163,7 @@
         this.game.load.image('pearl', 'assets/items/pearl.png');
         this.game.load.image('manick', 'assets/items/manick.png');
         this.game.load.image('egg', 'assets/items/egg.png');
+        this.game.load.image('bone', 'assets/items/bone.png');
 
         this.game.load.spritesheet('bubbles', 'assets/particles/bubbles.png', 64, 64);
         this.game.load.image('dirtParticle', 'assets/particles/dirt_particle.png');

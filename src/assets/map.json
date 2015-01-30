@@ -1187,11 +1187,11 @@
                  "name":"A royal visit",
                  "properties":
                     {
-                     "frame":"27",
+                     "frame":"0",
                      "id":"royalVisit",
                      "itemLayer":"royalVisit",
                      "return":"true",
-                     "spritesheet":"UI",
+                     "spritesheet":"bone",
                      "status":"Find an appropiate gift to give to Princess Peeti",
                      "statusReturn":"Return to Princess Peeti's castle with the gift"
                     },

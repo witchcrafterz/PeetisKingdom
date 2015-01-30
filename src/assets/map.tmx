@@ -407,11 +407,11 @@
   </object>
   <object id="71" name="A royal visit" type="collect" x="3773.5" y="6008.5" width="695" height="369">
    <properties>
-    <property name="frame" value="27"/>
+    <property name="frame" value="0"/>
     <property name="id" value="royalVisit"/>
     <property name="itemLayer" value="royalVisit"/>
     <property name="return" value="true"/>
-    <property name="spritesheet" value="UI"/>
+    <property name="spritesheet" value="bone"/>
     <property name="status" value="Find an appropiate gift to give to Princess Peeti"/>
     <property name="statusReturn" value="Return to Princess Peeti's castle with the gift"/>
    </properties>
