@@ -318,14 +318,14 @@
                  "properties":
                     {
                      "enter":"playMusic",
-                     "enterArgs":"lugnofin"
+                     "enterArgs":"truddelutt"
                     },
                  "rotation":0,
                  "type":"trigger",
                  "visible":true,
                  "width":489.577,
-                 "x":10461.2,
-                 "y":6039.15
+                 "x":12529.2,
+                 "y":6043.15
                 }, 
                 {
                  "height":324,
@@ -781,14 +781,14 @@
                  "properties":
                     {
                      "enter":"playMusic",
-                     "enterArgs":"truddelutt"
+                     "enterArgs":"lugnofin"
                     },
                  "rotation":0,
                  "type":"trigger",
                  "visible":true,
                  "width":489.577,
-                 "x":7543.09,
-                 "y":6031.15
+                 "x":14719.09,
+                 "y":7959.15
                 }, 
                 {
                  "height":306,
@@ -835,6 +835,22 @@
                  "width":186.667,
                  "x":13891.9998333333,
                  "y":5794
+                }, 
+                {
+                 "height":337.697,
+                 "id":88,
+                 "name":"music",
+                 "properties":
+                    {
+                     "enter":"playMusic",
+                     "enterArgs":"byggarebob"
+                    },
+                 "rotation":0,
+                 "type":"trigger",
+                 "visible":true,
+                 "width":489.577,
+                 "x":7655.2115,
+                 "y":6047.1515
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1522,7 +1538,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":88,
+ "nextobjectid":89,
  "orientation":"orthogonal",
  "properties":
     {

@@ -144,7 +144,9 @@
         // Credits of boss music due to 13NHarri @ http://freesound.org/people/13NHarri/sounds/251334/
         this.game.load.audio('boss', ['assets/music/boss.mp3', 'assets/music/boss.ogg']);
         this.game.load.audio('truddelutt', ['assets/music/truddelutt.mp3', 'assets/music/truddelutt.ogg']);
+        this.game.load.audio('truddelutt_orgel', ['assets/music/truddelutt_orgel.mp3', 'assets/music/truddelutt_orgel.ogg']);
         this.game.load.audio('lugnofin', ['assets/music/Lugn_och_Fin_Symaskin.mp3', 'assets/music/Lugn_och_Fin_Symaskin.ogg']);
+        this.game.load.audio('byggarebob', ['assets/music/byggarebob.mp3', 'assets/music/byggarebob.ogg']);
 
         this.game.load.image('dialoguePanel', 'assets/dialoguePanel.png');
         this.game.load.image('grasshopper', 'assets/characters/grasshopper256.png');
@@ -455,7 +457,9 @@
                 }
             },
 
-            'startEnding': function() {
+            'startEnding': function(obj) {
+                this.triggerFunctions.playMusic.call(obj, 'truddelutt_orgel');
+
                 this.p1.body.enable = false;
 
                 this.game.add.tween(this.p1).to({rotation: Math.PI * 2}, 1000, undefined, false, 500, -1, false).start();
