@@ -120,7 +120,11 @@
         var assetLoadingText = this.game.add.bitmapText(this.game.width * 0.5, this.game.height * 0.6, 'font', 'Loading Asset', 24);
 
         this.game.load.onFileStart.add(function(progress, key, url) {
-            assetLoadingText.text = 'Loading file "{0}" from "{1}"'.format(key, url);
+            if (key === 'map') {
+                assetLoadingText.text = 'Generating world, this can take a while! :D';
+            } else {
+                assetLoadingText.text = 'Loading file "{0}" from "{1}"'.format(key, url);
+            }
             assetLoadingText.updateTransform();
             assetLoadingText.x = this.game.width * 0.5 - assetLoadingText.width * 0.5;
         }, this);
@@ -234,6 +238,44 @@
         this.front = this.map.createLayer('front');
 
         this.level.resizeWorld();
+
+        this.behind.visible = false;
+        this.front.visible = false;
+        this.level.visible = false;
+
+        var deltaX = this.map.widthInPixels / 10;
+        var deltaY = this.map.heightInPixels / 10;
+        var region, img, x, y;
+        for (x = 0; x < this.map.widthInPixels / deltaX; x++) {
+            for (y = 0; y < this.map.heightInPixels / deltaY; y++) {
+                region = this.behind.generateRegion(deltaX * x, deltaY * y, deltaX, deltaY, 'rgba(0,0,0,0.4)');
+                
+                if (region) {
+                    img = this.game.add.image(deltaX * x, deltaY * y, region);
+                    img.roundPx = false;
+                }
+            }
+        }
+        for (x = 0; x < this.map.widthInPixels / deltaX; x++) {
+            for (y = 0; y < this.map.heightInPixels / deltaY; y++) {
+                region = this.level.generateRegion(deltaX * x, deltaY * y, deltaX, deltaY);
+                
+                if (region) {
+                    img = this.game.add.image(deltaX * x, deltaY * y, region);
+                    img.roundPx = false;
+                }
+            }
+        }
+        for (x = 0; x < this.map.widthInPixels / deltaX; x++) {
+            for (y = 0; y < this.map.heightInPixels / deltaY; y++) {
+                region = this.front.generateRegion(deltaX * x, deltaY * y, deltaX, deltaY);
+                
+                if (region) {
+                    img = this.game.add.image(deltaX * x, deltaY * y, region);
+                    img.roundPx = false;
+                }
+            }
+        }
 
         this.level.renderSettings.enableScrollDelta = false;
         this.behind.renderSettings.enableScrollDelta = false;
@@ -669,7 +711,6 @@
         this.entitiesGroup.add(this.p1);
         this.game.camera.follow(this.p1);
         this.game.camera.deadzone = this.getCameraDeadzone();
-        this.game.camera.roundPx = false;
     };
 
     /**
