@@ -128,10 +128,6 @@
         this.game.load.spritesheet('player1', 'assets/characters/player.png', 40, 76);
         this.game.load.spritesheet('spritesheet', 'assets/spritesheet.png', 64, 64);
 
-        this.game.load.atlasXML('alienYellow', 'assets/alienYellow.png', 'assets/alienYellow.xml');
-        this.game.load.atlasXML('UI', 'assets/UI.png', 'assets/UI.xml');
-        this.game.load.atlasXML('p1', 'assets/p1_spritesheet.png', 'assets/p1_spritesheet.xml');
-
         this.game.load.audio('jump', ['assets/sfx/jump.ogg', 'assets/sfx/jump.mp3']);
         this.game.load.audio('objectComplete', ['assets/sfx/object_complete.ogg', 'assets/sfx/object_complete.mp3']);
         this.game.load.audio('pickupCoin', ['assets/sfx/pickup_coin.ogg', 'assets/sfx/pickup_coin.mp3']);
@@ -142,8 +138,6 @@
         this.game.load.audio('boss', ['assets/music/boss.mp3', 'assets/music/boss.ogg']);
         this.game.load.audio('truddelutt', ['assets/music/truddelutt.mp3', 'assets/music/truddelutt.ogg']);
         this.game.load.audio('lugnofin', ['assets/music/Lugn_och_Fin_Symaskin.mp3', 'assets/music/Lugn_och_Fin_Symaskin.ogg']);
-
-        this.game.load.audio('solskenspromenad', 'assets/Solskenspromenad.mp3');
 
         this.game.load.image('dialoguePanel', 'assets/dialoguePanel.png');
         this.game.load.image('grasshopper', 'assets/characters/grasshopper256.png');
