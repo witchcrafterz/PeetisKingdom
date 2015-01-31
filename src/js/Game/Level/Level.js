@@ -243,6 +243,10 @@
         this.front.visible = false;
         this.level.visible = false;
 
+        this.behindGroup = this.game.add.group();
+        this.frontGroup = this.game.add.group();
+        this.levelGroup = this.game.add.group();
+
         var deltaX = this.map.widthInPixels / 10;
         var deltaY = this.map.heightInPixels / 10;
         var region, img, x, y;
@@ -251,7 +255,7 @@
                 region = this.behind.generateRegion(deltaX * x, deltaY * y, deltaX, deltaY, 'rgba(0,0,0,0.4)');
                 
                 if (region) {
-                    img = this.game.add.image(deltaX * x, deltaY * y, region);
+                    img = this.game.add.image(deltaX * x, deltaY * y, region, 0, this.behindGroup);
                     img.roundPx = false;
                 }
             }
@@ -261,7 +265,7 @@
                 region = this.level.generateRegion(deltaX * x, deltaY * y, deltaX, deltaY);
                 
                 if (region) {
-                    img = this.game.add.image(deltaX * x, deltaY * y, region);
+                    img = this.game.add.image(deltaX * x, deltaY * y, region, 0, this.levelGroup);
                     img.roundPx = false;
                 }
             }
@@ -271,7 +275,7 @@
                 region = this.front.generateRegion(deltaX * x, deltaY * y, deltaX, deltaY);
                 
                 if (region) {
-                    img = this.game.add.image(deltaX * x, deltaY * y, region);
+                    img = this.game.add.image(deltaX * x, deltaY * y, region, 0, this.frontGroup);
                     img.roundPx = false;
                 }
             }
@@ -744,7 +748,7 @@
         this.entitiesGroup.bringToTop(this.p1);
         
         this.game.world.bringToTop(this.entitiesGroup);
-        this.game.world.bringToTop(this.front);
+        this.game.world.bringToTop(this.frontGroup);
 
         this.objectiveManager.createObjectives(this.map, this.map.objects['objectives'], this.p1);
 
