@@ -261,5 +261,48 @@
             "text": "You can find Grassy in the \ncave just next to this house"
         }],
         "title": "Villager:"
+    },
+
+    "monkey": {
+        "conversation": [{
+            "text": "Oh great. I come home from a long day of \nhard work, and a stranger simply \nwaltzes into my home..."
+        }, {
+            "text": "Oh, I'm sorry, truly I am.",
+            "title": "You:"
+        }],
+        "title": "Monkey:"
+    },
+
+    "pig": {
+        "conversation": [{
+            "text": "*Oink!* Greetings stranger!"
+        }, {
+            "text": "Hi! Do you perhaps have any clue where I can \nfind something that has touched the sky? \nThe octopus gave me this task.",
+            "title": "You:",
+            "fontScale": 0.9
+        }, {
+            "text": "I'm no sky person myself, you should ask \nthe giant bird, Birdie. You can find Birdie \non the top of Peeti's castle.",
+            "fontScale": 0.9
+        }, {
+            "text": "Thanks!",
+            "title": "You:"
+        }],
+        "title": "Pig:"
+    },
+
+    "sidecut": {
+        "conversation": [{
+            "text": "Hey, I heard you talking \nto the Guard Bear."
+        }, {
+            "text": "Oh, you did? Well, do you \nperhaps know what present would be \ngood to gift to Peeti?",
+            "title": "You:"
+        }, {
+            "text": "You bet I do! If there is one thing Peeti loves, \nthen it's a big chewy bone. The Octopus have all \nsort of things in the tunnel behind him. \nPerhaps try looking there!",
+            "fontScale": 0.8
+        }, {
+            "text": "Thanks!",
+            "title": "You:"
+        }],
+        "title": "Villager:"
     }
 }

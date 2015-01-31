@@ -346,19 +346,22 @@
   <object id="61" name="svin" type="character" x="6621" y="6248" width="134" height="24">
    <properties>
     <property name="AI" value="pacing"/>
+    <property name="dialogue" value="pig"/>
     <property name="key" value="gris"/>
    </properties>
   </object>
   <object id="62" name="Bybo" type="character" x="3469" y="5068" width="134" height="24">
    <properties>
     <property name="AI" value="pacing"/>
+    <property name="dialogue" value="sidecut"/>
     <property name="key" value="sidecut"/>
    </properties>
   </object>
-  <object id="63" name="Bybo" type="character" x="3461" y="4304" width="134" height="24">
+  <object id="63" name="apan" type="character" x="3461" y="4304" width="134" height="24">
    <properties>
     <property name="AI" value="pacing"/>
-    <property name="key" value="grasshopper"/>
+    <property name="dialogue" value="monkey"/>
+    <property name="key" value="apan"/>
    </properties>
   </object>
   <object id="64" type="torch" x="18400" y="4896.97"/>

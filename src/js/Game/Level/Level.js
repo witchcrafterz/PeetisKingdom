@@ -158,6 +158,7 @@
         this.game.load.image('peeti', 'assets/characters/peeti.png');
         this.game.load.image('guard', 'assets/characters/guard.png');
         this.game.load.image('gris', 'assets/characters/gris.png');
+        this.game.load.image('apan', 'assets/characters/apan.png');
 
         this.game.load.spritesheet('torch', 'assets/items/torch.png', 16, 52);
         this.game.load.spritesheet('portal', 'assets/items/portal.png', 200, 256);
