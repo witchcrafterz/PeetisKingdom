@@ -81,6 +81,14 @@
         this.onCompletion.add(this._onCompletionHandler, this);
 
         /**
+         * An array containing arguments to call onComplete functions with
+         * @type {[type]}
+         */
+        this.onCompleteArgs = this.properties['onCompleteArgs'] ? this.properties['onCompleteArgs'].split(',') : [];
+        // Trigger functions expect the object to be argument number one
+        this.onCompleteArgs.splice(0, 0, this.object);
+
+        /**
          * Signal that fires upon failure of objective
          * @type {Phaser.Signal}
          */
@@ -182,7 +190,8 @@
         for (var i = 0; i < this._onComplete.length; i++) {
             key = this._onComplete[i];
             if (triggerFunctions[key]) {
-                triggerFunctions[key].call(state);
+                console.log(triggerFunctions[key]);
+                triggerFunctions[key].apply(state, this.onCompleteArgs);
             }
         }
 
