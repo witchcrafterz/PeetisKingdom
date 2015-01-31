@@ -439,7 +439,9 @@
                 this.music = this.game.sound.add(key);
 
                 if (!this.game.musicMuted) {
-                    this.music.fadeIn(duration);
+                    this.music.onDecoded.add(function() {
+                        this.music.fadeIn(duration);
+                    }, this);
                 }
             },
 
@@ -458,7 +460,7 @@
             },
 
             'startEnding': function(obj) {
-                this.triggerFunctions.playMusic.call(obj, 'truddelutt_orgel');
+                this.triggerFunctions.playMusic.call(this, obj, 'truddelutt_orgel');
 
                 this.p1.body.enable = false;
 
