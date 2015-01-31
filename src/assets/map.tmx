@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="300" height="160" tilewidth="64" tileheight="64" backgroundcolor="#393939" nextobjectid="85">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="300" height="160" tilewidth="64" tileheight="64" backgroundcolor="#393939" nextobjectid="87">
  <tileset firstgid="1" name="spritesheet" tilewidth="64" tileheight="64">
   <image source="spritesheet.png" width="1088" height="448"/>
  </tileset>
@@ -260,7 +260,7 @@
     <property name="dialogue" value="peetiQuest"/>
    </properties>
   </object>
-  <object id="50" name="portal trigger" type="trigger" x="1737.58" y="6000" width="264" height="404">
+  <object id="50" name="portal trigger" type="trigger" x="1665.58" y="6090" width="256" height="141">
    <properties>
     <property name="enter" value="startEnding"/>
     <property name="enterCriteria" value="portalOperational"/>
@@ -381,6 +381,13 @@
     <property name="torch" value="false"/>
    </properties>
   </object>
+  <object id="86" name="portal" type="entity" x="1695" y="5976" width="229" height="257">
+   <properties>
+    <property name="frame" value="0"/>
+    <property name="id" value="portal"/>
+    <property name="key" value="portal"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="objectives">
   <properties>
@@ -442,6 +449,8 @@
     <property name="frame" value="0"/>
     <property name="id" value="needPower"/>
     <property name="itemLayer" value="needPower"/>
+    <property name="onComplete" value="setSpriteFrame"/>
+    <property name="onCompleteArgs" value="portal,1"/>
     <property name="return" value="true"/>
     <property name="spritesheet" value="batteria"/>
     <property name="status" value="Find enough batteries to power \nPrincess Peeti's world-jumping-machine. \nYou have found {0} out of {1} batteries"/>

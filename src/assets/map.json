@@ -508,7 +508,7 @@
                  "rotation":0,
                  "type":"trigger",
                  "visible":true,
-                 "width":69.6970000000001,
+                 "width":69.697,
                  "x":3834.36,
                  "y":3417.73
                 }, 
@@ -802,11 +802,11 @@
                  "type":"dialogue",
                  "visible":true,
                  "width":626.333,
-                 "x":1966.90875757576,
+                 "x":1966.91,
                  "y":6075.5
                 }, 
                 {
-                 "height":404,
+                 "height":141,
                  "id":50,
                  "name":"portal trigger",
                  "properties":
@@ -817,9 +817,9 @@
                  "rotation":0,
                  "type":"trigger",
                  "visible":true,
-                 "width":264,
-                 "x":1737.57575757576,
-                 "y":6000
+                 "width":256,
+                 "x":1665.58,
+                 "y":6090
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -880,7 +880,7 @@
                  "type":"character",
                  "visible":true,
                  "width":134,
-                 "x":2046.57575757576,
+                 "x":2046.58,
                  "y":6208
                 }, 
                 {
@@ -1129,6 +1129,23 @@
                  "width":0,
                  "x":6559,
                  "y":1695.5
+                }, 
+                {
+                 "height":257,
+                 "id":86,
+                 "name":"portal",
+                 "properties":
+                    {
+                     "frame":"0",
+                     "id":"portal",
+                     "key":"portal"
+                    },
+                 "rotation":0,
+                 "type":"entity",
+                 "visible":true,
+                 "width":229,
+                 "x":1695,
+                 "y":5976
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1252,6 +1269,8 @@
                      "frame":"0",
                      "id":"needPower",
                      "itemLayer":"needPower",
+                     "onComplete":"setSpriteFrame",
+                     "onCompleteArgs":"portal,1",
                      "return":"true",
                      "spritesheet":"batteria",
                      "status":"Find enough batteries to power \\nPrincess Peeti's world-jumping-machine. \\nYou have found {0} out of {1} batteries",
@@ -1261,7 +1280,7 @@
                  "type":"collect",
                  "visible":true,
                  "width":621.212,
-                 "x":1984.81775757576,
+                 "x":1984.82,
                  "y":6097.27
                 }],
          "opacity":1,
@@ -1485,7 +1504,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":85,
+ "nextobjectid":87,
  "orientation":"orthogonal",
  "properties":
     {
