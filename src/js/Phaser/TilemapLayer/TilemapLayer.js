@@ -105,4 +105,63 @@
         }
 
     };
+
+    var cache = {};
+
+    Phaser.TilemapLayer.prototype.generateRegion = function (x, y, width, height, overlay) {
+        var bmd = new Phaser.BitmapData(this.game, 'generatedRegion', width, height);
+        bmd.context.fillStyle = overlay;
+
+        var tiles = this.getTiles(x, y, width, height);
+
+        var cacheKey = generateCacheKey(tiles);
+
+        if (isEmpty(tiles)) {
+            console.log('No tiles found, return undefined');
+            return;
+        }
+
+        if (cache[cacheKey]) {
+            console.log('Found in cache');
+            return cache[cacheKey];
+        }
+
+        var tile, set;
+        for (var i = 0; i < tiles.length; i++) {
+            tile = tiles[i];
+
+            set = this._mc.tilesets[tile.index];
+            if (!set)
+            {
+                set = this.resolveTileset(tile.index);
+                if (!set) continue;
+            }
+
+            set.draw(bmd.context, tile.worldX - x, tile.worldY - y, tile.index);
+
+            if (overlay) {
+                bmd.context.fillRect(tile.worldX - x, tile.worldY - y, tile.width, tile.height);
+            }
+        }
+
+        cache[cacheKey] = bmd;
+
+        return bmd;
+    };
+
+    function isEmpty(tiles) {
+        for (var i = 0; i < tiles.length; i++) {
+            if (tiles[i].index !== -1) return false;
+        }
+        return true;
+    }
+
+    function generateCacheKey(tiles) {
+        var str = '';
+        for (var i = 0; i < tiles.length; i++) {
+            str += tiles[i].index;
+        }
+        return str;
+    }
+
 })();
