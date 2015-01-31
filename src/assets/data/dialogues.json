@@ -39,6 +39,13 @@
         }]
     },
 
+    "spookyCave": {
+        "conversation": [{
+            "title": "Road sign:",
+            "text": "Right: A Spooky Cave"
+        }]
+    },
+
     "royalQuest": {
         "conversation": [{
             "text": "Hold on! I can't let you see \nPrincess Peeti without bringing a gift."
