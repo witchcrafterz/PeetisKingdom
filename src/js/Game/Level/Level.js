@@ -453,7 +453,6 @@
             },
 
             'setSpriteFrame': function(obj, id, frame) {
-                console.log(this.sprites, id, this.sprites[id]);
                 if (this.sprites[id]) {
                     this.sprites[id].frame = parseInt(frame, 10);
                 }
