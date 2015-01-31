@@ -56,6 +56,9 @@
             'guard': Game.Controller.AI.Guard
         };
 
+        // A collection of sprites
+        this.sprites = {};
+
         this.toggleFullScreen = function() {
             if (this.game.scale.isFullScreen) {
                 this.game.scale.stopFullScreen();
@@ -153,6 +156,7 @@
         this.game.load.image('gris', 'assets/characters/gris.png');
 
         this.game.load.spritesheet('torch', 'assets/items/torch.png', 16, 52);
+        this.game.load.spritesheet('portal', 'assets/items/portal.png', 200, 256);
         this.game.load.image('batteria', 'assets/items/batteria.png');
         this.game.load.image('pearl', 'assets/items/pearl.png');
         this.game.load.image('manick', 'assets/items/manick.png');
@@ -397,6 +401,13 @@
                 }
             },
 
+            'setSpriteFrame': function(obj, id, frame) {
+                console.log(this.sprites, id, this.sprites[id]);
+                if (this.sprites[id]) {
+                    this.sprites[id].frame = parseInt(frame, 10);
+                }
+            },
+
             'startEnding': function() {
                 this.p1.body.enable = false;
 
@@ -468,8 +479,14 @@
                 case 'entity':
 
                     var key = obj.properties['key'];
-                    var frame = obj.properties['frame'];
+                    var frame = parseInt(obj.properties['frame'], 10);
                     var sprite = this.game.add.sprite(obj.x + obj.width * 0.5, obj.y + obj.height * 0.5, key, frame, this.entitiesGroup);
+
+                    var id = obj.properties['id'];
+                    if (id) {
+                        this.sprites[id] = sprite;
+                    }
+                    console.log(id, sprite);
 
                     break;
                 case 'character':
@@ -499,6 +516,11 @@
                     if (obj.properties['floaty']) {
                         var floaty = parseInt(obj.properties['floaty'], 10);
                         this.game.add.tween(character.position).from({y:obj.y + floaty * 0.5}).to({y: obj.y - floaty * 0.5}, 1000, undefined, true, undefined, -1, true);
+                    }
+
+                    var id = obj.properties['id'];
+                    if (id) {
+                        this.sprites[id] = sprite;
                     }
 
                     this.entitiesGroup.add(character);
