@@ -430,19 +430,26 @@
                 }
             },
 
-            'playMusic': function(obj, key, duration) {
+            'playMusic': function(obj, key, duration, interrupt) {
                 if (!key) return;
 
                 duration = duration || 1000;
+                interrupt = interrupt === 'true';
 
-                this.triggerFunctions.stopMusic.call(this, obj, duration);
-                this.music = this.game.sound.add(key);
+                // add music only if there is no music playing, or if interrupt is set to true
+                var addMusic = interrupt || !(this.music && this.music.isPlaying);
 
-                if (!this.game.musicMuted) {
-                    this.music.onDecoded.add(function() {
-                        this.music.fadeIn(duration);
-                    }, this);
+                if (addMusic) {
+                    this.triggerFunctions.stopMusic.call(this, obj, duration);
+                    this.music = this.game.sound.add(key);
+                    // Start only if music isnt muted
+                    if (!this.game.musicMuted) {
+                        this.music.onDecoded.add(function() {
+                            this.music.fadeIn(duration);
+                        }, this);
+                    }
                 }
+
             },
 
             'stopMusic': function(obj, duration) {
