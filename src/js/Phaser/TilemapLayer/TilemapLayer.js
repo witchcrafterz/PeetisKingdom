@@ -117,12 +117,10 @@
         var cacheKey = generateCacheKey(tiles);
 
         if (isEmpty(tiles)) {
-            console.log('No tiles found, return undefined');
             return;
         }
 
         if (cache[cacheKey]) {
-            console.log('Found in cache');
             return cache[cacheKey];
         }
 
