@@ -155,13 +155,13 @@
          * An emitter that emits particles when submerged
          * @type {Phaser.Particles.Arcade}
          */
-        this.bubbleEmitter = this.game.add.emitter(0, 0);
-        this.bubbleEmitter.makeParticles('bubbles', [0,1,2,3,4,5,6], 20);
-        this.bubbleEmitter.gravity = -3750;
-        this.bubbleEmitter.maxRotation = 0;
-        this.bubbleEmitter.minRotation = 0;
-        this.bubbleEmitter.start(false, 5000);
-        this.bubbleEmitter.on = false;
+        // this.bubbleEmitter = this.game.add.emitter(0, 0);
+        // this.bubbleEmitter.makeParticles('bubbles', [0,1,2,3,4,5,6], 20);
+        // this.bubbleEmitter.gravity = -3750;
+        // this.bubbleEmitter.maxRotation = 0;
+        // this.bubbleEmitter.minRotation = 0;
+        // this.bubbleEmitter.start(false, 5000);
+        // this.bubbleEmitter.on = false;
 
         /**
          * An emitter that emits particles when hitting and/or running ont he ground
@@ -354,8 +354,8 @@
             this.body.velocity.x = Math.clamp(this.body.velocity.x, -this.walkingVelocity, this.walkingVelocity);
         }
 
-        // Set state on bubble emitter
-        this.bubbleEmitter.on = this.submerged;
+        // Set state on bubble emitter. Bubble emitter is disbaled for future use
+        // this.bubbleEmitter.on = this.submerged;
 
         this._setData();
     };
