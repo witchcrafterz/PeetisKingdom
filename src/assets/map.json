@@ -1096,12 +1096,12 @@
                 {
                  "height":24,
                  "id":60,
-                 "name":"buzzy",
+                 "name":"delilah",
                  "properties":
                     {
                      "AI":"pacing",
-                     "dialogue":"buzzy",
-                     "key":"grasshopper"
+                     "dialogue":"delilah",
+                     "key":"delilah"
                     },
                  "rotation":0,
                  "type":"character",

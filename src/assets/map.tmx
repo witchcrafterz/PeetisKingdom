@@ -360,11 +360,11 @@
     <property name="key" value="ladydog"/>
    </properties>
   </object>
-  <object id="60" name="buzzy" type="character" x="5589" y="6240" width="134" height="24">
+  <object id="60" name="delilah" type="character" x="5589" y="6240" width="134" height="24">
    <properties>
     <property name="AI" value="pacing"/>
-    <property name="dialogue" value="buzzy"/>
-    <property name="key" value="grasshopper"/>
+    <property name="dialogue" value="delilah"/>
+    <property name="key" value="delilah"/>
    </properties>
   </object>
   <object id="61" name="svin" type="character" x="6621" y="6248" width="134" height="24">

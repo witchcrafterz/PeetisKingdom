@@ -318,5 +318,14 @@
             "text": "Buzz off!"
         }],
         "title": "Grasshopper:"
+    },
+
+    "delilah": {
+        "conversation": [{
+            "text": "Nice wheather, inni'?"
+        }, {
+            "text": "To be honest, it's usually like this..."
+        }],
+        "title": "Villager:"
     }
 }
