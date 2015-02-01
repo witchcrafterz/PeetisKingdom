@@ -96,7 +96,7 @@
     <property name="enter" value="resetPlayer"/>
    </properties>
   </object>
-  <object id="16" name="octopus dialogue" type="dialogue" x="15245.1" y="7888.91" width="442" height="404">
+  <object id="16" name="octopus dialogue" type="dialogue" x="15245.1" y="7888.91" width="874" height="405">
    <properties>
     <property name="dialogue" value="octopusQuest"/>
     <property name="listen" value="octopusQuest"/>
@@ -244,10 +244,10 @@
   <object id="45" name="ropePart" type="part" x="10368.5" y="7601.46" width="65.5758" height="339.754"/>
   <object id="46" name="ropePart" type="part" x="9852.55" y="7605.46" width="66.9091" height="267.754"/>
   <object id="47" name="ropePart" type="part" x="9468.55" y="7666.79" width="68.2425" height="399.754"/>
-  <object id="48" name="music" type="trigger" x="14719.1" y="7959.15" width="489.577" height="337.697">
+  <object id="48" name="music" type="trigger" x="8287.1" y="7303.15" width="6921.21" height="2256.36">
    <properties>
     <property name="enter" value="playMusic"/>
-    <property name="enterArgs" value="lugnofin"/>
+    <property name="enterArgs" value="lugnofin,1000,true,true"/>
    </properties>
   </object>
   <object id="49" name="peetis dialogue" type="dialogue" x="1966.91" y="6075.5" width="626.333" height="306">
@@ -461,7 +461,7 @@
     <property name="statusReturn" value="Bring back the egg to the giant bird"/>
    </properties>
   </object>
-  <object id="73" name="The sky up above" type="criteria" x="15244" y="7874.33" width="440" height="390.667">
+  <object id="73" name="The sky up above" type="criteria" x="15244" y="7874.33" width="875" height="394.667">
    <properties>
     <property name="criterias" value="feather"/>
     <property name="id" value="octopusQuest"/>

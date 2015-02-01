@@ -278,7 +278,7 @@
                  "y":9088
                 }, 
                 {
-                 "height":404,
+                 "height":405,
                  "id":16,
                  "name":"octopus dialogue",
                  "properties":
@@ -290,7 +290,7 @@
                  "rotation":0,
                  "type":"dialogue",
                  "visible":true,
-                 "width":442,
+                 "width":874,
                  "x":15245.1,
                  "y":7888.91
                 }, 
@@ -312,7 +312,7 @@
                  "y":1133.33
                 }, 
                 {
-                 "height":2153.697,
+                 "height":2153.7,
                  "id":18,
                  "name":"truddelutt",
                  "properties":
@@ -760,20 +760,20 @@
                  "y":7666.79
                 }, 
                 {
-                 "height":337.697,
+                 "height":2256.36366666667,
                  "id":48,
                  "name":"music",
                  "properties":
                     {
                      "enter":"playMusic",
-                     "enterArgs":"lugnofin"
+                     "enterArgs":"lugnofin,1000,true,true"
                     },
                  "rotation":0,
                  "type":"trigger",
                  "visible":true,
-                 "width":489.577,
-                 "x":14719.1,
-                 "y":7959.15
+                 "width":6921.21336363637,
+                 "x":8287.1,
+                 "y":7303.15
                 }, 
                 {
                  "height":306,
@@ -822,7 +822,7 @@
                  "y":5794
                 }, 
                 {
-                 "height":1158.42427272727,
+                 "height":1158.42,
                  "id":88,
                  "name":"music",
                  "properties":
@@ -833,9 +833,9 @@
                  "rotation":0,
                  "type":"trigger",
                  "visible":true,
-                 "width":2436.12245454546,
-                 "x":439.391818181818,
-                 "y":2312.72575757576
+                 "width":2436.12,
+                 "x":439.392,
+                 "y":2312.73
                 }, 
                 {
                  "height":252.667,
@@ -849,8 +849,8 @@
                  "type":"trigger",
                  "visible":true,
                  "width":185.333,
-                 "x":5595.3335,
-                 "y":1503.6665
+                 "x":5595.33,
+                 "y":1503.67
                 }, 
                 {
                  "height":260.667,
@@ -864,8 +864,8 @@
                  "type":"trigger",
                  "visible":true,
                  "width":307.333,
-                 "x":4161.3335,
-                 "y":667.6665
+                 "x":4161.33,
+                 "y":667.667
                 }, 
                 {
                  "height":264.424,
@@ -878,12 +878,12 @@
                  "rotation":0,
                  "type":"dialogue",
                  "visible":true,
-                 "width":316.360000000001,
+                 "width":316.36,
                  "x":9411.82,
-                 "y":6607.788
+                 "y":6607.79
                 }, 
                 {
-                 "height":397.087333333333,
+                 "height":397.087,
                  "id":92,
                  "name":"ropePart",
                  "properties":
@@ -893,9 +893,9 @@
                  "rotation":0,
                  "type":"part",
                  "visible":true,
-                 "width":68.2424666666666,
-                 "x":9663.2121,
-                 "y":6386.123
+                 "width":68.2425,
+                 "x":9663.21,
+                 "y":6386.12
                 }, 
                 {
                  "height":2384,
@@ -1336,7 +1336,7 @@
                  "y":3098.5
                 }, 
                 {
-                 "height":390.667,
+                 "height":394.666999999999,
                  "id":73,
                  "name":"The sky up above",
                  "properties":
@@ -1350,7 +1350,7 @@
                  "rotation":0,
                  "type":"criteria",
                  "visible":true,
-                 "width":440,
+                 "width":875,
                  "x":15244,
                  "y":7874.33
                 }, 
