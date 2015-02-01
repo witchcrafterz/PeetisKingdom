@@ -71,9 +71,26 @@
             if (this.debugMode) {
                 this.fpsMeter.parent.remove(this.fpsMeter);
                 this.level.debug = false;
+                this.p1.body.checkCollision.up = true;
+                this.p1.body.checkCollision.down = true;
+                this.p1.body.checkCollision.left = true;
+                this.p1.body.checkCollision.right = true;
+                this.p1.body.allowGravity = true;
             } else {
                 this.game.add.existing(this.fpsMeter);
                 this.level.debug = true;
+                this.p1.body.checkCollision.up = false;
+                this.p1.body.checkCollision.down = false;
+                this.p1.body.checkCollision.left = false;
+                this.p1.body.checkCollision.right = false;
+                this.p1.body.allowGravity = false;
+            }
+            if (this.p1) {
+                this.p1.godMode = !this.p1.godMode;
+
+                if (this.p1.godMode) {
+                } else {
+                }
             }
 
             this.level.dirty = true;
@@ -310,19 +327,6 @@
         this.f11 = this.game.input.keyboard.addKey(122);
         this.f11.onUp.add(function() {
             this.toggleFullScreen();
-        }, this);
-
-        this.f4 = this.game.input.keyboard.addKey(115);
-        this.f4.onUp.add(function() {
-            if (this.p1) {
-                this.p1.godMode = !this.p1.godMode;
-
-                if (this.p1.godMode) {
-                    this.p1.body.allowGravity = false;
-                } else {
-                    this.p1.body.allowGravity = true;
-                }
-            }
         }, this);
     };
 
