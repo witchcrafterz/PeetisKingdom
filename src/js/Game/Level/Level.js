@@ -430,11 +430,12 @@
                 }
             },
 
-            'playMusic': function(obj, key, duration, interrupt) {
+            'playMusic': function(obj, key, duration, interrupt, loop) {
                 if (!key) return;
 
                 duration = duration || 1000;
-                interrupt = interrupt === 'true';
+                interrupt = interrupt ? interrupt === 'true' : false;
+                loop = loop ? loop === 'true' : false;
 
                 // add music only if there is no music playing, or if interrupt is set to true
                 var addMusic = interrupt || !(this.music && this.music.isPlaying);
@@ -445,7 +446,7 @@
                     // Start only if music isnt muted
                     if (!this.game.musicMuted) {
                         this.music.onDecoded.add(function() {
-                            this.music.fadeIn(duration);
+                            this.music.fadeIn(duration, loop);
                         }, this);
                     }
                 }
@@ -466,7 +467,7 @@
             },
 
             'startEnding': function(obj) {
-                this.triggerFunctions.playMusic.call(this, obj, 'truddelutt_orgel');
+                this.triggerFunctions.playMusic.call(this, obj, 'truddelutt_orgel', undefined, 'true');
 
                 this.p1.body.enable = false;
 
