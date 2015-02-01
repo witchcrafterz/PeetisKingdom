@@ -10,6 +10,7 @@
     Game.MainMenu.prototype.preload = function() {
         this.game.load.image('knapp', 'assets/knapp.png');
         this.game.load.bitmapFont('font', 'assets/bmfont_0.png', 'assets/bmfont.fnt');
+        this.game.load.image('splash', 'assets/ui/splash.png');
     };
 
     Game.MainMenu.prototype.create = function() {
@@ -25,9 +26,8 @@
         this.bg = this.game.add.image(0, 0, bmd);
         this.bg.bmd = bmd;
 
-        this.welcomeText = this.game.add.bitmapText(this.game.width * 0.5, this.game.height * 0.25, 'font', 'Welcome to the spel!', 72);
-        this.welcomeText.position.x -= this.welcomeText.width * 0.5;
-        this.welcomeText.position.y -= this.welcomeText.height * 0.5;
+        this.splash = this.game.add.image(0, 0, 'splash');
+        this.splash.tint = 0x888888;
 
         this.btnPlay = new Game.GUI.Button(this.game, this.game.width * 0.5, this.game.height * 0.5, 'knapp', 'Play', 'font', this.startLevel, this);
         this.game.world.add(this.btnPlay);
