@@ -301,7 +301,7 @@
                  "properties":
                     {
                      "enter":"playMusic",
-                     "enterArgs":"boss",
+                     "enterArgs":"boss,1000,true,true",
                      "leave":"stopMusic"
                     },
                  "rotation":0,
@@ -312,20 +312,21 @@
                  "y":1133.33
                 }, 
                 {
-                 "height":337.697,
+                 "height":2153.697,
                  "id":18,
-                 "name":"music",
+                 "name":"truddelutt",
                  "properties":
                     {
                      "enter":"playMusic",
-                     "enterArgs":"truddelutt"
+                     "enterArgs":"truddelutt",
+                     "part":"truddeluttPart"
                     },
                  "rotation":0,
                  "type":"trigger",
                  "visible":true,
-                 "width":489.577,
-                 "x":12529.2,
-                 "y":6043.15
+                 "width":8000,
+                 "x":10921.2,
+                 "y":4235.15
                 }, 
                 {
                  "height":324,
@@ -463,22 +464,6 @@
                  "width":94,
                  "x":1841,
                  "y":3784
-                }, 
-                {
-                 "height":315.152,
-                 "id":28,
-                 "name":"secret",
-                 "properties":
-                    {
-                     "enter":"enterSecret",
-                     "leave":"leaveSecret"
-                    },
-                 "rotation":0,
-                 "type":"trigger",
-                 "visible":true,
-                 "width":666.667,
-                 "x":17430.3,
-                 "y":6866.67
                 }, 
                 {
                  "height":376.667,
@@ -837,7 +822,7 @@
                  "y":5794
                 }, 
                 {
-                 "height":337.697,
+                 "height":1158.42427272727,
                  "id":88,
                  "name":"music",
                  "properties":
@@ -848,9 +833,9 @@
                  "rotation":0,
                  "type":"trigger",
                  "visible":true,
-                 "width":489.577,
-                 "x":7655.21,
-                 "y":6047.15
+                 "width":2436.12245454546,
+                 "x":439.391818181818,
+                 "y":2312.72575757576
                 }, 
                 {
                  "height":252.667,
@@ -911,6 +896,21 @@
                  "width":68.2424666666666,
                  "x":9663.2121,
                  "y":6386.123
+                }, 
+                {
+                 "height":2384,
+                 "id":93,
+                 "name":"truddeluttPart",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"part",
+                 "visible":true,
+                 "width":2520,
+                 "x":15280,
+                 "y":6104
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1598,7 +1598,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":93,
+ "nextobjectid":95,
  "orientation":"orthogonal",
  "properties":
     {

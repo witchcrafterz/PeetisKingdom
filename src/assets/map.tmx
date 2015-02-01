@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="300" height="160" tilewidth="64" tileheight="64" backgroundcolor="#393939" nextobjectid="93">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="300" height="160" tilewidth="64" tileheight="64" backgroundcolor="#393939" nextobjectid="95">
  <tileset firstgid="1" name="spritesheet" tilewidth="64" tileheight="64">
   <image source="spritesheet.png" width="1088" height="448"/>
  </tileset>
@@ -106,14 +106,15 @@
   <object id="17" name="boss music" type="trigger" x="7293.94" y="1133.33" width="1890.91" height="769.697">
    <properties>
     <property name="enter" value="playMusic"/>
-    <property name="enterArgs" value="boss"/>
+    <property name="enterArgs" value="boss,1000,true,true"/>
     <property name="leave" value="stopMusic"/>
    </properties>
   </object>
-  <object id="18" name="music" type="trigger" x="12529.2" y="6043.15" width="489.577" height="337.697">
+  <object id="18" name="truddelutt" type="trigger" x="10921.2" y="4235.15" width="8000" height="2153.7">
    <properties>
     <property name="enter" value="playMusic"/>
     <property name="enterArgs" value="truddelutt"/>
+    <property name="part" value="truddeluttPart"/>
    </properties>
   </object>
   <object id="19" name="checkpointsdasd" type="trigger" x="9247.33" y="8302" width="209.333" height="324">
@@ -153,12 +154,6 @@
    <properties>
     <property name="enter" value="enterLadder"/>
     <property name="leave" value="leaveLadder"/>
-   </properties>
-  </object>
-  <object id="28" name="secret" type="trigger" x="17430.3" y="6866.67" width="666.667" height="315.152">
-   <properties>
-    <property name="enter" value="enterSecret"/>
-    <property name="leave" value="leaveSecret"/>
    </properties>
   </object>
   <object id="29" name="ladder" type="trigger" x="4219.67" y="5967" width="70.6667" height="376.667">
@@ -271,7 +266,7 @@
     <property name="dialogue" value="spookyCave"/>
    </properties>
   </object>
-  <object id="88" name="music" type="trigger" x="7655.21" y="6047.15" width="489.577" height="337.697">
+  <object id="88" name="music" type="trigger" x="439.392" y="2312.73" width="2436.12" height="1158.42">
    <properties>
     <property name="enter" value="playMusic"/>
     <property name="enterArgs" value="byggarebob"/>
@@ -293,6 +288,7 @@
    </properties>
   </object>
   <object id="92" name="ropePart" type="part" x="9663.21" y="6386.12" width="68.2425" height="397.087"/>
+  <object id="93" name="truddeluttPart" type="part" x="15280" y="6104" width="2520" height="2384"/>
  </objectgroup>
  <objectgroup name="sprites">
   <object id="51" name="Grasshopper" type="entity" x="14956" y="6202" width="134" height="24">
