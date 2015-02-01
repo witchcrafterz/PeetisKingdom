@@ -32,9 +32,9 @@
 
         this.helpText = 
             'Controls: \n\n' + 
-            '     Walk: Left/Right arrow key\n' +
-            '     Jump: Spacebar\n' + 
-            'Next Page: Up arrow key';
+            '      Walk: Left/Right arrow key\n' +
+            'Jump/Climb: Spacebar\n' + 
+            ' Next Page: Up arrow key';
 
         this.helpBitmapText = this.game.add.bitmapText(0, this.closeHelpBtn.y + this.closeHelpBtn.height + this.padding, 'font', this.helpText, 32, this);
 

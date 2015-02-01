@@ -149,6 +149,15 @@
             assetLoadingText.x = this.game.width * 0.5 - assetLoadingText.width * 0.5;
         }, this);
 
+        this.helpText = 
+            '      Walk: Left/Right arrow key\n' +
+            'Jump/Climb: Spacebar\n' + 
+            ' Next Page: Up arrow key';
+
+        this.helpBitmapText = this.game.add.bitmapText(0, assetLoadingText.position.y + 100, 'font', this.helpText, 32);
+        this.helpBitmapText.position.x = this.game.width * 0.5 - this.helpBitmapText.width * 0.5;
+
+
         this.game.load.spritesheet('player1', 'assets/characters/player.png', 40, 76);
         this.game.load.spritesheet('spritesheet', 'assets/spritesheet.png', 64, 64);
 
