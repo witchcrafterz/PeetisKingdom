@@ -19,10 +19,13 @@
         var lineWidths = [];
         var line = 0;
         var scale = this.fontSize / data.size;
+        var lastSpace = -1;
 
         for(var i = 0; i < this.text.length; i++)
         {
             var charCode = this.text.charCodeAt(i);
+
+            lastSpace = /(\s)/.test(this.text.charAt(i)) ? i : lastSpace;
 
             if(/(?:\r\n|\r|\n)/.test(this.text.charAt(i)))
             {
@@ -36,16 +39,32 @@
                 continue;
             }
 
-            if (this.maxWidth && /(\s)/.test(this.text.charAt(i)) && pos.x > this.maxWidth / scale) {
+            if (lastSpace !== -1 && this.maxWidth && pos.x > this.maxWidth / scale) {
                 lineWidths.push(pos.x);
                 maxLineWidth = Math.max(maxLineWidth, pos.x);
                 line++;
+                // Remove characters since last space
+                chars.splice(lastSpace, i - lastSpace);
+                // Redraw those characters
+                i = lastSpace;
+                lastSpace = -1;
 
                 pos.x = 0;
                 pos.y += data.lineHeight;
                 prevCharCode = null;
                 continue;         
             }
+
+            // if (this.maxWidth && /(\s)/.test(this.text.charAt(i)) && pos.x > this.maxWidth / scale) {
+            //     lineWidths.push(pos.x);
+            //     maxLineWidth = Math.max(maxLineWidth, pos.x);
+            //     line++;
+
+            //     pos.x = 0;
+            //     pos.y += data.lineHeight;
+            //     prevCharCode = null;
+            //     continue;         
+            // }
 
             var charData = data.chars[charCode];
 
