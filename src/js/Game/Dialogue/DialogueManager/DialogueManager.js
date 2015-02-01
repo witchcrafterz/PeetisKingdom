@@ -76,7 +76,7 @@
          */
         this.textText = new Phaser.BitmapText(this.game, 0, 0, 'font', 'text', this.defaultTextFontSize);
         this.textText.tint = 0x010101;
-        this.textText.maxWidth = 900;
+        this.textText.maxWidth = 1000;
 
         /**
          * The text object that shows page number
