@@ -355,9 +355,10 @@
     <property name="key" value="ladydog"/>
    </properties>
   </object>
-  <object id="60" name="Bybo" type="character" x="5589" y="6240" width="134" height="24">
+  <object id="60" name="buzzy" type="character" x="5589" y="6240" width="134" height="24">
    <properties>
     <property name="AI" value="pacing"/>
+    <property name="dialogue" value="buzzy"/>
     <property name="key" value="grasshopper"/>
    </properties>
   </object>

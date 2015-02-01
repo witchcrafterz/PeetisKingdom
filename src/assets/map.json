@@ -760,7 +760,7 @@
                  "y":7666.79
                 }, 
                 {
-                 "height":2256.36366666667,
+                 "height":2256.36,
                  "id":48,
                  "name":"music",
                  "properties":
@@ -771,7 +771,7 @@
                  "rotation":0,
                  "type":"trigger",
                  "visible":true,
-                 "width":6921.21336363637,
+                 "width":6921.21,
                  "x":8287.1,
                  "y":7303.15
                 }, 
@@ -1081,10 +1081,11 @@
                 {
                  "height":24,
                  "id":60,
-                 "name":"Bybo",
+                 "name":"buzzy",
                  "properties":
                     {
                      "AI":"pacing",
+                     "dialogue":"buzzy",
                      "key":"grasshopper"
                     },
                  "rotation":0,
@@ -1336,7 +1337,7 @@
                  "y":3098.5
                 }, 
                 {
-                 "height":394.666999999999,
+                 "height":394.667,
                  "id":73,
                  "name":"The sky up above",
                  "properties":

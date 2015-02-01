@@ -89,7 +89,7 @@
         "conversation": [{
             "text": "YIKES! That is one mighty fine feather"
         }, {
-            "text": "Very well... You may enter my tunnell!"
+            "text": "Very well... You may enter my tunnel!"
         }],
         "title": "Octopus:"
     },
@@ -311,5 +311,12 @@
             "title": "You:"
         }],
         "title": "Villager:"
+    },
+
+    "buzzy": {
+        "conversation": [{
+            "text": "Buzz off!"
+        }],
+        "title": "Grasshopper:"
     }
 }
