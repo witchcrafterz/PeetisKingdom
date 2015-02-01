@@ -430,13 +430,13 @@
                 }
             },
 
-            'playMusic': function(obj, key, duration, interrupt, loop) {
+            'playMusic': function(obj, key, duration, interrupt, loop, volume) {
                 if (!key) return;
 
                 duration = duration || 1000;
                 interrupt = interrupt ? interrupt === 'true' : false;
                 loop = loop ? loop === 'true' : false;
-
+                volume = volume ? parseFloat(volume, 10) : 0.3;
                 // add music only if there is no music playing, or if interrupt is set to true
                 var addMusic = interrupt || !(this.music && this.music.isPlaying);
 
@@ -446,7 +446,8 @@
                     // Start only if music isnt muted
                     if (!this.game.musicMuted) {
                         this.music.onDecoded.add(function() {
-                            this.music.fadeIn(duration, loop);
+                            this.music.play('', 0, 0, loop);
+                            this.music.fadeTo(duration, volume);
                         }, this);
                     }
                 }
