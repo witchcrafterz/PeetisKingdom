@@ -6,6 +6,13 @@
         }]
     },
 
+    "rope": {
+        "title": "You:",
+        "conversation": [{
+            "text": "Hmm, a rope? I could probably climb this!"
+        }]
+    },
+
     "instruction": {
         "title": "Instructions",
         "conversation": [{
