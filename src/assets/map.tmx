@@ -287,7 +287,7 @@
     <property name="dialogue" value="rope"/>
    </properties>
   </object>
-  <object id="92" name="ropePart" type="part" x="9663.21" y="6386.12" width="68.2425" height="397.087"/>
+  <object id="92" name="ropePart" type="part" x="9661.21" y="6333.45" width="68.9092" height="454.42"/>
   <object id="93" name="truddeluttPart" type="part" x="15280" y="6104" width="2520" height="2384"/>
   <object id="95" name="checkpoint" type="trigger" x="10499.2" y="7833.76" width="247.03" height="184">
    <properties>
