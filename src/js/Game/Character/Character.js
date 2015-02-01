@@ -300,8 +300,8 @@
     };
 
     Game.Character.prototype.updateEmitters = function() {
-        this.bubbleEmitter.emitX = this.position.x;
-        this.bubbleEmitter.emitY = this.position.y;
+        // this.bubbleEmitter.emitX = this.position.x;
+        // this.bubbleEmitter.emitY = this.position.y;
         this.groundEmitter.emitX = this.position.x;
         this.groundEmitter.emitY = this.position.y + this.body.height;
     };
