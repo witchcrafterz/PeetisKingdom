@@ -247,7 +247,7 @@
   <object id="48" name="music" type="trigger" x="8287.1" y="7303.15" width="6927.23" height="2470.09">
    <properties>
     <property name="enter" value="playMusic"/>
-    <property name="enterArgs" value="lugnofin,1000,true,true"/>
+    <property name="enterArgs" value="lugnofin,1000,true"/>
    </properties>
   </object>
   <object id="49" name="peetis dialogue" type="dialogue" x="1966.91" y="6075.5" width="626.333" height="306">

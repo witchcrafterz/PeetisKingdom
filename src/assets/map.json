@@ -263,7 +263,7 @@
                  "y":8513.33
                 }, 
                 {
-                 "height":370.178364840458,
+                 "height":370.178,
                  "id":15,
                  "name":"lava",
                  "properties":
@@ -273,9 +273,9 @@
                  "rotation":0,
                  "type":"trigger",
                  "visible":true,
-                 "width":3303.91421432872,
-                 "x":9242.78085490668,
-                 "y":9091.01023479832
+                 "width":3303.91,
+                 "x":9242.78,
+                 "y":9091.01
                 }, 
                 {
                  "height":405,
@@ -760,18 +760,18 @@
                  "y":7666.79
                 }, 
                 {
-                 "height":2470.08667068031,
+                 "height":2470.09,
                  "id":48,
                  "name":"music",
                  "properties":
                     {
                      "enter":"playMusic",
-                     "enterArgs":"lugnofin,1000,true,true"
+                     "enterArgs":"lugnofin,1000,true"
                     },
                  "rotation":0,
                  "type":"trigger",
                  "visible":true,
-                 "width":6927.23046959663,
+                 "width":6927.23,
                  "x":8287.1,
                  "y":7303.15
                 }, 
@@ -928,7 +928,7 @@
                  "y":7833.76
                 }, 
                 {
-                 "height":210.635555689343,
+                 "height":210.636,
                  "id":96,
                  "name":"lava",
                  "properties":
@@ -938,12 +938,12 @@
                  "rotation":0,
                  "type":"trigger",
                  "visible":true,
-                 "width":281.634262492475,
-                 "x":8805.60068934377,
-                 "y":9101.48535279952
+                 "width":281.634,
+                 "x":8805.6,
+                 "y":9101.49
                 }, 
                 {
-                 "height":917.514385310054,
+                 "height":917.514,
                  "id":97,
                  "name":"ropePart",
                  "properties":
@@ -953,9 +953,9 @@
                  "rotation":0,
                  "type":"part",
                  "visible":true,
-                 "width":77.2732043949436,
-                 "x":9150.10511965683,
-                 "y":8755.57152498495
+                 "width":77.2732,
+                 "x":9150.11,
+                 "y":8755.57
                 }, 
                 {
                  "height":917.514,
@@ -969,8 +969,8 @@
                  "type":"part",
                  "visible":true,
                  "width":77.2732,
-                 "x":12986.6493723058,
-                 "y":8755.57171763998
+                 "x":12986.6,
+                 "y":8755.57
                 }],
          "opacity":1,
          "type":"objectgroup",
