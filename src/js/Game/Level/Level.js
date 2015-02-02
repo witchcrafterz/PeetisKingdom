@@ -277,8 +277,8 @@
         this.frontGroup = this.game.add.group();
         this.levelGroup = this.game.add.group();
 
-        var deltaX = this.map.widthInPixels / 10;
-        var deltaY = this.map.heightInPixels / 10;
+        var deltaX = this.map.widthInPixels / 20;
+        var deltaY = this.map.heightInPixels / 20;
         var region, img, x, y;
         for (x = 0; x < this.map.widthInPixels / deltaX; x++) {
             for (y = 0; y < this.map.heightInPixels / deltaY; y++) {
