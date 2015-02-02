@@ -507,18 +507,25 @@
                         bgImg.fixedToCamera = true;
                         bg.fill(0, 0, 0);
 
-                        var text = 'The End!\nYou Completed the game in {0} minutes and {1} seconds'.format(deltaTime.getMinutes(), deltaTime.getSeconds());
-                        var endText = this.game.add.bitmapText(this.game.width * 0.5, this.game.height * 0.5 - 100, 'font', text);
+                        var text = 
+                        'The End!\n' + 
+                        'You Completed the game in {0} minutes and {1} seconds\n'.format(deltaTime.getMinutes(), deltaTime.getSeconds()) + 
+                        '\nIt would be highly appreciated if you could spend 5-10 minutes \nfilling out our survey, which can be found below, \nor at "http://goo.gl/forms/T5vUQISE5I"';
+                        var endText = this.game.add.bitmapText(this.game.width * 0.5, this.game.height * 0.5 - 100, 'font', text, 26);
                         endText.align = 'center';
                         endText.x -= endText.width * 0.5;
 
                         var surveyBtn = new Game.GUI.Button(this.game, this.game.width * 0.5, this.padding, 'knapp', 'Open Survey', 'font', function() {
                             window.open('https://docs.google.com/forms/d/1eMY-jhFSJwzuuoRPk0Sid8m1CYdxSNRBtQsuUatC1vo/viewform?usp=send_form');
                         });
-                        surveyBtn.position.y = endText.y + endText.height + surveyBtn.height;
-                        bgImg.addChild(surveyBtn);
+                        surveyBtn.scale.setTo(0.8);
+                        surveyBtn.position.y = endText.y + endText.height + surveyBtn.height * 0.5 + 20;
 
+                        var creditText = this.game.add.bitmapText(20, this.game.height - 20, 'font', 'The music heard when facing the ornithologist was created by 13NHarri @ Freesound.org', 20);
+
+                        bgImg.addChild(surveyBtn);
                         bgImg.addChild(endText);
+                        bgImg.addChild(creditText);
 
                         bgImg.alpha = 0;
                         this.game.add.tween(bgImg).to({alpha: 1}).start();
@@ -820,6 +827,7 @@
 
         this.paintBG();
         this.startTime = Date.now();
+        this.triggerFunctions.startEnding.call(this);
     };
 
     Game.Level.prototype.update = function() {
