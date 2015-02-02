@@ -114,7 +114,7 @@
 
         var tiles = this.getTiles(x, y, width, height);
 
-        var cacheKey = generateCacheKey(tiles);
+        var cacheKey = generateCacheKey(tiles, overlay);
 
         if (isEmpty(tiles)) {
             return;
@@ -154,8 +154,8 @@
         return true;
     }
 
-    function generateCacheKey(tiles) {
-        var str = '';
+    function generateCacheKey(tiles, overlay) {
+        var str = String(overlay);
         for (var i = 0; i < tiles.length; i++) {
             str += tiles[i].index;
         }
