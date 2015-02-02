@@ -827,7 +827,6 @@
 
         this.paintBG();
         this.startTime = Date.now();
-        this.triggerFunctions.startEnding.call(this);
     };
 
     Game.Level.prototype.update = function() {
