@@ -97,6 +97,8 @@
             this.debugMode = !this.debugMode;
         };
 
+        this.startTime;
+
         this.toggleMusic = function() {
             this.game.musicMuted = !this.game.musicMuted;
 
@@ -495,6 +497,7 @@
                     scaleTween.to({x: 6, y: 6}, 1000, undefined, false, undefined, -1, true).start();
                 });
 
+                var deltaTime = new Date(Date.now() - this.startTime);
                 this.game.add.tween(this.p1)
                     .to({alpha: 0}, 5000, Phaser.Easing.Bounce.In, false, 500)
                     .start()
@@ -504,8 +507,16 @@
                         bgImg.fixedToCamera = true;
                         bg.fill(0, 0, 0);
 
-                        var endText = this.game.add.bitmapText(this.game.width * 0.5, this.game.height * 0.5, 'font', 'The End!');
+                        var text = 'The End!\nYou Completed the game in {0} minutes and {1} seconds'.format(deltaTime.getMinutes(), deltaTime.getSeconds());
+                        var endText = this.game.add.bitmapText(this.game.width * 0.5, this.game.height * 0.5 - 100, 'font', text);
+                        endText.align = 'center';
                         endText.x -= endText.width * 0.5;
+
+                        var surveyBtn = new Game.GUI.Button(this.game, this.game.width * 0.5, this.padding, 'knapp', 'Open Survey', 'font', function() {
+                            window.open('https://docs.google.com/forms/d/1eMY-jhFSJwzuuoRPk0Sid8m1CYdxSNRBtQsuUatC1vo/viewform?usp=send_form');
+                        });
+                        surveyBtn.position.y = endText.y + endText.height + surveyBtn.height;
+                        bgImg.addChild(surveyBtn);
 
                         bgImg.addChild(endText);
 
@@ -766,6 +777,7 @@
      * Initialization logic here
      */
     Game.Level.prototype.create = function() {
+
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
         this.game.physics.arcade.gravity = Game.gravity;
         this.game.physics.arcade.TILE_BIAS = 64;
@@ -807,6 +819,7 @@
         this.game.world.bringToTop(this.HUD);
 
         this.paintBG();
+        this.startTime = Date.now();
     };
 
     Game.Level.prototype.update = function() {
