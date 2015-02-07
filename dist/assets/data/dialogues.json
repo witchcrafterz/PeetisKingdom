@@ -1,0 +1,331 @@
+{
+    "intro": {
+        "title": "You:",
+        "conversation": [{
+            "text": "Ouch... What happened? Where am I?"
+        }]
+    },
+
+    "rope": {
+        "title": "You:",
+        "conversation": [{
+            "text": "Hmm, a rope? I could probably climb this!"
+        }]
+    },
+
+    "instruction": {
+        "title": "Instructions",
+        "conversation": [{
+            "text": "Use arrow keys to walk, and the up key to interact with objects!"
+        }, {
+            "text": "To jump, press spacebar. Press it twice to double jump!"
+        }]
+    },
+
+    "welcome": {
+        "conversation": [{
+            "title": "Welcome!",
+            "text": "Pro tip -- try the 'up' arrow key!"
+        }, {
+            "title": "Controls",
+            "text": "Use arrow keys to walk, up to interact, and spacebar to jump"
+        }]
+    },
+
+    "doubleJump": {
+        "conversation": [{
+            "title": "A bit too high...",
+            "text": "If I only could jump once more, while already in the air"
+        }]
+    },
+
+    "direction": {
+        "conversation": [{
+            "title": "Road sign:",
+            "text": "Right: Grasshopper's residential cave\nLeft: Princess Peeti's Mountain Castle"
+        }]
+    },
+
+    "spookyCave": {
+        "conversation": [{
+            "title": "Road sign:",
+            "text": "Right: A Spooky Cave"
+        }]
+    },
+
+    "royalQuest": {
+        "conversation": [{
+            "text": "Hold on! I can't let you see Princess Peeti without bringing a gift."
+        }, {
+            "text": "Tell you what; you bring a gift, I'll let you in..."
+        }],
+        "title": "Guard:"
+    },
+    "royalQuestComplete": {
+        "conversation": [{
+            "text": "I can't think of a better gift myself to give to the princess."
+        }, {
+            "text": "You may enter..."
+        }],
+        "title": "Guard:"
+    },
+
+    "octopusQuest": {
+        "conversation": [{
+            "text": "STAY AWAY FROM MY TUNNEL! Ahem... It's MY tunnel."
+        }, {
+            "text": "Is there anything I can do to make you let me in?",
+            "title": "You:"
+        }, {
+            "text": "Tell you what; you bring a gift, I'll let you in..."
+        }, {
+            "text": "Well... Living under water becomes quite a drag after a while..."
+        }, {
+            "text": "Bring me something that has touched the sky, then I' let you in!"
+        }],
+        "title": "Octopus:"
+    },
+    "octopusQuestComplete": {
+        "conversation": [{
+            "text": "YIKES! That is one mighty fine feather"
+        }, {
+            "text": "Very well... You may enter my tunnel!"
+        }],
+        "title": "Octopus:"
+    },
+
+    "birdQuest": {
+        "conversation": [{
+            "text": "Oh the horror... The agony, the dismay and one bird's broken heart..."
+        }, {
+            "text": "Tell me bird, what has happened to you?",
+            "title": "You:"
+        }, {
+            "text": "Nothing but the most terrible thing in this world! My baby, my egg, it has been taken away from me!"
+        }, {
+            "text": "A very mean ornithologist climbed into my nest, and stole it! The nerve on that one!"
+        }, {
+            "text": "You'll bring it back, you will? I'll reward you with a feather that has touched the sky!"
+        }],
+        "title": "Giant Bird:"
+    },
+
+    "birdQuestComplete": {
+        "conversation": [{
+            "text": "Oh, you are a true hero, one this world has sorely needed for such a long time!"
+        }, {
+            "text": "For bringing my egg back, I'll reward you with my finest feather!"
+        }],
+        "title": "Giant Bird:"
+    },
+
+    "grasshopperQuest": {
+        "conversation": [{
+            "text": "Gosh darn it! I dropped my pearl in the lake!"
+        }, {
+            "title": "You:",
+            "text": "A grasshopper, and you can talk!?"
+        }, {
+            "text": "Of course I can talk you big dumdum!"
+        }, {
+            "text": "Anyways... You look like you can swim! Mind diving in and getting my pearl?"
+        }, {
+            "text": "Pretty please! I'll reward you with the power of leaping through the air!"
+        }],
+        "title": "Grasshopper:"
+    },
+    
+    "grasshopperQuestComplete": {
+        "conversation": [{
+            "text": "Oh wowsies! Thanks for bringing me my pearl! You can now jump twice!"
+        }],
+        "title": "Grasshopper:"
+    },
+
+    "peetiQuest": {
+        "conversation": [{
+            "text": "Oh, and who might you be, dear?"
+        }, {
+            "text": "I'm a person who's lost! The villagers I've talked to told me you can help me get home?",
+            "title": "You:"
+        }, {
+            "text": "Oh my goodness, I see! Tell me, where are you from?"
+        }, {
+            "text": "From a whole other world, I think. Where grasshoppers are small and only humans can talk",
+            "title": "You:"
+        }, {
+            "text": "Oh, okay, I see. Seems rather a bit dull! But if you wish, I will help you! I have heard of all the good you have done, helping the citizens of my land",
+            "fontScale": 0.8
+        }, {
+            "text": "There is however one slight problem... I have lost all the batteries to my world-jumping-machine while walking around my land.",
+            "fontScale": 0.8
+        }, {
+            "text": "If you can find the batteries, you are more than welcome to use my machine."
+        }],
+        "title": "Princess Peeti:"
+    },
+
+    "castleDialogue": {
+        "conversation": [{
+            "title": "Directions",
+            "text": "Right: Princess Peeti's Throne Room\nLeft: Astronomer's Tower"
+        }]
+    },
+
+    "ornithologistHome": {
+        "conversation": [{
+            "title": "Sign:",
+            "text": "Home Sweet Home"
+        }]
+    },
+
+    "ornithologistDirection": {
+        "conversation": [{
+            "title": "Sign:",
+            "text": "Right: Home of the most famous Ornithologist in the world!"
+        }]
+    },
+
+    "ornithologistDoor": {
+        "conversation": [{
+            "text": "This must be where the ornothologist lives but the door is locked..."
+        }, {
+            "text": "Maybe there is another way in?"
+        }],
+        "title": "You:"
+    },
+
+    "ornithologist": {
+        "conversation": [{
+            "text": "GET OUT OF MY HOUSE!"
+        }],
+        "title": "Ornithologist:"
+    },
+
+    "slipperyWarning": {
+        "conversation": [{
+            "title": "WARNING!",
+            "text": "Slippery ice!"
+        }]
+    },
+
+
+
+    "villager1": {
+        "conversation": [{
+            "text": "Hey, you, where am I?"
+        }, {
+            "text": "Why you are here, of course!",
+            "title": "Villager:"
+        }, {
+            "text": "Yes, but... Where is here?"
+        }, {
+            "text": "Oh, you're serious? Well we are in Princess Peeti's kingdom",
+            "title": "Villager:"
+        }, {
+            "text": "*People now a days, doesn't even know where they are*",
+            "title": "(Villager in a monologue):"
+        }],
+        "title": "You:"
+    },
+
+    "villager2": {
+        "conversation": [{
+            "text": "Hey there, you don't seem to be from around these parts, are you?"
+        }, {
+            "text": "No... Can't say that I am.",
+            "title": "You:"
+        }, {
+            "text": "Well then, why are you looking so sad? Princess Peeti is the best monarch one could wish for!"
+        }, {
+            "text": "The thing is, I don't even know how I got here, I just... woke up in this land. You don't know how I can get back, do you?",
+            "title": "You:",
+            "fontScale": 0.8
+        }, {
+            "text": "Me? No... But I am sure Princess Peeti do. Just head to the west and you'll see Peeti's castle, no doubt. You can't miss it!",
+            "fontScale": 0.8
+        }, {
+            "text": "Thanks, ermh...",
+            "title": "You:"
+        }, {
+            "text": "The name's Bob, and I'm just glad to help!",
+            "title": "Bob:"
+        }],
+        "title": "Villager:"
+    },
+
+    "villager3": {
+        "conversation": [{
+            "text": "Did you hear about the crater? Just appeared during night they say. You have to be one good jumper to get to the other side I'm afraid",
+            "fontScale": 0.8
+        }, {
+            "text": "Yeah about that. Do you know anyone who can lend me a ladder to get across?",
+            "title": "You:"
+        }, {
+            "text": "Not this side of the crater I'm afraid. But Grassy Grasshopper can teach you a few tips and tricks about jumping, I'm sure",
+            "fontScale": 0.8    
+        }, {
+            "text": "You can find Grassy in the cave just next to this house"
+        }],
+        "title": "Villager:"
+    },
+
+    "monkey": {
+        "conversation": [{
+            "text": "Oh great. I come home from a long day of hard work, and a stranger simply waltzes into my home..."
+        }, {
+            "text": "Oh, I'm sorry, truly I am.",
+            "title": "You:"
+        }],
+        "title": "Monkey:"
+    },
+
+    "pig": {
+        "conversation": [{
+            "text": "*Oink!* Greetings stranger!"
+        }, {
+            "text": "Hi! Do you perhaps have any clue where I can find something that has touched the sky? The octopus gave me this task.",
+            "title": "You:",
+            "fontScale": 0.9
+        }, {
+            "text": "I'm no sky person myself, you should ask the giant bird, Birdie. You can find Birdie on the top of Peeti's castle.",
+            "fontScale": 0.9
+        }, {
+            "text": "Thanks!",
+            "title": "You:"
+        }],
+        "title": "Pig:"
+    },
+
+    "sidecut": {
+        "conversation": [{
+            "text": "Hey, I heard you talking to the Guard Bear."
+        }, {
+            "text": "Oh, you did? Well, do you perhaps know what present would be good to gift to Peeti?",
+            "title": "You:"
+        }, {
+            "text": "You bet I do! If there is one thing Peeti loves, then it's a big chewy bone. The Octopus have all sort of things in the tunnel behind him. Perhaps try looking there!",
+            "fontScale": 0.8
+        }, {
+            "text": "Thanks!",
+            "title": "You:"
+        }],
+        "title": "Villager:"
+    },
+
+    "buzzy": {
+        "conversation": [{
+            "text": "Buzz off!"
+        }],
+        "title": "Grasshopper:"
+    },
+
+    "delilah": {
+        "conversation": [{
+            "text": "Nice wheather, inni'?"
+        }, {
+            "text": "To be honest, it's usually like this..."
+        }],
+        "title": "Villager:"
+    }
+}
