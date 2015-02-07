@@ -307,10 +307,6 @@
 
         this.level.resizeWorld();
 
-        this.level.renderSettings.enableScrollDelta = false;
-        this.behind.renderSettings.enableScrollDelta = false;
-        this.front.renderSettings.enableScrollDelta = false;
-
         this.secrets = [];
         _.forEach(this.front.layer.data, function(row) {
             _.forEach(row, function(tile) {
