@@ -1,5 +1,5 @@
-(function() {
-    'use strict';
+// (function() {
+//     'use strict';
 
     Phaser.TilemapLayer.prototype.resizeWorld = function () {
         this.game.world.setBounds(0, 0, this.layer.widthInPixels * this.scale.x, this.layer.heightInPixels * this.scale.y);
@@ -10,8 +10,8 @@
 
         //  Stops you being able to auto-scroll the camera if it's not following a sprite
         var camera = this.game.camera;
-        this.scrollX = camera.x * this.scrollFactorX * (1 / this.scale.x);
-        this.scrollY = camera.y * this.scrollFactorY * (1 / this.scale.y);
+        this.scrollX = camera.x * this.scrollFactorX / this.scale.x;
+        this.scrollY = camera.y * this.scrollFactorY / this.scale.y;
 
         this.render();
 
@@ -172,60 +172,90 @@
 
     };
 
-    var cache = {};
+    /**
+     * This method will set the scale of the tilemap as well as update the underlying block data of this layer
+     * 
+     * @method Phaser.TilemapLayer#setScale
+     * @param {number} [xScale=1] - The scale factor along the X-plane 
+     * @param {number} [yScale] - The scale factor along the Y-plane
+     */
+    Phaser.TilemapLayer.prototype.setScale = function(xScale, yScale) {
+        xScale = xScale || 1;
+        yScale = yScale || xScale;
 
-    Phaser.TilemapLayer.prototype.generateRegion = function (x, y, width, height, overlay) {
-        var bmd = new Phaser.BitmapData(this.game, 'generatedRegion', width, height);
-        bmd.context.fillStyle = overlay;
+        for (var y = 0; y < this.layer.data.length; y++)
+        {
+            var row = this.layer.data[y];
 
-        var tiles = this.getTiles(x, y, width, height);
-
-        var cacheKey = generateCacheKey(tiles, overlay);
-
-        if (isEmpty(tiles)) {
-            return;
-        }
-
-        if (cache[cacheKey]) {
-            return cache[cacheKey];
-        }
-
-        var tile, set;
-        for (var i = 0; i < tiles.length; i++) {
-            tile = tiles[i];
-
-            set = this._mc.tilesets[tile.index];
-            if (!set)
+            for (var x = 0; x < row.length; x++)
             {
-                set = this.resolveTileset(tile.index);
-                if (!set) continue;
-            }
+                var tile = row[x];
 
-            set.draw(bmd.context, tile.worldX - x, tile.worldY - y, tile.index);
+                tile.width = this.map.tileWidth * xScale;
+                tile.height = this.map.tileHeight * yScale;
 
-            if (overlay) {
-                bmd.context.fillRect(tile.worldX - x, tile.worldY - y, tile.width, tile.height);
+                tile.worldX = tile.x * tile.width;
+                tile.worldY = tile.y * tile.height;
             }
         }
 
-        cache[cacheKey] = bmd;
-
-        return bmd;
+        this.scale.setTo(xScale, yScale);
     };
 
-    function isEmpty(tiles) {
-        for (var i = 0; i < tiles.length; i++) {
-            if (tiles[i].index !== -1) return false;
-        }
-        return true;
-    }
+//     var cache = {};
 
-    function generateCacheKey(tiles, overlay) {
-        var str = String(overlay);
-        for (var i = 0; i < tiles.length; i++) {
-            str += tiles[i].index;
-        }
-        return str;
-    }
+//     Phaser.TilemapLayer.prototype.generateRegion = function (x, y, width, height, overlay) {
+//         var bmd = new Phaser.BitmapData(this.game, 'generatedRegion', width, height);
+//         bmd.context.fillStyle = overlay;
 
-})();
+//         var tiles = this.getTiles(x, y, width, height);
+
+//         var cacheKey = generateCacheKey(tiles, overlay);
+
+//         if (isEmpty(tiles)) {
+//             return;
+//         }
+
+//         if (cache[cacheKey]) {
+//             return cache[cacheKey];
+//         }
+
+//         var tile, set;
+//         for (var i = 0; i < tiles.length; i++) {
+//             tile = tiles[i];
+
+//             set = this._mc.tilesets[tile.index];
+//             if (!set)
+//             {
+//                 set = this.resolveTileset(tile.index);
+//                 if (!set) continue;
+//             }
+
+//             set.draw(bmd.context, tile.worldX - x, tile.worldY - y, tile.index);
+
+//             if (overlay) {
+//                 bmd.context.fillRect(tile.worldX - x, tile.worldY - y, tile.width, tile.height);
+//             }
+//         }
+
+//         cache[cacheKey] = bmd;
+
+//         return bmd;
+//     };
+
+//     function isEmpty(tiles) {
+//         for (var i = 0; i < tiles.length; i++) {
+//             if (tiles[i].index !== -1) return false;
+//         }
+//         return true;
+//     }
+
+//     function generateCacheKey(tiles, overlay) {
+//         var str = String(overlay);
+//         for (var i = 0; i < tiles.length; i++) {
+//             str += tiles[i].index;
+//         }
+//         return str;
+//     }
+
+// })();

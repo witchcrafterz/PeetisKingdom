@@ -79,10 +79,10 @@
             } else {
                 this.game.add.existing(this.fpsMeter);
                 this.level.debug = true;
-                // this.p1.body.checkCollision.up = false;
-                // this.p1.body.checkCollision.down = false;
-                // this.p1.body.checkCollision.left = false;
-                // this.p1.body.checkCollision.right = false;
+                this.p1.body.checkCollision.up = false;
+                this.p1.body.checkCollision.down = false;
+                this.p1.body.checkCollision.left = false;
+                this.p1.body.checkCollision.right = false;
                 this.p1.body.allowGravity = false;
             }
             if (this.p1) {
@@ -230,11 +230,11 @@
         // The layer that the player does not interact with
         this.behind = this.map.createLayer('behind', width, height);
         this.behind.overlay = 'rgba(0,0,0,0.4)';
-        this.behind.scale.setTo(4);
+        this.behind.setScale(4);
         this.behind.smoothed = false;
 
         this.level = this.map.createLayer('collision', width, height);
-        this.level.scale.setTo(4);
+        this.level.setScale(4);
         this.level.smoothed = false;
         // The layer containing platforms
         var firstID = this.map.tilesets[this.map.getTilesetIndex('spritesheet')].firstgid;
@@ -247,20 +247,8 @@
                 obj.height *= 4;
             });
         });
-        _.forEach(this.behind.layer.data, function(e) {
-            _.forEach(e, function(t) {
-                t.worldX *= 4;
-                t.worldY *= 4;
-                t.width *= 4;
-                t.height *= 4;
-            });
-        });
         _.forEach(this.level.layer.data, function(e) {
             _.forEach(e, function(t) {
-                t.worldX *= 4;
-                t.worldY *= 4;
-                t.width *= 4;
-                t.height *= 4;
 
                 if (t.index > -1 && !_.contains(specialCollision.exclude, t.index - firstID) && !_.contains(collisionTiles, t.index)) {
                     collisionTiles.push(t.index);
@@ -294,17 +282,10 @@
             });
         });
         this.front = this.map.createLayer('front', width, height);
-        this.front.scale.setTo(4);
+        this.front.setScale(4);
         this.front.smoothed = false;
-        _.forEach(this.front.layer.data, function(e) {
-            _.forEach(e, function(t) {
-                t.worldX *= 4;
-                t.worldY *= 4;
-                t.width *= 4;
-                t.height *= 4;
-            });
-        });
 
+        this.level.setScale(4);
         this.level.resizeWorld();
 
         this.secrets = [];
