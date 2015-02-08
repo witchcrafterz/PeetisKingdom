@@ -224,16 +224,32 @@
         this.paintBG();
         this.bg.fixedToCamera = true;
 
-        // The layer that the player does not interact with
-        this.behind = this.map.createLayer('behind');
-        this.behind.overlay = 'rgba(0,0,0,0.4)';
+        var width = this.game.width * 0.25;
+        var height = this.game.height * 0.25;
 
-        this.level = this.map.createLayer('collision');
+        // The layer that the player does not interact with
+        this.behind = this.map.createLayer('behind', width, height);
+        this.behind.overlay = 'rgba(0,0,0,0.4)';
+        this.behind.setScale(4);
+        this.behind.smoothed = false;
+
+        this.level = this.map.createLayer('collision', width, height);
+        this.level.setScale(4);
+        this.level.smoothed = false;
         // The layer containing platforms
         var firstID = this.map.tilesets[this.map.getTilesetIndex('spritesheet')].firstgid;
         var collisionTiles = [];
+        _.forEach(this.map.objects, function(objects) {
+            _.forEach(objects, function(obj) {
+                obj.x *= 4;
+                obj.y *= 4;
+                obj.width *= 4;
+                obj.height *= 4;
+            });
+        });
         _.forEach(this.level.layer.data, function(e) {
             _.forEach(e, function(t) {
+
                 if (t.index > -1 && !_.contains(specialCollision.exclude, t.index - firstID) && !_.contains(collisionTiles, t.index)) {
                     collisionTiles.push(t.index);
                 }
@@ -265,55 +281,12 @@
                 }
             });
         });
-        this.front = this.map.createLayer('front');
+        this.front = this.map.createLayer('front', width, height);
+        this.front.setScale(4);
+        this.front.smoothed = false;
 
+        this.level.setScale(4);
         this.level.resizeWorld();
-
-        this.behind.visible = false;
-        this.front.visible = false;
-        this.level.visible = false;
-
-        this.behindGroup = this.game.add.group();
-        this.frontGroup = this.game.add.group();
-        this.levelGroup = this.game.add.group();
-
-        var deltaX = this.map.widthInPixels / 20;
-        var deltaY = this.map.heightInPixels / 20;
-        var region, img, x, y;
-        for (x = 0; x < this.map.widthInPixels / deltaX; x++) {
-            for (y = 0; y < this.map.heightInPixels / deltaY; y++) {
-                region = this.behind.generateRegion(deltaX * x, deltaY * y, deltaX, deltaY, 'rgba(0,0,0,0.4)');
-                
-                if (region) {
-                    img = this.game.add.image(deltaX * x, deltaY * y, region, 0, this.behindGroup);
-                    img.roundPx = false;
-                }
-            }
-        }
-        for (x = 0; x < this.map.widthInPixels / deltaX; x++) {
-            for (y = 0; y < this.map.heightInPixels / deltaY; y++) {
-                region = this.level.generateRegion(deltaX * x, deltaY * y, deltaX, deltaY);
-                
-                if (region) {
-                    img = this.game.add.image(deltaX * x, deltaY * y, region, 0, this.levelGroup);
-                    img.roundPx = false;
-                }
-            }
-        }
-        for (x = 0; x < this.map.widthInPixels / deltaX; x++) {
-            for (y = 0; y < this.map.heightInPixels / deltaY; y++) {
-                region = this.front.generateRegion(deltaX * x, deltaY * y, deltaX, deltaY);
-                
-                if (region) {
-                    img = this.game.add.image(deltaX * x, deltaY * y, region, 0, this.frontGroup);
-                    img.roundPx = false;
-                }
-            }
-        }
-
-        this.level.renderSettings.enableScrollDelta = false;
-        this.behind.renderSettings.enableScrollDelta = false;
-        this.front.renderSettings.enableScrollDelta = false;
 
         this.secrets = [];
         _.forEach(this.front.layer.data, function(row) {
@@ -812,7 +785,8 @@
         this.entitiesGroup.bringToTop(this.p1);
         
         this.game.world.bringToTop(this.entitiesGroup);
-        this.game.world.bringToTop(this.frontGroup);
+        this.game.world.bringToTop(this.front);
+        // this.game.world.bringToTop(this.frontGroup);
 
         this.objectiveManager.createObjectives(this.map, this.map.objects['objectives'], this.p1);
 
