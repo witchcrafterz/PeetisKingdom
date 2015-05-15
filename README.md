@@ -2,7 +2,7 @@
 Peeti’s Kingdom is an adventure platform game striving to avoid all things violent, created by us as a school project.
 
 ## Try the game
-http://spel.michaelrehn.se
+http://michaelrehn.se/peetiskingdom
 
 ## Screenshots
 [Link to imgur album](http://imgur.com/a/maWSV)
